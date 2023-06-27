@@ -1,0 +1,176 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.h2-ContactUs{
+    color: black;
+}
+.divH1ContactUs{
+    position:relative;
+}
+.navBarContainor{
+    height: 65px;
+}
+.divH1ContactUs{
+    background-color: white;
+    width: 100%;
+    height: 400px;
+    color: black;
+}
+.h1-ContactUs{
+    padding: 30px;
+}
+.divSuggestions{
+    background-color: white;
+    width: 100%;
+    height: 900px;
+    color: black;
+}
+.mapSection{
+    display: flex;
+}
+.leftMapSection{
+    width: 40%;
+    height:450px;
+}
+.rightMapSection{
+    width: 60%;
+    height:450px;
+}
+.contactDetails{
+    width: 75%;
+    height: 300px;
+    margin: 25px 0 0 110px;
+    padding: 30px 0 30px 0;
+}
+.h2ContactNumber{
+    margin: 20px 360px 0 0;
+}
+.h2Address{
+    margin: 20px 150px 0 0;
+}
+.h2Detail{
+    margin-top: 20px;
+    color: #023e8a;
+}
+.h2Email{
+    margin: 20px 320px 0 0;
+}
+.contactDetails p{
+    margin: 18px 0 0 0;
+    text-align: right;
+    color: #023e8a;
+}
+.contactItem{
+    display: flex;
+}
+
+.socialSection{
+    width: 300px;
+    height: 100px;
+    margin: 35px 0 0 190px;
+    display: flex;
+}
+.socialIcon{
+    width: 60px;
+    height: 60px;
+    margin: 0 20px 0 10px;
+}
+
+.facebookLogo{
+    width: 70px;
+    height: 50px;
+    cursor: pointer;
+}
+.TwitterLogo{
+    width: 80px;
+    height: 46px;
+    cursor: pointer;
+}
+.InstagramLogo{
+    width: 46px;
+    height: 46px;
+    padding: 0 60px 0 10px;
+    cursor: pointer;
+}
+.TwitterDiv{
+    margin: 0 8px 0 10px;
+}
+.instaDiv{
+    margin: 0 40px 0 10px;
+}
+.h1Suggestions{
+    padding: 30px;
+}
+
+.textRow{
+    margin-top: 30px;
+}
+.label{
+    margin-right: 100px;
+    color: white;
+}
+legend{
+    margin: 55px 0 0 450px;
+    border: 1px dashed white;
+    width: 600px;
+    height: 700px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.suggestionsContainer{
+    align-items: center;
+    justify-content: center;
+}
+
+#textMessage{
+    height: 75px;
+}
+.btnSubmit{
+    width: 100px;
+    height: 45px;
+    margin-top: 25px;
+    background-color: #03045e;
+    color: white;
+    border-radius: 10%;
+}
+.btnSubmit:hover{
+    cursor: pointer;
+    background-color: #023e8a;
+    color: white;
+}
+.textField{
+    height: 35px;
+    width: 450px;
+}
+.label{
+    margin: 0 0 0 0;
+}
+.map{
+    width: 350px;
+    height: 350px;
+    margin: 25px 0 0 130px;
+}
+.mapImg{
+    width: 350px;
+    height: 350px;
+}
+.imgContactUs{
+    width: 100%;
+    height: 750px;
+    position: relative;
+    min-height: 100vh;
+}
+.ContactUsImg{
+    height: 600px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+.txtContactUsAboveImage{
+    margin: 180px;
+    font-size: 75px;
+    color: white;
+}

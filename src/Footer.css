@@ -1,0 +1,230 @@
+
+footer {
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    padding: 3em 4em 2em;
+    width: 1390px;
+}
+footer .row {
+    margin: 2em 0;
+    font-family: lato;
+    color: #fff;
+    position: relative;
+    border-bottom: 1px solid #cecece;
+    width: 100%;
+}
+
+.footer-toggle {
+    display: none;
+}
+
+.link-cat {
+    cursor:pointer;
+}
+
+footer ul {
+    padding:0;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+footer ul li {
+    list-style-type: none;
+    padding:0;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    line-height: 2;
+}
+
+footer .footer-cat, #newsletter span {
+    font-size: 20px;
+}
+
+.footer-cat-links a {
+    color: #cecece;
+    text-decoration: none;
+    position: relative;
+}
+
+.footer-cat-links.active > li a {
+    pointer-events: auto;
+}
+
+.footer-cat-links a:after {
+    top: 21px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    width: 0;
+    background: #fff;
+
+    -webkit-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.footer-cat-links a:hover:after, .footer-cat-links a:focus:after {
+    width: 100%;
+    left: 0;
+}
+
+
+.col-3 {
+    display: inline-table;
+    width:25%;
+}
+
+
+#copyright {
+    text-align: center;
+    color:#fff;
+    font-family: lato;
+}
+
+#owner {
+    text-align: center;
+    padding: 20px 0 0px;
+    color: #fff;
+    font-family: lato;
+}
+
+#owner a {
+    color:#fff;
+}
+
+/* iPads to Smartphone for Common Elements ----------- */
+@media only screen and (max-width : 1024px) {
+
+    .col-3 {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+        position: relative;
+    }
+
+    footer .footer-cat {
+        margin-left: 25px;
+    }
+
+    .footer-toggle,.footer-toggle::after {
+        background: #fff;
+        height: 2px;
+        width: 15px;
+        position: absolute;
+        display: block;
+        -webkit-transition:all .4s ease-in;
+        transition:all .4s ease-in;
+    }
+
+    .footer-toggle {
+        top: 11px;
+        cursor:pointer;
+    }
+
+    .footer-toggle::after {
+        content: '';
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+
+    .footer-cat-links {
+        margin: 0 0em 0px 1.6em;
+    }
+
+    .footer-cat-links a {
+        pointer-events: none;
+    }
+
+    .footer-cat-links li {
+        line-height: 0;
+        opacity: 0;
+    }
+
+    .footer-cat-links.active > li{
+        line-height:2;
+        opacity:1;
+    }
+
+}
+
+/* iPads (portrait)----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
+
+    footer {
+        padding-right:3em;
+        padding-left:3em;
+    }
+
+    .col-3 {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+
+    section {
+        padding-bottom: 3em;
+    }
+
+    .sec-heading {
+        padding:1em 0;
+    }
+
+    .col-3 {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+}
+
+/* Mini Tablet ----------- */
+@media only screen and (max-width : 600px) {
+
+    .col-3 {
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+
+    .col-6 {
+        width: 100%;
+        display: block;
+    }
+
+    footer {
+        padding: 3em 2em 2em;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 480px) {
+
+    .col-6 {
+        width: 100%;
+        display: block;
+    }
+
+    footer {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+}
+.img-site-logo{
+    width: 200px;
+    heigth: 140px
+}
+.img-site-logo-nav{
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+}
+.img-site-logo-nav:hover{
+    cursor:pointer;
+}
+.img-site-logo:hover{
+    cursor:pointer;
+}
