@@ -214,8 +214,9 @@ footer .footer-cat, #newsletter span {
     }
 }
 .img-site-logo{
-    width: 200px;
-    height: 140px
+    height: 65px;
+    width: 150px;
+    cursor: pointer;
 }
 .img-site-logo-nav{
     width: 60px;

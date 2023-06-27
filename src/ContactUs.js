@@ -1,8 +1,8 @@
 import NavBar from "./components/NavBar";
 import React from 'react';
 import './ContactUs.css';
-import Footer from "./Footer";
-import './Footer.css';
+import Footer from "./components/Footer";
+import './components/Footer.css';
 
 function ContactUs(){
     return(

@@ -3,8 +3,9 @@ import './App.css';
 import  './components/NavBar.css';
 import ContactUs from './ContactUs';
 import './ContactUs.css';
-import Footer from './Footer';
-import './Footer.css';
+import Footer from './components/Footer';
+import NavBar from './components/NavBar';
+import './components/Footer.css';
 
 function App() {
   return (
