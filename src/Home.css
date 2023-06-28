@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Roboto Slab', serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+.navBarContainor{
+    height: 65px;
+}
+.divHomeSectionOne{
+    background-color: white;
+    width: 100%;
+    height: 600px;
+    color: white;
+    position:relative;
+    display: flex;
+}
+
+.divHomeSectionOneLeft{
+    width: 43%;
+    height: 600px;
+    position: relative;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.divHomeSectionOneLeft img{
+    z-index: 0;
+}
+.divHomeSectionOneRight{
+    width: 57%;
+    height: 600px;
+    color: black;
+}
+.imgCorona1{
+    width: 100px;
+    height: 100px;
+    padding-top: 100px;
+    animation: rotate 7s infinite linear;
+}
+.imgCorona2{
+    width: 100px;
+    height: 100px;
+    padding-top: 110px;
+    animation: rotate 8s infinite linear;
+}
+.imgCorona3{
+    width: 100px;
+    height: 100px;
+    padding-top: 90px;
+    animation: rotate 6s infinite linear;
+}
+.imgCorona4{
+    width: 100px;
+    height: 100px;
+    padding-top: 110px;
+    animation: rotate 9s infinite linear;
+}
+.imgCorona5{
+    width: 100px;
+    height: 100px;
+    padding-top: 100px;
+    animation: rotate 8s infinite linear;
+}
+.imgCorona6{
+    width: 100px;
+    height: 100px;
+    padding-top: 230px;
+    animation: rotate 7s infinite linear;
+}
+.imgCorona7{
+    width: 100px;
+    height: 100px;
+    padding-top: 160px;
+    animation: rotate 9s infinite linear;
+}
+.imgCorona8{
+    width: 100px;
+    height: 100px;
+    padding-top: 150px;
+    animation: rotate 5s infinite linear;
+}
+.imgCorona9{
+    width: 100px;
+    height: 100px;
+    padding-top: 190px;
+    animation: rotate 8s infinite linear;
+}
+.imgCorona10{
+    width: 100px;
+    height: 100px;
+    padding-top: 160px;
+    animation: rotate 7s infinite linear;
+}
+.imgCorona11{
+    width: 100px;
+    height: 100px;
+    padding-top: 120px;
+    animation: rotate 6s infinite linear;
+}
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .imgsContainor{
+    width: 85%;
+    height: 300px;
+    position: relative;
+  }
+  .divHomeSectionOneRightTopic{
+    margin-top: 50px;
+    font-size: 25px;
+  }
+  .divHomeSectionRightPara{
+    font-size: 20px;
+  }
+  .divNavigationButtonArea{
+    height: 320px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    display: flex;
+  }
+  .Button{
+    width: 20%;
+    height: 180px;
+    border: 2px solid white;
+    margin-top: 70px;
+  }
+  .Button img{
+    width: 100px;
+    height: 100px;
+    padding-top: 42px;
+  }
+  .Button img:hover{
+    width: 103px;
+    height: 103px;
+    opacity: 0.8;
+  }

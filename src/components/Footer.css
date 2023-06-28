@@ -3,6 +3,7 @@ footer {
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     padding: 3em 4em 2em;
     width: 1390px;
+    z-index: 10;
 }
 footer .row {
     margin: 5px 0;

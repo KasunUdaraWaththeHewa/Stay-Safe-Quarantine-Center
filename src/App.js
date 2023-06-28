@@ -6,11 +6,12 @@ import './ContactUs.css';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import './components/Footer.css';
+import Home from './Home';
 
 function App() {
   return (
     <div className="App">
-      <ContactUs />
+      <Home />
     </div>
   );
 }
