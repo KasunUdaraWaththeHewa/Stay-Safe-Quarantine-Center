@@ -153,7 +153,7 @@ legend{
 }
 .btnSubmit:hover{
     cursor: pointer;
-    background-color: #caf0f8;
+    background-color: white;
     color: black;
 }
 .textField{
