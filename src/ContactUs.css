@@ -23,7 +23,7 @@
 .divSuggestions{
     background-color: white;
     width: 100%;
-    height: 900px;
+    height: 1050px;
     color: black;
 }
 .mapSection{
@@ -125,23 +125,27 @@ legend{
 
 #textMessage{
     height: 75px;
+    font-size: 15px;
+    padding-left: 5px;
 }
 .btnSubmit{
-    width: 100px;
-    height: 45px;
+    width: 120px;
+    height: 55px;
     margin-top: 25px;
     background-color: #03045e;
     color: white;
-    border-radius: 10%;
+    font-size: 14px;
 }
 .btnSubmit:hover{
     cursor: pointer;
-    background-color: #023e8a;
-    color: white;
+    background-color: #caf0f8;
+    color: black;
 }
 .textField{
     height: 35px;
     width: 450px;
+    font-size: 15px;
+    padding-left: 5px;
 }
 .label{
     margin: 0 0 0 0;
@@ -157,9 +161,9 @@ legend{
 }
 .imgContactUs{
     width: 100%;
-    height: 750px;
+    height: 200px;
     position: relative;
-    min-height: 100vh;
+    
 }
 .ContactUsImg{
     height: 600px;
@@ -170,7 +174,7 @@ legend{
     z-index: -1;
 }
 .txtContactUsAboveImage{
-    margin: 375px 0 0 0;
+    margin: 430px 0 0 0;
     font-size: 120px;
-    color: white;
+    color: #2b2d42;
 }

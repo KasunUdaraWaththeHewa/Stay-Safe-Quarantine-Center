@@ -41,7 +41,6 @@ function Footer(){
                             <li><a href=""><span>Management</span></a></li>
                         </ul>
                     </div>
-                    <div class="col-3"><img class="img-site-logo" src={myImage} alt="site logo"/></div>
                 </div>
                 <div id="copyright">
                     &copy; All Rights Reserved 2023-2024

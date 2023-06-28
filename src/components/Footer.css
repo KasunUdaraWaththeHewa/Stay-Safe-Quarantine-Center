@@ -5,7 +5,7 @@ footer {
     width: 1390px;
 }
 footer .row {
-    margin: 2em 0;
+    margin: 5px 0;
     font-family: lato;
     color: #fff;
     position: relative;
@@ -38,6 +38,7 @@ footer ul li {
 footer .footer-cat, #newsletter span {
     font-size: 20px;
 }
+
 
 .footer-cat-links a {
     color: #cecece;
@@ -72,6 +73,7 @@ footer .footer-cat, #newsletter span {
 .col-3 {
     display: inline-table;
     width:25%;
+    padding-bottom: 50px;
 }
 
 
@@ -217,6 +219,7 @@ footer .footer-cat, #newsletter span {
     height: 65px;
     width: 150px;
     cursor: pointer;
+    margin-top: 30px;
 }
 .img-site-logo-nav{
     width: 60px;
@@ -229,3 +232,4 @@ footer .footer-cat, #newsletter span {
 .img-site-logo:hover{
     cursor:pointer;
 }
+
