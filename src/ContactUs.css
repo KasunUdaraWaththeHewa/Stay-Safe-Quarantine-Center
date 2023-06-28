@@ -1,6 +1,11 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Karla', sans-serif;
+font-family: 'PT Sans', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Ubuntu', sans-serif;
+
 }
 .h2-ContactUs{
     color: black;
@@ -12,10 +17,10 @@
     height: 65px;
 }
 .divH1ContactUs{
-    background-color: white;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
     width: 100%;
-    height: 400px;
-    color: black;
+    height: 310px;
+    color: white;
 }
 .h1-ContactUs{
     padding: 30px;
@@ -42,6 +47,11 @@
     height: 300px;
     margin: 25px 0 0 110px;
     padding: 30px 0 30px 0;
+    font-family: 'Karla', sans-serif;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Roboto Slab', serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 .h2ContactNumber{
     margin: 20px 360px 0 0;
@@ -51,7 +61,7 @@
 }
 .h2Detail{
     margin-top: 20px;
-    color: #023e8a;
+    color: white;
 }
 .h2Email{
     margin: 20px 320px 0 0;
@@ -59,7 +69,7 @@
 .contactDetails p{
     margin: 18px 0 0 0;
     text-align: right;
-    color: #023e8a;
+    color: white;
 }
 .contactItem{
     display: flex;
@@ -81,6 +91,9 @@
     width: 70px;
     height: 50px;
     cursor: pointer;
+}
+.socialIcon img:hover{
+    opacity: 0.7;
 }
 .TwitterLogo{
     width: 80px;
@@ -117,7 +130,9 @@ legend{
     height: 700px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding-top: 50px;
 }
+
 .suggestionsContainer{
     align-items: center;
     justify-content: center;
@@ -146,18 +161,23 @@ legend{
     width: 450px;
     font-size: 15px;
     padding-left: 5px;
+    font-family: 'Karla', sans-serif;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Roboto Slab', serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 .label{
     margin: 0 0 0 0;
 }
 .map{
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
     margin: 25px 0 0 130px;
 }
 .mapImg{
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
 }
 .imgContactUs{
     width: 100%;
@@ -177,4 +197,5 @@ legend{
     margin: 430px 0 0 0;
     font-size: 120px;
     color: #2b2d42;
+    -webkit-text-stroke: 0.5px white;
 }
