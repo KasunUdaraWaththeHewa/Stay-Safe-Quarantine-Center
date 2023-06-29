@@ -15,12 +15,14 @@ import Home from './Home';
 import AdminPanel from './AdminPanel';
 import './AdminPanel.css';
 
+import StaffPanel from './StaffPanel';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <AdminPanel/>
+      <StaffPanel/>
     </div>
   );
 }
