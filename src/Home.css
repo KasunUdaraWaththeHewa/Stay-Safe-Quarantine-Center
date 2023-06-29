@@ -72,13 +72,13 @@
     margin-top: 30px;
   }
   .Button img{
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     padding-top: 42px;
   }
   .Button img:hover{
-    width: 103px;
-    height: 103px;
+    width: 77px;
+    height: 77px;
     opacity: 0.8;
     cursor: pointer;
   }
