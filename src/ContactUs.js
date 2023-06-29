@@ -50,9 +50,9 @@ function ContactUs(){
             </div>
             <div className="divSuggestions">
                 <div className="suggestionsContainer" >
-                        <h1 class="h1Suggestions" >Suggestions and Complains</h1>
                         <form action="">
-                            <legend>
+                            <legend className="legendSuggestions">
+                                <h1 class="h1Suggestions" >Suggestions and Complains</h1>
                                 <div className="textRow">
                                     <label className="label" htmlFor="sample">Name</label>
                                     <br />
@@ -90,6 +90,9 @@ function ContactUs(){
                             
                         </form>
                 </div>       
+            </div>
+            <div className="whitespace">
+                
             </div>
             <div><Footer /></div>
             
