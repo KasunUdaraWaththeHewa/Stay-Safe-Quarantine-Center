@@ -11,6 +11,7 @@
 .divAdminPanelLeft{
     width: 70%;
     padding-top: 65px;
+    background: linear-gradient(to bottom, #023e8a, white);
 }
 .divAdminPanelRight{
     width: 30%;
@@ -47,4 +48,7 @@
 }
 .divProgressBarContainor{
     padding: 2.5px;
+}
+figcaption{
+    color: #03045e;
 }

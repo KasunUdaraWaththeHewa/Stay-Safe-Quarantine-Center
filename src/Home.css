@@ -74,7 +74,7 @@
   .Button img{
     width: 75px;
     height: 75px;
-    padding-top: 42px;
+    margin-top: 50px;
   }
   .Button img:hover{
     width: 77px;
@@ -101,7 +101,7 @@
   }
   .smallFooter a{
     text-decoration: none;
-    color: white;
+    color: #caf0f8;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   }
   .divHomeSectionRightPara{
