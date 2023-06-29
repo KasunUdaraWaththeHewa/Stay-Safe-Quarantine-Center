@@ -54,21 +54,21 @@
     position: relative;
   }
   .divHomeSectionOneRightTopic{
-    margin-top: 50px;
+    margin-top: 85px;
     font-size: 25px;
   }
   .divHomeSectionRightPara{
     font-size: 20px;
   }
   .divNavigationButtonArea{
-    height: 320px;
+    height: 250px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     display: flex;
   }
   .Button{
     width: 20%;
-    height: 180px;
-    margin-top: 70px;
+    height: 150px;
+    margin-top: 30px;
   }
   .Button img{
     width: 100px;
@@ -88,4 +88,6 @@
     margin: 53px 0 0 53px;
     display: flex;
   }
-  
+  .Button figcaption{
+    color: white;
+  }
