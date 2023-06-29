@@ -40,9 +40,9 @@ function ContactUs(){
                                     Sri Lanka</b></p>
                             </div>
                             <div className="socialSection">
-                                <div className="socialIcon" id="facebookDiv" ><img className="facebookLogo" src="https://1000logos.net/wp-content/uploads/2016/11/Facebook-logo.png" alt="Facebook" /></div>
-                                <div className="socialIcon" id="twitterDiv" ><img className="TwitterLogo" src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Symbol.png" alt="Twwitter" /></div>
-                                <div className="socialIcon" id="instaDiv" ><img className="InstagramLogo" src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png" alt="Instagram" /></div>
+                                <div className="socialIcon" id="facebookDiv" ><img className="facebookLogo" src="https://www.pngkey.com/png/full/767-7674910_black-and-white-facebook-logo-png.png" alt="Facebook" /></div>
+                                <div className="socialIcon" id="twitterDiv" ><img className="TwitterLogo" src="https://clipartcraft.com/images/white-twitter-logo-icon-8.png" alt="Twwitter" /></div>
+                                <div className="socialIcon" id="instaDiv" ><img className="InstagramLogo" src="https://600cranes.com.au/wp-content/uploads/2017/05/insta-white-768x767.png" alt="Instagram" /></div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,8 @@ function ContactUs(){
                         </form>
                 </div>       
             </div>
-            <Footer />
+            <div><Footer /></div>
+            
         </div>
     );
 

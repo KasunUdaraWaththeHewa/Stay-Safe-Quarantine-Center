@@ -19,10 +19,13 @@ import StaffPanel from './StaffPanel';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Staff from './Staff';
+import './Staff.css';
+
 function App() {
   return (
     <div className="App">
-      <AdminPanel/>
+      <ContactUs />
     </div>
   );
 }

@@ -1,0 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.StaffDetailArea{
+    height: 1000px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+}

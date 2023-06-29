@@ -2,7 +2,7 @@
 footer {
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     padding: 3em 4em 2em;
-    width: 1390px;
+    width: 100%;
     z-index: 10;
 }
 footer .row {
@@ -73,7 +73,7 @@ footer .footer-cat, #newsletter span {
 
 .col-3 {
     display: inline-table;
-    width:25%;
+    width:33%;
     padding-bottom: 50px;
 }
 
