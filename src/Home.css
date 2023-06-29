@@ -19,18 +19,17 @@
 }
 
 .divHomeSectionOneLeft{
-    width: 43%;
+    width: 40%;
     height: 600px;
     position: relative;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    border: 2px solid white;
 }
 .divHomeSectionOneLeft img{
     z-index: 0;
 }
 .divHomeSectionOneRight{
-    width: 57%;
+    width: 60%;
     height: 600px;
     color: black;
 }
@@ -40,66 +39,7 @@
     padding-top: 100px;
     animation: rotate 7s infinite linear;
 }
-.imgCorona2{
-    width: 100px;
-    height: 100px;
-    padding-top: 110px;
-    animation: rotate 8s infinite linear;
-}
-.imgCorona3{
-    width: 100px;
-    height: 100px;
-    padding-top: 90px;
-    animation: rotate 6s infinite linear;
-}
-.imgCorona4{
-    width: 100px;
-    height: 100px;
-    padding-top: 110px;
-    animation: rotate 9s infinite linear;
-}
-.imgCorona5{
-    width: 100px;
-    height: 100px;
-    padding-top: 100px;
-    animation: rotate 8s infinite linear;
-}
-.imgCorona6{
-    width: 100px;
-    height: 100px;
-    padding-top: 230px;
-    animation: rotate 7s infinite linear;
-}
-.imgCorona7{
-    width: 100px;
-    height: 100px;
-    padding-top: 160px;
-    animation: rotate 9s infinite linear;
-}
-.imgCorona8{
-    width: 100px;
-    height: 100px;
-    padding-top: 150px;
-    animation: rotate 5s infinite linear;
-}
-.imgCorona9{
-    width: 100px;
-    height: 100px;
-    padding-top: 190px;
-    animation: rotate 8s infinite linear;
-}
-.imgCorona10{
-    width: 100px;
-    height: 100px;
-    padding-top: 160px;
-    animation: rotate 7s infinite linear;
-}
-.imgCorona11{
-    width: 100px;
-    height: 100px;
-    padding-top: 120px;
-    animation: rotate 6s infinite linear;
-}
+
 @keyframes rotate {
     from {
       transform: rotate(0deg);
@@ -128,7 +68,6 @@
   .Button{
     width: 20%;
     height: 180px;
-    border: 2px solid white;
     margin-top: 70px;
   }
   .Button img{
@@ -142,3 +81,11 @@
     opacity: 0.8;
     cursor: pointer;
   }
+  .insideContainor{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    margin: 53px 0 0 53px;
+    display: flex;
+  }
+  
