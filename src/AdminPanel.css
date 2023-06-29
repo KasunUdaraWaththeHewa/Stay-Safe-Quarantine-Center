@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.divAdminPanel{
+    height: 665px;
+    width: 100%;
+    display: flex;
+}
+.divAdminPanelLeft{
+    width: 70%;
+    border: 1px solid red;
+    padding-top: 65px;
+}
+.divAdminPanelRight{
+    width: 30%;
+    border: 1px solid red;
+    padding-top: 65px;
+}
+.PanelRow{
+    height: 198px;
+    width: 97%;
+    display: flex;
+    padding-left: 40px;
+}
+.panelItem{
+    width: 200px;
+    margin: 25px;
+    cursor: pointer;
+}
+.panelItem img{
+    width: 145px;
+    height: 145px;
+    box-shadow: 0px 2px 4px rgba(14, 1, 1, 0.2);
+}
+.panelItem img:hover{
+    width: 148px;
+    height: 148px;
+    opacity: 0.7;
+}
