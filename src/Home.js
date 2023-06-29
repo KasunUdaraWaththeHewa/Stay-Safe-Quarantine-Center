@@ -46,7 +46,12 @@ function Home(){
                     </div>
                 </div>
             </div>
-            <div><Footer/></div>
+            <div className="smallFooter">
+                <span>
+                       Developed by <a href="https://www.mugglecoders.com">MuggleCoders.Com</a>
+                </span>
+            </div>
+            
         </div>
         
         
