@@ -107,3 +107,8 @@
   .divHomeSectionRightPara{
     padding: 0 40px 0 40px;
   }
+  .insideContainor img{
+    height: 240px;
+    width: 500px;
+    margin-top: 150px;
+  }

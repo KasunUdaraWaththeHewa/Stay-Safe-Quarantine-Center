@@ -1,6 +1,6 @@
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import './Home.css'
+import logo from './logo.png';
 
 function Home(){
     return(
@@ -11,7 +11,7 @@ function Home(){
                     <div className="divHomeSectionOneLeft">
                         <div className="imgsContainor">
                             <div className="insideContainor">
-                               
+                                <img src={logo} alt="" />
                             </div>
                         </div>
                         
