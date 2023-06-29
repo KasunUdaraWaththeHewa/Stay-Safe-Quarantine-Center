@@ -46,9 +46,9 @@ function AdminPanel(){
                                     <h3>Admin Panel</h3>
                                     <div className='divProgressBarContainor'>
                                     <div>
-                                        <label>Patients Came</label><ProgressBar now={100} />
-                                        <label>Patients Discharged</label><ProgressBar now={75} />
-                                        <label>Doctor and Nurse Skills</label><ProgressBar now={98} />
+                                        <label>Patients Came</label><ProgressBar animated now={100} />
+                                        <label>Patients Discharged</label><ProgressBar animated now={75} />
+                                        <label>Doctor and Nurse Skills</label><ProgressBar animated now={98} />
                                     </div>
                                     </div>
                                 
