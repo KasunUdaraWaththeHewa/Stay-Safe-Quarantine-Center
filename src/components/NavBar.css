@@ -55,3 +55,8 @@
     width: 31px;
     height: 31px;
 }
+
+Link{
+    text-decoration: none;
+    color: inherit;
+}

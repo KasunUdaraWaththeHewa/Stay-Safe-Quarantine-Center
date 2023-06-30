@@ -30,6 +30,7 @@
     top: 1150px;
     z-index: 10;
     position: relative;
+    padding-top: 13px;
   }
   .smallFooter a{
     text-decoration: none;

@@ -1,4 +1,6 @@
 import React from 'react'
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+
 import './App.css';
 
 import  './components/NavBar.css';
@@ -25,10 +27,37 @@ import Nurse from './Nurse';
 
 import Doctor from './Doctor';
 
+
+
 function App() {
   return (
     <div className="App">
-      <Nurse />
+      <Router>
+            <switch>
+              <Route exact path="/">
+                  <Home/>
+              </Route>
+              <Route exact path="/contactus">
+                  <ContactUs/>
+              </Route>
+              <Route exact path="/adminpanel">
+                  <AdminPanel/>
+              </Route>
+              <Route exact path="/staffpanel">
+                  <StaffPanel/>
+              </Route>
+              <Route exact path="/doctor">
+                  <Doctor/>
+              </Route>
+              <Route exact path="/staff">
+                  <Staff/>
+              </Route>
+              <Route exact path="/nurse">
+                  <Nurse/>
+              </Route>
+            </switch>
+      </Router>
+      
     </div>
   );
 }

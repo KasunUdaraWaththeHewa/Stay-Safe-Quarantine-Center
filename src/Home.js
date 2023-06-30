@@ -46,7 +46,7 @@ function Home(){
                     </div>
                 </div>
             </div>
-            <div className="smallFooter">
+            <div className="smallFooterHomeAdminStaffPanels">
                 <span>
                        Developed by <a href="https://www.mugglecoders.com">MuggleCoders.Com</a>
                 </span>
