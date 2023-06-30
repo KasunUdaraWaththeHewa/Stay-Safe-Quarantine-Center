@@ -22,10 +22,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Staff from './Staff';
 import './Staff.css';
 
+import GridComplexExample from './components/GridComplexExample';
+
 function App() {
   return (
     <div className="App">
-      <StaffPanel />
+      <Staff />
     </div>
   );
 }
