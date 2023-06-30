@@ -42,16 +42,7 @@ function AdminPanel(){
                         </div>
                     </div>
                     <div className='divAdminPanelRight'>
-                        <div className="PanelRightPart">
-                                    <h3>Admin Panel</h3>
-                                    <div className='divProgressBarContainor'>
-                                    <div>
-                                        <label>Patients Came</label><ProgressBar animated now={100} />
-                                        <label>Patients Discharged</label><ProgressBar animated now={75} />
-                                        <label>Doctor and Nurse Skills</label><ProgressBar animated now={98} />
-                                    </div>
-                                    </div>
-                                
+                        <div className="PanelRightPart">                               
                                 <h3>Admin Instructions</h3>
                                 <div className='divAccordianContainor'>
                                     <Accordion defaultActiveKey="0">

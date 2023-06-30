@@ -25,7 +25,7 @@ import './Staff.css';
 function App() {
   return (
     <div className="App">
-      <ContactUs />
+      <StaffPanel />
     </div>
   );
 }
