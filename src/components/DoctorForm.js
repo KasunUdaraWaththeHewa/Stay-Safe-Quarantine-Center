@@ -105,7 +105,8 @@ function DoctorForm() {
             
             </Col>
       </Row>
-    
+      <br />
+      <br />
       <Button variant="success">Enter</Button>{' '}
       <Button variant="secondary">Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}

@@ -20,14 +20,10 @@ import StaffPanel from './StaffPanel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Staff from './Staff';
-import './Staff.css';
 
 import Nurse from './Nurse';
-import './Nurse.css';
-
 
 import Doctor from './Doctor';
-import './Doctor.css';
 
 function App() {
   return (

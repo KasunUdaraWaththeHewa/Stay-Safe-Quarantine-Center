@@ -95,6 +95,8 @@ function StaffForm() {
             
             </Col>
       </Row>
+      <br />
+      <br />
     
       <Button variant="success">Enter</Button>{' '}
       <Button variant="secondary">Search</Button>{' '}
