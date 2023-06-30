@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .div-nav-bar{
@@ -37,6 +38,8 @@
     height: 65px;
     width: 150px;
     cursor: pointer;
+    display: block;
+    margin: 0;
 }
 .navBarLeft{
     display: flex;
