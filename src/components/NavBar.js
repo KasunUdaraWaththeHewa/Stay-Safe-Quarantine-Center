@@ -10,10 +10,10 @@ function NavBar(){
                 <div id="homeImgContainer" ><img className="homeIcon" src="https://vectorified.com/images/home-icon-white-2.png" alt="" /></div>
             </div>
             <div className="navBarRight">
-                <div className="navBarItem"><b><Link to="/adminpanel"> Our Center</Link></b></div>
-                <div className="navBarItem"><b><Link to="/staffpanel">Packages</Link></b></div>
-                <div className="navBarItem"><b><Link to="/contactus">Contact Us</Link></b></div>
-                <div className="navBarItem"><b><Link to="/doctor">Sign-In</Link></b></div>
+                <div className="navBarItem"><b><Link to="/adminpanel" className="link"> Our Center</Link></b></div>
+                <div className="navBarItem"><b><Link to="/staffpanel" className="link">Packages</Link></b></div>
+                <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
+                <div className="navBarItem"><b><Link to="/doctor" className="link">Sign-In</Link></b></div>
             </div>
         </div>
     );
