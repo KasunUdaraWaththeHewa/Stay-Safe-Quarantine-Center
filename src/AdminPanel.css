@@ -11,7 +11,7 @@
 .divAdminPanelLeft{
     width: 70%;
     padding-top: 65px;
-    background: linear-gradient(to bottom, #023e8a, white);
+    background-color: white;
 }
 .divAdminPanelRight{
     width: 30%;
