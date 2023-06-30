@@ -82,13 +82,25 @@ function GridComplexExample() {
         </Col>
       </Row>
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Gender</Form.Label>
-            <Form.Select defaultValue="Male">
-                <option>Male</option>
-                <option>Female</option>
-            </Form.Select>
+        <Col >
+            <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>Gender</Form.Label>
+                <Form.Select defaultValue="Male">
+                    <option>Male</option>
+                    <option>Female</option>
+                </Form.Select>
             </Form.Group>
+        </Col>
+        <Col >
+            <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>Relationship</Form.Label>
+                <Form.Select defaultValue="Male">
+                    <option>Married</option>
+                    <option>Unmarried</option>
+                </Form.Select>
+            </Form.Group>
+        </Col>
+        
       </Row>
 
       <Form.Group className="mb-3" id="formGridCheckbox">
