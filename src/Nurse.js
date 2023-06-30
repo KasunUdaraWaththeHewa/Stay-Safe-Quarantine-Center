@@ -1,14 +1,14 @@
 import React from "react";
-import './Doctor.css';
+import './Nurse.css';
 import NavBar from "./components/NavBar";
-import DoctorForm from "./components/DoctorForm";
+import NurseForm from "./components/NurseForm";
 
-function Doctor(){
+function Nurse(){
     return(
         <div>
             <div className="navBarContainor" ><NavBar /></div>
-            <div className="DoctorDetailArea">
-                <div className="h2Holder"><h2><b>Doctor Details Collecting Form</b></h2></div>
+            <div className="NurseDetailArea">
+                <div className="h2Holder"><h2><b>Nurse Details Collecting Form</b></h2></div>
                 <div className="formOneContainor"><DoctorForm/></div>
                 <div className="smallFooter">
                     <span>
@@ -20,4 +20,4 @@ function Doctor(){
     );
     
 }
-export default Doctor;
+export default Nurse;
