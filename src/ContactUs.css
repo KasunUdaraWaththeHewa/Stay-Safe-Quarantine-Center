@@ -193,8 +193,8 @@ font-family: 'Ubuntu', sans-serif;
 .txtContactUsAboveImage{
     margin: 335px 0 0 0;
     font-size: 120px;
-    color: #00b4d8;
-    -webkit-text-stroke: 3px #03045e;
+    color: white;
+    -webkit-text-stroke: 3px black;
 }
 .whitespace{
     height: 150px;
