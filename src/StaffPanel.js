@@ -2,8 +2,9 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import './AdminPanel.css'
 
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import Accordion from 'react-bootstrap/Accordion';
+import {Link} from 'react-router-dom';
+
 
 function StaffPanel(){
     return(
@@ -14,7 +15,7 @@ function StaffPanel(){
                     <div className='divAdminPanelLeft'>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" />
+                            <Link to="/nurse" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
                                 <figcaption><b>Nurse</b></figcaption>
                             </div>
                             <div className="panelItem">
@@ -25,14 +26,14 @@ function StaffPanel(){
                         </div>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <img src="https://cdn-icons-png.flaticon.com/512/194/194915.png" alt="" />
+                            <Link to="/doctor" className="link"><img src="https://cdn-icons-png.flaticon.com/512/194/194915.png" alt="" /></Link>
                                 <figcaption><b>Doctor</b></figcaption>
 
                             </div>
                         </div>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" />
+                            <Link to="/staff" className="link"><img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" /></Link>
                                 <figcaption><b>Staff</b></figcaption>
                             </div>                           
                         </div>
