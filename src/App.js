@@ -21,7 +21,7 @@ import Sign_in_doctor from './pages/Sign_in_doctor'
 import Sign_in_nurse from './pages/Sign_in_nurse'
 import Sign_in_patient from './pages/Sign_in_patient'
 import Sign_in_staff from './pages/Sign_in_staff'
-
+import OurCenter from './pages/OurCenter';
 
 
 function App() {
@@ -67,6 +67,10 @@ function App() {
 
               <Route exact path="/Sign_in_patient">
                 <Sign_in_patient/>
+              </Route>
+
+              <Route exact path="/OurCenter">
+                <OurCenter/>
               </Route>
             </Switch>
       </Router>
