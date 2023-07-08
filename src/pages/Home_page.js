@@ -17,11 +17,6 @@ export default function Home_page() {
                 <p id='intro'><strong>Welcome</strong> to our Quarantine Center<br/>a secure haven dedicated to safeguarding public health during contagious disease outbreaks. Our center provides a controlled environment, expert medical care, and essential support services for individuals requiring isolation. We prioritize your health and well-being, ensuring a comfortable stay while actively preventing the spread of infectious diseases.</p>
             </div>
         </div>
-        <div className="package">
-            <h1>PACKAGES</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, aliquid ratione earum nisi, reiciendis placeat harum quos iure cupiditate fugiat illum laudantium. Vel, neque quos impedit atque numquam natus doloremque.</p>
-        </div>
-
         <Footer/>
     </div>
   )
