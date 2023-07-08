@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import '../css file/Sign_in_staff.css';
-import NavBar from '../components/NavBar'
-import img_p from '../img/staff_p.jpg'
-
+import NavBar from '../components/NavBar';
+import img_p from '../img/staff_p.jpg';
+import Footer from '../components/Footer';
 
 export default function Sign_in_staff() {
   return (
@@ -21,6 +21,7 @@ export default function Sign_in_staff() {
               </form>
           </div>
       </div>
+      <Footer/>
     </div>
   )
 }

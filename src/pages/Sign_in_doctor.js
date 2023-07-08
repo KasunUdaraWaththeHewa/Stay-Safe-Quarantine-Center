@@ -2,6 +2,7 @@ import React from 'react'
 import '../css file/Sign_in_doctor.css';
 import NavBar from '../components/NavBar'
 import img_p from '../img/doctor_p.png'
+import Footer from '../components/Footer';
 
 export default function Sign_in_doctor() {
   return (
@@ -20,6 +21,7 @@ export default function Sign_in_doctor() {
               </form>
           </div>
       </div>
+      <Footer/>
     </div>
   )
 }
