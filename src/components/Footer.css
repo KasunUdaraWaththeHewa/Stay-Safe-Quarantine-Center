@@ -12,6 +12,8 @@ footer .row {
     position: relative;
     border-bottom: 1px solid #cecece;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-toggle {
@@ -30,7 +32,7 @@ footer ul {
 
 footer ul li {
     list-style-type: none;
-    padding:0;
+    padding-left:0;
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
     line-height: 2;
@@ -75,6 +77,8 @@ footer .footer-cat, #newsletter span {
     display: inline-table;
     width:33%;
     padding-bottom: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 
