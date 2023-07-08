@@ -13,7 +13,7 @@ function NavBar(){
                 <div className="navBarItem"><b><Link to="/adminpanel" className="link"> Our Center</Link></b></div>
                 <div className="navBarItem"><b><Link to="/staffpanel" className="link">Packages</Link></b></div>
                 <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
-                <div className="navBarItem"><b><Link to="/doctor" className="link">Sign-In</Link></b></div>
+                <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
             </div>
         </div>
     );

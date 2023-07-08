@@ -121,7 +121,16 @@ font-family: 'Ubuntu', sans-serif;
 .label{
     margin-right: 100px;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .legendSuggestions{
     width: 50%;
     height: 1000px;
@@ -131,6 +140,7 @@ font-family: 'Ubuntu', sans-serif;
 }
 
 .suggestionsContainer{
+    display: inline;
     align-items: center;
     justify-content: center;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import myImage from './logo.png';
+import {Link} from 'react-router-dom'
 
 
 function Footer(){
@@ -36,9 +37,9 @@ function Footer(){
                             <span class="footer-cat">Sign In</span>
                         </div>
                         <ul class="footer-cat-links">
-                            <li><a href=""><span>Patients</span></a></li>
-                            <li><a href=""><span>Staff</span></a></li>
-                            <li><a href=""><span>Management</span></a></li>
+                            <li><Link to="/Sign_in_profile"><span>Patients</span></Link></li>
+                            <li><Link to="/Sign_in_profile"><span>Staff</span></Link></li>
+                            <li><Link to="/Sign_in_profile"><span>Nurse</span></Link></li>
                         </ul>
                     </div>
                 </div>

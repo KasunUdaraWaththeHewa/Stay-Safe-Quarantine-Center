@@ -1,7 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 
-import './App.css';
 
 import  './components/NavBar.css';
 import NavBar from './components/NavBar';
@@ -12,7 +11,7 @@ import './ContactUs.css';
 import Footer from './components/Footer';
 import './components/Footer.css';
 
-import Home from './Home';
+import Home_page from './pages/Home_page';
 
 import AdminPanel from './AdminPanel';
 import './AdminPanel.css';
@@ -27,6 +26,12 @@ import Nurse from './Nurse';
 
 import Doctor from './Doctor';
 
+import Sign_in_profile from './pages/Sign_in_profile'
+import Sign_in_doctor from './pages/Sign_in_doctor'
+import Sign_in_nurse from './pages/Sign_in_nurse'
+import Sign_in_patient from './pages/Sign_in_patient'
+import Sign_in_staff from './pages/Sign_in_staff'
+
 
 
 function App() {
@@ -35,7 +40,7 @@ function App() {
       <Router>
             <Switch>
               <Route exact path="/">
-                  <Home/>
+                  <Home_page/>
               </Route>
               <Route exact path="/contactus">
                   <ContactUs/>
@@ -54,6 +59,24 @@ function App() {
               </Route>
               <Route exact path="/nurse">
                   <Nurse/>
+              </Route>
+              <Route exact path="/Sign_in_profile">
+                  <Sign_in_profile/>
+              </Route>
+              <Route exact path="/Sign_in_doctor">
+                <Sign_in_doctor/>
+              </Route>
+
+              <Route exact path="/Sign_in_staff">
+                <Sign_in_staff/>
+              </Route>
+
+              <Route exact path="/Sign_in_nurse">
+                <Sign_in_nurse/>
+              </Route>
+
+              <Route exact path="/Sign_in_patient">
+                <Sign_in_patient/>
               </Route>
             </Switch>
       </Router>

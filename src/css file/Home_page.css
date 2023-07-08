@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.home_background{
+    background-image: url(../img/home_background.jpg);
+    height: 100vh;
+    display: flex;
+    padding: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#intro{
+    color:white;
+}
+
+strong{
+    font-size: 60px;
+}
+
+.name_logo .intro{
+    width: 50%;
+    border: border-box;
+}
+
+.name_logo {
+    margin-left: 10%;
+    margin-right: 15%;
+}
+
+.intro{
+    margin-right: 10%;
+}
+
+h1{
+    text-align: center;
+    color: black;
+    padding-top: 3%;
+}
+
+.package{
+    background-color: rgb(232, 232, 232);
+    height: 100vh;
+}
