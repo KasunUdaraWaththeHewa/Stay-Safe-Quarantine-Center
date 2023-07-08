@@ -1,7 +1,8 @@
 import React from "react";
-import './Nurse.css';
-import NavBar from "./components/NavBar";
-import NurseForm from "./components/NurseForm";
+import '../css file/Nurse.css';
+import NavBar from "../components/NavBar";
+import NurseForm from "../components/NurseForm";
+import Footer from '../components/Footer';
 
 function Nurse(){
     return(
@@ -10,10 +11,8 @@ function Nurse(){
             <div className="NurseDetailArea">
                 <div className="h2Holder"><h2><b>Nurse Details Collecting Form</b></h2></div>
                 <div className="formOneContainor"><NurseForm/></div>
-                <div className="smallFooter">
-                    <span>
-                        Developed by <a href="https://www.mugglecoders.com">MuggleCoders.Com</a>
-                    </span>
+                <div className="footerContainor">
+                    <Footer/>
                 </div>
             </div>
         </div>

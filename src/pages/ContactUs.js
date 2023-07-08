@@ -1,8 +1,11 @@
-import NavBar from "./components/NavBar";
+import NavBar from "../components/NavBar";
 import React from 'react';
-import './ContactUs.css';
-import Footer from "./components/Footer";
-import './components/Footer.css';
+import '../css file/ContactUs.css';
+import Footer from '../components/Footer';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 function ContactUs(){
     return(
@@ -50,45 +53,52 @@ function ContactUs(){
             </div>
             <div className="divSuggestions">
                 <div className="suggestionsContainer" >
-                        <form action="">
-                            <legend className="legendSuggestions">
-                                <h1 class="h1Suggestions" >Suggestions and Complains</h1>
-                                <div className="textRow">
-                                    <label className="label" htmlFor="sample">Name</label>
-                                    <br />
-                                    <input type="text" className="textField" id="textName" placeholder="Name" />
-                                </div>
-                                <div className="textRow">
-                                    <label className="label"  htmlFor="sample">Nationality</label>
-                                    <br />
-                                    <input type="text" className="textField" id="textNationality" placeholder="Nationality"  />
-                                </div>
-                                <div className="textRow">
-                                    <label className="label"  htmlFor="sample">Age</label>
-                                    <br />
-                                    <input type="text" className="textField" id="textAge" placeholder="Age"/>
-                                </div>
-                                <div className="textRow">
-                                    <label className="label"  htmlFor="sample">Email</label>
-                                    <br />
-                                    <input type="text" className="textField" id="textEmail" placeholder="E-mail" />
-                                </div>
-                                <div className="textRow">
-                                    <label className="label"  htmlFor="sample">Phone number</label>
-                                    <br />
-                                    <input type="text" className="textField"id="textPhoneNumber" placeholder="Phone number"/>
-                                </div>
-                                <div className="textRow">
-                                    <label className="label"  htmlFor="sample">Your Message</label>
-                                    <br />
-                                    <input type="textArea" className="textField"id="textMessage" placeholder="Your Message"/>
-                                </div>
-                                <div>
-                                    <button className="btnSubmit">Submit</button>
-                                </div>
-                            </legend>
+                    <div className="formContainor">
+                        <Form>
+                            <Row className="mb-3">
+                                <Col>
+                                    <Form.Label>First name</Form.Label>
+                                <Form.Control placeholder="First name" />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Last name</Form.Label>
+                                <Form.Control placeholder="Last name" />
+                                </Col>
+                            </Row>
+
+                            <Row className="mb-3">
+                                <Col>
+                                    <Form.Label>Nationality</Form.Label>
+                                <Form.Control placeholder="Nationality" />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Phone number</Form.Label>
+                                <Form.Control placeholder="Phone number" />
+                                </Col>
+                            </Row>
+
+                            <Row className="mb-3">
+                                <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" placeholder="Email" />
+                                </Form.Group>
+
+                                <Col>
+                                    <Form.Label>Age</Form.Label>
+                                <Form.Control placeholder="Age" />
+                                </Col>
+                            </Row>
                             
-                        </form>
+                            <br />
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                <Form.Label>Message</Form.Label>
+                                <Form.Control as="textarea" rows={3}  placeholder="Message" />
+                            </Form.Group>
+                            <br />
+                            <br />
+                            <Button variant="primary">Submit</Button>{' '}
+                        </Form>
+                    </div>
                 </div>       
             </div>
             <div className="whitespace">

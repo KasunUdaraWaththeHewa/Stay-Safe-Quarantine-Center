@@ -8,7 +8,6 @@ export default function Home_page() {
   return (
     <div>
         <NavBar/>
-
         <div className="home_background">
             <div className="name_logo">
                 <img src={Name_logo}  alt="name logo"></img>
