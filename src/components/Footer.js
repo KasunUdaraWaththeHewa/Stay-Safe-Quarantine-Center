@@ -16,8 +16,9 @@ function Footer(){
                         </div>
                         <ul class="footer-cat-links">
                             <li><a href=""><span>Packages</span></a></li>
-                            <li><a href=""><span>Our Centre</span></a></li>
+                            <li><Link to="/OurCenter"><span>OurCenter</span></Link></li>
                             <li><a href=""><span>Covid-19</span></a></li>
+                           
                         </ul>
                     </div>
                     <div class="col-3">
@@ -40,6 +41,7 @@ function Footer(){
                             <li><Link to="/Sign_in_profile"><span>Patients</span></Link></li>
                             <li><Link to="/Sign_in_profile"><span>Staff</span></Link></li>
                             <li><Link to="/Sign_in_profile"><span>Nurse</span></Link></li>
+                           
                         </ul>
                     </div>
                 </div>
