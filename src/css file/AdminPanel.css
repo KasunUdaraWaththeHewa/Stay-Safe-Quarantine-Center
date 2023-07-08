@@ -41,7 +41,8 @@
 .PanelRightPart h3{
     margin-top: 15px;
     margin-bottom: 15px;
-    
+    text-align: center;
+    color: white;
 }
 .divAccordianContainor{
     padding: 2.5px;

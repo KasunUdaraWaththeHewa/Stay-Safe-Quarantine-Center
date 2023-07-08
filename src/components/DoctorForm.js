@@ -93,8 +93,6 @@ function DoctorForm() {
         <Form.Control type="file" />
       </Form.Group>
       <br />
-      <br />
-      <br />
       <Row>
             <Col>
                 <Form.Group className="mb-3" id="formGridCheckbox">

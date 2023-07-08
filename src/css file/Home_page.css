@@ -16,7 +16,7 @@
     color:white;
 }
 
-strong{
+.intro strong{
     font-size: 60px;
 }
 
@@ -34,11 +34,7 @@ strong{
     margin-right: 10%;
 }
 
-h1{
-    text-align: center;
-    color: black;
-    padding-top: 3%;
-}
+
 
 .package{
     background-color: rgb(232, 232, 232);

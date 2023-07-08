@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from './components/NavBar';
-import './AdminPanel.css'
-
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import NavBar from '../components/NavBar';
+import '../css file/AdminPanel.css'
+import Footer from '../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
 
-function AdminPanel(){
+
+function StaffPanel(){
     return(
         <div>
             <NavBar />
@@ -15,8 +15,8 @@ function AdminPanel(){
                     <div className='divAdminPanelLeft'>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <img src="https://cdn3.iconfinder.com/data/icons/team-management/136/19-1024.png" alt="" />
-                                <figcaption><b>Staff SignUp</b></figcaption>
+                            <Link to="/nurse" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
+                                <figcaption><b>Nurse</b></figcaption>
                             </div>
                             <div className="panelItem">
                                 <img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" />
@@ -30,10 +30,6 @@ function AdminPanel(){
                                 <figcaption><b>Doctor</b></figcaption>
 
                             </div>
-                            <div className="panelItem">
-                            <Link to="/nurse" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
-                                <figcaption><b>Nurse</b></figcaption>
-                            </div>
                         </div>
                         <div className='PanelRow'>
                             <div className="panelItem">
@@ -43,14 +39,15 @@ function AdminPanel(){
                         </div>
                     </div>
                     <div className='divAdminPanelRight'>
-                        <div className="PanelRightPart">                               
-                                <h3>Admin Instructions</h3>
+                        <div className="PanelRightPart">
+                                
+                                <h3>Staff Instructions</h3>
                                 <div className='divAccordianContainor'>
                                     <Accordion defaultActiveKey="0">
                                         <Accordion.Item eventKey="0">
-                                            <Accordion.Header>Create Staff Accounts by yourself</Accordion.Header>
+                                            <Accordion.Header>What you do will be tracked</Accordion.Header>
                                             <Accordion.Body>
-                                            For enhanced security, it is advisable for the admin to handle the creation of staff accounts personally. This allows for the implementation of stringent security measures, accurate assignment of roles and permissions, and verification of user identities. By maintaining control over staff account creation, the admin can effectively mitigate the risk of unauthorized access and protect the confidentiality of sensitive information.
+                                            Please note that your actions within the system will be tracked for accountability and quality assurance purposes. This monitoring helps us maintain a secure and efficient environment for the benefit of our patients and the smooth functioning of the quarantine center. Thank you for your cooperation.
                                             </Accordion.Body>
                                         </Accordion.Item>
                                         <Accordion.Item eventKey="1">
@@ -66,13 +63,11 @@ function AdminPanel(){
                     </div>
                 </div>
             </div>
-            <div className="smallFooterHomeAdminStaffPanels">
-                <span>
-                       Developed by <a href="https://www.mugglecoders.com">MuggleCoders.Com</a>
-                </span>
+            <div>
+                <Footer/>
             </div>
 
         </div>
     );
 }
-export default AdminPanel;
+export default StaffPanel;
