@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 
 import './App.css';
 
@@ -33,29 +33,29 @@ function App() {
   return (
     <div className="App">
       <Router>
-            <Routes>
+            <Switch>
               <Route exact path="/">
-                  element={<Home/>}
+                  <Home/>
               </Route>
               <Route exact path="/contactus">
-                  element={<ContactUs/>}
+                  <ContactUs/>
               </Route>
               <Route exact path="/adminpanel">
-                  element={<AdminPanel/>}
+                  <AdminPanel/>
               </Route>
               <Route exact path="/staffpanel">
-                  element={<StaffPanel/>}
+                  <StaffPanel/>
               </Route>
               <Route exact path="/doctor">
-                  element={<Doctor/>}
+                  <Doctor/>
               </Route>
               <Route exact path="/staff">
-                  element={<Staff/>}
+                  <Staff/>
               </Route>
               <Route exact path="/nurse">
-                  element={<Nurse/>}
+                  <Nurse/>
               </Route>
-            </Routes>
+            </Switch>
       </Router>
       
     </div>
