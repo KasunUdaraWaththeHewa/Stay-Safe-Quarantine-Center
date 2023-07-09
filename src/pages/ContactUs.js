@@ -13,7 +13,7 @@ function ContactUs(){
             <div className="navBarContainor" ><NavBar /></div> 
             <div className="imgContactUs">
                 <h1 className="txtContactUsAboveImage">Contact Us</h1>
-                <img src="https://as1.ftcdn.net/v2/jpg/05/30/96/04/1000_F_530960431_c8fPd3HansYvrSJ4fJxZqp9OhjQmYoll.jpg" alt="Contact Us Image" className="ContactUsImg" />    
+                <img src="https://zemhive.com/wp-content/uploads/2020/08/Hospital-Management-System.jpg" alt="Contact Us" className="ContactUsImg" />    
             </div>           
             <div className="divH1ContactUs">
                 <div className="contactUsContainer">

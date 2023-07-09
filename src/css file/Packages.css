@@ -1,0 +1,19 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.packages{
+    background-color: white;
+}
+
+.pkgDetails {
+    background-color: white;
+    height: 1000px;
+    padding-top: 170px;
+}
+
+
+.basicpkg{
+    margin-left: 80px;
+}
