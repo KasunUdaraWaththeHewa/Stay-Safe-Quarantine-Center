@@ -2,6 +2,7 @@ import React from 'react'
 import logo from './media/logo.png';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
+
 function NavBar(){
     return(
         <div className="div-nav-bar">
@@ -13,9 +14,10 @@ function NavBar(){
                 <div className="navBarItem"><b><Link to="/adminpanel" className="link"> </Link></b></div>
                 <div className="navBarItem"><b><Link to="/staffpanel" className="link">Packages</Link></b></div>
                 <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
-                <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
                 <div className="navBarItem"><b><Link to="/OurCenter" className="link">Our Center</Link></b></div>
+                <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
             </div>
+
         </div>
     );
 }
