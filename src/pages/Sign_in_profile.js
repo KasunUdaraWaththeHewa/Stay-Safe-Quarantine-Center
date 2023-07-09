@@ -30,6 +30,9 @@ Sign_in_profile() {
             <div class="pro">
               <Link to="/Sign_in_patient"><img src={img4} alt="profile4"></img></Link>
             </div>
+            <div class="pro">
+              <Link to="/Sign_in_admin"><img src={img4} alt="profile5"></img></Link>
+            </div>
         </div>
         
       </div>

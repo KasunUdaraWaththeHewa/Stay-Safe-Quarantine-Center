@@ -1,7 +1,8 @@
 import React from 'react'
 import '../css file/Sign_in_nurse.css';
-import NavBar from '../components/NavBar'
-import img_p from '../img/nurse_p.png'
+import NavBar from '../components/NavBar';
+import img_p from '../img/nurse_p.png';
+import Footer from '../components/Footer';
 
 export default function Sign_in_nurse() {
   return (
@@ -20,6 +21,7 @@ export default function Sign_in_nurse() {
               </form>
           </div>
       </div>
+      <Footer/>
     </div>
   )
 }

@@ -3,7 +3,7 @@
     margin: 0px;
 }
 
-.n_s_back{
+.admin_back{
     height: 100vh;    
     background-color: white;
     display: flex;
@@ -11,7 +11,7 @@
     justify-content: center;
 }
 
-.nurse_S{
+.admin_S{
     width: 400px;
     height: 500px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
@@ -20,7 +20,7 @@
     border-radius: 40px;
 }
 
-.nurse_S img{
+.admin_S img{
     width: 150px;
     display: block;
     margin-left: auto;
@@ -29,7 +29,7 @@
     margin-bottom: 40px;
 }
 
-.nurse_S label,.nurse_S input[type="text"],.nurse_S input[type="password"]{
+.admin_S label,.admin_S input[type="text"],.admin_S input[type="password"]{
     margin: auto;
     display: flex;
     align-items: center;
@@ -37,21 +37,21 @@
     border-radius: 10px;
 }
 
-.nurse_S label{
+.admin_S label{
     font-size: 20px;
     margin-top: 10px;
 }
 
-.nurse_S input{
+.admin_S input{
     width: 60%;
     height: 25px;
 }
 
-.nurse_S input[type="text"],.nurse_S input[type="password"]{
+.admin_S input[type="text"],.admin_S input[type="password"]{
     padding-left: 10px;
 }
 
-.nurse_S input[type="submit"]{
+.admin_S input[type="submit"]{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,6 +63,6 @@
     height: 30px;
 }
 
-.nurse_S input[type="submit"]:hover{
+.admin_S input[type="submit"]:hover{
     cursor: pointer;
 }

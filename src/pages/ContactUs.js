@@ -28,15 +28,15 @@ function ContactUs(){
                     <div className="rightMapSection">
                         <div className="contactDetails" >
                             <div className="contactItem" >
-                                <h2 className="h2ContactNumber" >Phone Number</h2>
-                                <h2 className="h2Detail" >011-1234567</h2>
+                                <h4 className="h2ContactNumber" >Phone Number</h4>
+                                <h4 className="h2Detail" >011-1234567</h4>
                             </div>
                             <div className="contactItem">
-                                <h2 className="h2Email">Email</h2>
-                                <h2 className="h2Detail">Samantha123@gmail.com</h2>
+                                <h4 className="h2Email">Email</h4>
+                                <h4 className="h2Detail">Samantha123@gmail.com</h4>
                             </div>
                             <div className="contactItem">
-                                <h2 className="h2Address" >Address</h2>
+                                <h4 className="h2Address" >Address</h4>
                                 <p><b>College House
                                     94, Cumaratunga Munidasa Mw,
                                     Colombo 03,
