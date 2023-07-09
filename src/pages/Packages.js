@@ -21,37 +21,34 @@ const Packages = () => {
             <Container fluid className = "pkgDetails">
                 <Row className = "pkgrow">
                     <Col lg = {4} className = "pkgcol">
-                    <Card style={{ width: '18rem' }} className="basicpkg" border="light">
+                    <Card style={{ width: '20rem' }} className="basicpkg" border="light" >
                         <Card.Img variant="top" src = {BasicPackage} />
                         <Card.Body>
-                            <Card.Title>Basic Quaratntine Package</Card.Title>
+                            <Card.Title className="basictitlecard" ><b>Basic Quarantine Package</b></Card.Title>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
+                                Stay comfortably in our well-appointed rooms, enjoy three delicious meals a day while our medical staff ensures your well-being with regular health check-ups.
                             </Card.Text>
                         </Card.Body>
                     </Card>
                     </Col>
                     <Col lg = {4} className = "pkgcol">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '20rem' }} border="light" className="familypkg">
                         <Card.Img variant="top" src = {FamilyPackage} />
                         <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
+                            <Card.Title className="familytitlecard"><b>Family Quarantine Package</b></Card.Title>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
+                                Our family-friendly accommodations provide dedicated family units, meals for all members, regular health check-ups, and a range of indoor and outdoor activities to enjoy.
                             </Card.Text>
                         </Card.Body>
                     </Card>
                     </Col>
                     <Col lg = {4} className = "pkgcol">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '20rem' }} border="light" className="longtermpkg">
                         <Card.Img variant="top" src = {LongTermPackage} />
                         <Card.Body>
-                            <Card.Title></Card.Title>
+                            <Card.Title className="longtitlecard"><b>Long Quarantine Package</b></Card.Title>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
+                                Our long term package offers extended stay accommodations, nutritious meals tailored for longer stays and engaging activities to combat isolation.
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -60,25 +57,23 @@ const Packages = () => {
                 </Row>
                 <Row className = "pkgrow">
                     <Col lg = {6} className = "pkgcol">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '20rem' }} border="light" className="enhancedpkg">
                         <Card.Img variant="top" src = {EnhancedPackage} />
                         <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
+                            <Card.Title className="enhancedtitlecard"><b>Enhanced Quarantine Package</b></Card.Title>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
+                                Elevate your quarantine experience with upgraded accommodations, a variety of dietary options, daily health monitoring, access to recreational activities, and complimentary Wi-Fi and entertainment.
                             </Card.Text>
                         </Card.Body>
                     </Card>
                     </Col>
                     <Col lg = {6} className = "pkgcol">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '20rem' }} border="light" className="vippkg">
                         <Card.Img variant="top" src = {VIPPackage} />
                         <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
+                            <Card.Title className="viptitlecard"><b>VIP Quarantine Package</b></Card.Title>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
+                                Indulge in luxurious accommodations, personalized gourmet meals, round-the-clock medical staff, specialized wellness services, and concierge assistance to ensure a VIP experience throughout your stay.
                             </Card.Text>
                         </Card.Body>
                     </Card>
