@@ -18,7 +18,7 @@ export default function OurCenter(){
             <div className="OurCenter">
                 <div className="description-1">
                     <div className="accomodation">
-                        <div className="card">
+                        <div className="OCcard">
                             <img src={img_p} alt="accomadation"></img>
                             <h2>Accommodation</h2>
                             <p>Stay in comfortable and well-equipped rooms during your quarantine period.</p>
@@ -26,7 +26,7 @@ export default function OurCenter(){
                     </div>
 
                     <div className="MedicalCare">
-                        <div className="card">
+                        <div className="OCcard">
                             <img src={img_p1} alt="medicare"></img>
                             <h2>Medical Care</h2>
                             <p>Our team of healthcare professionals provides essential medical care and monitoring.</p>
@@ -34,7 +34,7 @@ export default function OurCenter(){
                     </div>
 
                     <div className="NutriousMeal">
-                        <div className="card">
+                        <div className="OCcard">
                             <img src={img_p2} alt="meals"></img>
                             <h2>Nutritious Meals</h2>
                             <p>We offer balanced and nutritious meals, taking into consideration your dietary requirements.</p>
@@ -44,7 +44,7 @@ export default function OurCenter(){
 
                 <div className="description-2">
                     <div className="BasicAmenties">
-                        <div className="card">
+                        <div className="OCcard">
                             <img src={img_p3} alt="amenties "></img>
                             <h2>Basic Amenities</h2>
                             <p>Enjoy clean bedding, towels, toiletries, and laundry facilities for a comfortable stay.</p>
@@ -52,7 +52,7 @@ export default function OurCenter(){
                     </div>
 
                     <div className="ComuandEnter">
-                        <div className="card">
+                        <div className="OCcard">
                             <img src={img_p4} alt="entertainment "></img>
                             <h2>Communication and Entertainment</h2>
                             <p>Stay connected with your loved ones and access entertainment facilities during your stay.</p>
@@ -60,7 +60,7 @@ export default function OurCenter(){
                     </div>
 
                     <div className="Safemeatures">
-                        <div className="card">
+                        <div className="OCcard">
                             <img src={img_p5} alt="safety measure"></img>
                             <h2>Safety Measures</h2>
                             <p>We prioritize your safety with strict infection control measures and safety protocols.</p>
