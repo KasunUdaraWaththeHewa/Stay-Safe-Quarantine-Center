@@ -8,6 +8,8 @@ import AdminPanel from './pages/AdminPanel';
 
 import StaffPanel from './pages/StaffPanel';
 
+import Packages from './pages/Packages';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Staff from './pages/Staff';
@@ -49,6 +51,9 @@ function App() {
               </Route>
               <Route exact path="/nurse">
                   <Nurse/>
+              </Route>
+              <Route exact path = "/packages">
+                  <Packages/>
               </Route>
               <Route exact path="/Sign_in_profile">
                   <Sign_in_profile/>
