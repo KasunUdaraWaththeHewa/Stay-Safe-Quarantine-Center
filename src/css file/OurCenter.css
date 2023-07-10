@@ -98,7 +98,6 @@ h2 {
     transition: 0.3s;
     width: 100%;
     margin-bottom: 0%;
-    background-color: #0077b6;
     padding: 10px;
     border-radius: 5px;
   }
@@ -163,4 +162,10 @@ h2 {
 
  p.stats{
     color: white;
+ }
+ .txtOurCenterAboveImage{
+    padding-top: 400px;
+    font-size: 120px;
+    color: white;
+    text-align: center;
  }
