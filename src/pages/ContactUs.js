@@ -13,7 +13,7 @@ function ContactUs(){
             <div className="navBarContainor" ><NavBar /></div> 
             <div className="imgContactUs">
                 <h1 className="txtContactUsAboveImage">Contact Us</h1>
-                <img src="https://img.freepik.com/free-photo/businesswoman-call-center-office_1098-984.jpg?w=996&t=st=1688959368~exp=1688959968~hmac=486a456be9005957e2cf64fc6434be62589af1be339deaf31c25f53cd8102d01" alt="Contact Us" className="ContactUsImg" />    
+                <img src="https://img.freepik.com/premium-photo/business-people-with-headsets-smiling-camera_13339-300111.jpg?w=996" alt="Contact Us" className="ContactUsImg" />    
             </div>           
             <div className="divH1ContactUs">
                 <div className="contactUsContainer">
