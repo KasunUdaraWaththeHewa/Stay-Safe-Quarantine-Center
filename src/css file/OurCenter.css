@@ -19,6 +19,7 @@ body {
     height: 800px;
     z-index: -4;
     opacity: 0.8;
+    position: fixed;
   }
   .txtOurCenterAboveImage{
     text-align: center;
@@ -162,10 +163,4 @@ h2 {
 
  p.stats{
     color: white;
- }
- .txtOurCenterAboveImage{
-    padding-top: 400px;
-    font-size: 120px;
-    color: white;
-    text-align: center;
  }
