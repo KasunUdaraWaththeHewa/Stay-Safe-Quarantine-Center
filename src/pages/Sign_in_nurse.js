@@ -3,6 +3,7 @@ import '../css file/Sign_in_nurse.css';
 import NavBar from '../components/NavBar';
 import img_p from '../img/nurse_p.png';
 import Footer from '../components/Footer';
+import {Link} from 'react-router-dom';
 
 export default function Sign_in_nurse() {
   return (
@@ -17,7 +18,7 @@ export default function Sign_in_nurse() {
                   <input type="text" name="username" required></input> <br></br>
                   <label>Password</label><br></br>
                   <input type="password" name="password" required></input><br></br>
-                  <input type="submit" value="Sign in"></input>
+                  <div className='submitBtn'><b><Link to="/Sign_in_profile" className="link">Submit</Link></b></div>
               </form>
           </div>
       </div>
