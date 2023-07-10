@@ -195,19 +195,19 @@ input{
     
 }
 .ContactUsImg{
-    height: 600px;
+    height: 1000px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: -1;
+    opacity: 0.8;
     
 }
 .txtContactUsAboveImage{
-    margin: 335px 0 0 0;
+    margin: 400px 0 0 0;
     font-size: 120px;
     color: white;
-    -webkit-text-stroke: 3px black;
     text-align: center;
 }
 .whitespace{
