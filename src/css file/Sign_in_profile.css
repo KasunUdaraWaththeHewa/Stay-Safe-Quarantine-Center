@@ -25,16 +25,16 @@
     border: border-box;    
   }
   .pro img{
-    width: 270px;
-    height: 360px;
-    margin-left: 40px;
+    width: 258px;
+    height: 344px;
+    margin-left: 3%;
     margin-right: px;
     margin-top: 120px;  
   }
 
   .pro img:hover{
-    width: 276px;
-    height: 368px;
+    width: 270px;
+    height: 360px;
     opacity: 0.8;
   }
   .pro img:active{

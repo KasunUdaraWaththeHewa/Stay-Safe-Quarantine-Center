@@ -3,6 +3,7 @@ import img1 from '../img/doctor1.png'
 import img2 from '../img/nurse1.png'
 import img3 from '../img/staff1.png'
 import img4 from '../img/patient1.png'
+import img5 from '../img/admin1.png'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import '../css file/Sign_in_profile.css';
@@ -31,7 +32,7 @@ Sign_in_profile() {
               <Link to="/Sign_in_patient"><img src={img4} alt="profile4"></img></Link>
             </div>
             <div class="pro">
-              <Link to="/Sign_in_admin"><img src={img4} alt="profile5"></img></Link>
+              <Link to="/Sign_in_admin"><img src={img5} alt="profile5"></img></Link>
             </div>
         </div>
         

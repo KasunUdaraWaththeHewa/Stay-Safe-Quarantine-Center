@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css file/Sign_in_admin.css';
 import NavBar from '../components/NavBar';
-import img_p from '../img/nurse_p.png';
+import img_p from '../img/admin_p.png';
 import Footer from '../components/Footer';
 import {Link} from 'react-router-dom';
 
