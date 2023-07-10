@@ -1,7 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    
 }
 
 body {
@@ -19,15 +18,17 @@ body {
     width: 100%;
     height: 800px;
     z-index: -4;
+    opacity: 0.8;
   }
   .txtOurCenterAboveImage{
     text-align: center;
     font-size: 120px;
     color: white;
-    -webkit-text-stroke: 3px black;
     background-color: none;
-    padding-top: 335px;
+    padding-top: 400px;
+
   }
+
  .h1 {
     color: #333;
     margin: 0;
@@ -41,6 +42,9 @@ h2 {
     font-weight: bolder;
   }
  
+  p{
+    text-align: center;
+  }
   
   .OurCenter{
     background-color: white;
@@ -90,22 +94,21 @@ h2 {
     text-align:center;
   }
   .OCcard {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 100%;
     margin-bottom: 0%;
     background-color: #0077b6;
-    color: white;
     padding: 10px;
+    border-radius: 5px;
   }
   .OCcard img{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 100%;
   }
   
   .OCcard:hover {
-    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.5);
     cursor: pointer;
   }
 
