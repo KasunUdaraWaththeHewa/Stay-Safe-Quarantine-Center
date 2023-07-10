@@ -9,12 +9,16 @@ import img_p4 from '../img/entertainment.jpeg';
 import img_p5 from '../img/safetymeasures.jpg';
 import img_p6 from '../img/barchart-1.png';
 import Footer from '../components/Footer';
+import ourcenter from '../img/ourcenter.png';
 
 export default function OurCenter(){
     return ( 
         <div>
-            <NavBar/>
-        
+            <div className="navBarContainor" ><NavBar /></div> 
+            <div className="imgSectionOurCenter">
+                <img src={ourcenter} alt="" className="imageOurCenter" />
+                <h1 className="txtOurCenterAboveImage">Our Center</h1>
+            </div>
             <div className="OurCenter">
                 <div className="description-1">
                     <div className="accomodation">

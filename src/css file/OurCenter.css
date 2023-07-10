@@ -10,6 +10,25 @@ body {
     padding: 0;
   }
   
+  .imgSectionOurCenter{
+    width: 100%;
+    height: 800px;
+    z-index: -5;
+  }
+  .imgSectionOurCenter img{
+    width: 100%;
+    height: 800px;
+    position: fixed;
+    z-index: -4;
+  }
+  .txtOurCenterAboveImage{
+    text-align: center;
+    font-size: 120px;
+    color: white;
+    -webkit-text-stroke: 3px black;
+    background-color: none;
+    padding-top: 335px;
+  }
  .h1 {
     color: #333;
     margin: 0;

@@ -6,14 +6,14 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-
+import imgContactUs from '../img/contactUs.jpeg';
 function ContactUs(){
     return(
         <div>
             <div className="navBarContainor" ><NavBar /></div> 
             <div className="imgContactUs">
                 <h1 className="txtContactUsAboveImage">Contact Us</h1>
-                <img src="https://zemhive.com/wp-content/uploads/2020/08/Hospital-Management-System.jpg" alt="Contact Us" className="ContactUsImg" />    
+                <img src="https://img.freepik.com/free-photo/businesswoman-call-center-office_1098-984.jpg?w=996&t=st=1688959368~exp=1688959968~hmac=486a456be9005957e2cf64fc6434be62589af1be339deaf31c25f53cd8102d01" alt="Contact Us" className="ContactUsImg" />    
             </div>           
             <div className="divH1ContactUs">
                 <div className="contactUsContainer">
