@@ -13,7 +13,6 @@ function NavBar(){
             <div className="navBarRight">
                 <div className="navBarItem"><b><Link to="/OurCenter" className="link">Our Center</Link></b></div>
                 <div className="navBarItem"><b><Link to="/packages" className="link">Packages</Link></b></div>
-                <div className="navBarItem"><b><Link to="/adminpanel" className="link">Admin Panel</Link></b></div>
                 <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
                 <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
             </div>
