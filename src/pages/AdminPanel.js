@@ -18,7 +18,7 @@ function AdminPanel(){
                                 <figcaption><b>Staff SignUp</b></figcaption>
                             </div>
                             <div className="panelItem">
-                                <img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" />
+                                <Link to="/patient" className="link"><img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" /></Link>
                                 <figcaption><b>Patient</b></figcaption>
                             </div>
                             
