@@ -22,17 +22,3 @@
     padding: 80px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-.smallFooter{
-    background: linear-gradient(to bottom, #0096c7, #023e8a);
-    color: white;
-    width: 100%;
-    height: 48px;
-    top: 1150px;
-    z-index: 10;
-    position: relative;
-  }
-  .smallFooter a{
-    text-decoration: none;
-    color: #caf0f8;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  }

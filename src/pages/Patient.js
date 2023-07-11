@@ -10,8 +10,8 @@ function Patient(){
             <div className="navBarContainor" ><NavBar /></div>
             <div className="PatientDetailArea">
                 <div className="h2Holder"><h2><b>Patient Details Collecting Form</b></h2></div>
-                <div className="formOneContainor"><PatientForm/></div>
-                <div className="footerContainor">
+                <div className="patientformOneContainor"><PatientForm/></div>
+                <div className="patientfooterContainor">
                     <Footer/>
                 </div>
             </div>
