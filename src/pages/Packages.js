@@ -12,6 +12,7 @@ import EnhancedPackage from '../img/EnhancedPackage.png'
 import FamilyPackage from '../img/FamilyPackage.png'
 import VIPPackage from '../img/VIPPackage.png'
 import LongTermPackage from '../img/LongTermPackage.png'
+
 const Packages = () => {
     return ( 
         <div className="packages">
@@ -25,7 +26,7 @@ const Packages = () => {
             <Container fluid className = "pkgDetails">
                 <Row className = "pkgrow">
                     <Col lg = {4} className = "pkgcol">
-                    <Card style={{ width: '25rem' }} className="basicpkg" border="light" >
+                    <Card style={{ width: '25rem' }} className="basicpkg" border="light" data-aos="flip-left" data-aos-duration="1500">
                         <Card.Img variant="top" src = {BasicPackage} />
                         <Card.Body>
                             <Card.Title className="basictitlecard" ><b>Basic Quarantine Package</b></Card.Title>
@@ -36,7 +37,7 @@ const Packages = () => {
                     </Card>
                     </Col>
                     <Col lg = {4} className = "pkgcol">
-                    <Card style={{ width: '25rem' }} border="light" className="familypkg">
+                    <Card style={{ width: '25rem' }} border="light" className="familypkg" data-aos="flip-left" data-aos-duration="1500">
                         <Card.Img variant="top" src = {FamilyPackage} />
                         <Card.Body>
                             <Card.Title className="familytitlecard"><b>Family Quarantine Package</b></Card.Title>
@@ -47,7 +48,7 @@ const Packages = () => {
                     </Card>
                     </Col>
                     <Col lg = {4} className = "pkgcol">
-                    <Card style={{ width: '25rem' }} border="light" className="longtermpkg">
+                    <Card style={{ width: '25rem' }} border="light" className="longtermpkg" data-aos="flip-left" data-aos-duration="1500">
                         <Card.Img variant="top" src = {LongTermPackage} />
                         <Card.Body>
                             <Card.Title className="longtitlecard"><b>Long Quarantine Package</b></Card.Title>
@@ -61,7 +62,7 @@ const Packages = () => {
                 </Row>
                 <Row className = "pkgrow">
                     <Col lg = {6} className = "pkgcol">
-                    <Card style={{ width: '25rem' }} border="light" className="enhancedpkg">
+                    <Card style={{ width: '25rem' }} border="light" className="enhancedpkg" data-aos="flip-left" data-aos-duration="1500">
                         <Card.Img variant="top" src = {EnhancedPackage} />
                         <Card.Body>
                             <Card.Title className="enhancedtitlecard"><b>Enhanced Quarantine Package</b></Card.Title>
@@ -72,7 +73,7 @@ const Packages = () => {
                     </Card>
                     </Col>
                     <Col lg = {6} className = "pkgcol">
-                    <Card style={{ width: '25rem' }} border="light" className="vippkg">
+                    <Card style={{ width: '25rem' }} border="light" className="vippkg" data-aos="flip-left" data-aos-duration="1500">
                         <Card.Img variant="top" src = {VIPPackage} />
                         <Card.Body>
                             <Card.Title className="viptitlecard"><b>VIP Quarantine Package</b></Card.Title>
