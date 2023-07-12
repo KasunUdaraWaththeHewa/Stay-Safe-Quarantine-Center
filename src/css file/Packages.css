@@ -5,15 +5,15 @@
 
 .pkgDetails {
     background-color: white;
-    height: 1200px;
+    height: 1400px;
     padding-top: 170px;
 }
 
-.basicpkg{margin-left: 50px;} 
-.familypkg {margin-left: 50px;}
-.longtermpkg{margin-left: 50px;}
-.enhancedpkg{margin-top: 100px; margin-left: 280px;}
-.vippkg{margin-top: 100px; margin-left: 100px;}
+#basicpkg{margin-left: 50px;} 
+#familypkg {margin-left: 50px;}
+#longpkg{margin-left: 50px;}
+#enhancedpkg{margin-top: 100px; margin-left: 280px;}
+#vippkg{margin-top: 100px; margin-left: 100px;}
 
 .card:hover{
     cursor: pointer;
@@ -22,13 +22,14 @@
 }
 
 .card{
-    border-radius: 15px;
+    border-radius: 30px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
 }
 
 .card-text, .card-title{
     text-align: center;
 }
+
 
 .imagepackagecontainer{
     width : 100%;
@@ -51,3 +52,10 @@
     padding-top: 460px;
 }
 
+.hidden {
+    display: none;
+  }
+
+.active{
+    border: 5px solid black;
+}
