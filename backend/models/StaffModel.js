@@ -1,0 +1,52 @@
+const mongoose= require('mongoose');
+const Schema =mongoose.Schema;
+const StaffSchema=new Schema({
+    firstName:{
+        type:String,
+        required:true
+    },
+    LastName:{
+        type:String,
+        required:true
+    },
+    employeeID:{
+        type:String,
+        required:true
+    },
+    phoneNumber:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    jobRole:{
+        type:String,
+        required:true
+    },
+    address:{
+        type:String,
+        required:true
+    },
+    staffID:{
+        type:String,
+        required:true
+    },
+    emergencyContactNumber:{
+        type:String,
+        required:true
+    },
+    gender:{
+        type:String,
+        required:true
+    },
+    relationship:{
+        type:String,
+        required:true
+    },
+    skills:{
+        type:String,
+        required:true
+    }
+})
