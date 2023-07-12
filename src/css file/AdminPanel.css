@@ -27,11 +27,13 @@
     width: 200px;
     margin: 25px 0 0 0;
     cursor: pointer;
+
 }
 .panelItem img{
     width: 125px;
     height: 125px;
     box-shadow: 0px 2px 4px rgba(14, 1, 1, 0.2);
+    border-radius: 75px;
 }
 .panelItem img:hover{
     width: 127px;
