@@ -169,5 +169,5 @@ const Packages = () => {
         </div >
     );
 }
-
+}                                             
 export default Packages;
