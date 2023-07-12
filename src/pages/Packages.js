@@ -25,6 +25,8 @@ const Packages = () => {
   
     const isCardActive = (cardId) => activeCard === cardId;
     const isOtherCardHidden = (cardId) => activeCard !== null && activeCard !== cardId;
+
+const Packages = () => {
     return (
         <div className="packages">
             <div className="navbar_pkg">
