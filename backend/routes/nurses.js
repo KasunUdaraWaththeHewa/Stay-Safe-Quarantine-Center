@@ -16,4 +16,28 @@ router.route("/add").post((req,res)=>{
     const gender=req.body.gender;
     const relationship=req.body.relationship;
     const skillsAndTraining=req.body.skillsAndTraining;
+
+    const newNurse= new Nurse({
+        firstName,
+        lastName,
+        nurseID,
+        phoneNumber,
+        email,
+        nursingLicenseNo,
+        specialization,
+        professionalExperience,
+        address,
+        avalibleDays,
+        emergencyContactNumbers,
+        gender,
+        relationship,
+        skillsAndTraining
+    })
+
+    newNurse.save().then(()=>{
+        res.json("Nurse Added")
+    }).catch((err)=>{
+        console.log(err);
+    })
 })
+module.exports=router;
