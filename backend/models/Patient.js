@@ -83,3 +83,5 @@ const PatientSchema=new Schema({
     }
 
 })
+const Patient=mongoose.model("Patient",PatientSchema);
+module.exports=Patient;

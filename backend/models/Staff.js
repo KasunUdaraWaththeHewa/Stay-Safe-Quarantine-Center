@@ -50,3 +50,5 @@ const StaffSchema=new Schema({
         required:true
     }
 })
+const Staff=mongoose.model("Staff",StaffSchema);
+module.exports=Staff;

@@ -58,3 +58,5 @@ const NurseSchema=new Schema({
         required:true
     }
 })
+const Nurse=mongoose.model("Nurse",NurseSchema);
+module.exports=Nurse;
