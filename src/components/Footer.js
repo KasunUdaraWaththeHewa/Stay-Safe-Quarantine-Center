@@ -1,6 +1,5 @@
 import React from 'react';
 import './Footer.css';
-import myImage from './logo.png';
 import {Link} from 'react-router-dom'
 
 
@@ -15,7 +14,7 @@ function Footer(){
                             <span class="footer-cat">Quarantine</span>
                         </div>
                         <ul class="footer-cat-links">
-                            <li><a href=""><span>Packages</span></a></li>
+                            <li><Link to="/packages"><span>Packages</span></Link></li>
                             <li><Link to="/OurCenter"><span>OurCenter</span></Link></li>
                             <li><a href=""><span>Covid-19</span></a></li>
                            
