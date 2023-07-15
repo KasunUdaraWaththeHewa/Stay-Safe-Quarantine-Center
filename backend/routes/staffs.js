@@ -37,22 +37,23 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/").get((req, res) => {
-    const staffID = req.params.staffID;
-    
-    Staff.findById(staffID)
-      .then((staff) => {
-        if (!staff) {
-          return res.status(404).json({ error: "Staff not found" });
-        }
-        res.json(staff);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ error: "Internal server error" });
-      });
-});
-
+router.route("/get/:id").get(async (req, res) => {
+    try {
+      const staffID = req.params.id;
+  
+      const staff = await Staff.findById(staffID);
+  
+      if (!staff) {
+        return res.status(404).json({ error: "Staff not found" });
+      }
+  
+      res.json(staff);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+  
 router.route("/update/:id").put(async(req,res)=>{
     let userID=req.params.id;
     const {firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills}=req.body;
@@ -90,5 +91,17 @@ router.route("/delete/:id").delete(async (req, res) => {
       res.status(500).send({ status: "Error with deleting staff", error: err.message });
     }
   });
+
+  router.route("/").get((req, res) => {
+    Staff.find()
+      .then((staff) => {
+        res.json(staff);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: "Internal server error" });
+      });
+  });
+  
 
 module.exports=router;

@@ -41,21 +41,23 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/").get((req, res) => {
-    const doctorID = req.params.doctorID;
-    
-    Doctor.findById(doctorID)
-      .then((doctor) => {
-        if (!doctor) {
-          return res.status(404).json({ error: "Doctor not found" });
-        }
-        res.json(doctor);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ error: "Internal server error" });
-      });
+router.route("/get/:id").get(async (req, res) => {
+  try {
+    const doctorID = req.params.id;
+
+    const doctor = await Doctor.findById(doctorID);
+
+    if (!doctor) {
+      return res.status(404).json({ error: "Doctor not found" });
+    }
+
+    res.json(doctor);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
+
 
 router.route("/update/:id").put(async(req,res)=>{
   let userID=req.params.id;
@@ -110,5 +112,14 @@ router.route("/delete/:id").delete(async (req, res) => {
     res.status(500).send({ status: "Error with deleting doctor", error: err.message });
   }
 });
-
+router.route("/").get((req, res) => {
+  Doctor.find()
+    .then((doctor) => {
+      res.json(doctor);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Internal server error" });
+    });
+});
 module.exports=router;
