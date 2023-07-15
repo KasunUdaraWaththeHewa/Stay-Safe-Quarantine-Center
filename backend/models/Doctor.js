@@ -27,7 +27,7 @@ const DoctorSchema=new Schema({
     },
     specialization:{
         type:String,
-        required:true
+        required:false
     },
     professionalExperience:{
         type:String,
