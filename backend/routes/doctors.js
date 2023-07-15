@@ -40,4 +40,21 @@ router.route("/add").post((req,res)=>{
         console.log(err);
     })
 })
+
+router.route("/").get((req, res) => {
+    const doctorID = req.params.doctorID;
+    
+    Doctor.findById(doctorID)
+      .then((doctor) => {
+        if (!doctor) {
+          return res.status(404).json({ error: "Doctor not found" });
+        }
+        res.json(doctor);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: "Internal server error" });
+      });
+  });
+
 module.exports=router;
