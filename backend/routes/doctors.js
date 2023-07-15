@@ -57,4 +57,46 @@ router.route("/").get((req, res) => {
       });
 });
 
+router.route("/update/:id").put(async(req,res)=>{
+  let userID=req.params.id;
+  const {firstName,
+    lastName,
+    nurseID,
+    phoneNumber,
+    email,
+    nursingLicenseNo,
+    specialization,
+    professionalExperience,
+    address,
+    avalibleDays,
+    emergencyContactNumbers,
+    gender,
+    relationship,
+    skillsAndTraining}=req.body;
+
+  const updateDoctor={
+    firstName,
+    lastName,
+    nurseID,
+    phoneNumber,
+    email,
+    nursingLicenseNo,
+    specialization,
+    professionalExperience,
+    address,
+    avalibleDays,
+    emergencyContactNumbers,
+    gender,
+    relationship,
+    skillsAndTraining
+  }
+  const update=await Staff.findByIdAndUpdate(userID,updateDoctor)
+  .then(()=>{
+      res.status(200).send({status:"Doctor's data Updated",user:update})
+  }).catch((err)=>{
+      console.log(err);
+      res.status(500).send({status:"Error with updating data",error:err.message});
+  })
+})
+
 module.exports=router;
