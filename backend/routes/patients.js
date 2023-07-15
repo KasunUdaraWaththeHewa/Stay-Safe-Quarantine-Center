@@ -51,4 +51,21 @@ router.route("/add").post((req,res)=>{
         console.log(err);
     })
 })
+
+router.route("/").get((req, res) => {
+    const nurseID = req.params.patientID;
+    
+    Patient.findById(patientID)
+      .then((patient) => {
+        if (!patient) {
+          return res.status(404).json({ error: "Patient not found" });
+        }
+        res.json(patient);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: "Internal server error" });
+      });
+});
+
 module.exports=router;
