@@ -40,4 +40,20 @@ router.route("/add").post((req,res)=>{
         console.log(err);
     })
 })
+
+router.route("/").get((req, res) => {
+    const nurseID = req.params.nurseID;
+    
+    Nurse.findById(nurseID)
+      .then((nurse) => {
+        if (!nurse) {
+          return res.status(404).json({ error: "Nurse not found" });
+        }
+        res.json(nurse);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: "Internal server error" });
+      });
+});
 module.exports=router;

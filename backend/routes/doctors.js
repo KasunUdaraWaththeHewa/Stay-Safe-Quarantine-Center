@@ -55,6 +55,6 @@ router.route("/").get((req, res) => {
         console.log(err);
         res.status(500).json({ error: "Internal server error" });
       });
-  });
+});
 
 module.exports=router;
