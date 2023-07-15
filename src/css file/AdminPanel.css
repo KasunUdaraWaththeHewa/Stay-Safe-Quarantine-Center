@@ -9,13 +9,14 @@
     display: flex;
 }
 .divAdminPanelLeft{
-    width: 70%;
+    width: 65%;
     padding-top: 65px;
     background-color: white;
 }
 .divAdminPanelRight{
-    width: 30%;
+    width: 35%;
     padding-top: 65px;
+    background-color: #0077b6;
 }
 .PanelRow{
     height: 198px;
@@ -27,7 +28,6 @@
     width: 200px;
     margin: 25px 0 0 0;
     cursor: pointer;
-
 }
 .panelItem img{
     width: 125px;
@@ -54,4 +54,16 @@
 }
 figcaption{
     color: #03045e;
+    padding-left: 40px;
+}
+h3{
+    font-family: 'Roboto Slab', serif;
+}
+
+.accordion-body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.accordion-header{
+    font-family: 'Merriweather', serif;
 }
