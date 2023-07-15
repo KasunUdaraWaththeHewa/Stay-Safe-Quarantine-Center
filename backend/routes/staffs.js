@@ -79,4 +79,16 @@ router.route("/update/:id").put(async(req,res)=>{
     })
 })
 
+router.route("/delete/:id").delete(async (req, res) => {
+    let staffID = req.params.id;
+  
+    try {
+      await Staff.findByIdAndDelete(staffID);
+      res.status(200).send({ status: "Staff's data deleted" });
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send({ status: "Error with deleting staff", error: err.message });
+    }
+  });
+
 module.exports=router;

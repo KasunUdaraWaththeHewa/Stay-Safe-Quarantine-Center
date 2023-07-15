@@ -121,6 +121,17 @@ router.route("/update/:id").put(async(req,res)=>{
     })
 })
 
+router.route("/delete/:id").delete(async (req, res) => {
+    let patientID = req.params.id;
+  
+    try {
+      await Patient.findByIdAndDelete(patientID);
+      res.status(200).send({ status: "Patient's data deleted" });
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send({ status: "Error with deleting patient", error: err.message });
+    }
+  });
 
 
 module.exports=router;
