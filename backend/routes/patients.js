@@ -67,6 +67,59 @@ router.route("/").get((req, res) => {
         res.status(500).json({ error: "Internal server error" });
       });
 });
+router.route("/update/:id").put(async(req,res)=>{
+    let userID=req.params.id;
+    const {fullName,
+        gender,
+        dateOfBirth,
+        nationality,
+        nicNumber,
+        email,
+        healthInfo,
+        allergies,
+        medicalsBeingTaken,
+        emergencyContactNumber,
+        existingMedicalCondition,
+        symptoms,
+        dateOfArrival,
+        contryOfDeparture,
+        anyTransitPoint,
+        flightOrTransportDetails,
+        dateOfCheckIn,
+        assignedRoomNo,
+        durationOfStay,
+        anySpecificRequirements}=req.body;
+
+    const updatePatient={
+        fullName,
+        gender,
+        dateOfBirth,
+        nationality,
+        nicNumber,
+        email,
+        healthInfo,
+        allergies,
+        medicalsBeingTaken,
+        emergencyContactNumber,
+        existingMedicalCondition,
+        symptoms,
+        dateOfArrival,
+        contryOfDeparture,
+        anyTransitPoint,
+        flightOrTransportDetails,
+        dateOfCheckIn,
+        assignedRoomNo,
+        durationOfStay,
+        anySpecificRequirements
+    }
+    const update=await Staff.findByIdAndUpdate(userID,updatePatient)
+    .then(()=>{
+        res.status(200).send({status:"Patient Updated",user:update})
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({status:"Error with updating data",error:err.message});
+    })
+})
 
 
 

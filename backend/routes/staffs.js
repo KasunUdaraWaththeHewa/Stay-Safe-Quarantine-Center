@@ -70,9 +70,9 @@ router.route("/update/:id").put(async(req,res)=>{
         relationship,
         skills
     }
-    const update=await Staff.findByIdAndUpdate(userId,updateStaff)
+    const update=await Staff.findByIdAndUpdate(userID,updateStaff)
     .then(()=>{
-        res.status(200).send({status:"User Updated",user:updateStaff})
+        res.status(200).send({status:"Staff Updated",user:update})
     }).catch((err)=>{
         console.log(err);
         res.status(500).send({status:"Error with updating data",error:err.message});
