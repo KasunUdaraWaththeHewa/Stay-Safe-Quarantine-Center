@@ -90,7 +90,7 @@ router.route("/update/:id").put(async(req,res)=>{
     relationship,
     skillsAndTraining
   }
-  const update=await Staff.findByIdAndUpdate(userID,updateDoctor)
+  const update=await Doctor.findByIdAndUpdate(userID,updateDoctor)
   .then(()=>{
       res.status(200).send({status:"Doctor's data Updated",user:update})
   }).catch((err)=>{

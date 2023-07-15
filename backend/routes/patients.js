@@ -112,7 +112,7 @@ router.route("/update/:id").put(async(req,res)=>{
         durationOfStay,
         anySpecificRequirements
     }
-    const update=await Staff.findByIdAndUpdate(userID,updatePatient)
+    const update=await Patient.findByIdAndUpdate(userID,updatePatient)
     .then(()=>{
         res.status(200).send({status:"Patient's data Updated",user:update})
     }).catch((err)=>{
