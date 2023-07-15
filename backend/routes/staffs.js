@@ -53,4 +53,30 @@ router.route("/").get((req, res) => {
       });
 });
 
+router.route("/update/:id").put(async(req,res)=>{
+    let userID=req.params.id;
+    const {firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills}=req.body;
+    const updateStaff={
+        firstName,
+        lastName,
+        employeeID,
+        phoneNumber,
+        email,
+        jobRole,
+        address,
+        staffID,
+        emergencyContactNumber,
+        gender,
+        relationship,
+        skills
+    }
+    const update=await Staff.findByIdAndUpdate(userId,updateStaff)
+    .then(()=>{
+        res.status(200).send({status:"User Updated",user:updateStaff})
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({status:"Error with updating data",error:err.message});
+    })
+})
+
 module.exports=router;
