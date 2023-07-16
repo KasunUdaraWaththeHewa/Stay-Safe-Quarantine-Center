@@ -25,7 +25,7 @@ app.use("/patient",patientRouter);
 const doctorRouter=require("./routes/doctors.js");
 app.use("/doctor",doctorRouter);
 const nurseRouter=require("./routes/nurses.js");
-app.use("/patient",nurseRouter);
+app.use("/nurse",nurseRouter);
 const staffRouter=require("./routes/staffs.js");
 app.use("/staff",staffRouter);
 

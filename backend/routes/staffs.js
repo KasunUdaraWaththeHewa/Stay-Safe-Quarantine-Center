@@ -1,9 +1,9 @@
 const router =require("express").Router();
-let staff= require("../models/Staff");
+let staff= require("../models/staff");
 
 router.route("/add").post((req,res)=>{
     const firstName=req.body.firstName;
-    const lastName=req.body.LastName;
+    const lastName=req.body.lastName;
     const employeeID=req.body.employeeID;
     const phoneNumber=req.body.phoneNumber;
     const email=req.body.email;
