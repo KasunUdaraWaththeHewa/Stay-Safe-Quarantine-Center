@@ -17,7 +17,7 @@ router.route("/add").post((req,res)=>{
     const relationship=req.body.relationship;
     const skillsAndTraining=req.body.skillsAndTraining;
 
-    const newDoctor= new Doctor({
+    const newDoctor= new doctor({
         firstName,
         lastName,
         nurseID,

@@ -23,7 +23,7 @@ router.route("/add").post((req,res)=>{
     const durationOfStay=req.body.durationOfStay;
     const anySpecificRequirements=req.body.anySpecificRequirements;
 
-    const newPatient = new Patient({
+    const newPatient = new patient({
         fullName,
         gender,
         dateOfBirth,
