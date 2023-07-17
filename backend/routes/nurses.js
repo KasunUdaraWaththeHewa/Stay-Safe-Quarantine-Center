@@ -105,7 +105,7 @@ router.route("/delete/:id").delete(async (req, res) => {
   let nurseID = req.params.id;
 
   try {
-    await Nurse.findByIdAndDelete(nurseID);
+    await nurse.findByIdAndDelete(nurseID);
     res.status(200).send({ status: "Nurse's data deleted" });
   } catch (err) {
     console.log(err.message);
@@ -114,7 +114,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
-  Nurse.find()
+  nurse.find()
     .then((nurse) => {
       res.json(nurse);
     })

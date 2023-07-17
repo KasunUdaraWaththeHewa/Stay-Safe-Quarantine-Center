@@ -71,7 +71,7 @@ router.route("/update/:id").put(async(req,res)=>{
         relationship,
         skills
     }
-    const update=await Staff.findByIdAndUpdate(userID,updateStaff)
+    const update=await staff.findByIdAndUpdate(userID,updateStaff)
     .then(()=>{
         res.status(200).send({status:"Staff member Updated",user:update})
     }).catch((err)=>{
@@ -84,7 +84,7 @@ router.route("/delete/:id").delete(async (req, res) => {
     let staffID = req.params.id;
   
     try {
-      await Staff.findByIdAndDelete(staffID);
+      await staff.findByIdAndDelete(staffID);
       res.status(200).send({ status: "Staff's data deleted" });
     } catch (err) {
       console.log(err.message);
@@ -93,7 +93,7 @@ router.route("/delete/:id").delete(async (req, res) => {
   });
 
   router.route("/").get((req, res) => {
-    Staff.find()
+    staff.find()
       .then((staff) => {
         res.json(staff);
       })

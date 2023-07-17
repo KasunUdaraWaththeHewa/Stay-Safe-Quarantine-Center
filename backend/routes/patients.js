@@ -114,7 +114,7 @@ router.route("/update/:id").put(async(req,res)=>{
         durationOfStay,
         anySpecificRequirements
     }
-    const update=await Patient.findByIdAndUpdate(userID,updatePatient)
+    const update=await patient.findByIdAndUpdate(userID,updatePatient)
     .then(()=>{
         res.status(200).send({status:"Patient's data Updated",user:update})
     }).catch((err)=>{
@@ -127,7 +127,7 @@ router.route("/delete/:id").delete(async (req, res) => {
     let patientID = req.params.id;
   
     try {
-      await Patient.findByIdAndDelete(patientID);
+      await patient.findByIdAndDelete(patientID);
       res.status(200).send({ status: "Patient's data deleted" });
     } catch (err) {
       console.log(err.message);
@@ -135,7 +135,7 @@ router.route("/delete/:id").delete(async (req, res) => {
     }
   });
   router.route("/").get((req, res) => {
-    Patient.find()
+    patient.find()
       .then((patient) => {
         res.json(patient);
       })
