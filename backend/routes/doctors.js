@@ -42,20 +42,14 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:id").get(async (req, res) => {
-  try {
-    const doctorID = req.params.id;
-
-    const doctor = await doctor.findById(doctorID);
-
-    if (!doctor) {
-      return res.status(404).json({ error: "Doctor not found" });
-    }
-
-    res.json(doctor);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
-  }
+  let userId=req.params.id;
+  const user=await doctor.findById(userId).
+  then((doctor)=>{
+    res.status(200).send({status:"User fetched",doctor})
+  }).catch((err)=>{
+    console.log(err.message);
+    res.status(500).send({status:"Error with get user",error:err.message});
+  })
 });
 
 

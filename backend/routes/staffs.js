@@ -38,21 +38,15 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:id").get(async (req, res) => {
-    try {
-      const staffID = req.params.id;
-  
-      const staff = await Staff.findById(staffID);
-  
-      if (!staff) {
-        return res.status(404).json({ error: "Staff not found" });
-      }
-  
-      res.json(staff);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Internal server error" });
-    }
-  });
+  let userId=req.params.id;
+  const user=await staff.findById(userId).
+  then((staff)=>{
+    res.status(200).send({status:"User fetched",staff})
+  }).catch((err)=>{
+    console.log(err.message);
+    res.status(500).send({status:"Error with get user",error:err.message});
+  })
+});
   
 router.route("/update/:id").put(async(req,res)=>{
     let userID=req.params.id;
