@@ -20,10 +20,10 @@ router.route("/add").post((req,res)=>{
     const newDoctor= new doctor({
         firstName,
         lastName,
-        nurseID,
+        doctorID,
         phoneNumber,
         email,
-        nursingLicenseNo,
+        medicalLicenseNo,
         specialization,
         professionalExperience,
         address,
@@ -34,7 +34,7 @@ router.route("/add").post((req,res)=>{
         skillsAndTraining
     })
 
-    newNurse.save().then(()=>{
+    newDoctor.save().then(()=>{
         res.json("Nurse Added")
     }).catch((err)=>{
         console.log(err);
@@ -45,7 +45,7 @@ router.route("/get/:id").get(async (req, res) => {
   try {
     const doctorID = req.params.id;
 
-    const doctor = await Doctor.findById(doctorID);
+    const doctor = await doctor.findById(doctorID);
 
     if (!doctor) {
       return res.status(404).json({ error: "Doctor not found" });
@@ -61,12 +61,13 @@ router.route("/get/:id").get(async (req, res) => {
 
 router.route("/update/:id").put(async(req,res)=>{
   let userID=req.params.id;
-  const {firstName,
+  const {
+    firstName,
     lastName,
-    nurseID,
+    doctorID,
     phoneNumber,
     email,
-    nursingLicenseNo,
+    medicalLicenseNo,
     specialization,
     professionalExperience,
     address,
@@ -79,10 +80,10 @@ router.route("/update/:id").put(async(req,res)=>{
   const updateDoctor={
     firstName,
     lastName,
-    nurseID,
+    doctorID,
     phoneNumber,
     email,
-    nursingLicenseNo,
+    medicalLicenseNo,
     specialization,
     professionalExperience,
     address,
@@ -92,7 +93,7 @@ router.route("/update/:id").put(async(req,res)=>{
     relationship,
     skillsAndTraining
   }
-  const update=await Doctor.findByIdAndUpdate(userID,updateDoctor)
+  const update=await doctor.findByIdAndUpdate(userID,updateDoctor)
   .then(()=>{
       res.status(200).send({status:"Doctor's data Updated",user:update})
   }).catch((err)=>{
@@ -105,7 +106,7 @@ router.route("/delete/:id").delete(async (req, res) => {
   let doctorID = req.params.id;
 
   try {
-    await Doctor.findByIdAndDelete(doctorID);
+    await doctor.findByIdAndDelete(doctorID);
     res.status(200).send({ status: "Doctor's data deleted" });
   } catch (err) {
     console.log(err.message);
@@ -113,7 +114,7 @@ router.route("/delete/:id").delete(async (req, res) => {
   }
 });
 router.route("/").get((req, res) => {
-  Doctor.find()
+  doctor.find()
     .then((doctor) => {
       res.json(doctor);
     })
