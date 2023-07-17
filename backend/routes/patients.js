@@ -116,7 +116,7 @@ router.route("/update/:id").put(async(req,res)=>{
     }
     const update=await patient.findByIdAndUpdate(userID,updatePatient)
     .then(()=>{
-        res.status(200).send({status:"Patient's data Updated",user:update})
+        res.status(200).send({status:"Patient's data Updated"})
     }).catch((err)=>{
         console.log(err);
         res.status(500).send({status:"Error with updating data",error:err.message});

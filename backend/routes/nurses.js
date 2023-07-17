@@ -61,7 +61,8 @@ router.route("/get/:id").get(async (req, res) => {
 
 router.route("/update/:id").put(async(req,res)=>{
   let userID=req.params.id;
-  const {firstName,
+  const {
+    firstName,
     lastName,
     nurseID,
     phoneNumber,
@@ -92,9 +93,9 @@ router.route("/update/:id").put(async(req,res)=>{
         relationship,
         skillsAndTraining
   }
-  const update=await nurse.findByIdAndUpdate(userID,updateNurse)
+  const update=await nurse.findByIdAndUpdate(userID , updateNurse)
   .then(()=>{
-      res.status(200).send({status:"nurse's data Updated",user:update})
+      res.status(200).send({status:"nurse's data Updated"})
   }).catch((err)=>{
       console.log(err);
       res.status(500).send({status:"Error with updating data",error:err.message});
