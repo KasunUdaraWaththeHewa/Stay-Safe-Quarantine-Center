@@ -38,6 +38,25 @@ function PatientForm() {
         }
         axios.post("http://localhost:8070/patient/add",newPatient).then(()=>{
         alert("Patient added");
+        setfullName("")
+        setGender("")
+        setDateOfBirth("")
+        setNationality("")
+        setNIC("")
+        setEmail("")
+        setResults("")
+        setAllergies("")
+        setMedications("")
+        setMedicalConditions("")
+        setSymptoms("")
+        setDateOfArrival("")
+        setCountryOfDeparture("")
+        setANyTransitPoints("")
+        setFlightDetails("")
+        setDateOfCheckin("")
+        setRoomNumber("")
+        setDuration("")
+        setRequirements("")
       }).catch((err)=>{
         alert(err)
       })
