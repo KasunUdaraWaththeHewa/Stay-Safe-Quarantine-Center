@@ -136,6 +136,7 @@ function StaffForm() {
       <Button variant="secondary">Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
       <Button variant="danger">Delete</Button>{' '}
+      <Button variant="success">Clear</Button>{' '}
       
     </Form>
   );
