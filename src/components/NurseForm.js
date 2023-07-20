@@ -28,6 +28,20 @@ function NurseForm() {
       }
       axios.post("http://localhost:8070/nurse/add",newNurse).then(()=>{
         alert("Nurse added");
+        setFirstName("")
+        setLastName("")
+        setNurseID("")
+        setPhoneNumber("")
+        setEmail("")
+        setNursingLicenseNumber("")
+        setSpecilization("")
+        setExperience("")
+        setAddress("")
+        setAvalibleDays("")
+        setEmergencycontactNumber("")
+        setGender("")
+        setRelationship("")
+        setSkills("")
       }).catch((err)=>{
         alert(err)
       })
