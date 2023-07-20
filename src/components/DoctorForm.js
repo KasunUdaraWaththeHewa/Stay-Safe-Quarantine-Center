@@ -28,6 +28,20 @@ function DoctorForm() {
       }
       axios.post("http://localhost:8070/doctor/add",newDoctor).then(()=>{
         alert("Doctor added");
+        setFirstName("")
+        setLastName("")
+        setDoctorID("")
+        setPhoneNumber("")
+        setEmail("")
+        setMedicalLicenseNumber("")
+        setSpecilization("")
+        setExperience("")
+        setAddress("")
+        setAvalibleDays("")
+        setEmergencycontactNumber("")
+        setGender("")
+        setRelationship("")
+        setSkills("")
       }).catch((err)=>{
         alert(err)
       })
