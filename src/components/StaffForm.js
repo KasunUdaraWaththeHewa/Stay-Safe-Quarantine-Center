@@ -26,6 +26,18 @@ function StaffForm() {
     }
     axios.post("http://localhost:8070/staff/add",newStaff).then(()=>{
         alert("Staff added");
+        setFirstName("")
+        setLastName("")
+        setEmployeeID("")
+        setPhoneNumber("")
+        setEmail("")
+        setJobRole("")
+        setAddress("")
+        setStaffID("")
+        setEmergencyContactNumber("")
+        setGender("")
+        setRelationship("")
+        setSkills("")
       }).catch((err)=>{
         alert(err)
       })
