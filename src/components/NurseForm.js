@@ -20,6 +20,11 @@ function NurseForm() {
     const [Relationship, setRelationship] = useState("");
     const [skills, setSkills] = useState("");
     
+    function sendData(e){
+      e.preventDefault();
+      alert("Nurse Added");
+    }
+
   return (
     <Form>
       <Row className="mb-3">
@@ -121,7 +126,7 @@ function NurseForm() {
       </Row>
       <br />
       <br />
-      <Button variant="success">Enter</Button>{' '}
+      <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary">Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
       <Button variant="danger">Delete</Button>{' '}

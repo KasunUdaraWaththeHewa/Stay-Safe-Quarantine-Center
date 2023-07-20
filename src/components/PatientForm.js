@@ -30,6 +30,11 @@ function PatientForm() {
     const [date, setDate] = useState(new Date());
     console.log("DATE", date);
 
+    function sendData(e){
+        e.preventDefault();
+        alert("Patient Added");
+      }
+
     return (
         <Form>
             <fieldset>
@@ -188,7 +193,7 @@ function PatientForm() {
             </Row>
             <br></br>
 
-            <Button variant="success">Enter</Button>{' '}
+            <Button variant="success" onClick={sendData}>Enter</Button>{' '}
             <Button variant="secondary">Search</Button>{' '}
             <Button variant="primary">Update</Button>{' '}
             <Button variant="danger">Delete</Button>{' '}
