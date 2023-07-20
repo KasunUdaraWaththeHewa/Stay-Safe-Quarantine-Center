@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useState } from "react";
+import axios from 'axios';
 
 function PatientForm() {
 
@@ -32,7 +33,14 @@ function PatientForm() {
 
     function sendData(e){
         e.preventDefault();
-        alert("Patient Added");
+        const newPatient={
+            fullName,gender,dateOfBirth,nationality,nic,email,results,allergies,medications,medicalConditions,symptoms,dateOfArrival,countryOfDeparture,anyTransitPoints,flightDetails,dateOfCheckin,roomNumber,duration,requirements
+        }
+        axios.post("http://localhost:8070/patient/add",newPatient).then(()=>{
+        alert("Patient added");
+      }).catch((err)=>{
+        alert(err)
+      })
       }
 
     return (
@@ -52,7 +60,7 @@ function PatientForm() {
                     </Col>
                     <Col>
                         <Form.Label>Date of Birth</Form.Label>
-                        <Form.Control type="date" name="birthdate" placeholder="Date of Birth" value={date} onChange={(e) => setDate(e.target.value)} />
+                        <Form.Control type="date" name="birthdate" placeholder="Date of Birth" value={date} onChange={(e) => setDateOfBirth(e.target.value)} />
                     </Col>
                 </Row>
 
@@ -122,7 +130,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of arrival in the country</Form.Label>
-                        <Form.Control type="date" name="arrivaldate" placeholder="Date of Arrival" value={date} onChange={(e) => setDate(e.target.value)} />
+                        <Form.Control type="date" name="arrivaldate" placeholder="Date of Arrival" value={date} onChange={(e) => setDateOfArrival(e.target.value)} />
                     </Col>
                     <Col>
                         <Form.Label>Country of Departure</Form.Label>
@@ -154,7 +162,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of Check-In</Form.Label>
-                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={date} onChange={(e) => setDate(e.target.value)} />
+                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={date} onChange={(e) => setDateOfCheckin(e.target.value)} />
                     </Col>
                     <Col>
                         <Form.Label>Assigned Room Number</Form.Label>

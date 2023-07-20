@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React,{useState} from "react";
+import axios from 'axios';
 
 function StaffForm() {
   const [firstName,setFirstName]=useState("");
@@ -20,7 +21,14 @@ function StaffForm() {
 
   function sendData(e){
     e.preventDefault();
-    alert("Staff member Added");
+    const newStaff={
+      firstName,lastName,employeeID,phoneNumber,email,jobRole,address,staffID,emergencyContactNumber,gender,relationship,skills
+    }
+    axios.post("http://localhost:8070/staff/add",newStaff).then(()=>{
+        alert("Staff added");
+      }).catch((err)=>{
+        alert(err)
+      })
   }
 
   return (

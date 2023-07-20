@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useState } from "react";
+import axios from 'axios';
 
 function DoctorForm() {
   const [firstName, setFirstName] = useState("");
@@ -22,7 +23,14 @@ function DoctorForm() {
     
     function sendData(e){
       e.preventDefault();
-      alert("Doctor Added");
+      const newDoctor ={
+        firstName,lastName,doctorID,phoneNumber,email,medicalLicenseNumber,specialization,experience,address,avalibleDays,emergencycontactNumber,gender,Relationship,skills
+      }
+      axios.post("http://localhost:8070/doctor/add",newDoctor).then(()=>{
+        alert("Doctor added");
+      }).catch((err)=>{
+        alert(err)
+      })
     }
 
   return (
