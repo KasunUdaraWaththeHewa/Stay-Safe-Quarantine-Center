@@ -13,7 +13,7 @@ function PatientForm() {
     const [nationality, setNationality] = useState("");
     const [nic, setNIC] = useState("");
     const [email, setEmail] = useState("");
-    const [results, setResults] = useState("");
+    const [results, setResults] = useState("Not Tested");
     const [allergies, setAllergies] = useState("");
     const [medications, setMedications] = useState("");
     const [medicalConditions, setMedicalConditions] = useState("");
@@ -22,7 +22,7 @@ function PatientForm() {
     const [countryOfDeparture, setCountryOfDeparture] = useState("");
     const [anyTransitPoints, setANyTransitPoints] = useState("");
     const [flightDetails, setFlightDetails] = useState("");
-    const [dateOfCheckin, setDateOfCheckin] = useState("");
+    const [dateOfCheckin, setDateOfCheckin] = useState('');
     const [roomNumber, setRoomNumber] = useState("");
     const [duration, setDuration] = useState("");
     const [requirements, setRequirements] = useState("");
@@ -40,7 +40,7 @@ function PatientForm() {
             setNationality("")
             setNIC("")
             setEmail("")
-            setResults("")
+            setResults("Not Tested")
             setAllergies("")
             setMedications("")
             setMedicalConditions("")
@@ -131,7 +131,33 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Covid-19 test results</Form.Label>
-                        <div key={`inline-radio`}><Form.Check inline type='radio' label="Positive" name='result' /> <Form.Check inline type='radio' label="Negative" name='result' /><Form.Check inline type='radio' label="Not Tested" name='result' /></div>
+                        <div key={`inline-radio`}>
+                            <Form.Check
+                                inline
+                                type='radio'
+                                label='Positive'
+                                name='results'
+                                checked={results === 'Positive'}
+                                onChange={() => setResults('Positive')}
+                            />
+                            <Form.Check
+                                inline
+                                type='radio'
+                                label='Negative'
+                                name='results'
+                                checked={results === 'Negative'}
+                                onChange={() => setResults('Negative')}
+                            />
+                            <Form.Check
+                                inline
+                                type='radio'
+                                label='Not Tested'
+                                name='results'
+                                checked={results === 'Not Tested'}
+                                onChange={() => setResults('Not Tested')}
+                            />
+                        </div>
+
                     </Col>
                     <Col>
                         <Form.Label>Allergies</Form.Label>
@@ -207,7 +233,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of Check-In</Form.Label>
-                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={date} onChange={(e) => setDateOfCheckin(e.target.value)} />
+                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={dateOfCheckin} onChange={(e) => setDateOfCheckin(e.target.value)} />
                     </Col>
                     <Col>
                         <Form.Label>Assigned Room Number</Form.Label>
