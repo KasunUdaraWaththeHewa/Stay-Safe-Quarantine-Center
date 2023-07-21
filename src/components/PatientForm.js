@@ -11,26 +11,26 @@ function PatientForm() {
     const [gender, setGender] = useState("Male");
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [nationality, setNationality] = useState("");
-    const [nic, setNIC] = useState("");
+    const [nicNumber, setNIC] = useState("");
     const [email, setEmail] = useState("");
     const [results, setResults] = useState("Not Tested");
     const [allergies, setAllergies] = useState("");
-    const [medications, setMedications] = useState("");
-    const [medicalConditions, setMedicalConditions] = useState("");
+    const [medicalsBeingTaken, setMedications] = useState("");
+    const [existingMedicalCondition, setMedicalConditions] = useState("");
     const [symptoms, setSymptoms] = useState("");
     const [dateOfArrival, setDateOfArrival] = useState("");
-    const [countryOfDeparture, setCountryOfDeparture] = useState("");
-    const [anyTransitPoints, setANyTransitPoints] = useState("");
-    const [flightDetails, setFlightDetails] = useState("");
-    const [dateOfCheckin, setDateOfCheckin] = useState('');
-    const [roomNumber, setRoomNumber] = useState("");
-    const [duration, setDuration] = useState("");
-    const [requirements, setRequirements] = useState("");
+    const [contryOfDeparture, setCountryOfDeparture] = useState("");
+    const [anyTransitPoint, setANyTransitPoints] = useState("");
+    const [flightOrTransportDetails, setFlightDetails] = useState("");
+    const [dateOfCheckIn, setDateOfCheckin] = useState('');
+    const [assignedRoomNo, setRoomNumber] = useState("");
+    const [durationOfStay, setDuration] = useState("");
+    const [anySpecificRequirements, setRequirements] = useState("");
 
     function sendData(e) {
         e.preventDefault();
         const newPatient = {
-            fullName, gender, dateOfBirth, nationality, nic, email, results, allergies, medications, medicalConditions, symptoms, dateOfArrival, countryOfDeparture, anyTransitPoints, flightDetails, dateOfCheckin, roomNumber, duration, requirements
+            fullName, gender, dateOfBirth, nationality, nicNumber, email, results, allergies, medicalsBeingTaken, existingMedicalCondition, symptoms, dateOfArrival, contryOfDeparture, anyTransitPoint, flightOrTransportDetails, dateOfCheckIn, assignedRoomNo, durationOfStay, anySpecificRequirements
         }
         axios.post("http://localhost:8070/patient/add", newPatient).then(() => {
             alert("Patient added");
@@ -233,7 +233,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of Check-In</Form.Label>
-                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={dateOfCheckin} onChange={(e) => setDateOfCheckin(e.target.value)} />
+                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={dateOfCheckIn} onChange={(e) => setDateOfCheckin(e.target.value)} />
                     </Col>
                     <Col>
                         <Form.Label>Assigned Room Number</Form.Label>

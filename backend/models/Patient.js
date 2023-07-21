@@ -11,11 +11,11 @@ const PatientSchema=new Schema({
     },
     dateOfBirth:{
         type:Date,
-        required:true
+        required:false
     },
     nationality:{
         type:String,
-        required:true
+        required:false
     },
     nicNumber:{
         type:String,
@@ -23,11 +23,11 @@ const PatientSchema=new Schema({
     },
     email:{
         type:String,
-        required:true
+        required:false
     },
-    healthInfo:{
+    results:{
         type:String,
-        required:true
+        required:false
     },
     allergies:{
         type:String,
@@ -35,11 +35,7 @@ const PatientSchema=new Schema({
     },
     medicalsBeingTaken:{
         type:String,
-        required:true
-    },
-    emergencyContactNumber:{
-        type:String,
-        required:true
+        required:false
     },
     existingMedicalCondition:{
         type:String,
@@ -71,11 +67,11 @@ const PatientSchema=new Schema({
     },
     assignedRoomNo:{
         type:String,
-        required:true
+        required:false
     },
     durationOfStay:{
         type:String,
-        required:true
+        required:false
     },
     anySpecificRequirements:{
         type:String,

@@ -8,7 +8,7 @@ router.route("/add").post((req,res)=>{
     const nationality=req.body.nationality;
     const nicNumber=req.body.nicNumber;
     const email=req.body.email;
-    const healthInfo=req.body.healthInfo;
+    const results=req.body.results;
     const allergies=req.body.allergies;
     const medicalsBeingTaken=req.body.medicalsBeingTaken;
     const emergencyContactNumber=req.body.emergencyContactNumber;
@@ -30,7 +30,7 @@ router.route("/add").post((req,res)=>{
         nationality,
         nicNumber,
         email,
-        healthInfo,
+        results,
         allergies,
         medicalsBeingTaken,
         emergencyContactNumber,
@@ -71,7 +71,7 @@ router.route("/update/:id").put(async(req,res)=>{
         nationality,
         nicNumber,
         email,
-        healthInfo,
+        results,
         allergies,
         medicalsBeingTaken,
         emergencyContactNumber,
@@ -93,7 +93,7 @@ router.route("/update/:id").put(async(req,res)=>{
         nationality,
         nicNumber,
         email,
-        healthInfo,
+        results,
         allergies,
         medicalsBeingTaken,
         emergencyContactNumber,
