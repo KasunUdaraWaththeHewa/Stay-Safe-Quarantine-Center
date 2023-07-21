@@ -123,7 +123,7 @@ function DoctorForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
 
-            <Form.Select value={relationship} onChange={(e) => setRelationship(e.target.value)}>
+            <Form.Select value={Relationship} onChange={(e) => setRelationship(e.target.value)}>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>
