@@ -11,20 +11,20 @@ function DoctorForm() {
   const [doctorID, setDoctorID] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [medicalLicenseNumber, setMedicalLicenseNumber] = useState("");
+  const [medicalLicenseNo, setMedicalLicenseNumber] = useState("");
   const [specialization, setSpecilization] = useState("");
-  const [experience, setExperience] = useState("");
+  const [professionalExperience, setExperience] = useState("");
   const [address, setAddress] = useState("");
   const [avalibleDays, setAvalibleDays] = useState("");
   const [emergencycontactNumber, setEmergencycontactNumber] = useState("");
   const [gender, setGender] = useState('Male');
-  const [Relationship, setRelationship] = useState("Married");
-  const [skills, setSkills] = useState(null);
+  const [relationship, setRelationship] = useState("Married");
+  const [skillsAndTraining, setSkills] = useState(null);
 
   function sendData(e) {
     e.preventDefault();
     const newDoctor = {
-      firstName, lastName, doctorID, phoneNumber, email, medicalLicenseNumber, specialization, experience, address, avalibleDays, emergencycontactNumber, gender, Relationship, skills
+      firstName, lastName, doctorID, phoneNumber, email, medicalLicenseNo, specialization, professionalExperience, address, avalibleDays, emergencycontactNumber, gender, relationship, skillsAndTraining
     }
     axios.post("http://localhost:8070/doctor/add", newDoctor).then(() => {
       alert("Doctor added");
@@ -123,7 +123,7 @@ function DoctorForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
 
-            <Form.Select value={Relationship} onChange={(e) => setRelationship(e.target.value)}>
+            <Form.Select value={relationship} onChange={(e) => setRelationship(e.target.value)}>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>
