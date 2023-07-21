@@ -39,9 +39,9 @@ function DoctorForm() {
       setAddress("")
       setAvalibleDays("")
       setEmergencycontactNumber("")
-      setGender("")
-      setRelationship("")
-      setSkills("")
+      setGender("Male")
+      setRelationship("Married")
+      setSkills(null)
     }).catch((err) => {
       alert(err)
     })

@@ -39,9 +39,9 @@ function NurseForm() {
         setAddress("")
         setAvalibleDays("")
         setEmergencycontactNumber("")
-        setGender("")
-        setRelationship("")
-        setSkills("")
+        setGender("Male")
+        setRelationship("Married")
+        setSkills(null)
       }).catch((err)=>{
         alert(err)
       })
@@ -110,30 +110,32 @@ function NurseForm() {
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col >
-            <Form.Group as={Col} controlId="formGridState">
-                <Form.Label>Gender</Form.Label>
-                <Form.Select defaultValue="Male">
-                    <option>Male</option>
-                    <option>Female</option>
-                </Form.Select>
-            </Form.Group>
+      <Col >
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>Gender</Form.Label>
+            <Form.Select value={gender} onChange={(e) => setGender(e.target.value)}>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </Form.Select>
+          </Form.Group>
         </Col>
         <Col >
-            <Form.Group as={Col} controlId="formGridState">
-                <Form.Label>Relationship</Form.Label>
-                <Form.Select defaultValue="Male">
-                    <option>Married</option>
-                    <option>Unmarried</option>
-                </Form.Select>
-            </Form.Group>
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>Relationship</Form.Label>
+
+            <Form.Select value={Relationship} onChange={(e) => setRelationship(e.target.value)}>
+              <option value="Married">Married</option>
+              <option value="Unmarried">Unmarried</option>
+            </Form.Select>
+          </Form.Group>
         </Col>
+
         
       </Row>
 
       <Form.Group controlId="formFile" className="mb-3">
-        <Form.Label>Enter skills , Training and Certification details in pdf format</Form.Label>
-        <Form.Control type="file" onChange={(e) => setSkills(e.target.value)}   />
+        <Form.Label>Enter skills, Training, and Certification details in pdf format</Form.Label>
+        <Form.Control type="file" onChange={(e) => setSkills(e.target.files[0])} />
       </Form.Group>
       <br />
       <Row>
