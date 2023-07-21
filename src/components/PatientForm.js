@@ -8,7 +8,7 @@ import axios from 'axios';
 function PatientForm() {
 
     const [fullName, setfullName] = useState("");
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState("Male");
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [nationality, setNationality] = useState("");
     const [nic, setNIC] = useState("");
@@ -27,40 +27,36 @@ function PatientForm() {
     const [duration, setDuration] = useState("");
     const [requirements, setRequirements] = useState("");
 
-
-    const [date, setDate] = useState(new Date());
-    console.log("DATE", date);
-
-    function sendData(e){
+    function sendData(e) {
         e.preventDefault();
-        const newPatient={
-            fullName,gender,dateOfBirth,nationality,nic,email,results,allergies,medications,medicalConditions,symptoms,dateOfArrival,countryOfDeparture,anyTransitPoints,flightDetails,dateOfCheckin,roomNumber,duration,requirements
+        const newPatient = {
+            fullName, gender, dateOfBirth, nationality, nic, email, results, allergies, medications, medicalConditions, symptoms, dateOfArrival, countryOfDeparture, anyTransitPoints, flightDetails, dateOfCheckin, roomNumber, duration, requirements
         }
-        axios.post("http://localhost:8070/patient/add",newPatient).then(()=>{
-        alert("Patient added");
-        setfullName("")
-        setGender("")
-        setDateOfBirth("")
-        setNationality("")
-        setNIC("")
-        setEmail("")
-        setResults("")
-        setAllergies("")
-        setMedications("")
-        setMedicalConditions("")
-        setSymptoms("")
-        setDateOfArrival("")
-        setCountryOfDeparture("")
-        setANyTransitPoints("")
-        setFlightDetails("")
-        setDateOfCheckin("")
-        setRoomNumber("")
-        setDuration("")
-        setRequirements("")
-      }).catch((err)=>{
-        alert(err)
-      })
-      }
+        axios.post("http://localhost:8070/patient/add", newPatient).then(() => {
+            alert("Patient added");
+            setfullName("")
+            setGender("Male")
+            setDateOfBirth("")
+            setNationality("")
+            setNIC("")
+            setEmail("")
+            setResults("")
+            setAllergies("")
+            setMedications("")
+            setMedicalConditions("")
+            setSymptoms("")
+            setDateOfArrival("")
+            setCountryOfDeparture("")
+            setANyTransitPoints("")
+            setFlightDetails("")
+            setDateOfCheckin("")
+            setRoomNumber("")
+            setDuration("")
+            setRequirements("")
+        }).catch((err) => {
+            alert(err)
+        })
+    }
 
     return (
         <Form>
@@ -75,11 +71,35 @@ function PatientForm() {
                     </Col>
                     <Col>
                         <Form.Label>Gender</Form.Label>
-                        <div key={`inline-radio`}><Form.Check inline type='radio' label="Male" name='gender' /> <Form.Check inline type='radio' label="Female" name='gender' /></div>
+                        <div key={`inline-radio`}>
+                            <Form.Check
+                                inline
+                                type='radio'
+                                label="Male"
+                                name='gender'
+                                checked={gender === 'Male'}
+                                onChange={() => setGender('Male')}
+                            />
+                            <Form.Check
+                                inline
+                                type='radio'
+                                label="Female"
+                                name='gender'
+                                checked={gender === 'Female'}
+                                onChange={() => setGender('Female')}
+                            />
+                        </div>
+
                     </Col>
                     <Col>
                         <Form.Label>Date of Birth</Form.Label>
-                        <Form.Control type="date" name="birthdate" placeholder="Date of Birth" value={date} onChange={(e) => setDateOfBirth(e.target.value)} />
+                        <Form.Control
+                            type="date"
+                            name="birthdate"
+                            placeholder="Date of Birth"
+                            value={dateOfBirth}
+                            onChange={(e) => setDateOfBirth(e.target.value)}
+                        />
                     </Col>
                 </Row>
 
@@ -149,7 +169,13 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of arrival in the country</Form.Label>
-                        <Form.Control type="date" name="arrivaldate" placeholder="Date of Arrival" value={date} onChange={(e) => setDateOfArrival(e.target.value)} />
+                        <Form.Control
+                            type="date"
+                            name="arrivaldate"
+                            placeholder="Date of Arrival"
+                            value={dateOfArrival}
+                            onChange={(e) => setDateOfArrival(e.target.value)}
+                        />
                     </Col>
                     <Col>
                         <Form.Label>Country of Departure</Form.Label>
