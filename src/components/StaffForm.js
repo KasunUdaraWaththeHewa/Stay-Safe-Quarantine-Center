@@ -35,8 +35,8 @@ function StaffForm() {
       setAddress("")
       setStaffID("")
       setEmergencyContactNumber("")
-      setGender("")
-      setRelationship("")
+      setGender("Male")
+      setRelationship("Married")
       setSkills("")
     }).catch((err) => {
       alert(err)

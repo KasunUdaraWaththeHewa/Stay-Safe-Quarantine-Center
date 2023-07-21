@@ -15,19 +15,19 @@ const StaffSchema=new Schema({
     },
     phoneNumber:{
         type:String,
-        required:true
+        required:false
     },
     email:{
         type:String,
-        required:true
+        required:false
     },
     jobRole:{
         type:String,
-        required:true
+        required:false
     },
     address:{
         type:String,
-        required:true
+        required:false
     },
     staffID:{
         type:String,
@@ -35,19 +35,19 @@ const StaffSchema=new Schema({
     },
     emergencyContactNumber:{
         type:String,
-        required:true
+        required:false
     },
     gender:{
         type:String,
-        required:true
+        required:false
     },
     relationship:{
         type:String,
-        required:true
+        required:false
     },
     skills:{
-        type:String,
-        required:true
+        type:Object,
+        required:false
     }
 })
 const Staff=mongoose.model("Staff",StaffSchema);
