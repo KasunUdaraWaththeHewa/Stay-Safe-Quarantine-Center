@@ -15,11 +15,11 @@ const NurseSchema=new Schema({
     },
     phoneNumber:{
         type:String,
-        required:true
+        required:false
     },
     email:{
         type:String,
-        required:true
+        required:false
     },
     nursingLicenseNo:{
         type:String,
@@ -27,35 +27,35 @@ const NurseSchema=new Schema({
     },
     specialization:{
         type:String,
-        required:true
+        required:false
     },
     professionalExperience:{
         type:String,
-        required:true
+        required:false
     },
     address:{
         type:String,
-        required:true
+        required:false
     },
     avalibleDays:{
         type:String,
-        required:true
+        required:false
     },
     emergencyContactNumbers:{
         type:String,
-        required:true
+        required:false
     },
     gender:{
         type:String,
-        required:true
+        required:false
     },
     relationship:{
         type:String,
-        required:true
+        required:false
     },
     skillsAndTraining:{
-        type:String,
-        required:true
+        type:Object,
+        required:false
     }
 })
 const Nurse=mongoose.model("Nurse",NurseSchema);

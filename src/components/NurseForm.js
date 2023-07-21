@@ -11,20 +11,20 @@ function NurseForm() {
     const [nurseID, setNurseID] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
-    const [nursingLicenseNumber, setNursingLicenseNumber] = useState("");
+    const [nursingLicenseNo, setNursingLicenseNumber] = useState("");
     const [specialization, setSpecilization] = useState("");
-    const [experience, setExperience] = useState("");
+    const [professionalExperience, setExperience] = useState("");
     const [address, setAddress] = useState("");
     const [avalibleDays, setAvalibleDays] = useState("");
-    const [emergencycontactNumber, setEmergencycontactNumber] = useState("");
+    const [emergencyContactNumbers, setEmergencycontactNumber] = useState("");
     const [gender, setGender] = useState("");
-    const [Relationship, setRelationship] = useState("");
-    const [skills, setSkills] = useState("");
+    const [relationship, setRelationship] = useState("");
+    const [skillsAndTraining, setSkills] = useState("");
     
     function sendData(e){
       e.preventDefault();
       const newNurse={
-        firstName,lastName,nurseID,phoneNumber,email,nursingLicenseNumber,specialization,experience,address,avalibleDays,emergencycontactNumber,gender,Relationship,skills
+        firstName,lastName,nurseID,phoneNumber,email,nursingLicenseNo,specialization,professionalExperience,address,avalibleDays,emergencyContactNumbers,gender,relationship,skillsAndTraining
       }
       axios.post("http://localhost:8070/nurse/add",newNurse).then(()=>{
         alert("Nurse added");
@@ -63,7 +63,7 @@ function NurseForm() {
       <Row className="mb-3">
         <Col>
             <Form.Label>Nurse ID</Form.Label>
-          <Form.Control placeholder="Doctor ID" onChange={(e) => setNurseID(e.target.value)}   />
+          <Form.Control placeholder="Nurse ID" onChange={(e) => setNurseID(e.target.value)}   />
         </Col>
         <Col>
             <Form.Label>Phone number</Form.Label>
@@ -123,7 +123,7 @@ function NurseForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
 
-            <Form.Select value={Relationship} onChange={(e) => setRelationship(e.target.value)}>
+            <Form.Select value={relationship} onChange={(e) => setRelationship(e.target.value)}>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>
