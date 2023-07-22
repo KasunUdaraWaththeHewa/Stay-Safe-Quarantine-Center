@@ -21,7 +21,7 @@ function StaffForm() {
 
   const [searchResult, setSearchResult] = useState(null);
 
-
+  //add staff member
   function sendData(e) {
     e.preventDefault();
     const newStaff = {
@@ -46,6 +46,9 @@ function StaffForm() {
     })
   }
 
+
+  //search staff member
+
   function populateFormWithFetchedData() {
     if (searchResult) {
       setFirstName(searchResult.firstName);
@@ -68,19 +71,43 @@ function StaffForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    // Make a GET request to the backend API with the staffID as a parameter
     axios.get(`http://localhost:8070/staff/get/${staffID}`)
       .then((response) => {
-        setSearchResult(response.data); // Set the search result to the data returned by the API
+        setSearchResult(response.data);
         alert("Staff member found");
       })
       .catch((error) => {
         console.error(error);
-        setSearchResult(null); // Reset the search result in case of an error
+        setSearchResult(null);
         alert("Staff member not found");
       });
   }
-  
+
+  //delete staff member
+
+  function handleDelete() {
+    axios.delete(`http://localhost:8070/staff/delete/${staffID}`)
+      .then((response) => {
+        alert("Staff member deleted successfully");
+        setFirstName("");
+        setLastName("");
+        setEmployeeID("");
+        setPhoneNumber("");
+        setEmail("");
+        setJobRole("");
+        setAddress("");
+        setStaffID("");
+        setEmergencyContactNumber("");
+        setGender("Male");
+        setRelationship("Married");
+        setSkills("");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error deleting staff member");
+      });
+  }
+
 
   return (
     <Form>
@@ -199,7 +226,7 @@ function StaffForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
-      <Button variant="danger">Delete</Button>{' '}
+      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
       <Button variant="success">Clear</Button>{' '}
 
     </Form>
