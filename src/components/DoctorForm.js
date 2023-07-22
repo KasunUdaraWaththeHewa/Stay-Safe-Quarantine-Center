@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 function DoctorForm() {
@@ -20,6 +20,8 @@ function DoctorForm() {
   const [gender, setGender] = useState('Male');
   const [relationship, setRelationship] = useState("Married");
   const [skillsAndTraining, setSkills] = useState(null);
+
+  const [searchResult, setSearchResult] = useState(null);
 
   function sendData(e) {
     e.preventDefault();
@@ -45,6 +47,43 @@ function DoctorForm() {
     }).catch((err) => {
       alert(err)
     })
+  }
+
+
+  function populateFormWithFetchedData() {
+    if (searchResult) {
+      setFirstName(searchResult.firstName);
+      setLastName(searchResult.lastName);
+      setDoctorID(searchResult.doctorID);
+      setPhoneNumber(searchResult.phoneNumber);
+      setEmail(searchResult.email);
+      setMedicalLicenseNumber(searchResult.medicalLicenseNo);
+      setSpecilization(searchResult.specialization);
+      setExperience(searchResult.professionalExperience);
+      setAddress(searchResult.address);
+      setAvalibleDays(searchResult.avalibleDays);
+      setEmergencycontactNumber(searchResult.emergencyContactNumber);
+      setGender(searchResult.gender);
+      setRelationship(searchResult.relationship);
+      setSkills(searchResult.skills);
+    }
+  }
+
+  useEffect(() => {
+    populateFormWithFetchedData();
+  }, [searchResult]);
+
+  function handleSearch() {
+    axios.get(`http://localhost:8070/doctor/get/${doctorID}`)
+      .then((response) => {
+        setSearchResult(response.data);
+        alert("Doctor found");
+      })
+      .catch((error) => {
+        console.error(error);
+        setSearchResult(null);
+        alert("Doctor not found");
+      });
   }
 
   return (
@@ -150,7 +189,7 @@ function DoctorForm() {
       <br />
       <br />
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
-      <Button variant="secondary">Search</Button>{' '}
+      <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
       <Button variant="danger">Delete</Button>{' '}
       <Button variant="success">Clear</Button>{' '}
