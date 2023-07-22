@@ -41,40 +41,28 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/get/:id").get(async (req, res) => {
-  let userId=req.params.id;
-  const user=await doctor.findById(userId).
-  then((doctor)=>{
-    res.status(200).send({status:"User fetched",doctor})
-  }).catch((err)=>{
-    console.log(err.message);
-    res.status(500).send({status:"Error with get user",error:err.message});
-  })
+router.route("/get/:doctorID").get(async (req, res) => {
+  let doctorID = req.params.doctorID;
+  const user = await doctor.findOne({ doctorID })
+    .then((doctor) => {
+      if (!doctor) {
+        return res.status(404).json({ error: "Doctor not found" });
+      }
+      res.status(200).json({ status: "Doctor fetched", doctor });
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res.status(500).json({ status: "Error with fetching doctor", error: err.message });
+    });
 });
 
 
-router.route("/update/:id").put(async(req,res)=>{
-  let userID=req.params.id;
+
+router.route("/update/:doctorID").put(async (req, res) => {
+  let doctorID = req.params.doctorID;
   const {
     firstName,
     lastName,
-    doctorID,
-    phoneNumber,
-    email,
-    medicalLicenseNo,
-    specialization,
-    professionalExperience,
-    address,
-    avalibleDays,
-    emergencyContactNumbers,
-    gender,
-    relationship,
-    skillsAndTraining}=req.body;
-
-  const updateDoctor={
-    firstName,
-    lastName,
-    doctorID,
     phoneNumber,
     email,
     medicalLicenseNo,
@@ -86,27 +74,52 @@ router.route("/update/:id").put(async(req,res)=>{
     gender,
     relationship,
     skillsAndTraining
-  }
-  const update=await doctor.findByIdAndUpdate(userID,updateDoctor)
-  .then(()=>{
-      res.status(200).send({status:"Doctor's data Updated"})
-  }).catch((err)=>{
-      console.log(err);
-      res.status(500).send({status:"Error with updating data",error:err.message});
-  })
-})
+  } = req.body;
 
-router.route("/delete/:id").delete(async (req, res) => {
-  let doctorID = req.params.id;
+  const updateDoctor = {
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    medicalLicenseNo,
+    specialization,
+    professionalExperience,
+    address,
+    avalibleDays,
+    emergencyContactNumbers,
+    gender,
+    relationship,
+    skillsAndTraining
+  };
+
+  const updatedDoctor = await doctor.findOneAndUpdate({ doctorID }, updateDoctor, { new: true })
+    .then((doctor) => {
+      if (!doctor) {
+        return res.status(404).json({ error: "Doctor not found" });
+      }
+      res.status(200).json({ status: "Doctor updated", doctor });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ status: "Error with updating doctor", error: err.message });
+    });
+});
+
+router.route("/delete/:doctorID").delete(async (req, res) => {
+  let doctorID = req.params.doctorID;
 
   try {
-    await doctor.findByIdAndDelete(doctorID);
-    res.status(200).send({ status: "Doctor's data deleted" });
+    const deletedDoctor = await doctor.findOneAndDelete({ doctorID });
+    if (!deletedDoctor) {
+      return res.status(404).json({ error: "Doctor not found" });
+    }
+    res.status(200).json({ status: "Doctor's data deleted", doctor: deletedDoctor });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send({ status: "Error with deleting doctor", error: err.message });
+    res.status(500).json({ status: "Error with deleting doctor", error: err.message });
   }
 });
+
 router.route("/").get((req, res) => {
   doctor.find()
     .then((doctor) => {
