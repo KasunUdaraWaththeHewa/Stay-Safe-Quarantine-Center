@@ -107,8 +107,49 @@ function StaffForm() {
         alert("Error deleting staff member");
       });
   }
+//update staff member
 
+function handleUpdate() {
+  const updatedStaff = {
+    firstName,
+    lastName,
+    employeeID,
+    phoneNumber,
+    email,
+    jobRole,
+    address,
+    staffID,
+    emergencyContactNumber,
+    gender,
+    relationship,
+    skills,
+  };
 
+  axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff)
+    .then((response) => {
+      alert("Staff member updated successfully");
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Error updating staff member");
+    });
+}
+
+//clear form
+function clearForm() {
+  setFirstName("");
+  setLastName("");
+  setEmployeeID("");
+  setPhoneNumber("");
+  setEmail("");
+  setJobRole("");
+  setAddress("");
+  setStaffID("");
+  setEmergencyContactNumber("");
+  setGender("Male");
+  setRelationship("Married");
+  setSkills("");
+}
   return (
     <Form>
 
@@ -225,9 +266,9 @@ function StaffForm() {
 
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
-      <Button variant="primary">Update</Button>{' '}
+      <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
       <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
-      <Button variant="success">Clear</Button>{' '}
+      <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>
   );
