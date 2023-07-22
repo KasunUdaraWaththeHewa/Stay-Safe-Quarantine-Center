@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 function NurseForm() {
@@ -20,6 +20,8 @@ function NurseForm() {
     const [gender, setGender] = useState("");
     const [relationship, setRelationship] = useState("");
     const [skillsAndTraining, setSkills] = useState("");
+
+    const [searchResult, setSearchResult] = useState(null);
     
     function sendData(e){
       e.preventDefault();
@@ -46,6 +48,45 @@ function NurseForm() {
         alert(err)
       })
     }
+
+
+
+    function populateFormWithFetchedData() {
+      if (searchResult) {
+        setFirstName(searchResult.firstName);
+        setLastName(searchResult.lastName);
+        setNurseID(searchResult.nurseID);
+        setPhoneNumber(searchResult.phoneNumber);
+        setEmail(searchResult.email);
+        setNursingLicenseNumber(searchResult.nursingLicenseNo);
+        setSpecilization(searchResult.specialization);
+        setExperience(searchResult.professionalExperience);
+        setAddress(searchResult.address);
+        setAvalibleDays(searchResult.avalibleDays);
+        setEmergencycontactNumber(searchResult.emergencyContactNumber);
+        setGender(searchResult.gender);
+        setRelationship(searchResult.relationship);
+        setSkills(searchResult.skills);
+      }
+    }
+  
+    useEffect(() => {
+      populateFormWithFetchedData();
+    }, [searchResult]);
+  
+    function handleSearch() {
+      axios.get(`http://localhost:8070/nurse/get/${nurseID}`)
+        .then((response) => {
+          setSearchResult(response.data);
+          alert("Nurse found");
+        })
+        .catch((error) => {
+          console.error(error);
+          setSearchResult(null);
+          alert("Nurse not found");
+        });
+    }
+    
 
   return (
     <Form>
@@ -151,7 +192,7 @@ function NurseForm() {
       <br />
       <br />
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
-      <Button variant="secondary">Search</Button>{' '}
+      <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
       <Button variant="danger">Delete</Button>{' '}
       <Button variant="success">Clear</Button>{' '}
