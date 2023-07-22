@@ -132,7 +132,62 @@ function PatientForm() {
                 alert("Error deleting patient");
             });
     }
+//update patient
+function handleUpdate() {
+    const updatedPatient = {
+      fullName,
+      gender,
+      dateOfBirth,
+      nationality,
+      nicNumber,
+      email,
+      results,
+      allergies,
+      medicalsBeingTaken,
+      existingMedicalCondition,
+      symptoms,
+      dateOfArrival,
+      contryOfDeparture,
+      anyTransitPoint,
+      flightOrTransportDetails,
+      dateOfCheckIn,
+      assignedRoomNo,
+      durationOfStay,
+      anySpecificRequirements,
+    };
 
+    axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient)
+      .then((response) => {
+        alert("Patient updated successfully");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error updating patient");
+      });
+  }
+    
+  //clear data
+  function clearForm() {
+    setfullName("");
+    setGender("Male");
+    setDateOfBirth("");
+    setNationality("");
+    setNIC("");
+    setEmail("");
+    setResults("Not Tested");
+    setAllergies("");
+    setMedications("");
+    setMedicalConditions("");
+    setSymptoms("");
+    setDateOfArrival("");
+    setCountryOfDeparture("");
+    setANyTransitPoints("");
+    setFlightDetails("");
+    setDateOfCheckin("");
+    setRoomNumber("");
+    setDuration("");
+    setRequirements("");
+  }
     return (
         <Form>
             <fieldset>
@@ -349,9 +404,9 @@ function PatientForm() {
 
             <Button variant="success" onClick={sendData}>Enter</Button>{' '}
             <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
-            <Button variant="primary">Update</Button>{' '}
+            <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
             <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
-            <Button variant="success">Clear</Button>{' '}
+            <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
         </Form>
     );
