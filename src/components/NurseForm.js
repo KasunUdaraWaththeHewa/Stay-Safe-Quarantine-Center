@@ -86,7 +86,32 @@ function NurseForm() {
           alert("Nurse not found");
         });
     }
-    
+     //delete staff member
+
+  function handleDelete() {
+    axios.delete(`http://localhost:8070/nurse/delete/${nurseID}`)
+      .then((response) => {
+        alert("Nurse deleted successfully");
+        setFirstName("")
+        setLastName("")
+        setNurseID("")
+        setPhoneNumber("")
+        setEmail("")
+        setNursingLicenseNumber("")
+        setSpecilization("")
+        setExperience("")
+        setAddress("")
+        setAvalibleDays("")
+        setEmergencycontactNumber("")
+        setGender("Male")
+        setRelationship("Married")
+        setSkills(null)
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error deleting nurse");
+      });
+  }
 
   return (
     <Form>
@@ -194,7 +219,7 @@ function NurseForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
-      <Button variant="danger">Delete</Button>{' '}
+      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
       <Button variant="success">Clear</Button>{' '}
       
     </Form>
