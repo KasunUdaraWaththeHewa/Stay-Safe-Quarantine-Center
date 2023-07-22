@@ -22,7 +22,7 @@ function DoctorForm() {
   const [skillsAndTraining, setSkills] = useState(null);
 
   const [searchResult, setSearchResult] = useState(null);
-//add Doctor
+  //add Doctor
   function sendData(e) {
     e.preventDefault();
     const newDoctor = {
@@ -49,7 +49,7 @@ function DoctorForm() {
     })
   }
 
-//serach doctor
+  //serach doctor
   function populateFormWithFetchedData() {
     if (searchResult) {
       setFirstName(searchResult.firstName);
@@ -85,31 +85,77 @@ function DoctorForm() {
         alert("Doctor not found");
       });
   }
-// delete doctor
-function handleDelete() {
-  axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`)
-    .then((response) => {
-      alert("Doctor deleted successfully");
-      setFirstName("")
-      setLastName("")
-      setDoctorID("")
-      setPhoneNumber("")
-      setEmail("")
-      setMedicalLicenseNumber("")
-      setSpecilization("")
-      setExperience("")
-      setAddress("")
-      setAvalibleDays("")
-      setEmergencycontactNumber("")
-      setGender("Male")
-      setRelationship("Married")
-      setSkills(null)
-    })
-    .catch((error) => {
-      console.error(error);
-      alert("Error deleting doctor");
-    });
-}
+  // delete doctor
+  function handleDelete() {
+    axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`)
+      .then((response) => {
+        alert("Doctor deleted successfully");
+        setFirstName("")
+        setLastName("")
+        setDoctorID("")
+        setPhoneNumber("")
+        setEmail("")
+        setMedicalLicenseNumber("")
+        setSpecilization("")
+        setExperience("")
+        setAddress("")
+        setAvalibleDays("")
+        setEmergencycontactNumber("")
+        setGender("Male")
+        setRelationship("Married")
+        setSkills(null)
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error deleting doctor");
+      });
+  }
+  //update doctor details
+  function handleUpdate() {
+    const updatedDoctor = {
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      medicalLicenseNo,
+      specialization,
+      professionalExperience,
+      address,
+      avalibleDays,
+      emergencycontactNumber,
+      gender,
+      relationship,
+      skillsAndTraining,
+    };
+
+    axios.put(`http://localhost:8070/doctor/update/${doctorID}`, updatedDoctor)
+      .then((response) => {
+        alert("Doctor updated successfully");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error updating doctor");
+      });
+  }
+
+  //clear data
+  function clearForm() {
+    setFirstName("");
+    setLastName("");
+    setDoctorID("");
+    setPhoneNumber("");
+    setEmail("");
+    setMedicalLicenseNumber("");
+    setSpecilization("");
+    setExperience("");
+    setAddress("");
+    setAvalibleDays("");
+    setEmergencycontactNumber("");
+    setGender("Male");
+    setRelationship("Married");
+    setSkills(null);
+  }
+
   return (
     <Form>
       <Row className="mb-3">
@@ -214,9 +260,9 @@ function handleDelete() {
       <br />
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
-      <Button variant="primary">Update</Button>{' '}
+      <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
       <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
-      <Button variant="success">Clear</Button>{' '}
+      <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>
   );
