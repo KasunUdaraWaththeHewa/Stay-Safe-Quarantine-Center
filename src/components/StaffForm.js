@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 function StaffForm() {
@@ -18,6 +18,9 @@ function StaffForm() {
   const [gender, setGender] = useState("");
   const [relationship, setRelationship] = useState("");
   const [skills, setSkills] = useState("");
+
+  const [searchResult, setSearchResult] = useState(null);
+
 
   function sendData(e) {
     e.preventDefault();
@@ -42,6 +45,42 @@ function StaffForm() {
       alert(err)
     })
   }
+
+  function populateFormWithFetchedData() {
+    if (searchResult) {
+      setFirstName(searchResult.firstName);
+      setLastName(searchResult.lastName);
+      setEmployeeID(searchResult.employeeID);
+      setPhoneNumber(searchResult.phoneNumber);
+      setEmail(searchResult.email);
+      setJobRole(searchResult.jobRole);
+      setAddress(searchResult.address);
+      setStaffID(searchResult.staffID);
+      setEmergencyContactNumber(searchResult.emergencyContactNumber);
+      setGender(searchResult.gender);
+      setRelationship(searchResult.relationship);
+      setSkills(searchResult.skills);
+    }
+  }
+
+  useEffect(() => {
+    populateFormWithFetchedData();
+  }, [searchResult]);
+
+  function handleSearch() {
+    // Make a GET request to the backend API with the staffID as a parameter
+    axios.get(`http://localhost:8070/staff/get/${staffID}`)
+      .then((response) => {
+        setSearchResult(response.data); // Set the search result to the data returned by the API
+        alert("Staff member found");
+      })
+      .catch((error) => {
+        console.error(error);
+        setSearchResult(null); // Reset the search result in case of an error
+        alert("Staff member not found");
+      });
+  }
+  
 
   return (
     <Form>
@@ -158,7 +197,7 @@ function StaffForm() {
       <br />
 
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
-      <Button variant="secondary">Search</Button>{' '}
+      <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
       <Button variant="danger">Delete</Button>{' '}
       <Button variant="success">Clear</Button>{' '}
