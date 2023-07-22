@@ -28,7 +28,7 @@ function PatientForm() {
     const [anySpecificRequirements, setRequirements] = useState("");
 
     const [searchResult, setSearchResult] = useState(null);
-
+    // add patient
     function sendData(e) {
         e.preventDefault();
         const newPatient = {
@@ -59,7 +59,7 @@ function PatientForm() {
             alert(err)
         })
     }
-
+    //serach patient
     function populateFormWithFetchedData() {
         if (searchResult) {
             setfullName(searchResult.firstName);
@@ -82,24 +82,56 @@ function PatientForm() {
             setDuration(searchResult.durationOfStay);
             setRequirements(searchResult.anySpecificRequirements);
         }
-      }
-    
-      useEffect(() => {
+    }
+
+    useEffect(() => {
         populateFormWithFetchedData();
-      }, [searchResult]);
-    
-      function handleSearch() {
-        axios.get(`http://localhost:8070/patient/get/${doctorID}`)
-          .then((response) => {
-            setSearchResult(response.data);
-            alert("Patient found");
-          })
-          .catch((error) => {
-            console.error(error);
-            setSearchResult(null);
-            alert("Patient not found");
-          });
-      }
+    }, [searchResult]);
+
+    function handleSearch() {
+        axios.get(`http://localhost:8070/patient/get/${nicNumber}`)
+            .then((response) => {
+                setSearchResult(response.data);
+                alert("Patient found");
+            })
+            .catch((error) => {
+                console.error(error);
+                setSearchResult(null);
+                alert("Patient not found");
+            });
+    }
+
+    //delete staff member
+
+    function handleDelete() {
+        axios.delete(`http://localhost:8070/patient/delete/${nicNumber}`)
+            .then((response) => {
+                alert("pateint deleted successfully");
+                setfullName("")
+                setGender("Male")
+                setDateOfBirth("")
+                setNationality("")
+                setNIC("")
+                setEmail("")
+                setResults("Not Tested")
+                setAllergies("")
+                setMedications("")
+                setMedicalConditions("")
+                setSymptoms("")
+                setDateOfArrival("")
+                setCountryOfDeparture("")
+                setANyTransitPoints("")
+                setFlightDetails("")
+                setDateOfCheckin("")
+                setRoomNumber("")
+                setDuration("")
+                setRequirements("")
+            })
+            .catch((error) => {
+                console.error(error);
+                alert("Error deleting patient");
+            });
+    }
 
     return (
         <Form>
@@ -318,7 +350,7 @@ function PatientForm() {
             <Button variant="success" onClick={sendData}>Enter</Button>{' '}
             <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
             <Button variant="primary">Update</Button>{' '}
-            <Button variant="danger">Delete</Button>{' '}
+            <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
             <Button variant="success">Clear</Button>{' '}
 
         </Form>
