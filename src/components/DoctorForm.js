@@ -22,7 +22,7 @@ function DoctorForm() {
   const [skillsAndTraining, setSkills] = useState(null);
 
   const [searchResult, setSearchResult] = useState(null);
-
+//add Doctor
   function sendData(e) {
     e.preventDefault();
     const newDoctor = {
@@ -49,7 +49,7 @@ function DoctorForm() {
     })
   }
 
-
+//serach doctor
   function populateFormWithFetchedData() {
     if (searchResult) {
       setFirstName(searchResult.firstName);
@@ -85,7 +85,31 @@ function DoctorForm() {
         alert("Doctor not found");
       });
   }
-
+// delete doctor
+function handleDelete() {
+  axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`)
+    .then((response) => {
+      alert("Doctor deleted successfully");
+      setFirstName("")
+      setLastName("")
+      setDoctorID("")
+      setPhoneNumber("")
+      setEmail("")
+      setMedicalLicenseNumber("")
+      setSpecilization("")
+      setExperience("")
+      setAddress("")
+      setAvalibleDays("")
+      setEmergencycontactNumber("")
+      setGender("Male")
+      setRelationship("Married")
+      setSkills(null)
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Error deleting doctor");
+    });
+}
   return (
     <Form>
       <Row className="mb-3">
@@ -191,7 +215,7 @@ function DoctorForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary">Update</Button>{' '}
-      <Button variant="danger">Delete</Button>{' '}
+      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
       <Button variant="success">Clear</Button>{' '}
 
     </Form>
