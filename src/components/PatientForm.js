@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
 function PatientForm() {
@@ -26,6 +26,8 @@ function PatientForm() {
     const [assignedRoomNo, setRoomNumber] = useState("");
     const [durationOfStay, setDuration] = useState("");
     const [anySpecificRequirements, setRequirements] = useState("");
+
+    const [searchResult, setSearchResult] = useState(null);
 
     function sendData(e) {
         e.preventDefault();
@@ -57,6 +59,47 @@ function PatientForm() {
             alert(err)
         })
     }
+
+    function populateFormWithFetchedData() {
+        if (searchResult) {
+            setfullName(searchResult.firstName);
+            setGender(searchResult.lastName);
+            setDateOfBirth(searchResult.doctorID);
+            setNationality(searchResult.phoneNumber);
+            setNIC(searchResult.email);
+            setEmail(searchResult.medicalLicenseNo);
+            setResults(searchResult.specialization);
+            setAllergies(searchResult.professionalExperience);
+            setMedications(searchResult.address);
+            setMedicalConditions(searchResult.avalibleDays);
+            setSymptoms(searchResult.emergencyContactNumber);
+            setDateOfArrival(searchResult.gender);
+            setCountryOfDeparture(searchResult.relationship);
+            setANyTransitPoints(searchResult.skills);
+            setFlightDetails(searchResult.flightOrTransportDetails);
+            setDateOfCheckin(searchResult.dateOfCheckIn);
+            setRoomNumber(searchResult.assignedRoomNo);
+            setDuration(searchResult.durationOfStay);
+            setRequirements(searchResult.anySpecificRequirements);
+        }
+      }
+    
+      useEffect(() => {
+        populateFormWithFetchedData();
+      }, [searchResult]);
+    
+      function handleSearch() {
+        axios.get(`http://localhost:8070/patient/get/${doctorID}`)
+          .then((response) => {
+            setSearchResult(response.data);
+            alert("Patient found");
+          })
+          .catch((error) => {
+            console.error(error);
+            setSearchResult(null);
+            alert("Patient not found");
+          });
+      }
 
     return (
         <Form>
@@ -273,7 +316,7 @@ function PatientForm() {
             <br></br>
 
             <Button variant="success" onClick={sendData}>Enter</Button>{' '}
-            <Button variant="secondary">Search</Button>{' '}
+            <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
             <Button variant="primary">Update</Button>{' '}
             <Button variant="danger">Delete</Button>{' '}
             <Button variant="success">Clear</Button>{' '}
