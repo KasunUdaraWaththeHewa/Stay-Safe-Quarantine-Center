@@ -37,54 +37,68 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/get/:id").get(async (req, res) => {
-  let userId=req.params.id;
-  const user=await staff.findById(userId).
-  then((staff)=>{
-    res.status(200).send({status:"User fetched",staff})
-  }).catch((err)=>{
-    console.log(err.message);
-    res.status(500).send({status:"Error with get user",error:err.message});
-  })
-});
-  
-router.route("/update/:id").put(async(req,res)=>{
-    let userID=req.params.id;
-    const {firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills}=req.body;
-    const updateStaff={
-        firstName,
-        lastName,
-        employeeID,
-        phoneNumber,
-        email,
-        jobRole,
-        address,
-        staffID,
-        emergencyContactNumber,
-        gender,
-        relationship,
-        skills
-    }
-    const update=await staff.findByIdAndUpdate(userID,updateStaff)
-    .then(()=>{
-        res.status(200).send({status:"Staff member Updated"})
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status:"Error with updating data",error:err.message});
+router.route("/get/:staffID").get(async (req, res) => {
+  let staffID = req.params.staffID;
+  const staffMember = await staff.findOne({ staffID })
+    .then((staff) => {
+      if (!staff) {
+        return res.status(404).json({ error: "Staff member not found" });
+      }
+      res.status(200).json({ status: "Staff member fetched", staff });
     })
-})
-
-router.route("/delete/:id").delete(async (req, res) => {
-    let staffID = req.params.id;
-  
-    try {
-      await staff.findByIdAndDelete(staffID);
-      res.status(200).send({ status: "Staff's data deleted" });
-    } catch (err) {
+    .catch((err) => {
       console.log(err.message);
-      res.status(500).send({ status: "Error with deleting staff", error: err.message });
+      res.status(500).json({ status: "Error with fetching staff member", error: err.message });
+    });
+});
+
+  
+router.route("/update/:staffID").put(async (req, res) => {
+  let staffID = req.params.staffID;
+  const { firstName, lastName, employeeID, phoneNumber, email, jobRole, address, emergencyContactNumber, gender, relationship, skills } = req.body;
+  const updateStaff = {
+    firstName,
+    lastName,
+    employeeID,
+    phoneNumber,
+    email,
+    jobRole,
+    address,
+    emergencyContactNumber,
+    gender,
+    relationship,
+    skills
+  };
+
+  const updatedStaff = await staff.findOneAndUpdate({ staffID }, updateStaff, { new: true })
+    .then((staff) => {
+      if (!staff) {
+        return res.status(404).json({ error: "Staff member not found" });
+      }
+      res.status(200).json({ status: "Staff member updated", staff });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ status: "Error with updating staff member", error: err.message });
+    });
+});
+
+
+router.route("/delete/:staffID").delete(async (req, res) => {
+  let staffID = req.params.staffID;
+
+  try {
+    const deletedStaff = await staff.findOneAndDelete({ staffID });
+    if (!deletedStaff) {
+      return res.status(404).json({ error: "Staff member not found" });
     }
-  });
+    res.status(200).json({ status: "Staff member's data deleted", staff: deletedStaff });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ status: "Error with deleting staff member", error: err.message });
+  }
+});
+
 
   router.route("/").get((req, res) => {
     staff.find()
