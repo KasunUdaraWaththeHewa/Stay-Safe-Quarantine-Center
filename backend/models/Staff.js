@@ -11,7 +11,7 @@ const StaffSchema=new Schema({
     },
     employeeID:{
         type:String,
-        required:true
+        required:false
     },
     phoneNumber:{
         type:String,
