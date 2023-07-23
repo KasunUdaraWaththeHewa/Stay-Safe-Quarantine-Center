@@ -81,6 +81,8 @@ function PatientForm() {
             setRoomNumber(searchResult.assignedRoomNo);
             setDuration(searchResult.durationOfStay);
             setRequirements(searchResult.anySpecificRequirements);
+
+            alert("Populated form");
         }
     }
 
@@ -93,6 +95,7 @@ function PatientForm() {
             .then((response) => {
                 setSearchResult(response.data);
                 alert("Patient found");
+                populateFormWithFetchedData();
             })
             .catch((error) => {
                 console.error(error);
@@ -187,6 +190,8 @@ function handleUpdate() {
     setRoomNumber("");
     setDuration("");
     setRequirements("");
+
+    alert("Cleared form");
   }
     return (
         <Form>
