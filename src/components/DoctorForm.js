@@ -66,6 +66,8 @@ function DoctorForm() {
       setGender(searchResult.gender);
       setRelationship(searchResult.relationship);
       setSkills(searchResult.skills);
+
+      alert("Populated form");
     }
   }
 
@@ -78,6 +80,7 @@ function DoctorForm() {
       .then((response) => {
         setSearchResult(response.data);
         alert("Doctor found");
+        populateFormWithFetchedData();
       })
       .catch((error) => {
         console.error(error);
@@ -154,6 +157,8 @@ function DoctorForm() {
     setGender("Male");
     setRelationship("Married");
     setSkills(null);
+
+    alert("Cleared form");
   }
 
   return (
