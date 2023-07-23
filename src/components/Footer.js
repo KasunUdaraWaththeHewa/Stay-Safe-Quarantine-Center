@@ -7,36 +7,36 @@ function Footer(){
     return (  
         <div className="footer">
             <footer>
-                <div class="row">
-                    <div class="col-3">
-                        <div class="link-cat" onclick="footerToggle(this)">
-                            <span class="footer-toggle"></span>
-                            <span class="footer-cat">Quarantine</span>
+                <div className="row">
+                    <div className="col-3">
+                        <div className="link-cat" onClick="footerToggle(this)">
+                            <span className="footer-toggle"></span>
+                            <span className="footer-cat">Quarantine</span>
                         </div>
-                        <ul class="footer-cat-links">
+                        <ul className="footer-cat-links">
                             <li><Link to="/packages"><span>Packages</span></Link></li>
                             <li><Link to="/OurCenter"><span>OurCenter</span></Link></li>
                             <li><a href=""><span>Covid-19</span></a></li>
                            
                         </ul>
                     </div>
-                    <div class="col-3">
-                        <div class="link-cat" onclick="footerToggle(this)">
-                            <span class="footer-toggle"></span>
-                            <span class="footer-cat">Contact Us</span>
+                    <div className="col-3">
+                        <div className="link-cat" onClick="footerToggle(this)">
+                            <span className="footer-toggle"></span>
+                            <span className="footer-cat">Contact Us</span>
                         </div>
-                        <ul class="footer-cat-links">
+                        <ul className="footer-cat-links">
                             <li><a href=""><span>Suggestions</span></a></li>
                             <li><a href=""><span>Complainings</span></a></li>
                             <li><a href=""><span>Bookings</span></a></li>
                         </ul>
                     </div>
-                    <div class="col-3">
-                        <div class="link-cat" onclick="footerToggle(this)">
-                            <span class="footer-toggle"></span>
-                            <span class="footer-cat">Sign In</span>
+                    <div className="col-3">
+                        <div className="link-cat" onClick="footerToggle(this)">
+                            <span className="footer-toggle"></span>
+                            <span className="footer-cat">Sign In</span>
                         </div>
-                        <ul class="footer-cat-links">
+                        <ul className="footer-cat-links">
                             <li><Link to="/Sign_in_profile"><span>Patients</span></Link></li>
                             <li><Link to="/Sign_in_profile"><span>Staff</span></Link></li>
                             <li><Link to="/Sign_in_profile"><span>Nurse</span></Link></li>
