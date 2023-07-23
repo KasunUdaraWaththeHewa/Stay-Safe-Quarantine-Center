@@ -73,7 +73,7 @@ function NurseForm() {
   }
 
   useEffect(() => {
-    populateFormWithFetchedData();
+    
   }, [searchResult]);
 
   function handleSearch() {

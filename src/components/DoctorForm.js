@@ -72,7 +72,7 @@ function DoctorForm() {
   }
 
   useEffect(() => {
-    populateFormWithFetchedData();
+    
   }, [searchResult]);
 
   function handleSearch() {
