@@ -67,6 +67,8 @@ function NurseForm() {
       setGender(searchResult.gender);
       setRelationship(searchResult.relationship);
       setSkills(searchResult.skills);
+
+      alert("Populated form");
     }
   }
 
@@ -79,6 +81,7 @@ function NurseForm() {
       .then((response) => {
         setSearchResult(response.data);
         alert("Nurse found");
+        populateFormWithFetchedData();
       })
       .catch((error) => {
         console.error(error);
@@ -155,6 +158,8 @@ function handleUpdate() {
     setGender("Male");
     setRelationship("Married");
     setSkills(null);
+
+    alert("Cleared form");
   }
   return (
     <Form>
