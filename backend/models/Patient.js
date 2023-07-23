@@ -47,11 +47,11 @@ const PatientSchema=new Schema({
     },
     dateOfArrival:{
         type:Date,
-        required:true
+        required:false
     },
     contryOfDeparture:{
         type:String,
-        required:true
+        required:false
     },
     anyTransitPoint:{
         type:String,
@@ -59,11 +59,11 @@ const PatientSchema=new Schema({
     },
     flightOrTransportDetails:{
         type:String,
-        required:true
+        required:false
     },
     dateOfCheckIn:{
         type:Date,
-        required:true
+        required:false
     },
     assignedRoomNo:{
         type:String,
