@@ -23,7 +23,7 @@ const DoctorSchema=new Schema({
     },
     medicalLicenseNo:{
         type:String,
-        required:true
+        required:false
     },
     specialization:{
         type:String,
