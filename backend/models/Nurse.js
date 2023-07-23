@@ -23,7 +23,7 @@ const NurseSchema=new Schema({
     },
     nursingLicenseNo:{
         type:String,
-        required:true
+        required:false
     },
     specialization:{
         type:String,
