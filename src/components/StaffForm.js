@@ -58,31 +58,52 @@ function StaffForm() {
       setEmail(searchResult.email);
       setJobRole(searchResult.jobRole);
       setAddress(searchResult.address);
-      setStaffID(searchResult.staffID);
       setEmergencyContactNumber(searchResult.emergencyContactNumber);
       setGender(searchResult.gender);
       setRelationship(searchResult.relationship);
       setSkills(searchResult.skills);
+
+      document.getElementById("firstNameInput").value = firstName;
+      document.getElementById("lastNameInput").value = lastName;
+      document.getElementById("employeeIDInput").value = employeeID;
+      document.getElementById("phoneNumberInput").value = phoneNumber;
+      document.getElementById("emailInput").value = email;
+      document.getElementById("jobRoleInput").value = jobRole;
+      document.getElementById("addressInput").value = address;
+      document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
+      document.getElementById("genderInput").value = gender;
+      document.getElementById("relationshipInput").value = relationship;
+      document.getElementById("skillsInput").value = skills;
+
+      alert("Populated form");
+    } else {
+      // Clear the form if the search result is null
+      clearForm();
     }
   }
 
   useEffect(() => {
-    populateFormWithFetchedData();
+    
   }, [searchResult]);
 
   function handleSearch() {
     axios.get(`http://localhost:8070/staff/get/${staffID}`)
       .then((response) => {
         setSearchResult(response.data);
-        alert("Staff member found");
+        if (response.data) {
+          alert("Staff member found");
+          populateFormWithFetchedData();
+        } else {
+          alert("Staff member not found");
+        }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Staff member not found");
+        alert("Error searching for staff member");
       });
   }
-
+  
   //delete staff member
 
   function handleDelete() {
@@ -144,11 +165,11 @@ function clearForm() {
   setEmail("");
   setJobRole("");
   setAddress("");
-  setStaffID("");
   setEmergencyContactNumber("");
   setGender("Male");
   setRelationship("Married");
   setSkills("");
+  alert("Cleared form");
 }
   return (
     <Form>
@@ -156,75 +177,84 @@ function clearForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>First name</Form.Label>
-          <Form.Control placeholder="First name" onChange={(e) => {
+          <Form.Control placeholder="First name"  id='firstNameInput' onChange={(e) => {
             setFirstName(e.target.value)
-          }} />
+          }}
+          value={firstName} />
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
-          <Form.Control placeholder="Last name"onChange={(e) => {
+          <Form.Control placeholder="Last name" id='lastNameInput'onChange={(e) => {
             setLastName(e.target.value)
-          }} />
+          }}
+          value={lastName} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Employee ID</Form.Label>
-          <Form.Control placeholder="Employee ID"onChange={(e) => {
+          <Form.Control placeholder="Employee ID" id='employeeIDInput' onChange={(e) => {
             setEmployeeID(e.target.value)
-          }} />
+          }}
+          value={employeeID} />
         </Col>
         <Col>
           <Form.Label>Phone number</Form.Label>
-          <Form.Control placeholder="Phone number" onChange={(e) => {
+          <Form.Control placeholder="Phone number" id='phoneNumberInput' onChange={(e) => {
             setPhoneNumber(e.target.value)
-          }} />
+          }}
+          value={phoneNumber} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" onChange={(e) => {
+          <Form.Control type="email" placeholder="Enter email" id='emailInput' onChange={(e) => {
             setEmail(e.target.value)
-          }} />
+          }}
+          value={email} />
         </Form.Group>
 
         <Col>
           <Form.Label>Job Role</Form.Label>
-          <Form.Control placeholder="Job Role" onChange={(e) => {
+          <Form.Control placeholder="Job Role" id='jobRoleInput' onChange={(e) => {
             setJobRole(e.target.value)
-          }} />
+          }}
+          value={jobRole} />
         </Col>
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" onChange={(e) => {
+        <Form.Control placeholder="1234 Main St" id='addressInput' onChange={(e) => {
           setAddress(e.target.value)
-        }} />
+        }}
+        value={address} />
       </Form.Group>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>staff ID</Form.Label>
-          <Form.Control placeholder="Staff ID" onChange={(e) => {
+          <Form.Control placeholder="Staff ID" id='staffIDInput' onChange={(e) => {
             setStaffID(e.target.value)
-          }} />
+          }} 
+          value={staffID}/>
         </Col>
         <Col>
           <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control placeholder="Emergency Contact number" onChange={(e) => {
+          <Form.Control placeholder="Emergency Contact number"  id='emergencyContactNumberInput'onChange={(e) => {
             setEmergencyContactNumber(e.target.value)
-          }} />
+          }} 
+          value={emergencyContactNumber}/>
         </Col>
       </Row>
       <Row className="mb-3">
         <Col >
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Gender</Form.Label>
-            <Form.Select value={gender} onChange={(e) => setGender(e.target.value)}>
+            <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </Form.Select>
@@ -233,7 +263,7 @@ function clearForm() {
         <Col >
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
-            <Form.Select value={relationship} onChange={(e) => setRelationship(e.target.value)}>
+            <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>
@@ -244,9 +274,10 @@ function clearForm() {
 
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Enter your skills , Training and Certification details in pdf format</Form.Label>
-        <Form.Control type="file" id="skills" onChange={(e) => {
+        <Form.Control type="file"  id='skillsInput' onChange={(e) => {
           setSkills(e.target.value)
-        }} />
+        }}
+        value={skills} />
       </Form.Group>
       <br />
       <br />
