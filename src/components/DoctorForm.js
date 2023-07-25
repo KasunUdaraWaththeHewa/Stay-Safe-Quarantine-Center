@@ -261,7 +261,7 @@ function DoctorForm() {
 
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Enter skills, Training, and Certification details in pdf format</Form.Label>
-        <Form.Control type="file"id='skillsInput' onChange={(e) => setSkills(e.target.files[0])}  value={skillsAndTraining} />
+        <Form.Control type="file"id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} />
       </Form.Group>
       <br />
       <Row>
