@@ -73,7 +73,7 @@ function StaffForm() {
       document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
       document.getElementById("genderInput").value = gender;
       document.getElementById("relationshipInput").value = relationship;
-      document.getElementById("skillsInput").value = skills;
+      
 
       alert("Populated form");
     } else {
