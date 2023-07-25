@@ -66,14 +66,29 @@ function NurseForm() {
       setEmergencycontactNumber(searchResult.emergencyContactNumber);
       setGender(searchResult.gender);
       setRelationship(searchResult.relationship);
-      setSkills(searchResult.skills);
+      setSkills(searchResult.skillsAndTraining);
 
+      document.getElementById("firstNameInput").value = firstName;
+      document.getElementById("lastNameInput").value = lastName;
+      document.getElementById("nurseIDInput").value = nurseID;
+      document.getElementById("phoneNumberInput").value = phoneNumber;
+      document.getElementById("emailInput").value = email;
+      document.getElementById("nursingLicenseNoInput").value = nursingLicenseNo;
+      document.getElementById("specializationInput").value = specialization;
+      document.getElementById("professionalExperienceInput").value = professionalExperience;
+      document.getElementById("addressInput").value = address;
+      document.getElementById("avalibleDaysInput").value = avalibleDays;
+      document.getElementById("emergencyContactNumbersInput").value = emergencyContactNumbers;
+      document.getElementById("genderInput").value = gender;
+      document.getElementById("relationshipInput").value = relationship;
+      document.getElementById("skillsInput").value = skillsAndTraining;
+     
       alert("Populated form");
     }
   }
 
   useEffect(() => {
-    
+
   }, [searchResult]);
 
   function handleSearch() {
@@ -115,33 +130,33 @@ function NurseForm() {
         alert("Error deleting nurse");
       });
   }
-//update nurse
-function handleUpdate() {
-  const updatedNurse = {
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    nursingLicenseNo,
-    specialization,
-    professionalExperience,
-    address,
-    avalibleDays,
-    emergencyContactNumbers,
-    gender,
-    relationship,
-    skillsAndTraining,
-  };
+  //update nurse
+  function handleUpdate() {
+    const updatedNurse = {
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      nursingLicenseNo,
+      specialization,
+      professionalExperience,
+      address,
+      avalibleDays,
+      emergencyContactNumbers,
+      gender,
+      relationship,
+      skillsAndTraining,
+    };
 
-  axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse)
-    .then((response) => {
-      alert("Nurse updated successfully");
-    })
-    .catch((error) => {
-      console.error(error);
-      alert("Error updating nurse");
-    });
-}
+    axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse)
+      .then((response) => {
+        alert("Nurse updated successfully");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error updating nurse");
+      });
+  }
   //clear data
   function clearForm() {
     setFirstName("");
@@ -166,68 +181,68 @@ function handleUpdate() {
       <Row className="mb-3">
         <Col>
           <Form.Label>First name</Form.Label>
-          <Form.Control placeholder="First name" onChange={(e) => setFirstName(e.target.value)} />
+          <Form.Control placeholder="First name" onChange={(e) => setFirstName(e.target.value)} id='firstNameInput' value={firstName} />
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
-          <Form.Control placeholder="Last name" onChange={(e) => setLastName(e.target.value)} />
+          <Form.Control placeholder="Last name" onChange={(e) => setLastName(e.target.value)}id='lastNameInput' value={lastName} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Nurse ID</Form.Label>
-          <Form.Control placeholder="Nurse ID" onChange={(e) => setNurseID(e.target.value)} />
+          <Form.Control placeholder="Nurse ID" onChange={(e) => setNurseID(e.target.value)}id='nurseIDInput' value={nurseID}  />
         </Col>
         <Col>
           <Form.Label>Phone number</Form.Label>
-          <Form.Control placeholder="Phone number" onChange={(e) => setPhoneNumber(e.target.value)} />
+          <Form.Control placeholder="Phone number" onChange={(e) => setPhoneNumber(e.target.value)}id='phoneNumberInput' value={phoneNumber} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+          <Form.Control type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}id='emailInput' value={email} />
         </Form.Group>
 
         <Col>
           <Form.Label>Nursing license Number</Form.Label>
-          <Form.Control placeholder="Medical license Number" onChange={(e) => setNursingLicenseNumber(e.target.value)} />
+          <Form.Control placeholder="Medical license Number" onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Specialization</Form.Label>
-          <Form.Control placeholder="Specialization" onChange={(e) => setSpecilization(e.target.value)} />
+          <Form.Control placeholder="Specialization" onChange={(e) => setSpecilization(e.target.value)}id='specializationInput' value={specialization} />
         </Col>
         <Col>
           <Form.Label>Professional Experience</Form.Label>
-          <Form.Control placeholder="Professional Experience" onChange={(e) => setExperience(e.target.value)} />
+          <Form.Control placeholder="Professional Experience" onChange={(e) => setExperience(e.target.value)}id='professionalExperienceInput' value={professionalExperience}  />
         </Col>
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} />
+        <Form.Control placeholder="1234 Main St" id='addressInput' onChange={(e) => setAddress(e.target.value)}value={address}  />
       </Form.Group>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Available Days</Form.Label>
-          <Form.Control placeholder="Available Days" onChange={(e) => setAvalibleDays(e.target.value)} />
+          <Form.Control placeholder="Available Days" id='avalibleDaysInput' onChange={(e) => setAvalibleDays(e.target.value)} value={avalibleDays} />
         </Col>
         <Col>
           <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control placeholder="Emergency Contact number" onChange={(e) => setEmergencycontactNumber(e.target.value)} />
+          <Form.Control placeholder="Emergency Contact number" id='emergencyContactNumbersInput' onChange={(e) => setEmergencycontactNumber(e.target.value)}value={emergencyContactNumbers}  />
         </Col>
       </Row>
       <Row className="mb-3">
         <Col >
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Gender</Form.Label>
-            <Form.Select value={gender} onChange={(e) => setGender(e.target.value)}>
+            <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </Form.Select>
@@ -237,7 +252,7 @@ function handleUpdate() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
 
-            <Form.Select value={relationship} onChange={(e) => setRelationship(e.target.value)}>
+            <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>
@@ -249,7 +264,7 @@ function handleUpdate() {
 
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Enter skills, Training, and Certification details in pdf format</Form.Label>
-        <Form.Control type="file" onChange={(e) => setSkills(e.target.files[0])} />
+        <Form.Control type="file" id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} value={skillsAndTraining} />
       </Form.Group>
       <br />
       <Row>
