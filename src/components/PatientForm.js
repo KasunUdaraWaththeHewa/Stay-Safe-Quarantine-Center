@@ -219,13 +219,13 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Full name</Form.Label>
-                        <Form.Control placeholder="Full name" onChange={(e) => {
+                        <Form.Control placeholder="Full name" id='fullNameInput' onChange={(e) => {
                             setfullName(e.target.value)
                         }} value={fullName} />
                     </Col>
                     <Col>
                         <Form.Label>Gender</Form.Label>
-                        <div key={`inline-radio`}>
+                        <div key={`inline-radio`} id='genderInput'>
                             <Form.Check
                                 inline
                                 type='radio'
@@ -251,6 +251,7 @@ function PatientForm() {
                             type="date"
                             name="birthdate"
                             placeholder="Date of Birth"
+                            id='dateOfBirthInput'
                             value={dateOfBirth}
                             onChange={(e) => setDateOfBirth(e.target.value)}
                         />
@@ -260,19 +261,19 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Nationality</Form.Label>
-                        <Form.Control placeholder="Nationality" onChange={(e) => {
+                        <Form.Control placeholder="Nationality" id='nationalityInput' onChange={(e) => {
                             setNationality(e.target.value)
                         }} value={nationality} />
                     </Col>
                     <Col>
                         <Form.Label>NIC Number</Form.Label>
-                        <Form.Control placeholder="NIC Number" onChange={(e) => {
+                        <Form.Control placeholder="NIC Number" id='nicNumberInput' onChange={(e) => {
                             setNIC(e.target.value)
                         }} value={nicNumber} />
                     </Col>
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={(e) => {
+                        <Form.Control type="email" placeholder="Enter email" id='emailInput' onChange={(e) => {
                             setEmail(e.target.value)
                         }} value={email} />
                     </Form.Group>
@@ -285,7 +286,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Covid-19 test results</Form.Label>
-                        <div key={`inline-radio`}>
+                        <div key={`inline-radio`} id='resultsInput'>
                             <Form.Check
                                 inline
                                 type='radio'
@@ -315,13 +316,13 @@ function PatientForm() {
                     </Col>
                     <Col>
                         <Form.Label>Allergies</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Allergies here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Allergies here' id='allergiesInput' onChange={(e) => {
                             setAllergies(e.target.value)
                         }} value={allergies} />
                     </Col>
                     <Col>
                         <Form.Label>Medications being taken</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here'id='medicalsBeingTakenInput' onChange={(e) => {
                             setMedications(e.target.value)
                         }} value={medicalsBeingTaken} />
                     </Col>
@@ -330,13 +331,13 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Existing Medical Conditions</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here'id='existingMedicalConditionInput' onChange={(e) => {
                             setMedicalConditions(e.target.value)
                         }} value={existingMedicalCondition} />
                     </Col>
                     <Col>
                         <Form.Label>Any Symptoms experienced</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Symptoms here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Symptoms here'id='symptomsInput' onChange={(e) => {
                             setSymptoms(e.target.value)
                         }} value={symptoms} />
                     </Col>
@@ -353,13 +354,14 @@ function PatientForm() {
                             type="date"
                             name="arrivaldate"
                             placeholder="Date of Arrival"
+                            id='dateOfArrivalInput'
                             value={dateOfArrival}
                             onChange={(e) => setDateOfArrival(e.target.value)}
                         />
                     </Col>
                     <Col>
                         <Form.Label>Country of Departure</Form.Label>
-                        <Form.Control placeholder="Departure Country" onChange={(e) => {
+                        <Form.Control placeholder="Departure Country" id='contryOfDepartureInput' onChange={(e) => {
                             setCountryOfDeparture(e.target.value)
                         }} value={contryOfDeparture} />
                     </Col>
@@ -368,13 +370,13 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Any Transit Points</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' id='anyTransitPointInput' onChange={(e) => {
                             setANyTransitPoints(e.target.value)
                         }} value={anyTransitPoint} />
                     </Col>
                     <Col>
                         <Form.Label>Flight or Transport Details</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' id='flightOrTransportDetailsInput' onChange={(e) => {
                             setFlightDetails(e.target.value)
                         }} value={flightOrTransportDetails} />
                     </Col>
@@ -387,17 +389,17 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of Check-In</Form.Label>
-                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={dateOfCheckIn} onChange={(e) => setDateOfCheckin(e.target.value)} />
+                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={dateOfCheckIn} id='dateOfCheckInInput' onChange={(e) => setDateOfCheckin(e.target.value)} />
                     </Col>
                     <Col>
                         <Form.Label>Assigned Room Number</Form.Label>
-                        <Form.Control placeholder="Room Number" onChange={(e) => {
+                        <Form.Control placeholder="Room Number" id='assignedRoomNoInput' onChange={(e) => {
                             setRoomNumber(e.target.value)
                         }} value={assignedRoomNo} />
                     </Col>
                     <Col>
                         <Form.Label>Duration of Stay</Form.Label>
-                        <Form.Control placeholder="Duration of Stay" onChange={(e) => {
+                        <Form.Control placeholder="Duration of Stay" id='durationOfStayInput' onChange={(e) => {
                             setDuration(e.target.value)
                         }} value={durationOfStay} />
                     </Col>
@@ -406,7 +408,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Any Specific Requirements</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' id='anySpecificRequirements' onChange={(e) => {
                             setRequirements(e.target.value)
                         }} value={anySpecificRequirements} />
                     </Col>
