@@ -81,7 +81,7 @@ function NurseForm() {
       document.getElementById("emergencyContactNumbersInput").value = emergencyContactNumbers;
       document.getElementById("genderInput").value = gender;
       document.getElementById("relationshipInput").value = relationship;
-      document.getElementById("skillsInput").value = skillsAndTraining;
+      
      
       alert("Populated form");
     }
