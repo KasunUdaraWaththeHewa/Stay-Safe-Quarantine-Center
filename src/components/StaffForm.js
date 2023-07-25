@@ -277,7 +277,7 @@ function clearForm() {
         <Form.Control type="file"  id='skillsInput' onChange={(e) => {
           setSkills(e.target.value)
         }}
-        value={skills} />
+        />
       </Form.Group>
       <br />
       <br />
