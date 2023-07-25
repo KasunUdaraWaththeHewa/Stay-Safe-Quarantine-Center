@@ -62,32 +62,51 @@ function PatientForm() {
     //serach patient
     function populateFormWithFetchedData() {
         if (searchResult) {
-            setfullName(searchResult.firstName);
-            setGender(searchResult.lastName);
-            setDateOfBirth(searchResult.doctorID);
-            setNationality(searchResult.phoneNumber);
-            setNIC(searchResult.email);
-            setEmail(searchResult.medicalLicenseNo);
-            setResults(searchResult.specialization);
-            setAllergies(searchResult.professionalExperience);
-            setMedications(searchResult.address);
-            setMedicalConditions(searchResult.avalibleDays);
-            setSymptoms(searchResult.emergencyContactNumber);
-            setDateOfArrival(searchResult.gender);
-            setCountryOfDeparture(searchResult.relationship);
-            setANyTransitPoints(searchResult.skills);
+            setfullName(searchResult.fullName);
+            setGender(searchResult.gender);
+            setDateOfBirth(searchResult.dateOfBirth);
+            setNationality(searchResult.nationality);
+            setNIC(searchResult.nicNumber);
+            setEmail(searchResult.email);
+            setResults(searchResult.results);
+            setAllergies(searchResult.allergies);
+            setMedications(searchResult.medicalsBeingTaken);
+            setMedicalConditions(searchResult.existingMedicalCondition);
+            setSymptoms(searchResult.symptoms);
+            setDateOfArrival(searchResult.dateOfArrival);
+            setCountryOfDeparture(searchResult.contryOfDeparture);
+            setANyTransitPoints(searchResult.anyTransitPoint);
             setFlightDetails(searchResult.flightOrTransportDetails);
             setDateOfCheckin(searchResult.dateOfCheckIn);
             setRoomNumber(searchResult.assignedRoomNo);
             setDuration(searchResult.durationOfStay);
             setRequirements(searchResult.anySpecificRequirements);
 
+            document.getElementById("fullNameInput").value = fullName;
+            document.getElementById("genderInput").value = gender;
+            document.getElementById("dateOfBirthInput").value = dateOfBirth;
+            document.getElementById("nationalityInput").value = nationality;
+            document.getElementById("nicNumberInput").value = nicNumber;
+            document.getElementById("emailInput").value = email;
+            document.getElementById("resultsInput").value = results;
+            document.getElementById("allergiesInput").value = allergies;
+            document.getElementById("medicalsBeingTakenInput").value = medicalsBeingTaken;
+            document.getElementById("existingMedicalConditionInput").value = existingMedicalCondition;
+            document.getElementById("symptomsInput").value = symptoms;
+            document.getElementById("dateOfArrivalInput").value = dateOfArrival;
+            document.getElementById("contryOfDepartureInput").value = contryOfDeparture;
+            document.getElementById("anyTransitPointInput").value = anyTransitPoint;
+            document.getElementById("flightOrTransportDetailsInput").value = flightOrTransportDetails;
+            document.getElementById("dateOfCheckInInput").value = dateOfCheckIn;
+            document.getElementById("assignedRoomNoInput").value = assignedRoomNo;
+            document.getElementById("durationOfStayInput").value = durationOfStay;
+            document.getElementById("anySpecificRequirementsInput").value = anySpecificRequirements;
             alert("Populated form");
         }
     }
 
     useEffect(() => {
-        
+
     }, [searchResult]);
 
     function handleSearch() {
@@ -135,64 +154,64 @@ function PatientForm() {
                 alert("Error deleting patient");
             });
     }
-//update patient
-function handleUpdate() {
-    const updatedPatient = {
-      fullName,
-      gender,
-      dateOfBirth,
-      nationality,
-      nicNumber,
-      email,
-      results,
-      allergies,
-      medicalsBeingTaken,
-      existingMedicalCondition,
-      symptoms,
-      dateOfArrival,
-      contryOfDeparture,
-      anyTransitPoint,
-      flightOrTransportDetails,
-      dateOfCheckIn,
-      assignedRoomNo,
-      durationOfStay,
-      anySpecificRequirements,
-    };
+    //update patient
+    function handleUpdate() {
+        const updatedPatient = {
+            fullName,
+            gender,
+            dateOfBirth,
+            nationality,
+            nicNumber,
+            email,
+            results,
+            allergies,
+            medicalsBeingTaken,
+            existingMedicalCondition,
+            symptoms,
+            dateOfArrival,
+            contryOfDeparture,
+            anyTransitPoint,
+            flightOrTransportDetails,
+            dateOfCheckIn,
+            assignedRoomNo,
+            durationOfStay,
+            anySpecificRequirements,
+        };
 
-    axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient)
-      .then((response) => {
-        alert("Patient updated successfully");
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Error updating patient");
-      });
-  }
-    
-  //clear data
-  function clearForm() {
-    setfullName("");
-    setGender("Male");
-    setDateOfBirth("");
-    setNationality("");
-    setNIC("");
-    setEmail("");
-    setResults("Not Tested");
-    setAllergies("");
-    setMedications("");
-    setMedicalConditions("");
-    setSymptoms("");
-    setDateOfArrival("");
-    setCountryOfDeparture("");
-    setANyTransitPoints("");
-    setFlightDetails("");
-    setDateOfCheckin("");
-    setRoomNumber("");
-    setDuration("");
-    setRequirements("");
+        axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient)
+            .then((response) => {
+                alert("Patient updated successfully");
+            })
+            .catch((error) => {
+                console.error(error);
+                alert("Error updating patient");
+            });
+    }
 
-    alert("Cleared form");
-  }
+    //clear data
+    function clearForm() {
+        setfullName("");
+        setGender("Male");
+        setDateOfBirth("");
+        setNationality("");
+        setNIC("");
+        setEmail("");
+        setResults("Not Tested");
+        setAllergies("");
+        setMedications("");
+        setMedicalConditions("");
+        setSymptoms("");
+        setDateOfArrival("");
+        setCountryOfDeparture("");
+        setANyTransitPoints("");
+        setFlightDetails("");
+        setDateOfCheckin("");
+        setRoomNumber("");
+        setDuration("");
+        setRequirements("");
+
+        alert("Cleared form");
+    }
     return (
         <Form>
             <fieldset>
@@ -202,7 +221,7 @@ function handleUpdate() {
                         <Form.Label>Full name</Form.Label>
                         <Form.Control placeholder="Full name" onChange={(e) => {
                             setfullName(e.target.value)
-                        }} />
+                        }} value={fullName} />
                     </Col>
                     <Col>
                         <Form.Label>Gender</Form.Label>
@@ -243,19 +262,19 @@ function handleUpdate() {
                         <Form.Label>Nationality</Form.Label>
                         <Form.Control placeholder="Nationality" onChange={(e) => {
                             setNationality(e.target.value)
-                        }} />
+                        }} value={nationality} />
                     </Col>
                     <Col>
                         <Form.Label>NIC Number</Form.Label>
                         <Form.Control placeholder="NIC Number" onChange={(e) => {
                             setNIC(e.target.value)
-                        }} />
+                        }} value={nicNumber} />
                     </Col>
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" onChange={(e) => {
                             setEmail(e.target.value)
-                        }} />
+                        }} value={email} />
                     </Form.Group>
                 </Row>
             </fieldset>
@@ -298,13 +317,13 @@ function handleUpdate() {
                         <Form.Label>Allergies</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Allergies here' onChange={(e) => {
                             setAllergies(e.target.value)
-                        }} />
+                        }} value={allergies} />
                     </Col>
                     <Col>
                         <Form.Label>Medications being taken</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here' onChange={(e) => {
                             setMedications(e.target.value)
-                        }} />
+                        }} value={medicalsBeingTaken} />
                     </Col>
                 </Row>
 
@@ -313,13 +332,13 @@ function handleUpdate() {
                         <Form.Label>Existing Medical Conditions</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here' onChange={(e) => {
                             setMedicalConditions(e.target.value)
-                        }} />
+                        }} value={existingMedicalCondition} />
                     </Col>
                     <Col>
                         <Form.Label>Any Symptoms experienced</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Symptoms here' onChange={(e) => {
                             setSymptoms(e.target.value)
-                        }} />
+                        }} value={symptoms} />
                     </Col>
                 </Row>
             </fieldset>
@@ -342,7 +361,7 @@ function handleUpdate() {
                         <Form.Label>Country of Departure</Form.Label>
                         <Form.Control placeholder="Departure Country" onChange={(e) => {
                             setCountryOfDeparture(e.target.value)
-                        }} />
+                        }} value={contryOfDeparture} />
                     </Col>
                 </Row>
 
@@ -351,13 +370,13 @@ function handleUpdate() {
                         <Form.Label>Any Transit Points</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' onChange={(e) => {
                             setANyTransitPoints(e.target.value)
-                        }} />
+                        }} value={anyTransitPoint} />
                     </Col>
                     <Col>
                         <Form.Label>Flight or Transport Details</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' onChange={(e) => {
                             setFlightDetails(e.target.value)
-                        }} />
+                        }} value={flightOrTransportDetails} />
                     </Col>
                 </Row>
             </fieldset>
@@ -374,13 +393,13 @@ function handleUpdate() {
                         <Form.Label>Assigned Room Number</Form.Label>
                         <Form.Control placeholder="Room Number" onChange={(e) => {
                             setRoomNumber(e.target.value)
-                        }} />
+                        }} value={assignedRoomNo} />
                     </Col>
                     <Col>
                         <Form.Label>Duration of Stay</Form.Label>
                         <Form.Control placeholder="Duration of Stay" onChange={(e) => {
                             setDuration(e.target.value)
-                        }} />
+                        }} value={durationOfStay} />
                     </Col>
                 </Row>
 
@@ -389,7 +408,7 @@ function handleUpdate() {
                         <Form.Label>Any Specific Requirements</Form.Label>
                         <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' onChange={(e) => {
                             setRequirements(e.target.value)
-                        }} />
+                        }} value={anySpecificRequirements} />
                     </Col>
                 </Row>
             </fieldset>
