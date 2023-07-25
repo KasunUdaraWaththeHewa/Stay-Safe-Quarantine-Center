@@ -208,7 +208,7 @@ function NurseForm() {
 
         <Col>
           <Form.Label>Nursing license Number</Form.Label>
-          <Form.Control placeholder="Medical license Number" onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
+          <Form.Control placeholder="Nursing license Number" onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
         </Col>
       </Row>
 
@@ -264,7 +264,7 @@ function NurseForm() {
 
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Enter skills, Training, and Certification details in pdf format</Form.Label>
-        <Form.Control type="file" id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} value={skillsAndTraining} />
+        <Form.Control type="file" id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} />
       </Form.Group>
       <br />
       <Row>
