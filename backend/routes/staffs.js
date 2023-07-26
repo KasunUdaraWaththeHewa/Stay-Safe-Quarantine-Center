@@ -54,7 +54,7 @@ router.route("/get/:staffID").get(async (req, res) => {
 
   
 router.route("/update/:staffID").put(async (req, res) => {
-  let staffID = req.params.staffID;
+  const staffID = req.params.staffID;
   const {
     firstName,
     lastName,
@@ -68,7 +68,7 @@ router.route("/update/:staffID").put(async (req, res) => {
     relationship,
     skills,
   } = req.body;
-  
+
   const updateStaff = {
     firstName,
     lastName,
@@ -83,13 +83,13 @@ router.route("/update/:staffID").put(async (req, res) => {
     skills,
   };
 
-  const filter = { staffID: staffID };
-
   try {
-    const updatedStaff = await staff.findOneAndUpdate(filter, updateStaff, {
-      new: true,
-    });
-    
+    const updatedStaff = await staff.findOneAndUpdate(
+      { staffID: staffID }, // Filter by staffID
+      updateStaff,
+      { new: true } // To return the updated document instead of the original one
+    );
+
     if (updatedStaff) {
       res.status(200).send({ status: "Staff member updated", data: updatedStaff });
     } else {
@@ -100,6 +100,7 @@ router.route("/update/:staffID").put(async (req, res) => {
     res.status(500).send({ status: "Error with updating data", error: err.message });
   }
 });
+
 
 
 
