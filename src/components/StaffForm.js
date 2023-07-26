@@ -177,14 +177,14 @@ function clearForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>First name</Form.Label>
-          <Form.Control placeholder="First name"  id='firstNameInput' onChange={(e) => {
+          <Form.Control id='firstNameInput' onChange={(e) => {
             setFirstName(e.target.value)
           }}
           value={firstName} />
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
-          <Form.Control placeholder="Last name" id='lastNameInput'onChange={(e) => {
+          <Form.Control id='lastNameInput'onChange={(e) => {
             setLastName(e.target.value)
           }}
           value={lastName} />
@@ -194,14 +194,14 @@ function clearForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>Employee ID</Form.Label>
-          <Form.Control placeholder="Employee ID" id='employeeIDInput' onChange={(e) => {
+          <Form.Control id='employeeIDInput' onChange={(e) => {
             setEmployeeID(e.target.value)
           }}
           value={employeeID} />
         </Col>
         <Col>
           <Form.Label>Phone number</Form.Label>
-          <Form.Control placeholder="Phone number" id='phoneNumberInput' onChange={(e) => {
+          <Form.Control id='phoneNumberInput' onChange={(e) => {
             setPhoneNumber(e.target.value)
           }}
           value={phoneNumber} />
@@ -211,7 +211,7 @@ function clearForm() {
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" id='emailInput' onChange={(e) => {
+          <Form.Control type="email" id='emailInput' onChange={(e) => {
             setEmail(e.target.value)
           }}
           value={email} />
@@ -219,7 +219,7 @@ function clearForm() {
 
         <Col>
           <Form.Label>Job Role</Form.Label>
-          <Form.Control placeholder="Job Role" id='jobRoleInput' onChange={(e) => {
+          <Form.Control id='jobRoleInput' onChange={(e) => {
             setJobRole(e.target.value)
           }}
           value={jobRole} />
@@ -228,7 +228,7 @@ function clearForm() {
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" id='addressInput' onChange={(e) => {
+        <Form.Control id='addressInput' onChange={(e) => {
           setAddress(e.target.value)
         }}
         value={address} />
@@ -237,14 +237,14 @@ function clearForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>staff ID</Form.Label>
-          <Form.Control placeholder="Staff ID" id='staffIDInput' onChange={(e) => {
+          <Form.Control id='staffIDInput' onChange={(e) => {
             setStaffID(e.target.value)
           }} 
           value={staffID}/>
         </Col>
         <Col>
           <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control placeholder="Emergency Contact number"  id='emergencyContactNumberInput'onChange={(e) => {
+          <Form.Control id='emergencyContactNumberInput'onChange={(e) => {
             setEmergencyContactNumber(e.target.value)
           }} 
           value={emergencyContactNumber}/>
