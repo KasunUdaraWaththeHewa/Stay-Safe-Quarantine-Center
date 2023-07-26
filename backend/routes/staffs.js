@@ -55,7 +55,20 @@ router.route("/get/:staffID").get(async (req, res) => {
   
 router.route("/update/:staffID").put(async (req, res) => {
   let staffID = req.params.staffID;
-  const { firstName, lastName, employeeID, phoneNumber, email, jobRole, address, emergencyContactNumber, gender, relationship, skills } = req.body;
+  const {
+    firstName,
+    lastName,
+    employeeID,
+    phoneNumber,
+    email,
+    jobRole,
+    address,
+    emergencyContactNumber,
+    gender,
+    relationship,
+    skills,
+  } = req.body;
+  
   const updateStaff = {
     firstName,
     lastName,
@@ -67,21 +80,27 @@ router.route("/update/:staffID").put(async (req, res) => {
     emergencyContactNumber,
     gender,
     relationship,
-    skills
+    skills,
   };
 
-  const updatedStaff = await staff.findOneAndUpdate({ staffID }, updateStaff, { new: true })
-    .then((staff) => {
-      if (!staff) {
-        return res.status(404).json({ error: "Staff member not found" });
-      }
-      res.status(200).json({ status: "Staff member updated", staff });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ status: "Error with updating staff member", error: err.message });
+  const filter = { staffID: staffID };
+
+  try {
+    const updatedStaff = await staff.findOneAndUpdate(filter, updateStaff, {
+      new: true,
     });
+    
+    if (updatedStaff) {
+      res.status(200).send({ status: "Staff member updated", data: updatedStaff });
+    } else {
+      res.status(404).send({ status: "Staff member not found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error with updating data", error: err.message });
+  }
 });
+
 
 
 router.route("/delete/:staffID").delete(async (req, res) => {
