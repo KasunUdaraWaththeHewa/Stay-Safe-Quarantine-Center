@@ -44,11 +44,11 @@ router.route("/add").post((req,res)=>{
 router.route("/get/:doctorID").get(async (req, res) => {
   let doctorID = req.params.doctorID;
   const user = await doctor.findOne({ doctorID })
-    .then((doctor) => {
-      if (!doctor) {
+    .then((user) => {
+      if (!user) {
         return res.status(404).json({ error: "Doctor not found" });
       }
-      res.status(200).json({ status: "Doctor fetched", doctor });
+      res.status(200).json({ status: "Doctor fetched", user });
     })
     .catch((err) => {
       console.log(err.message);
