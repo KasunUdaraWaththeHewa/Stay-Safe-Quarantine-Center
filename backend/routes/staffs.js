@@ -85,9 +85,9 @@ router.route("/update/:staffID").put(async (req, res) => {
 
   try {
     const updatedStaff = await staff.findOneAndUpdate(
-      { staffID: staffID }, // Filter by staffID
+      { staffID: staffID },
       updateStaff,
-      { new: true } // To return the updated document instead of the original one
+      { new: true }
     );
 
     if (updatedStaff) {
