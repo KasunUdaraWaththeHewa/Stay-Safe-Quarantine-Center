@@ -92,11 +92,11 @@ router.route("/update/:nurseID").put(async (req, res) => {
   };
 
   const updatedNurse = await nurse.findOneAndUpdate({ nurseID }, updateNurse, { new: true })
-    .then((nurse) => {
-      if (!nurse) {
+    .then((updatedNurse) => {
+      if (!updatedNurse) {
         return res.status(404).json({ error: "Nurse not found" });
       }
-      res.status(200).json({ status: "Nurse updated", nurse });
+      res.status(200).json({ status: "Nurse updated", updatedNurse });
     })
     .catch((err) => {
       console.log(err);
