@@ -183,7 +183,7 @@ function DoctorForm() {
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
-          <Form.Control placeholder="Last name" id='lastNameInput' value={lastName} onChange={(e) => setLastName(e.target.value)}   />
+          <Form.Control placeholder="Last name" id='lastNameInput'  onChange={(e) => setLastName(e.target.value)}  value={lastName} />
         </Col>
       </Row>
 
