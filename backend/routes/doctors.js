@@ -92,18 +92,24 @@ router.route("/update/:doctorID").put(async (req, res) => {
     skillsAndTraining
   };
 
-  const updatedDoctor = await doctor.findOneAndUpdate({ doctorID }, updateDoctor, { new: true })
-    .then((updatedDoctor) => {
-      if (!updatedDoctor) {
-        return res.status(404).json({ error: "Doctor not found" });
-      }
-      res.status(200).json({ status: "Doctor updated", updatedDoctor });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ status: "Error with updating doctor", error: err.message });
-    });
+  try {
+    const updatedDoctor = await doctor.findOneAndUpdate(
+      { doctorID: doctorID },
+      updateDoctor,
+      { new: true }
+    );
+
+    if (updatedDoctor) {
+      res.status(200).send({ status: "Doctor updated", data: updatedDoctor });
+    } else {
+      res.status(404).send({ status: "Doctor not found"});
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error with updating data", error: err.message });
+  }
 });
+
 
 router.route("/delete/:doctorID").delete(async (req, res) => {
   let doctorID = req.params.doctorID;
