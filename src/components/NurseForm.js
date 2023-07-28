@@ -53,20 +53,20 @@ function NurseForm() {
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.nurse.firstName);
-      setLastName(searchResult.nurse.lastName);
-      setNurseID(searchResult.nurse.nurseID);
-      setPhoneNumber(searchResult.nurse.phoneNumber);
-      setEmail(searchResult.nurse.email);
-      setNursingLicenseNumber(searchResult.nurse.nursingLicenseNo);
-      setSpecilization(searchResult.nurse.specialization);
-      setExperience(searchResult.nurse.professionalExperience);
-      setAddress(searchResult.nurse.address);
-      setAvalibleDays(searchResult.nurse.avalibleDays);
-      setEmergencycontactNumber(searchResult.nurse.emergencyContactNumber);
-      setGender(searchResult.nurse.gender);
-      setRelationship(searchResult.nurse.relationship);
-      setSkills(searchResult.nurse.skillsAndTraining);
+      setFirstName(searchResult.user.firstName);
+      setLastName(searchResult.user.lastName);
+      setNurseID(searchResult.user.nurseID);
+      setPhoneNumber(searchResult.user.phoneNumber);
+      setEmail(searchResult.user.email);
+      setNursingLicenseNumber(searchResult.user.nursingLicenseNo);
+      setSpecilization(searchResult.user.specialization);
+      setExperience(searchResult.user.professionalExperience);
+      setAddress(searchResult.user.address);
+      setAvalibleDays(searchResult.user.avalibleDays);
+      setEmergencycontactNumber(searchResult.user.emergencyContactNumber);
+      setGender(searchResult.user.gender);
+      setRelationship(searchResult.user.relationship);
+      setSkills(searchResult.user.skillsAndTraining);
 
       document.getElementById("firstNameInput").value = firstName;
       document.getElementById("lastNameInput").value = lastName;

@@ -51,17 +51,17 @@ function StaffForm() {
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.staffMember.firstName);
-      setLastName(searchResult.staffMember.lastName);
-      setEmployeeID(searchResult.staffMember.employeeID);
-      setPhoneNumber(searchResult.staffMember.phoneNumber);
-      setEmail(searchResult.staffMember.email);
-      setJobRole(searchResult.staffMember.jobRole);
-      setAddress(searchResult.staffMember.address);
-      setEmergencyContactNumber(searchResult.staffMember.emergencyContactNumber);
-      setGender(searchResult.staffMember.gender);
-      setRelationship(searchResult.staffMember.relationship);
-      setSkills(searchResult.staffMember.skills);
+      setFirstName(searchResult.user.firstName);
+      setLastName(searchResult.user.lastName);
+      setEmployeeID(searchResult.user.employeeID);
+      setPhoneNumber(searchResult.user.phoneNumber);
+      setEmail(searchResult.user.email);
+      setJobRole(searchResult.user.jobRole);
+      setAddress(searchResult.user.address);
+      setEmergencyContactNumber(searchResult.user.emergencyContactNumber);
+      setGender(searchResult.user.gender);
+      setRelationship(searchResult.user.relationship);
+      setSkills(searchResult.user.skills);
 
       document.getElementById("firstNameInput").value = firstName;
       document.getElementById("lastNameInput").value = lastName;
@@ -72,7 +72,7 @@ function StaffForm() {
       document.getElementById("addressInput").value = address;
       document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
       document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship;
+      document.getElementById("relationshipInput").value = relationship
       
 
       alert("Populated form");

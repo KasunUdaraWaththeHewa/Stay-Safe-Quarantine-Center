@@ -52,20 +52,20 @@ function DoctorForm() {
   //serach doctor
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.doctor.firstName);
-      setLastName(searchResult.doctor.lastName);
-      setDoctorID(searchResult.doctor.doctorID);
-      setPhoneNumber(searchResult.doctor.phoneNumber);
-      setEmail(searchResult.doctor.email);
-      setMedicalLicenseNumber(searchResult.doctor.medicalLicenseNo);
-      setSpecilization(searchResult.doctor.specialization);
-      setExperience(searchResult.doctor.professionalExperience);
-      setAddress(searchResult.doctor.address);
-      setAvalibleDays(searchResult.doctor.avalibleDays);
-      setEmergencycontactNumber(searchResult.doctor.emergencycontactNumber);
-      setGender(searchResult.doctor.gender);
-      setRelationship(searchResult.doctor.relationship);
-      setSkills(searchResult.doctor.skills);
+      setFirstName(searchResult.user.firstName);
+      setLastName(searchResult.user.lastName);
+      setDoctorID(searchResult.user.doctorID);
+      setPhoneNumber(searchResult.user.phoneNumber);
+      setEmail(searchResult.user.email);
+      setMedicalLicenseNumber(searchResult.user.medicalLicenseNo);
+      setSpecilization(searchResult.user.specialization);
+      setExperience(searchResult.user.professionalExperience);
+      setAddress(searchResult.user.address);
+      setAvalibleDays(searchResult.user.avalibleDays);
+      setEmergencycontactNumber(searchResult.user.emergencycontactNumber);
+      setGender(searchResult.user.gender);
+      setRelationship(searchResult.user.relationship);
+      setSkills(searchResult.user.skills);
 
       document.getElementById("firstNameInput").value = firstName;
       document.getElementById("lastNameInput").value = lastName;

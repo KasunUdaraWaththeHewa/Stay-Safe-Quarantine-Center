@@ -59,7 +59,7 @@ router.route("/get/:nicNumber").get(async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "Patient not found" })
     }
-    res.status(200).json({ status: "Patient fetched", user })
+    res.status(200).json({ status: "Patient fetched", user });
   })
   .catch((err) => {
     console.log(err.message);

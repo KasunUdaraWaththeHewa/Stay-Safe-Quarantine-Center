@@ -61,26 +61,29 @@ function PatientForm() {
     }
     //serach patient
     function populateFormWithFetchedData() {
+
+        console.log(searchResult)
+        // return;
         if (searchResult) {
-            setfullName(searchResult.patient.fullName);
-            setGender(searchResult.patient.gender);
-            setDateOfBirth(searchResult.patient.dateOfBirth);
-            setNationality(searchResult.patient.nationality);
-            setNIC(searchResult.patient.nicNumber);
-            setEmail(searchResult.patient.email);
-            setResults(searchResult.patient.results);
-            setAllergies(searchResult.patient.allergies);
-            setMedications(searchResult.patient.medicalsBeingTaken);
-            setMedicalConditions(searchResult.patient.existingMedicalCondition);
-            setSymptoms(searchResult.patient.symptoms);
-            setDateOfArrival(searchResult.patient.dateOfArrival);
-            setCountryOfDeparture(searchResult.patient.contryOfDeparture);
-            setANyTransitPoints(searchResult.patient.anyTransitPoint);
-            setFlightDetails(searchResult.patient.flightOrTransportDetails);
-            setDateOfCheckin(searchResult.patient.dateOfCheckIn);
-            setRoomNumber(searchResult.patient.assignedRoomNo);
-            setDuration(searchResult.patient.durationOfStay);
-            setRequirements(searchResult.patient.anySpecificRequirements);
+            setfullName(searchResult.user.fullName);
+            setGender(searchResult.user.gender);
+            setDateOfBirth(searchResult.user.dateOfBirth);
+            setNationality(searchResult.user.nationality);
+            setNIC(searchResult.user.nicNumber);
+            setEmail(searchResult.user.email);
+            setResults(searchResult.user.results);
+            setAllergies(searchResult.user.allergies);
+            setMedications(searchResult.user.medicalsBeingTaken);
+            setMedicalConditions(searchResult.user.existingMedicalCondition);
+            setSymptoms(searchResult.user.symptoms);
+            setDateOfArrival(searchResult.user.dateOfArrival);
+            setCountryOfDeparture(searchResult.user.contryOfDeparture);
+            setANyTransitPoints(searchResult.user.anyTransitPoint);
+            setFlightDetails(searchResult.user.flightOrTransportDetails);
+            setDateOfCheckin(searchResult.user.dateOfCheckIn);
+            setRoomNumber(searchResult.user.assignedRoomNo);
+            setDuration(searchResult.user.durationOfStay);
+            setRequirements(searchResult.user.anySpecificRequirements);
 
             document.getElementById("fullNameInput").value = fullName;
             document.getElementById("genderInput").value = gender;
@@ -116,7 +119,7 @@ function PatientForm() {
             if (response.data) {
               alert("Patient found");
               console.log(response.data);
-              populateFormWithFetchedData(response.data);
+              populateFormWithFetchedData()
             } else {
               alert("Patient not found");
             }
@@ -124,7 +127,7 @@ function PatientForm() {
           .catch((error) => {
             console.error(error);
             setSearchResult(null);
-            alert("Error searching for Patirnt");
+            alert("Error searching for Patient");
           });
       }
 
