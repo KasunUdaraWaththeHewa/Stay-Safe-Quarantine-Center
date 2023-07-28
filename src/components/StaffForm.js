@@ -51,17 +51,17 @@ function StaffForm() {
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.firstName);
-      setLastName(searchResult.lastName);
-      setEmployeeID(searchResult.employeeID);
-      setPhoneNumber(searchResult.phoneNumber);
-      setEmail(searchResult.email);
-      setJobRole(searchResult.jobRole);
-      setAddress(searchResult.address);
-      setEmergencyContactNumber(searchResult.emergencyContactNumber);
-      setGender(searchResult.gender);
-      setRelationship(searchResult.relationship);
-      setSkills(searchResult.skills);
+      setFirstName(searchResult.staffMember.firstName);
+      setLastName(searchResult.staffMember.lastName);
+      setEmployeeID(searchResult.staffMember.employeeID);
+      setPhoneNumber(searchResult.staffMember.phoneNumber);
+      setEmail(searchResult.staffMember.email);
+      setJobRole(searchResult.staffMember.jobRole);
+      setAddress(searchResult.staffMember.address);
+      setEmergencyContactNumber(searchResult.staffMember.emergencyContactNumber);
+      setGender(searchResult.staffMember.gender);
+      setRelationship(searchResult.staffMember.relationship);
+      setSkills(searchResult.staffMember.skills);
 
       document.getElementById("firstNameInput").value = firstName;
       document.getElementById("lastNameInput").value = lastName;
@@ -92,7 +92,7 @@ function StaffForm() {
         setSearchResult(response.data);
         if (response.data) {
           alert("Staff member found");
-          populateFormWithFetchedData();
+          populateFormWithFetchedData(response.data);
         } else {
           alert("Staff member not found");
         }
