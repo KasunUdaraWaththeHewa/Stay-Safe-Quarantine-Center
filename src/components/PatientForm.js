@@ -62,25 +62,25 @@ function PatientForm() {
     //serach patient
     function populateFormWithFetchedData() {
         if (searchResult) {
-            setfullName(searchResult.fullName);
-            setGender(searchResult.gender);
-            setDateOfBirth(searchResult.dateOfBirth);
-            setNationality(searchResult.nationality);
-            setNIC(searchResult.nicNumber);
-            setEmail(searchResult.email);
-            setResults(searchResult.results);
-            setAllergies(searchResult.allergies);
-            setMedications(searchResult.medicalsBeingTaken);
-            setMedicalConditions(searchResult.existingMedicalCondition);
-            setSymptoms(searchResult.symptoms);
-            setDateOfArrival(searchResult.dateOfArrival);
-            setCountryOfDeparture(searchResult.contryOfDeparture);
-            setANyTransitPoints(searchResult.anyTransitPoint);
-            setFlightDetails(searchResult.flightOrTransportDetails);
-            setDateOfCheckin(searchResult.dateOfCheckIn);
-            setRoomNumber(searchResult.assignedRoomNo);
-            setDuration(searchResult.durationOfStay);
-            setRequirements(searchResult.anySpecificRequirements);
+            setfullName(searchResult.patient.fullName);
+            setGender(searchResult.patient.gender);
+            setDateOfBirth(searchResult.patient.dateOfBirth);
+            setNationality(searchResult.patient.nationality);
+            setNIC(searchResult.patient.nicNumber);
+            setEmail(searchResult.patient.email);
+            setResults(searchResult.patient.results);
+            setAllergies(searchResult.patient.allergies);
+            setMedications(searchResult.patient.medicalsBeingTaken);
+            setMedicalConditions(searchResult.patient.existingMedicalCondition);
+            setSymptoms(searchResult.patient.symptoms);
+            setDateOfArrival(searchResult.patient.dateOfArrival);
+            setCountryOfDeparture(searchResult.patient.contryOfDeparture);
+            setANyTransitPoints(searchResult.patient.anyTransitPoint);
+            setFlightDetails(searchResult.patient.flightOrTransportDetails);
+            setDateOfCheckin(searchResult.patient.dateOfCheckIn);
+            setRoomNumber(searchResult.patient.assignedRoomNo);
+            setDuration(searchResult.patient.durationOfStay);
+            setRequirements(searchResult.patient.anySpecificRequirements);
 
             document.getElementById("fullNameInput").value = fullName;
             document.getElementById("genderInput").value = gender;
@@ -113,6 +113,7 @@ function PatientForm() {
         axios.get(`http://localhost:8070/patient/get/${nicNumber}`)
             .then((response) => {
                 setSearchResult(response.data);
+                console.log(response.data);
                 alert("Patient found");
                 populateFormWithFetchedData();
             })
@@ -219,7 +220,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Full name</Form.Label>
-                        <Form.Control placeholder="Full name" id='fullNameInput' onChange={(e) => {
+                        <Form.Control id='fullNameInput' onChange={(e) => {
                             setfullName(e.target.value)
                         }} value={fullName} />
                     </Col>
@@ -250,7 +251,6 @@ function PatientForm() {
                         <Form.Control
                             type="date"
                             name="birthdate"
-                            placeholder="Date of Birth"
                             id='dateOfBirthInput'
                             value={dateOfBirth}
                             onChange={(e) => setDateOfBirth(e.target.value)}
@@ -261,19 +261,19 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Nationality</Form.Label>
-                        <Form.Control placeholder="Nationality" id='nationalityInput' onChange={(e) => {
+                        <Form.Control  id='nationalityInput' onChange={(e) => {
                             setNationality(e.target.value)
                         }} value={nationality} />
                     </Col>
                     <Col>
                         <Form.Label>NIC Number</Form.Label>
-                        <Form.Control placeholder="NIC Number" id='nicNumberInput' onChange={(e) => {
+                        <Form.Control id='nicNumberInput' onChange={(e) => {
                             setNIC(e.target.value)
                         }} value={nicNumber} />
                     </Col>
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" id='emailInput' onChange={(e) => {
+                        <Form.Control type="email"  id='emailInput' onChange={(e) => {
                             setEmail(e.target.value)
                         }} value={email} />
                     </Form.Group>
@@ -316,13 +316,13 @@ function PatientForm() {
                     </Col>
                     <Col>
                         <Form.Label>Allergies</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Allergies here' id='allergiesInput' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2}  id='allergiesInput' onChange={(e) => {
                             setAllergies(e.target.value)
                         }} value={allergies} />
                     </Col>
                     <Col>
                         <Form.Label>Medications being taken</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here'id='medicalsBeingTakenInput' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} id='medicalsBeingTakenInput' onChange={(e) => {
                             setMedications(e.target.value)
                         }} value={medicalsBeingTaken} />
                     </Col>
@@ -331,13 +331,13 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Existing Medical Conditions</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Medications here'id='existingMedicalConditionInput' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} id='existingMedicalConditionInput' onChange={(e) => {
                             setMedicalConditions(e.target.value)
                         }} value={existingMedicalCondition} />
                     </Col>
                     <Col>
                         <Form.Label>Any Symptoms experienced</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Symptoms here'id='symptomsInput' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} id='symptomsInput' onChange={(e) => {
                             setSymptoms(e.target.value)
                         }} value={symptoms} />
                     </Col>
@@ -353,7 +353,6 @@ function PatientForm() {
                         <Form.Control
                             type="date"
                             name="arrivaldate"
-                            placeholder="Date of Arrival"
                             id='dateOfArrivalInput'
                             value={dateOfArrival}
                             onChange={(e) => setDateOfArrival(e.target.value)}
@@ -361,7 +360,7 @@ function PatientForm() {
                     </Col>
                     <Col>
                         <Form.Label>Country of Departure</Form.Label>
-                        <Form.Control placeholder="Departure Country" id='contryOfDepartureInput' onChange={(e) => {
+                        <Form.Control  id='contryOfDepartureInput' onChange={(e) => {
                             setCountryOfDeparture(e.target.value)
                         }} value={contryOfDeparture} />
                     </Col>
@@ -370,13 +369,13 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Any Transit Points</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' id='anyTransitPointInput' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} id='anyTransitPointInput' onChange={(e) => {
                             setANyTransitPoints(e.target.value)
                         }} value={anyTransitPoint} />
                     </Col>
                     <Col>
                         <Form.Label>Flight or Transport Details</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' id='flightOrTransportDetailsInput' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2}  id='flightOrTransportDetailsInput' onChange={(e) => {
                             setFlightDetails(e.target.value)
                         }} value={flightOrTransportDetails} />
                     </Col>
@@ -389,17 +388,17 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Date of Check-In</Form.Label>
-                        <Form.Control type="date" name="checkindate" placeholder="Date of Check-In" value={dateOfCheckIn} id='dateOfCheckInInput' onChange={(e) => setDateOfCheckin(e.target.value)} />
+                        <Form.Control type="date" name="checkindate" value={dateOfCheckIn} id='dateOfCheckInInput' onChange={(e) => setDateOfCheckin(e.target.value)} />
                     </Col>
                     <Col>
                         <Form.Label>Assigned Room Number</Form.Label>
-                        <Form.Control placeholder="Room Number" id='assignedRoomNoInput' onChange={(e) => {
+                        <Form.Control id='assignedRoomNoInput' onChange={(e) => {
                             setRoomNumber(e.target.value)
                         }} value={assignedRoomNo} />
                     </Col>
                     <Col>
                         <Form.Label>Duration of Stay</Form.Label>
-                        <Form.Control placeholder="Duration of Stay" id='durationOfStayInput' onChange={(e) => {
+                        <Form.Control id='durationOfStayInput' onChange={(e) => {
                             setDuration(e.target.value)
                         }} value={durationOfStay} />
                     </Col>
@@ -408,7 +407,7 @@ function PatientForm() {
                 <Row className="mb-2">
                     <Col>
                         <Form.Label>Any Specific Requirements</Form.Label>
-                        <Form.Control as="textarea" rows={2} placeholder='Enter the Details here' id='anySpecificRequirements' onChange={(e) => {
+                        <Form.Control as="textarea" rows={2} id='anySpecificRequirements' onChange={(e) => {
                             setRequirements(e.target.value)
                         }} value={anySpecificRequirements} />
                     </Col>
