@@ -92,13 +92,18 @@ function DoctorForm() {
     axios.get(`http://localhost:8070/doctor/get/${doctorID}`)
       .then((response) => {
         setSearchResult(response.data);
-        alert("Doctor found");
-        populateFormWithFetchedData();
+        if (response.data) {
+          alert("Doctor found");
+          console.log(response.data);
+          populateFormWithFetchedData(response.data);
+        } else {
+          alert("Doctor not found");
+        }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Doctor not found");
+        alert("Error searching for Doctor");
       });
   }
   // delete doctor
