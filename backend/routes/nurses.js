@@ -91,17 +91,22 @@ router.route("/update/:nurseID").put(async (req, res) => {
     skillsAndTraining
   };
 
-  const updatedNurse = await nurse.findOneAndUpdate({ nurseID }, updateNurse, { new: true })
-    .then((updatedNurse) => {
-      if (!updatedNurse) {
-        return res.status(404).json({ error: "Nurse not found" });
-      }
-      res.status(200).json({ status: "Nurse updated", updatedNurse });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ status: "Error with updating nurse", error: err.message });
-    });
+  try {
+    const updatedNurse = await nurse.findOneAndUpdate(
+      { nurseID: nurseID },
+      updateNurse,
+      { new: true }
+    );
+
+    if (updatedNurse) {
+      res.status(200).send({ status: "Nurse updated", data: updatedNurse });
+    } else {
+      res.status(404).send({ status: "Nurse not found"});
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: "Error with updating data", error: err.message });
+  }
 });
 
 router.route("/delete/:nurseID").delete(async (req, res) => {
