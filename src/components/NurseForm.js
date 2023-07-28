@@ -53,20 +53,20 @@ function NurseForm() {
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.firstName);
-      setLastName(searchResult.lastName);
-      setNurseID(searchResult.nurseID);
-      setPhoneNumber(searchResult.phoneNumber);
-      setEmail(searchResult.email);
-      setNursingLicenseNumber(searchResult.nursingLicenseNo);
-      setSpecilization(searchResult.specialization);
-      setExperience(searchResult.professionalExperience);
-      setAddress(searchResult.address);
-      setAvalibleDays(searchResult.avalibleDays);
-      setEmergencycontactNumber(searchResult.emergencyContactNumber);
-      setGender(searchResult.gender);
-      setRelationship(searchResult.relationship);
-      setSkills(searchResult.skillsAndTraining);
+      setFirstName(searchResult.nurse.firstName);
+      setLastName(searchResult.nurse.lastName);
+      setNurseID(searchResult.nurse.nurseID);
+      setPhoneNumber(searchResult.nurse.phoneNumber);
+      setEmail(searchResult.nurse.email);
+      setNursingLicenseNumber(searchResult.nurse.nursingLicenseNo);
+      setSpecilization(searchResult.nurse.specialization);
+      setExperience(searchResult.nurse.professionalExperience);
+      setAddress(searchResult.nurse.address);
+      setAvalibleDays(searchResult.nurse.avalibleDays);
+      setEmergencycontactNumber(searchResult.nurse.emergencyContactNumber);
+      setGender(searchResult.nurse.gender);
+      setRelationship(searchResult.nurse.relationship);
+      setSkills(searchResult.nurse.skillsAndTraining);
 
       document.getElementById("firstNameInput").value = firstName;
       document.getElementById("lastNameInput").value = lastName;
@@ -181,61 +181,61 @@ function NurseForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>First name</Form.Label>
-          <Form.Control placeholder="First name" onChange={(e) => setFirstName(e.target.value)} id='firstNameInput' value={firstName} />
+          <Form.Control  onChange={(e) => setFirstName(e.target.value)} id='firstNameInput' value={firstName} />
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
-          <Form.Control placeholder="Last name" onChange={(e) => setLastName(e.target.value)}id='lastNameInput' value={lastName} />
+          <Form.Control onChange={(e) => setLastName(e.target.value)}id='lastNameInput' value={lastName} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Nurse ID</Form.Label>
-          <Form.Control placeholder="Nurse ID" onChange={(e) => setNurseID(e.target.value)}id='nurseIDInput' value={nurseID}  />
+          <Form.Control  onChange={(e) => setNurseID(e.target.value)}id='nurseIDInput' value={nurseID}  />
         </Col>
         <Col>
           <Form.Label>Phone number</Form.Label>
-          <Form.Control placeholder="Phone number" onChange={(e) => setPhoneNumber(e.target.value)}id='phoneNumberInput' value={phoneNumber} />
+          <Form.Control  onChange={(e) => setPhoneNumber(e.target.value)}id='phoneNumberInput' value={phoneNumber} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}id='emailInput' value={email} />
+          <Form.Control type="email" onChange={(e) => setEmail(e.target.value)}id='emailInput' value={email} />
         </Form.Group>
 
         <Col>
           <Form.Label>Nursing license Number</Form.Label>
-          <Form.Control placeholder="Nursing license Number" onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
+          <Form.Control  onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Specialization</Form.Label>
-          <Form.Control placeholder="Specialization" onChange={(e) => setSpecilization(e.target.value)}id='specializationInput' value={specialization} />
+          <Form.Control onChange={(e) => setSpecilization(e.target.value)}id='specializationInput' value={specialization} />
         </Col>
         <Col>
           <Form.Label>Professional Experience</Form.Label>
-          <Form.Control placeholder="Professional Experience" onChange={(e) => setExperience(e.target.value)}id='professionalExperienceInput' value={professionalExperience}  />
+          <Form.Control  onChange={(e) => setExperience(e.target.value)}id='professionalExperienceInput' value={professionalExperience}  />
         </Col>
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" id='addressInput' onChange={(e) => setAddress(e.target.value)}value={address}  />
+        <Form.Control  id='addressInput' onChange={(e) => setAddress(e.target.value)}value={address}  />
       </Form.Group>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Available Days</Form.Label>
-          <Form.Control placeholder="Available Days" id='avalibleDaysInput' onChange={(e) => setAvalibleDays(e.target.value)} value={avalibleDays} />
+          <Form.Control  id='avalibleDaysInput' onChange={(e) => setAvalibleDays(e.target.value)} value={avalibleDays} />
         </Col>
         <Col>
           <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control placeholder="Emergency Contact number" id='emergencyContactNumbersInput' onChange={(e) => setEmergencycontactNumber(e.target.value)}value={emergencyContactNumbers}  />
+          <Form.Control  id='emergencyContactNumbersInput' onChange={(e) => setEmergencycontactNumber(e.target.value)}value={emergencyContactNumbers}  />
         </Col>
       </Row>
       <Row className="mb-3">
