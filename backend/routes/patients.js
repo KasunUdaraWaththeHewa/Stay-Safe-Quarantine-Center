@@ -54,16 +54,17 @@ router.route("/add").post((req, res) => {
 
 router.route("/get/:nicNumber").get(async (req, res) => {
   const nicNumber = req.params.nicNumber;
-  try {
-    const patient = await patient.findOne({ nicNumber });
-    if (!patient) {
-      return res.status(404).json({ error: "Patient not found" });
+  const user = await patient.findOne({ nicNumber })
+  .then((user) => {
+    if (!user) {
+      return res.status(404).json({ error: "Patient not found" })
     }
-    res.status(200).json({ status: "Patient fetched", patient });
-  } catch (err) {
+    res.status(200).json({ status: "Patient fetched", user })
+  })
+  .catch((err) => {
     console.log(err.message);
     res.status(500).json({ status: "Error with fetching patient", error: err.message });
-  }
+  });
 });
 
 router.route("/update/:nicNumber").put(async (req, res) => {
