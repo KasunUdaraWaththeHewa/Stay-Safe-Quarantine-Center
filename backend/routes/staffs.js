@@ -39,12 +39,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:staffID").get(async (req, res) => {
   let staffID = req.params.staffID;
-  const staffMember = await staff.findOne({ staffID })
-    .then((staffMember) => {
-      if (!staffMember) {
+  const user = await staff.findOne({ staffID })
+    .then((user) => {
+      if (!user) {
         return res.status(404).json({ error: "Staff member not found" });
       }
-      res.status(200).json({ status: "Staff member fetched", staffMember });
+      res.status(200).json({ status: "Staff member fetched", user });
     })
     .catch((err) => {
       console.log(err.message);
