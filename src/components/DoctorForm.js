@@ -166,14 +166,15 @@ function DoctorForm() {
     setDoctorID("");
     setPhoneNumber("");
     setEmail("");
+    setDoctorID("");
     setMedicalLicenseNumber("");
     setSpecilization("");
     setExperience("");
     setAddress("");
     setAvalibleDays("");
     setEmergencycontactNumber("");
-    setGender("Male");
-    setRelationship("Married");
+    setGender("");
+    setRelationship("");
     setSkills(null);
 
     alert("Cleared form");

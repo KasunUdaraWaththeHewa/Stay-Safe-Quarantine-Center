@@ -199,12 +199,12 @@ function PatientForm() {
     //clear data
     function clearForm() {
         setfullName("");
-        setGender("Male");
+        setGender("");
         setDateOfBirth("");
         setNationality("");
         setNIC("");
         setEmail("");
-        setResults("Not Tested");
+        setResults("");
         setAllergies("");
         setMedications("");
         setMedicalConditions("");

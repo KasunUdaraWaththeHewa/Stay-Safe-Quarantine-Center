@@ -159,14 +159,15 @@ function clearForm() {
   setFirstName("");
   setLastName("");
   setEmployeeID("");
+  setStaffID("");
   setPhoneNumber("");
   setEmail("");
   setJobRole("");
   setAddress("");
   setEmergencyContactNumber("");
-  setGender("Male");
-  setRelationship("Married");
-  setSkills("");
+  setGender("");
+  setRelationship("");
+  setSkills();
   alert("Cleared form");
 }
   return (

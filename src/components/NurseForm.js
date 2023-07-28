@@ -169,14 +169,15 @@ function NurseForm() {
     setNurseID("");
     setPhoneNumber("");
     setEmail("");
+    setNurseID("");
     setNursingLicenseNumber("");
     setSpecilization("");
     setExperience("");
     setAddress("");
     setAvalibleDays("");
     setEmergencycontactNumber("");
-    setGender("Male");
-    setRelationship("Married");
+    setGender("");
+    setRelationship("");
     setSkills(null);
 
     alert("Cleared form");
