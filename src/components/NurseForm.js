@@ -95,13 +95,18 @@ function NurseForm() {
     axios.get(`http://localhost:8070/nurse/get/${nurseID}`)
       .then((response) => {
         setSearchResult(response.data);
-        alert("Nurse found");
-        populateFormWithFetchedData();
+        if (response.data) {
+          alert("Nurse found");
+          console.log(response.data);
+          populateFormWithFetchedData(response.data);
+        } else {
+          alert("Nurse not found");
+        }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Nurse not found");
+        alert("Error searching for Nurse");
       });
   }
   //delete staff member

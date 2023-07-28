@@ -76,9 +76,6 @@ function StaffForm() {
       
 
       alert("Populated form");
-    } else {
-      // Clear the form if the search result is null
-      clearForm();
     }
   }
 
@@ -92,6 +89,7 @@ function StaffForm() {
         setSearchResult(response.data);
         if (response.data) {
           alert("Staff member found");
+          console.log(response.data);
           populateFormWithFetchedData(response.data);
         } else {
           alert("Staff member not found");

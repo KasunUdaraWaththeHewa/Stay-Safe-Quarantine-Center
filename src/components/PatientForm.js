@@ -111,18 +111,22 @@ function PatientForm() {
 
     function handleSearch() {
         axios.get(`http://localhost:8070/patient/get/${nicNumber}`)
-            .then((response) => {
-                setSearchResult(response.data);
-                console.log(response.data);
-                alert("Patient found");
-                populateFormWithFetchedData();
-            })
-            .catch((error) => {
-                console.error(error);
-                setSearchResult(null);
-                alert("Patient not found");
-            });
-    }
+          .then((response) => {
+            setSearchResult(response.data);
+            if (response.data) {
+              alert("Patient found");
+              console.log(response.data);
+              populateFormWithFetchedData(response.data);
+            } else {
+              alert("Patient not found");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            setSearchResult(null);
+            alert("Error searching for Patirnt");
+          });
+      }
 
     //delete staff member
 
