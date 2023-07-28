@@ -113,16 +113,20 @@ router.route("/update/:nicNumber").put(async (req, res) => {
   };
 
   try {
-    const updatedPatient = await patient.findOneAndUpdate({ nicNumber }, updatePatient, {
-      new: true,
-    });
-    if (!updatedPatient) {
-      return res.status(404).json({ error: "Patient not found" });
+    const updatedPatient = await patient.findOneAndUpdate(
+      { nicNumber: nicNumber },
+      updatePatient,
+      { new: true }
+    );
+
+    if (updatedPatient) {
+      res.status(200).send({ status: "Patient updated", data: updatedPatient });
+    } else {
+      res.status(404).send({ status: "Patient not found"});
     }
-    res.status(200).json({ status: "Patient's data updated", updatedPatient });
   } catch (err) {
-    console.log(err.message);
-    res.status(500).json({ status: "Error with updating patient data", error: err.message });
+    console.log(err);
+    res.status(500).send({ status: "Error with updating data", error: err.message });
   }
 });
 
