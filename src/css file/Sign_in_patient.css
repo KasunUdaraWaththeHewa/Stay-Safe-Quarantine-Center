@@ -16,8 +16,6 @@
     height: 500px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    border: 2px solid black;
-    border-radius: 40px;
 }
 
 .patient_S img{
