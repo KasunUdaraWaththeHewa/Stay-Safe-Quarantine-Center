@@ -14,10 +14,6 @@ function AdminPanel(){
                     <div className='divAdminPanelLeft'>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <img src="https://cdn3.iconfinder.com/data/icons/team-management/136/19-1024.png" alt="" />
-                                <figcaption><b>Staff SignUp</b></figcaption>
-                            </div>
-                            <div className="panelItem">
                                 <Link to="/patient" className="link"><img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" /></Link>
                                 <figcaption><b>Patient</b></figcaption>
                             </div>
