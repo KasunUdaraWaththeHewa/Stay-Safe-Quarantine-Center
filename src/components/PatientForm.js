@@ -109,7 +109,7 @@ function PatientForm() {
     }
 
     useEffect(() => {
-
+        populateFormWithFetchedData();
     }, [searchResult]);
 
     function handleSearch() {
