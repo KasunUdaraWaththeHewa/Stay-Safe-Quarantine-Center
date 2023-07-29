@@ -80,7 +80,7 @@ function StaffForm() {
   }
 
   useEffect(() => {
-    
+    populateFormWithFetchedData();
   }, [searchResult]);
 
   function handleSearch() {
