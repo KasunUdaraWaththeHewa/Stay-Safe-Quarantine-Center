@@ -10,7 +10,12 @@ function Nurse(){
             <div className="navBarContainor" ><NavBar /></div>
             <div className="NurseDetailArea">
                 <div className="h2Holder"><h2><b>Nurse Details Collecting Form</b></h2></div>
-                <div className="formOneContainor"><NurseForm/></div>
+                <div className="formOneContainor">
+                    <NurseForm/>
+                    <div>
+                        
+                    </div>
+                </div>
                 <div className="footerContainor">
                     <Footer/>
                 </div>
