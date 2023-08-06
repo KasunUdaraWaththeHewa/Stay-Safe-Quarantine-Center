@@ -13,10 +13,9 @@
     padding: 60px;
 }
 .formOneContainor{
-    width: 50%;
+    width: 100%;
     position: absolute;
     top: 200px;
-    left: 375px;
     color: white;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     padding: 80px;
