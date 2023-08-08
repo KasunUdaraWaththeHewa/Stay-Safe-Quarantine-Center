@@ -18,16 +18,41 @@
     align-items: center;
     justify-content: center;
     background-color: white;
+    padding-top: 200px;
+
     
   }
-  .pro{
-    width: 19%;
-    height: 600px;
+  .proDoctor{
+    width: 16%;
+    height: 500px;
+    border: border-box;  
+    display: none;  
+  }
+  .proNurse{
+    width: 16%;
+    height: 500px;
+    border: border-box;    
+    display: none;  
+  }
+  .proAdmin{
+    width: 20%;
+    height: 500px;
     border: border-box;    
   }
+  .proStaff{
+    width: 20%;
+    height: 500px;
+    border: border-box;
+  }
+  .proPatient{
+    width: 16%;
+    height: 500px;
+    border: border-box;    
+    display: none;  
+  }
   .pro img{
-    width: 258px;
-    height: 344px;
+    width: 150px;
+    height: 300px;
     margin-left: 3%;
     margin-right: px;
     margin-top: 120px;  

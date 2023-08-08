@@ -19,19 +19,19 @@ Sign_in_profile() {
       
       <div className="profile">
         <div className="profileContainor">
-            <div class="pro">
+            <div class="proDoctor">
               <Link to="/Sign_in_doctor"><img src={img1} alt="profile1"></img></Link>
             </div>
-            <div class="pro">
+            <div class="proNurse">
               <Link to="/Sign_in_nurse"><img src={img2} alt="profile2"></img></Link>
             </div>
-            <div class="pro">
+            <div class="proStaff">
               <Link to="/Sign_in_staff"><img src={img3} alt="profile3"></img></Link>
             </div>
-            <div class="pro">
+            <div class="proPatient">
               <Link to="/Sign_in_patient"><img src={img4} alt="profile4"></img></Link>
             </div>
-            <div class="pro">
+            <div class="proAdmin">
               <Link to="/Sign_in_admin"><img src={img5} alt="profile5"></img></Link>
             </div>
         </div>
