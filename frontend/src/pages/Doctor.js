@@ -10,7 +10,7 @@ function Doctor(){
             <div className="navBarContainor" ><NavBar /></div>
             <div className="DoctorDetailArea">
                 <div className="h2Holder"><h2><b>Doctor Details Collecting Form</b></h2></div>
-                <div className="formOneContainor"><DoctorForm/></div>
+                <div className="formOneContainorDoctor"><DoctorForm/></div>
                 <div className="footerContainor">
                     <Footer/>
                 </div>
