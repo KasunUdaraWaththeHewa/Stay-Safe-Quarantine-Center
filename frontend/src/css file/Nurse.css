@@ -10,12 +10,13 @@
 }
 
 .h2Holder h2{
-    padding: 60px;
+    padding: 30px;
 }
-.formOneContainor{
-    width: 100%;
+.formOneContainorNurse{
+    width: 50%;
     position: absolute;
-    top: 200px;
+    top: 100px;
+    left: 375px;
     color: white;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     padding: 80px;
