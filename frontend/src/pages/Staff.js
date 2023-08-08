@@ -9,7 +9,7 @@ function Staff(){
             <div className="navBarContainor" ><NavBar /></div>
             <div className="StaffDetailArea">
                 <div className="h2Holder"><h2><b>Staff Details Collecting Form</b></h2></div>
-                <div className="formOneContainor"><StaffForm/></div>
+                <div className="formOneContainorStaff"><StaffForm/></div>
                 <div className="footerContainor">
                     <Footer/>
                 </div>
