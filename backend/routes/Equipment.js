@@ -2,15 +2,15 @@ const router =require("express").Router();
 let equipment= require("../models/Equipment");
 
 router.route("/add").post((req,res)=>{
-    const Name=req.body.Name;
-    const Category=req.body.Category;
-    const SerialNumber=req.body.SerialNumber;
-    const PurchaseDate=req.body.PurchaseDate;
-    const Manufacturer=req.body.Manufacturer;
-    const Supplier=req.body.Supplier;
-    const Location=req.body.Location;
-    const Price=req.body.Price;
-    const CurrentStatus=req.body.CurrentStatus;
+    const Name=req.body.name;
+    const Category=req.body.category;
+    const SerialNumber=req.body.serialNumber;
+    const PurchaseDate=req.body.purchaseDate;
+    const Manufacturer=req.body.manufacturer;
+    const Supplier=req.body.supplier;
+    const Location=req.body.location;
+    const Price=req.body.price;
+    const CurrentStatus=req.body.currentStatus;
 
     const newEquipment= new equipment({
         Name,
