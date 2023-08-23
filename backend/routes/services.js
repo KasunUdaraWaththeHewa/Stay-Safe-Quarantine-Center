@@ -1,71 +1,63 @@
 const router =require("express").Router();
-let package= require("../models/package");
+let service= require("../models/service");
 
 router.route("/add").post((req,res)=>{
-    const packageName=req.body.packageName;
+    const serviceID=req.body.serviceID;
+    const serviceName=req.body.serviceName;
     const details=req.body.details;
-    const detailList=req.body.detailList;
-    const price=req.body.price;
-    const pacakageID=req.body.pacakageID;
-
-    const newPackage= new package({
-        pacakageID,
-        packageName,
-        details,
-        detailList,
-        price
+    
+    const newService= new service({
+        serviceID,
+        serviceName,
+        details
     })
 
-    newPackage.save().then(()=>{
-        res.json("Package Added")
+    newService.save().then(()=>{
+        res.json("Service Added")
     }).catch((err)=>{
         console.log(err);
     })
 })
 
-router.route("/get/:pacakageID").get(async (req, res) => {
-  let pacakageID = req.params.pacakageID;
-  const package = await package.findOne({ pacakageID })
-    .then((package) => {
-      if (!package) {
-        return res.status(404).json({ error: "Package not found" });
+router.route("/get/:serviceID").get(async (req, res) => {
+  let serviceID = req.params.serviceID;
+  const service = await service.findOne({ serviceID })
+    .then((service) => {
+      if (!service) {
+        return res.status(404).json({ error: "service not found" });
       }
-      res.status(200).json({ status: "Package fetched", package })
+      res.status(200).json({ status: "service fetched", service })
     })
     .catch((err) => {
       console.log(err.message);
-      res.status(500).json({ status: "Error with fetching package", error: err.message });
+      res.status(500).json({ status: "Error with fetching service", error: err.message });
     });
 });
 
   
-router.route("/update/:pacakageID").put(async (req, res) => {
-  let pacakageID = req.params.pacakageID;
+router.route("/update/:serviceID").put(async (req, res) => {
+  let serviceID = req.params.serviceID;
   const {
-        packageName,
-        details,
-        detailList,
-        price
+    serviceName,
+    details
   } = req.body;
 
-  const updatePackage = {
-        packageName,
-        details,
-        detailList,
-        price
+  const updateService = {
+    serviceName,
+    details
   };
 
   try {
-    const updatedPackage = await package.findOneAndUpdate(
-      { pacakageID: pacakageID },
-      updatePackage,
+    const updatedService = await package.findOneAndUpdate(
+      { serviceID: serviceID },
+      updateService,
       { new: true }
     );
 
-    if (updatedPackage) {
-      res.status(200).send({ status: "Package updated", data: updatedPackage });
+    if (updatedService) {
+      res.status(200).send({ status: "Service updated", data: updatedService });
     } else {
-      res.status(404).send({ status: "Package not found" });
+      res.status(404).send({ status: "Service not found" });
     }
   } catch (err) {
     console.log(err);
@@ -76,26 +68,26 @@ router.route("/update/:pacakageID").put(async (req, res) => {
 
 
 
-router.route("/delete/:pacakageID").delete(async (req, res) => {
-  let pacakageID = req.params.pacakageID;
+router.route("/delete/:serviceID").delete(async (req, res) => {
+  let serviceID = req.params.serviceID;
 
   try {
-    const deletedPackage = await staff.findOneAndDelete({ pacakageID });
-    if (!deletedPackage) {
-      return res.status(404).json({ error: "Package not found" });
+    const deletedService = await staff.findOneAndDelete({ serviceID });
+    if (!deletedService) {
+      return res.status(404).json({ error: "Service not found" });
     }
-    res.status(200).json({ status: "Package's data deleted", staff: deletedPackage });
+    res.status(200).json({ status: "Service's data deleted", staff: deletedService });
   } catch (err) {
     console.log(err.message);
-    res.status(500).json({ status: "Error with deleting staff member", error: err.message });
+    res.status(500).json({ status: "Error with deleting service ", error: err.message });
   }
 });
 
 
   router.route("/").get((req, res) => {
-    package.find()
-      .then((package) => {
-        res.json(package);
+    service.find()
+      .then((service) => {
+        res.json(service);
       })
       .catch((err) => {
         console.log(err);
