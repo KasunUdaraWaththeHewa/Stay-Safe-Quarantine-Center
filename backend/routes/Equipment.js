@@ -102,7 +102,7 @@ router.route("/delete/:SerialNumber").delete(async (req, res) => {
     res.status(200).json({ status: "Equipment's data deleted", doctor: deletedEquipment });
   } catch (err) {
     console.log(err.message);
-    res.status(500).json({ status: "Error with deleting doctor", error: err.message });
+    res.status(500).json({ status: "Error with deleting equipment", error: err.message });
   }
 });
 
