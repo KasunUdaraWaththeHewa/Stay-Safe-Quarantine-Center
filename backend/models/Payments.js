@@ -25,7 +25,7 @@ const PaymentSchema=new Schema({
         type:String,
         required:true
     },
-    PatientID:{
+    PatientNIC:{
         type:String,
         required:true
     }
