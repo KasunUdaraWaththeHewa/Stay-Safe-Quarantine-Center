@@ -30,5 +30,5 @@ const PaymentSchema=new Schema({
         required:true
     }
 })
-const Package=mongoose.model("Package",PaymentSchema);
+const Package=mongoose.model("Payment",PaymentSchema);
 module.exports=Package;

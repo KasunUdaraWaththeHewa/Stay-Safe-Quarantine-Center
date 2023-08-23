@@ -14,5 +14,5 @@ const NotificationSchema=new Schema({
         required:true
     }
 })
-const Package=mongoose.model("Package",NotificationSchema);
-module.exports=Package;
+const Notification=mongoose.model("Notification",NotificationSchema);
+module.exports=Notification;
