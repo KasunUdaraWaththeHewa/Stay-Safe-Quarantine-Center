@@ -1,39 +1,39 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const EquipmentsSchema=new Schema({
-    Name:{
+    name:{
         type:String,
         required:true
     },
-    Category:{
+    category:{
         type:String,
         required:true
     },
-    SerialNumber:{
+    serialNumber:{
         type:String,
         required:true
     },
-    PurchaseDate:{
+    purchaseDate:{
         type:String,
         required:true
     },
-    Manufacturer:{
+    manufacturer:{
         type:String,
         required:true
     },
-    Supplier:{
+    supplier:{
         type:String,
         required:true
     },
-    Location:{
+    location:{
         type:String,
         required:true
     },
-    Price:{
+    price:{
         type:String,
         required:true
     },
-    CurrentStatus:{
+    currentStatus:{
         type:String,
         required:true
     }
