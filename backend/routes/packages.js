@@ -1,5 +1,5 @@
 const router =require("express").Router();
-let staff= require("../models/package");
+let package= require("../models/package");
 
 router.route("/add").post((req,res)=>{
     const packageName=req.body.packageName;

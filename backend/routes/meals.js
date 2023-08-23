@@ -1,5 +1,5 @@
 const router =require("express").Router();
-let staff= require("../models/meal");
+let meal= require("../models/meal");
 
 router.route("/add").post((req,res)=>{
     const mealID=req.body.mealID;
