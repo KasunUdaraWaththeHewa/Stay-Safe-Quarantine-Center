@@ -1,6 +1,10 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const MealSchema=new Schema({
+    mealID:{
+        type:String,
+        required:true
+    },
     mealName:{
         type:String,
         required:true
