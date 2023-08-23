@@ -28,7 +28,18 @@ const nurseRouter=require("./routes/nurses.js");
 app.use("/nurse",nurseRouter);
 const staffRouter=require("./routes/staffs.js");
 app.use("/staff",staffRouter);
-
+const equipmentRouter=require("./routes/equipments.js");
+app.use("/equipment",equipmentRouter);
+const mealRouter=require("./routes/meals.js");
+app.use("/meal",mealRouter);
+const notificationRouter=require("./routes/notifications.js");
+app.use("/notification",notificationRouter);
+const packagesRouter=require("./routes/packages.js");
+app.use("/package",packagesRouter);
+const paymentRouter=require("./routes/payments.js");
+app.use("/payment",paymentRouter);
+const serviceRouter=require("./routes/services.js");
+app.use("/service",serviceRouter);
 
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port: ${PORT}`);
