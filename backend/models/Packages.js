@@ -1,23 +1,23 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const PackageSchema=new Schema({
-    PackageID:{
+    packageID:{
         type:String,
         required:true
     },
-    PackageName:{
+    packageName:{
         type:String,
         required:true
     },
-    Details:{
+    details:{
         type:String,
         required:true
     },
-    DetailList:{
+    detailList:{
         type:String,
         required:true
     },
-    Price:{
+    price:{
         type:String,
         required:true
     }

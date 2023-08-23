@@ -1,11 +1,11 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const ServicesSchema=new Schema({
-    ServiceName:{
+    serviceName:{
         type:String,
         required:true
     },
-    Details:{
+    details:{
         type:String,
         required:true
     }

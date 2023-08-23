@@ -1,15 +1,15 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const NotificationSchema=new Schema({
-    Title:{
+    title:{
         type:String,
         required:true
     },
-    Notification:{
+    notification:{
         type:String,
         required:true
     },
-    Reciever:{
+    reciever:{
         type:String,
         required:true
     }

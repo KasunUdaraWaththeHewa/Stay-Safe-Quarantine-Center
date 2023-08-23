@@ -1,31 +1,31 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const PaymentSchema=new Schema({
-    Date:{
+    date:{
         type:String,
         required:true
     },
-    Time:{
+    time:{
         type:String,
         required:true
     },
-    Amount:{
+    amount:{
         type:String,
         required:true
     },
-    ReceiptNumber:{
+    receiptNumber:{
         type:String,
         required:true
     },
-    PayerInName:{
+    payerInName:{
         type:String,
         required:true
     },
-    PayerNIC:{
+    payerNIC:{
         type:String,
         required:true
     },
-    PatientNIC:{
+    patientNIC:{
         type:String,
         required:true
     }
