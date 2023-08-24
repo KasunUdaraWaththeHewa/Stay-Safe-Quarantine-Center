@@ -55,7 +55,14 @@
 figcaption{
     color: #03045e;
     padding-left: 40px;
+    padding-top: 5px;
 }
+#figequip{
+    color: #03045e;
+    padding-left: 23px;
+    padding-top: 5px;
+}
+
 h3{
     font-family: 'Roboto Slab', serif;
 }
