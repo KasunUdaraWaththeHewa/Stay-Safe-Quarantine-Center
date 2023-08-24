@@ -29,12 +29,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:receiptNumber").get(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
-  const payment = await payment.findOne({ receiptNumber })
-    .then((payment) => {
-      if (!payment) {
+  const pay = await payment.findOne({ receiptNumber })
+    .then((pay) => {
+      if (!pay) {
         return res.status(404).json({ error: "Payment not found" });
       }
-      res.status(200).json({ status: "Payment fetched", payment })
+      res.status(200).json({ status: "Payment fetched", pay })
     })
     .catch((err) => {
       console.log(err.message);
@@ -64,7 +64,7 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
   };
 
   try {
-    const updatedPayment = await package.findOneAndUpdate(
+    const updatedPayment = await payment.findOneAndUpdate(
       { receiptNumber: receiptNumber },
       updatePayment,
       { new: true }
@@ -88,7 +88,7 @@ router.route("/delete/:receiptNumber").delete(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
 
   try {
-    const deletedPayment = await staff.findOneAndDelete({ receiptNumber });
+    const deletedPayment = await payment.findOneAndDelete({ receiptNumber });
     if (!deletedPayment) {
       return res.status(404).json({ error: "Payment not found" });
     }
