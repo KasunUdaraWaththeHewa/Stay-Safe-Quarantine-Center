@@ -203,10 +203,10 @@ function PaymentForm(){
                          <Form.Label> Date of Payment</Form.Label>
                          <Form.Control
                             type="date"
-                            name="purchaseDate"
-                            id='purchaseDateInput'
-                            value={purchaseDate}
-                            onChange={(e) => setPurchaseDate(e.target.value)}
+                            name="dateofpayment"
+                            id='dateofpaymentInput'
+                            value={dateofpayment}
+                            onChange={(e) => setdateofpayment(e.target.value)}
                           />
                     </Col>
 
