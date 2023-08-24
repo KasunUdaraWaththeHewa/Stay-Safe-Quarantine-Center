@@ -1,29 +1,49 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.NurseDetailArea{
+
+.NurseDetailArea {
     background-color: white;
     width: 100%;
 }
-.formOneContainorNurse{
+
+.formOneContainorNurse {
     display: flex;
     width: 100%;
 }
-.existingNurses{
+
+.existingNurses {
     width: 40%;
+    display: flex;
+    flex-wrap: wrap; /* To wrap the cards to the next line if needed */
+    gap: 10px; /* Add some space between cards */
+    padding: 20px; /* Add some padding around the cards */
 }
-.h2Holder h2{
+
+.existingNurseCard {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 500px;
+    background: linear-gradient(to bottom, white, white);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(20, 1, 1, 0.4);
+    color: black;
+    margin-top: 10px;
+}
+
+.h2Holder h2 {
     padding: 30px;
 }
-.nurseForm{
+
+.nurseForm {
     padding: 40px;
     width: 60%;
     height: 900px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    
 }
-.footerContainorNurse{
 
+.footerContainorNurse {
+    /* Add your footer styles here */
 }
