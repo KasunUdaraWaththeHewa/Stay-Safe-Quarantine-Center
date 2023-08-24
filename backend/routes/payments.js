@@ -1,8 +1,8 @@
 const router =require("express").Router();
-let payment= require("../models/payment");
+let payment= require("../models/Payment");
 
 router.route("/add").post((req,res)=>{
-    const date=req.body.date;
+    const dateofpayment=req.body.date;
     const time=req.body.time;
     const amount=req.body.amount;
     const receiptNumber=req.body.receiptNumber;
@@ -11,7 +11,7 @@ router.route("/add").post((req,res)=>{
     const patientNIC=req.body.patientNIC;
 
     const newPayment= new payment({
-      date,
+      dateofpayment,
       time,
       amount,
       receiptNumber,
@@ -46,7 +46,7 @@ router.route("/get/:receiptNumber").get(async (req, res) => {
 router.route("/update/:receiptNumber").put(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
   const {
-    date,
+    dateofpayment,
     time,
     amount,
     payerInName,
@@ -55,7 +55,7 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
   } = req.body;
 
   const updatePayment = {
-    date,
+    dateofpayment,
     time,
     amount,
     payerInName,
