@@ -40,8 +40,8 @@ function Nurse() {
             <ul>
               {nurses.map((nurse) => (
                 <div key={nurse.nurseID} className="existingNurseCard">
-                <p>Nurse Name: {nurse.firstName} {nurse.lastName}</p>
-                <p>Nurse ID: {nurse.nurseID}</p>
+                <p>{nurse.firstName} {nurse.lastName}</p>
+                <p>{nurse.nurseID}</p>
                 </div>
               ))}
             </ul>
