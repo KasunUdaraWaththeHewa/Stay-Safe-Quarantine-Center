@@ -33,9 +33,8 @@ function PaymentForm(){
             setpayerNIC("");
             setpatientNIC("");
             settime("");
-        }).catch((error) => {
-            console.error(error);
-            alert("Error adding Payment");
+        }).catch((err)=>{
+            console.log(err);
         })
     }
 
