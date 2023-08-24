@@ -26,8 +26,8 @@
     width: 500px;
     background: linear-gradient(to bottom, white, white);
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(32, 49, 238, 0.308);
-    color: #023e8a;
+    box-shadow: 0px 2px 4px #023e8a;
+    color: black;
     margin-top: 10px;
 }
 
