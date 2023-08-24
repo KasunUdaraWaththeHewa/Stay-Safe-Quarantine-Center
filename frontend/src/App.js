@@ -8,6 +8,8 @@ import AdminPanel from './pages/AdminPanel';
 
 import StaffPanel from './pages/StaffPanel';
 
+import PharmacyPanal from './pages/PharmacyPanal';
+
 import Packages from './pages/Packages';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +23,8 @@ import Doctor from './pages/Doctor';
 import Patient from './pages/Patient';
 
 import Payment from './pages/Payment';
+
+import Sign_in_pharmacy from './pages/Sign_in_pharmacy';
 
 import Sign_in_profile from './pages/Sign_in_profile'
 import Sign_in_doctor from './pages/Sign_in_doctor'
@@ -91,6 +95,13 @@ function App() {
               <Route exact path="/sign_in_admin">
                 <Sign_in_admin/>
               </Route>
+              <Route exact path="/Sign_in_pharmacy">
+                <Sign_in_pharmacy/>
+              </Route>
+              <Route exact path="/PharmacyPanal">
+                <PharmacyPanal/>
+              </Route>
+              
             </Switch>
       </Router>
       

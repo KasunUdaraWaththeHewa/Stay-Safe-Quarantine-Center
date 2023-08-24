@@ -50,6 +50,12 @@
     border: border-box;    
     display: none;  
   }
+  .proPharmacy{
+    width: 16%;
+    height: 500px;
+    border: border-box;     
+    
+  }
   .pro img{
     width: 150px;
     height: 300px;
