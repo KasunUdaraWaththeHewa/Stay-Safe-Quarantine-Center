@@ -20,6 +20,8 @@ import Doctor from './pages/Doctor';
 
 import Patient from './pages/Patient';
 
+import Payment from './pages/Payment';
+
 import Sign_in_profile from './pages/Sign_in_profile'
 import Sign_in_doctor from './pages/Sign_in_doctor'
 import Sign_in_nurse from './pages/Sign_in_nurse'
@@ -60,6 +62,9 @@ function App() {
               </Route>
               <Route exact path = "/packages">
                   <Packages/>
+              </Route>
+              <Route exact path="/payment">
+                  <Payment/>
               </Route>
               <Route exact path="/Sign_in_profile">
                   <Sign_in_profile/>
