@@ -52,21 +52,21 @@ function PaymentForm(){
     // //return;
 
     if (searchResult) {
-      setDateofPayment(searchResult.payment.dateofpayment);
-      setAmount(searchResult.payment.amount);
-      setReceiptNumber(searchResult.payment.receiptNumber);
-      setPayerInName(searchResult.payment.payerInName);
-      setPayerNIC(searchResult.payment.payerNIC);
-      setPatientNIC(searchResult.payment.patientNIC);
-      setTime(searchResult.payment.time);
+      setDateofPayment(searchResult.user.dateofpayment);
+      setAmount(searchResult.user.amount);
+      setReceiptNumber(searchResult.user.receiptNumber);
+      setPayerInName(searchResult.user.payerInName);
+      setPayerNIC(searchResult.user.payerNIC);
+      setPatientNIC(searchResult.user.patientNIC);
+      setTime(searchResult.user.time);
 
-     document.getElementById("dateofpayment").value=searchResult.payment.dateofpayment;
-     document.getElementById("amount").value=searchResult.payment.amount;
-     document.getElementById("receiptNumber").value=searchResult.payment.receiptNumber;
-     document.getElementById("payerInName").value=searchResult.payment.payerInName;
-     document.getElementById("payerNIC").value=searchResult.payment.payerNIC;
-     document.getElementById("patientNIC").value=searchResult.payment.patientNIC;
-     document.getElementById("time").value=searchResult.payment.time;
+     document.getElementById("dateofpayment").value=searchResult.user.dateofpayment;
+     document.getElementById("amount").value=searchResult.user.amount;
+     document.getElementById("receiptNumber").value=searchResult.user.receiptNumber;
+     document.getElementById("payerInName").value=searchResult.user.payerInName;
+     document.getElementById("payerNIC").value=searchResult.user.payerNIC;
+     document.getElementById("patientNIC").value=searchResult.user.patientNIC;
+     document.getElementById("time").value=searchResult.user.time;
      
      alert("Populated form");
      } 
