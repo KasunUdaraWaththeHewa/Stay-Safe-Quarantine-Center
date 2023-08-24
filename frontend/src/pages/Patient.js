@@ -6,14 +6,21 @@ import Footer from '../components/Footer';
 
 function Patient(){
     return(
-        <div className="bgpatientform">
+        <div>
             <div className="navBarContainor" ><NavBar /></div>
             <div className="PatientDetailArea">
                 <div className="h2Holder"><h2><b>Patient Details Collecting Form</b></h2></div>
-                <div className="patientformOneContainor"><PatientForm/></div>
-                <div className="patientfooterContainor">
-                    <Footer/>
+                <div className="formOneContainorPatient">
+                    <div className="patientForm">
+                        <PatientForm/>
+                    </div>
+                    <div className="existingPatient">
+
+                    </div>
                 </div>
+            </div>
+            <div className="footerContainorPatient">
+                    <Footer/>
             </div>
         </div>
     );
