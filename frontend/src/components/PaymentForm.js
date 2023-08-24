@@ -191,13 +191,25 @@ function PaymentForm(){
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    {/* <Col>
                         <Form.Label>Date of Payment</Form.Label>
                         <Form.Control
                             id="dateofpaymentInput"
                             onChange={(e) => setdateofpayment(e.target.value)}
                             value={dateofpayment} />
-                    </Col> 
+                    </Col>  */}
+
+                    <Col>
+                         <Form.Label> Date of Payment</Form.Label>
+                         <Form.Control
+                            type="date"
+                            name="purchaseDate"
+                            id='purchaseDateInput'
+                            value={purchaseDate}
+                            onChange={(e) => setPurchaseDate(e.target.value)}
+                          />
+                    </Col>
+
                 </Row>
                 <Row>
                     <Col>
