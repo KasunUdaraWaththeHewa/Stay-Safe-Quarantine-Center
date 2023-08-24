@@ -46,12 +46,11 @@ router.route("/get/:serialNumber").get(async (req, res) => {
     });
 });
 
-router.route("/update/:serialnumber").put(async (req, res) => {
-  let serialnumber = req.params.serialnumber;
+router.route("/update/:serialNumber").put(async (req, res) => {
+  let serialNumber = req.params.serialNumber;
   const {
       name,
       category,
-      serialNumber,
       purchaseDate,
       manufacturer,
       supplier,
@@ -63,7 +62,6 @@ router.route("/update/:serialnumber").put(async (req, res) => {
   const updateEquipment = {
       name,
       category,
-      serialNumber,
       purchaseDate,
       manufacturer,
       supplier,
@@ -73,8 +71,8 @@ router.route("/update/:serialnumber").put(async (req, res) => {
   };
 
   try {
-    const updatedEquipment = await equip.findOneAndUpdate(
-      { serialNumber: serialnumber },
+    const updatedEquipment = await equipment.findOneAndUpdate(
+      { serialNumber: serialNumber },
       updateEquipment,
       { new: true }
     );
@@ -92,10 +90,9 @@ router.route("/update/:serialnumber").put(async (req, res) => {
 
 
 router.route("/delete/:serialNumber").delete(async (req, res) => {
-  let serialnumber = req.params.serialNumber;
-
+  let serialNumber = req.params.serialNumber;
   try {
-    const deletedEquipment = await equip.findOneAndDelete({ serialnumber });
+    const deletedEquipment = await equipment.findOneAndDelete({ serialNumber });
     if (!deletedEquipment) {
       return res.status(404).json({ error: "Equipment not found" });
     }
@@ -107,9 +104,9 @@ router.route("/delete/:serialNumber").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
-  equip.find()
-    .then((equip) => {
-      res.json(equip);
+  equipment.find()
+    .then((equipment) => {
+      res.json(equipment);
     })
     .catch((err) => {
       console.log(err);
