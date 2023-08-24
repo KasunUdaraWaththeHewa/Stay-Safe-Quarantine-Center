@@ -143,7 +143,7 @@ function PaymentForm(){
         setReceiptNumber("");
         setPayerInName("");
         setPayerNIC("");
-        setPatientNIC("");
+        setPatientNIC("");  
         setTime("");
 
         alert("Cleared form");
