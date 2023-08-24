@@ -2,26 +2,26 @@ const router =require("express").Router();
 let equipment= require("../models/Equipment");
 
 router.route("/add").post((req,res)=>{
-    const Name=req.body.name;
-    const Category=req.body.category;
-    const SerialNumber=req.body.serialNumber;
-    const PurchaseDate=req.body.purchaseDate;
-    const Manufacturer=req.body.manufacturer;
-    const Supplier=req.body.supplier;
-    const Location=req.body.location;
-    const Price=req.body.price;
-    const CurrentStatus=req.body.currentStatus;
+    const name=req.body.name;
+    const category=req.body.category;
+    const serialNumber=req.body.serialNumber;
+    const purchaseDate=req.body.purchaseDate;
+    const manufacturer=req.body.manufacturer;
+    const supplier=req.body.supplier;
+    const location=req.body.location;
+    const price=req.body.price;
+    const currentStatus=req.body.currentStatus;
 
     const newEquipment= new equipment({
-        Name,
-        Category,
-        SerialNumber,
-        PurchaseDate,
-        Manufacturer,
-        Supplier,
-        Location,
-        Price,
-        CurrentStatus
+        name,
+        category,
+        serialNumber,
+        purchaseDate,
+        manufacturer,
+        supplier,
+        location,
+        price,
+        currentStatus
     })
 
     newEquipment.save().then(()=>{
@@ -31,9 +31,9 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/get/:SerialNumber").get(async (req, res) => {
-  let SNum = req.params.SerialNumber;
-  const equip = await equipment.findOne({ SNum })
+router.route("/get/:serialNumber").get(async (req, res) => {
+  let serialNumber = req.params.serialNumber;
+  const equip = await equipment.findOne({ serialNumber })
     .then((equip) => {
       if (!equip) {
         return res.status(404).json({ error: "Equipment not found" })
@@ -46,35 +46,35 @@ router.route("/get/:SerialNumber").get(async (req, res) => {
     });
 });
 
-router.route("/update/:doctorID").put(async (req, res) => {
-  let SNum = req.params.SerialNumber;
+router.route("/update/:serialnumber").put(async (req, res) => {
+  let serialnumber = req.params.serialnumber;
   const {
-        Name,
-        Category,
-        SerialNumber,
-        PurchaseDate,
-        Manufacturer,
-        Supplier,
-        Location,
-        Price,
-        CurrentStatus
+      name,
+      category,
+      serialNumber,
+      purchaseDate,
+      manufacturer,
+      supplier,
+      location,
+      price,
+      currentStatus
   } = req.body;
 
   const updateEquipment = {
-        Name,
-        Category,
-        SerialNumber,
-        PurchaseDate,
-        Manufacturer,
-        Supplier,
-        Location,
-        Price,
-        CurrentStatus
+      name,
+      category,
+      serialNumber,
+      purchaseDate,
+      manufacturer,
+      supplier,
+      location,
+      price,
+      currentStatus
   };
 
   try {
     const updatedEquipment = await equip.findOneAndUpdate(
-      { SerialNumber: SNum },
+      { serialNumber: serialnumber },
       updateEquipment,
       { new: true }
     );
@@ -91,11 +91,11 @@ router.route("/update/:doctorID").put(async (req, res) => {
 });
 
 
-router.route("/delete/:SerialNumber").delete(async (req, res) => {
-  let SNum = req.params.SerialNumber;
+router.route("/delete/:serialNumber").delete(async (req, res) => {
+  let serialnumber = req.params.serialNumber;
 
   try {
-    const deletedEquipment = await equip.findOneAndDelete({ SNum });
+    const deletedEquipment = await equip.findOneAndDelete({ serialnumber });
     if (!deletedEquipment) {
       return res.status(404).json({ error: "Equipment not found" });
     }
