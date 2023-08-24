@@ -35,7 +35,7 @@ function AdminPanel(){
                         </div>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <Link to="/patient" className="link"><img src = {Equipment} alt="" /></Link>
+                                <Link to="/equipment" className="link"><img src = {Equipment} alt="" /></Link>
                                 <figcaption id='figequip'><b>Equipment</b></figcaption>
                             </div>    
                             <div className="panelItem">
