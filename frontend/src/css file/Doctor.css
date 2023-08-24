@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.DoctorDetailArea{
+.DoctorDetailArea , .EquipmentDetailArea{
     height: 1250px;
     background-color: white;
     position: absolute;
