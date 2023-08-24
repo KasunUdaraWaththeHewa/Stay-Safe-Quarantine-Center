@@ -4,6 +4,7 @@ import '../css file/AdminPanel.css'
 import Footer from '../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
+import Equipment from '../img/equipment.png'
 
 function AdminPanel(){
     return(
@@ -31,6 +32,20 @@ function AdminPanel(){
                                 <figcaption><b>Staff</b></figcaption>
                             </div> 
                             
+                        </div>
+                        <div className='PanelRow'>
+                            <div className="panelItem">
+                                <Link to="/patient" className="link"><img src = {Equipment} alt="" /></Link>
+                                <figcaption id='figequip'><b>Equipment</b></figcaption>
+                            </div>    
+                            <div className="panelItem">
+                                <Link to="/patient" className="link"><img src = {Equipment} alt="" /></Link>
+                                <figcaption id='figequip'><b>Equipment</b></figcaption>
+                            </div>  
+                            <div className="panelItem">
+                                <Link to="/patient" className="link"><img src = {Equipment} alt="" /></Link>
+                                <figcaption id='figequip'><b>Equipment</b></figcaption>
+                            </div>  
                         </div>
 
                     </div>
