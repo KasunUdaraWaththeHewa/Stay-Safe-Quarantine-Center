@@ -9,7 +9,7 @@ const NotificationSchema=new Schema({
         type:String,
         required:true
     },
-    notification:{
+    notificationBody:{
         type:String,
         required:true
     },
