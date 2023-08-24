@@ -95,7 +95,7 @@ function DoctorForm() {
         if (response.data) {
           alert("Doctor found");
           console.log(response.data);
-          populateFormWithFetchedData(response.data);
+          populateFormWithFetchedData();
         } else {
           alert("Doctor not found");
         }

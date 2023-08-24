@@ -1,29 +1,51 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.StaffDetailArea{
+
+.StaffDetailArea {
     background-color: white;
     width: 100%;
+    height: 1050px;
 }
-.formOneContainorStaff{
+
+.formOneContainorStaff {
     display: flex;
     width: 100%;
 }
-.existingStaff{
+
+.existingStaff {
     width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    padding: 20px; 
 }
-.h2Holder h2{
+
+.existingStaffCard {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 500px;
+    background: linear-gradient(to bottom, white, white);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px #023e8a;
+    color: black;
+    margin-top: 10px;
+}
+
+.h2Holder h2 {
     padding: 30px;
 }
-.staffForm{
+
+.staffForm {
+    margin-left: 50px;
     padding: 40px;
     width: 60%;
-    height: 870px;
+    height: 900px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    
 }
-.footerContainorStaff{
+
+.footerContainorStaff {
     
 }
