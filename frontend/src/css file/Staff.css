@@ -3,26 +3,27 @@
     padding: 0;
 }
 .StaffDetailArea{
-    height: 1250px;
     background-color: white;
-    position: absolute;
     width: 100%;
 }
-
+.formOneContainorStaff{
+    display: flex;
+    width: 100%;
+}
+.existingStaff{
+    width: 40%;
+}
 .h2Holder h2{
     padding: 30px;
-    text-align: center;
 }
-.formOneContainorStaff{
-    width: 50%;
-    position: absolute;
-    top: 100px;
-    left: 375px;
-    color: white;
+.staffForm{
+    padding: 40px;
+    width: 60%;
+    height: 870px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
-    padding: 80px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    
 }
-  .footerContainor{
-    margin-top: 1090px;
-  }
+.footerContainorStaff{
+    
+}

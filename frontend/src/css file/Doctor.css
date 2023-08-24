@@ -2,23 +2,33 @@
     margin: 0;
     padding: 0;
 }
+<<<<<<< HEAD
 .DoctorDetailArea , .EquipmentDetailArea{
     height: 1250px;
+=======
+.DoctorDetailArea{
+>>>>>>> 86f5079729472cd280bdddb30509146b7d44e707
     background-color: white;
-    position: absolute;
     width: 100%;
 }
-
+.formOneContainorDoctor{
+    display: flex;
+    width: 100%;
+}
+.existingDoctors{
+    width: 40%;
+}
 .h2Holder h2{
     padding: 30px;
 }
-.formOneContainorDoctor{
-    width: 50%;
-    position: absolute;
-    top: 100px;
-    left: 375px;
-    color: white;
+.doctorForm{
+    padding: 40px;
+    width: 60%;
+    height: 900px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
-    padding: 80px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    
+}
+.footerContainorDoctor{
+    
 }
