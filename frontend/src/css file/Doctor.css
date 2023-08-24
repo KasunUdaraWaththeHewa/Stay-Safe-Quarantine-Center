@@ -2,21 +2,11 @@
     margin: 0;
     padding: 0;
 }
-<<<<<<< HEAD
-
 .DoctorDetailArea {
-=======
-<<<<<<< HEAD
-.DoctorDetailArea , .EquipmentDetailArea{
     height: 1250px;
-=======
-.DoctorDetailArea{
->>>>>>> 86f5079729472cd280bdddb30509146b7d44e707
->>>>>>> 5c0213fae9b3f947245bd8be2b9ecc5ac1c6b185
     background-color: white;
     width: 100%;
 }
-
 .formOneContainorDoctor {
     display: flex;
     width: 100%;
