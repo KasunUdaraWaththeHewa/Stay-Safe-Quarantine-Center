@@ -7,7 +7,7 @@ router.route("/add").post((req,res)=>{
     const patientNIC=req.body.patientNIC;
     const amount=req.body.amount;
     const receiptNumber=req.body.receiptNumber;
-    const dateofpayment=req.body.date;
+    const dateofpayment=Date(req.body.date);
     const time=req.body.time;
     
 
@@ -30,12 +30,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:receiptNumber").get(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
-  const payment = await payment.findOne({ receiptNumber })
-    .then((payment) => {
-      if (!payment) {
+  const paymentObj = await payment.findOne({ receiptNumber })
+    .then((paymentObj) => {
+      if (!paymentObj) {
         return res.status(404).json({ error: "Payment not found" });
       }  
-      res.status(200).json({ status: "Payment fetched", payment })
+      res.status(200).json({ status: "Payment fetched", paymentObj })
     })
     .catch((err) => {
       console.log(err.message);

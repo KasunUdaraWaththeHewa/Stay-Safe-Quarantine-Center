@@ -48,21 +48,13 @@ function PaymentForm(){
 
 
     if (searchResult) {
-      setPayerInName(searchResult.user.payerInName);
-      setPayerNIC(searchResult.user.payerNIC);
-      setPatientNIC(searchResult.user.patientNIC);
-      setAmount(searchResult.user.amount);
-      setReceiptNumber(searchResult.user.receiptNumber);
-      setDateofPayment(searchResult.user.dateofpayment);
-      setTime(searchResult.user.time);
-
-     document.getElementById("payerInName").value=searchResult.user.payerInName;
-     document.getElementById("payerNIC").value=searchResult.user.payerNIC;
-     document.getElementById("patientNIC").value=searchResult.user.patientNIC;
-     document.getElementById("amount").value=searchResult.user.amount;
-     document.getElementById("receiptNumber").value=searchResult.user.receiptNumber;
-     document.getElementById("dateofpayment").value=searchResult.user.dateofpayment;
-     document.getElementById("time").value=searchResult.user.time;
+      setPayerInName(searchResult.paymentObj.payerInName);
+      setPayerNIC(searchResult.paymentObj.payerNIC);
+      setPatientNIC(searchResult.paymentObj.patientNIC);
+      setAmount(searchResult.paymentObj.amount);
+      setReceiptNumber(searchResult.paymentObj.receiptNumber);
+      setDateofPayment(searchResult.paymentObj.dateofpayment);
+      setTime(searchResult.paymentObj.time);
      
      alert("Populated form");
      } 
