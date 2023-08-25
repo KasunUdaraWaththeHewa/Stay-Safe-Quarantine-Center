@@ -42,7 +42,7 @@ function EquipmentForm() {
   //serach equipment
   function populateFormWithFetchedData() {
     if (searchResult) {
-        setName(searchResult.user.name);
+        setName(searchResult.equip.name);
         setCatergory(searchResult.user.catergory);
         setSerialNumber(searchResult.user.serialNumber);
         setPurchaseDate(searchResult.user.purchaseDate);
