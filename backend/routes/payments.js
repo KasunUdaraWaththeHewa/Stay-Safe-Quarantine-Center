@@ -10,7 +10,7 @@ router.route("/add").post((req,res)=>{
     const dateofpayment=req.body.date;
     const time=req.body.time;
     
-    
+
     const newPayment= new payment({
       dateofpayment,
       time,
@@ -18,7 +18,7 @@ router.route("/add").post((req,res)=>{
       receiptNumber,
       payerInName,
       payerNIC,
-      patientNIC
+      patientNIC,
     })
 
     newPayment.save().then(()=>{
@@ -30,12 +30,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:receiptNumber").get(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
-  const pay = await payment.findOne({ receiptNumber })
-    .then((pay) => {
-      if (!pay) {
+  const payment = await payment.findOne({ receiptNumber })
+    .then((payment) => {
+      if (!payment) {
         return res.status(404).json({ error: "Payment not found" });
       }  
-      res.status(200).json({ status: "Payment fetched", pay })
+      res.status(200).json({ status: "Payment fetched", payment })
     })
     .catch((err) => {
       console.log(err.message);
@@ -52,7 +52,8 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
     amount,
     payerInName,
     payerNIC,
-    patientNIC
+    patientNIC,
+    
   } = req.body;
 
   const updatePayment = {
@@ -61,7 +62,7 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
     amount,
     payerInName,
     payerNIC,
-    patientNIC
+    patientNIC,
   };
 
   try {
@@ -81,7 +82,6 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
     res.status(500).send({ status: "Error with updating data", error: err.message });
   }
 });
-
 
 
 
