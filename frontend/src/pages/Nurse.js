@@ -36,7 +36,7 @@ function Nurse() {
           <div className="nurseForm">
             <NurseForm />
           </div>
-          <div className="existingNurse">
+          <div className="existingNurses">
             <div className='scrollablePanel'>
               <ul>
                 {nurses.map((nurse) => (
