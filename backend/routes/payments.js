@@ -52,8 +52,7 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
     amount,
     payerInName,
     payerNIC,
-    patientNIC,
-    
+    patientNIC, 
   } = req.body;
 
   const updatePayment = {
