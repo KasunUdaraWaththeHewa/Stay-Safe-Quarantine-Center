@@ -41,7 +41,7 @@ const DoctorSchema=new Schema({
         type:String,
         required:false
     },
-    emergencyContactNumbers:{
+    emergencyContactNumber:{
         type:String,
         required:false
     },
