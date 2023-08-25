@@ -37,14 +37,16 @@ function Staff() {
               <StaffForm />
             </div>
             <div className="existingStaff">
-              <ul>
-                {staffs.map((staff) => (
-                  <div key={staff.nurseID} className="existingStaffCard">
-                  <p>{staff.firstName} {staff.lastName}</p>
-                  <p>{staff.staffID}</p>
-                  </div>
-                ))}
-              </ul>
+              <div className='scrollablePanel'>
+                <ul>
+                  {staffs.map((staff) => (
+                    <div key={staff.nurseID} className="existingStaffCard">
+                    <p>{staff.firstName} {staff.lastName}</p>
+                    <p>{staff.staffID}</p>
+                    </div>
+                  ))}
+                </ul>
+              </div>  
             </div>
           </div>
         </div>

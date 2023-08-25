@@ -37,14 +37,17 @@ function Equipment() {
             <EquipmentForm />
           </div>
           <div className="existingEquipment">
-            <ul>
-              {equipments.map((equipment) => (
-                <div key={equipment.serialNumber} className="existingEquipmentCard">
-                <p>{equipment.name}</p>
-                <p>{equipment.serialNumber}</p>
-                </div>
-              ))}
-            </ul>
+            <div className='scrollablePanel'>
+              <ul>
+                {equipments.map((equipment) => (
+                  <div key={equipment.serialNumber} className="existingEquipmentCard">
+                  <p>{equipment.name}</p>
+                  <p>{equipment.serialNumber}</p>
+                  </div>
+                ))}
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>

@@ -37,14 +37,16 @@ function Nurse() {
             <NurseForm />
           </div>
           <div className="existingNurse">
-            <ul>
-              {nurses.map((nurse) => (
-                <div key={nurse.nurseID} className="existingNurseCard">
-                <p>{nurse.firstName} {nurse.lastName}</p>
-                <p>{nurse.nurseID}</p>
-                </div>
-              ))}
-            </ul>
+            <div className='scrollablePanel'>
+              <ul>
+                {nurses.map((nurse) => (
+                  <div key={nurse.nurseID} className="existingNurseCard">
+                  <p>{nurse.firstName} {nurse.lastName}</p>
+                  <p>{nurse.nurseID}</p>
+                  </div>
+                ))}
+              </ul>
+             </div> 
           </div>
         </div>
       </div>

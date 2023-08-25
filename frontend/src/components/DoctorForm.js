@@ -67,19 +67,6 @@ function DoctorForm() {
       setRelationship(searchResult.user.relationship);
       setSkills(searchResult.user.skills);
 
-      document.getElementById("firstNameInput").value = firstName;
-      document.getElementById("lastNameInput").value = lastName;
-      document.getElementById("doctorIDInput").value = doctorID;
-      document.getElementById("phoneNumberInput").value = phoneNumber;
-      document.getElementById("emailInput").value = email;
-      document.getElementById("medicalLicenseNoInput").value = medicalLicenseNo;
-      document.getElementById("specializationInput").value = specialization;
-      document.getElementById("professionalExperienceInput").value = professionalExperience;
-      document.getElementById("addressInput").value = address;
-      document.getElementById("avalibleDaysInput").value = avalibleDays;
-      document.getElementById("emergencyContactNumbersInput").value = emergencycontactNumber;
-      document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship;
       alert("Populated form");
     }
   }
@@ -227,9 +214,9 @@ function DoctorForm() {
         </Col>
       </Row>
 
-      <Form.Group className="mb-3" controlId="formGridAddress1"id='addressInput' onChange={(e) => setAddress(e.target.value)} value={address}  >
+      <Form.Group className="mb-3" >
         <Form.Label>Address</Form.Label>
-        <Form.Control />
+        <Form.Control id='addressInput' onChange={(e) => setAddress(e.target.value)} value={address}/>
       </Form.Group>
 
       <Row className="mb-3">
@@ -239,7 +226,7 @@ function DoctorForm() {
         </Col>
         <Col>
           <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control id='emergencyContactNumbersInput' onChange={(e) => setEmergencycontactNumber(e.target.value)} value={emergencycontactNumber}  />
+          <Form.Control onChange={(e) => setEmergencycontactNumber(e.target.value)} value={emergencycontactNumber}  />
         </Col>
       </Row>
       <Row className="mb-3">
