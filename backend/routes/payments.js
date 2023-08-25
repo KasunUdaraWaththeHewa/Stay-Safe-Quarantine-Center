@@ -2,14 +2,15 @@ const router =require("express").Router();
 let payment= require("../models/Payment");
 
 router.route("/add").post((req,res)=>{
-    const dateofpayment=req.body.date;
-    const time=req.body.time;
-    const amount=req.body.amount;
-    const receiptNumber=req.body.receiptNumber;
     const payerInName=req.body.payerInName;
     const payerNIC=req.body.payerNIC;
     const patientNIC=req.body.patientNIC;
-
+    const amount=req.body.amount;
+    const receiptNumber=req.body.receiptNumber;
+    const dateofpayment=req.body.date;
+    const time=req.body.time;
+    
+    
     const newPayment= new payment({
       dateofpayment,
       time,
@@ -33,7 +34,7 @@ router.route("/get/:receiptNumber").get(async (req, res) => {
     .then((pay) => {
       if (!pay) {
         return res.status(404).json({ error: "Payment not found" });
-      }
+      }  
       res.status(200).json({ status: "Payment fetched", pay })
     })
     .catch((err) => {
