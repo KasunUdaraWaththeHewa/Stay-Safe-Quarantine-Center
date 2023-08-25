@@ -47,3 +47,8 @@
     color: white;
 }
 
+.scrollablePanel {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
