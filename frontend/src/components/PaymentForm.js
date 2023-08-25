@@ -8,15 +8,13 @@ import axios from 'axios';
  
 function PaymentForm(){
    
-    
-    const [dateofpayment, setDateofPayment] = useState("");
-    const [amount, setAmount] = useState("");
-    const [receiptNumber, setReceiptNumber] = useState("");
     const [payerInName, setPayerInName] = useState(""); 
-    const [payerNIC, setPayerNIC] = useState("");   
-    const [patientNIC, setPatientNIC] = useState("");   
+    const [payerNIC, setPayerNIC] = useState("");
+    const [patientNIC, setPatientNIC] = useState(""); 
+    const [amount, setAmount] = useState("");    
+    const [receiptNumber, setReceiptNumber] = useState("");
+    const [dateofpayment, setDateofPayment] = useState("");
     const [time, setTime] = useState("");
-
     const [searchResult, setSearchResult] = useState(null);
     
     //add payment
@@ -33,12 +31,12 @@ function PaymentForm(){
         }
         axios.post("http://localhost:8070/payment/add", newPayment).then(() => {
             alert("Payment added");
-            setDateofPayment("");
-            setAmount("");
-            setReceiptNumber("");
             setPayerInName("");
             setPayerNIC("");
             setPatientNIC("");
+            setAmount("");
+            setReceiptNumber("");
+            setDateofPayment(""); 
             setTime("");
         }).catch((err)=>{
             console.log(err);
@@ -48,25 +46,23 @@ function PaymentForm(){
   //search payment
    function populateFormWithFetchedData(){
 
-    // console.log(searchResult);
-    // //return;
 
     if (searchResult) {
-      setDateofPayment(searchResult.payment.dateofpayment);
-      setAmount(searchResult.payment.amount);
-      setReceiptNumber(searchResult.payment.receiptNumber);
-      setPayerInName(searchResult.payment.payerInName);
-      setPayerNIC(searchResult.payment.payerNIC);
-      setPatientNIC(searchResult.payment.patientNIC);
-      setTime(searchResult.payment.time);
+      setPayerInName(searchResult.user.payerInName);
+      setPayerNIC(searchResult.user.payerNIC);
+      setPatientNIC(searchResult.user.patientNIC);
+      setAmount(searchResult.user.amount);
+      setReceiptNumber(searchResult.user.receiptNumber);
+      setDateofPayment(searchResult.user.dateofpayment);
+      setTime(searchResult.user.time);
 
-     document.getElementById("dateofpayment").value=searchResult.payment.dateofpayment;
-     document.getElementById("amount").value=searchResult.payment.amount;
-     document.getElementById("receiptNumber").value=searchResult.payment.receiptNumber;
-     document.getElementById("payerInName").value=searchResult.payment.payerInName;
-     document.getElementById("payerNIC").value=searchResult.payment.payerNIC;
-     document.getElementById("patientNIC").value=searchResult.payment.patientNIC;
-     document.getElementById("time").value=searchResult.payment.time;
+     document.getElementById("payerInName").value=searchResult.user.payerInName;
+     document.getElementById("payerNIC").value=searchResult.user.payerNIC;
+     document.getElementById("patientNIC").value=searchResult.user.patientNIC;
+     document.getElementById("amount").value=searchResult.user.amount;
+     document.getElementById("receiptNumber").value=searchResult.user.receiptNumber;
+     document.getElementById("dateofpayment").value=searchResult.user.dateofpayment;
+     document.getElementById("time").value=searchResult.user.time;
      
      alert("Populated form");
      } 
@@ -100,12 +96,12 @@ function PaymentForm(){
         axios.delete(`http://localhost:8070/payment/delete/${receiptNumber}`)
             .then((response) => {
                 alert("Payment deleted successfully");
-                setDateofPayment("");
-                setAmount("");
-                setReceiptNumber("");
                 setPayerInName("");
                 setPayerNIC("");
                 setPatientNIC("");
+                setAmount("");
+                setReceiptNumber("");
+                setDateofPayment("");
                 setTime("");
               })
                 .catch((error) => {
@@ -138,12 +134,12 @@ function PaymentForm(){
         
       //clear data
     function clearForm() {
-        setDateofPayment("");
-        setAmount("");
-        setReceiptNumber("");
         setPayerInName("");
         setPayerNIC("");
-        setPatientNIC("");
+        setPatientNIC(""); 
+        setAmount("");
+        setReceiptNumber("");
+        setDateofPayment("");
         setTime("");
 
         alert("Cleared form");

@@ -43,6 +43,7 @@ function EquipmentForm() {
   function populateFormWithFetchedData() {
     if (searchResult) {
         setName(searchResult.equip.name);
+<<<<<<< HEAD
         setCategory(searchResult.equip.category);
         setSerialNumber(searchResult.equip.serialNumber);
         setPurchaseDate(searchResult.equip.purchaseDate);
@@ -51,6 +52,26 @@ function EquipmentForm() {
         setLocation(searchResult.equip.location);
         setPrice(searchResult.equip.price);
         setCurrentStatus(searchResult.equip.currentStatus);
+=======
+        setCatergory(searchResult.user.catergory);
+        setSerialNumber(searchResult.user.serialNumber);
+        setPurchaseDate(searchResult.user.purchaseDate);
+        setManufacturer(searchResult.user.manufacturer);
+        setSupplier(searchResult.user.supplier);
+        setLocation(searchResult.user.location);
+        setPrice(searchResult.user.price);
+        setCurrentStatus(searchResult.user.currentStatus);
+
+      document.getElementById("nameInput").value = name;
+      document.getElementById("catergoryInput").value = catergory;
+      document.getElementById("serialNumberInput").value = serialNumber;
+      document.getElementById("purchaseDateInput").value = purchaseDate;
+      document.getElementById("manufacturerInput").value = manufacturer;
+      document.getElementById("supplierInput").value = supplier;
+      document.getElementById("locationInput").value = location;
+      document.getElementById("priceInput").value = price;
+      document.getElementById("currentStatusInput").value = currentStatus;
+>>>>>>> d6905302251d970d679ec443f63563694e22ab25
 
       alert("Populated form");
     }
