@@ -95,7 +95,7 @@ function App() {
                 <Sign_in_admin/>
               </Route>
 
-<<<<<<< HEAD
+
               <Route exact path="/signup">
                 <Signup/>
               </Route>
@@ -104,11 +104,9 @@ function App() {
                 <Login/>
               </Route>
               
-=======
               <Route exact path="/meals">
                 <Meals/>
               </Route>
->>>>>>> b1fa95b94ebb58040525aca49a17c66af78744ce
             </Switch>
       </Router>
       
