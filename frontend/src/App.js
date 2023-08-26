@@ -26,6 +26,7 @@ import Sign_in_patient from './pages/Sign_in_patient'
 import Sign_in_staff from './pages/Sign_in_staff'
 import OurCenter from './pages/OurCenter';
 import Sign_in_admin from './pages/Sign_in_admin';
+import Meals from './pages/Meals';
 
 
 function App() {
@@ -90,6 +91,10 @@ function App() {
               </Route>
               <Route exact path="/sign_in_admin">
                 <Sign_in_admin/>
+              </Route>
+
+              <Route exact path="/meals">
+                <Meals/>
               </Route>
             </Switch>
       </Router>
