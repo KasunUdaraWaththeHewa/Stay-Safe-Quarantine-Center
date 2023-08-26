@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-function StaffForm() {
-  const [firstName, setFirstName] = useState("");
+function MealForm() {
+  const [MealID, setMealID] = useState("");
   const [lastName, setLastName] = useState("");
   const [employeeID, setEmployeeID] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -25,11 +25,11 @@ function StaffForm() {
   function sendData(e) {
     e.preventDefault();
     const newStaff = {
-      firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills
+      MealID, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills
     }
     axios.post("http://localhost:8070/staff/add", newStaff).then(() => {
       alert("Staff added");
-      setFirstName("")
+      setMealID("")
       setLastName("")
       setEmployeeID("")
       setPhoneNumber("")
@@ -52,7 +52,7 @@ function StaffForm() {
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.user.firstName);
+      setMealID(searchResult.user.MealID);
       setLastName(searchResult.user.lastName);
       setEmployeeID(searchResult.user.employeeID);
       setPhoneNumber(searchResult.user.phoneNumber);
@@ -64,7 +64,7 @@ function StaffForm() {
       setRelationship(searchResult.user.relationship);
       setSkills(searchResult.user.skills);
 
-      document.getElementById("firstNameInput").value = firstName;
+      document.getElementById("MealIDInput").value = MealID;
       document.getElementById("lastNameInput").value = lastName;
       document.getElementById("employeeIDInput").value = employeeID;
       document.getElementById("phoneNumberInput").value = phoneNumber;
@@ -109,7 +109,7 @@ function StaffForm() {
     axios.delete(`http://localhost:8070/staff/delete/${staffID}`)
       .then((response) => {
         alert("Staff member deleted successfully");
-        setFirstName("");
+        setMealID("");
         setLastName("");
         setEmployeeID("");
         setPhoneNumber("");
@@ -132,7 +132,7 @@ function StaffForm() {
 
 function handleUpdate() {
   const updatedStaff = {
-    firstName,
+    MealID,
     lastName,
     employeeID,
     phoneNumber,
@@ -159,7 +159,7 @@ function handleUpdate() {
 
 //clear form
 function clearForm() {
-  setFirstName("");
+  setMealID("");
   setLastName("");
   setEmployeeID("");
   setStaffID("");
@@ -179,10 +179,10 @@ function clearForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>First name</Form.Label>
-          <Form.Control id='firstNameInput' onChange={(e) => {
-            setFirstName(e.target.value)
+          <Form.Control id='MealIDInput' onChange={(e) => {
+            setMealID(e.target.value)
           }}
-          value={firstName} />
+          value={MealID} />
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
@@ -307,4 +307,4 @@ function clearForm() {
   );
 }
 
-export default StaffForm;
+export default MealForm;
