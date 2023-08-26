@@ -63,17 +63,14 @@ h2 {
 
   .barchartcontainer{
     height: auto;
+    display: fixed;
     width: 80%;
-    margin-left:170px;
-    padding-top: 100px;
-    
+    padding-left:360px;
+    padding-top: 150px;
+    margin-bottom:0;
   }
-  .barchartcontainer img{
-    height:auto;
-    width: 60%;
+
   
-    
-  }
   .description-1{
     margin-top: 50px;
     margin-left: 170px;
@@ -82,10 +79,9 @@ h2 {
     margin-bottom: 0%;
     width:100%;
     height:auto;
-
   }
-  .description-2{
 
+  .description-2{
     margin-left: 170px;
     margin-top: 50px;
     display: flex;
@@ -170,3 +166,5 @@ h2 {
     color: black;
     font-weight: bold;
  }
+
+
