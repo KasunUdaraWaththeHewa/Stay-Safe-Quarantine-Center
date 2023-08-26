@@ -13,7 +13,7 @@
 
 .signupS{
     width: 400px;
-    height: 550px;
+    height: 500px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
     
@@ -25,7 +25,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .signupS label,.signupS input[type="email"],.signupS input[type="password"]{
@@ -38,6 +38,7 @@
 
 .signupS label{
     font-size: 20px;
+    margin-top: 10px;
 }
 
 .signupS input{

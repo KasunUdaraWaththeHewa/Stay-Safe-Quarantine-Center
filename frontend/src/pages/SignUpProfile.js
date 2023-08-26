@@ -5,7 +5,7 @@ import img_p from '../img/admin_p.png';
 import Footer from '../components/Footer';
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
-import { useSignup } from '../hooks/useSignUp';
+import { useSignup } from '../hooks/useSignup';
 
 
 export default function Signup() {
@@ -29,8 +29,6 @@ export default function Signup() {
                   <label>Email</label><br></br>
                   <input type="email" name="email" required onChange={(e)=>setEmail(e.target.value)} value={email}></input> <br></br>
                   <label>Password</label><br></br>
-                  <input type="password" name="password" required onChange={(e)=>setPassword(e.target.value)} value={password}></input><br></br>
-                  <label>Re-Enter Password</label><br></br>
                   <input type="password" name="password" required onChange={(e)=>setPassword(e.target.value)} value={password}></input><br></br>
                   <div className='submitBtn' disabled={isLoading}><b><Link to="/adminPanel" className="link">Sign Up</Link></b></div>
                   {error && <div className='error'>{error}</div>}
