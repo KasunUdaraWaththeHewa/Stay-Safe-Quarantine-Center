@@ -27,6 +27,8 @@ import Sign_in_staff from './pages/Sign_in_staff'
 import OurCenter from './pages/OurCenter';
 import Sign_in_admin from './pages/Sign_in_admin';
 
+import Login from './pages/loginProfile';
+import Signup from './pages/SignUpProfile';
 
 function App() {
   return (
@@ -91,6 +93,15 @@ function App() {
               <Route exact path="/sign_in_admin">
                 <Sign_in_admin/>
               </Route>
+
+              <Route exact path="/signup">
+                <Signup/>
+              </Route>
+
+              <Route exact path="/login">
+                <Login/>
+              </Route>
+              
             </Switch>
       </Router>
       
