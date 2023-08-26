@@ -49,6 +49,7 @@ function BarchartOurCenter() {
                         name: "Arrived Patients",
                         showInLegend: true,
                         yValueFormatString: "#,###",
+                        color:"#00FFFF",
                         dataPoints: [
                             { label: "Jan", y: 100 },
                             { label: "Feb", y: 120 },
@@ -65,6 +66,7 @@ function BarchartOurCenter() {
                         name: "Recovered Patients",
                         showInLegend: true,
                         yValueFormatString: "#,###",
+                        color:"#0096FF",
                         dataPoints: [
                             { label: "Jan", y: 100 },
                             { label: "Feb", y: 117 },
@@ -81,6 +83,7 @@ function BarchartOurCenter() {
                         name: "Deceased Patients",
                         showInLegend: true,
                         yValueFormatString: "#,###",
+                        color:"#89CFF0",
                         dataPoints: [
                             { label: "Jan", y: 0 },
                             { label: "Feb", y: 3 },
