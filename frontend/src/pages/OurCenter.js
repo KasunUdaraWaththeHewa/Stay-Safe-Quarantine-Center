@@ -71,10 +71,12 @@ export default function OurCenter(){
                         </div>
                     </div>
                 </div>
-
-                <div className="barchartcontainer">
-                     <BarchartOurCenter/>
-                </div>
+               
+                 <div className="barchartcontainer">
+                        <BarchartOurCenter/>
+                   </div>
+                   
+                    
             </div>
             <Footer/>
         </div>
