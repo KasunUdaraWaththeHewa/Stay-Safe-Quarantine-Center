@@ -15,11 +15,15 @@
 }
 
 .existingNurses {
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px; 
     padding: 20px; 
+    background-image: url('../img/nurse-image.png');
+    background-position: center;
+    background-size:auto;
+    background-repeat: no-repeat;
 }
 
 .existingNurseCard {
@@ -31,6 +35,8 @@
     box-shadow: 0px 2px 4px #023e8a;
     color: black;
     margin-top: 10px;
+    margin-left: 75px;
+    opacity: 0.8;
 }
 
 .h2Holder h2 {
@@ -40,7 +46,7 @@
 .nurseForm {
     margin-left: 50px;
     padding: 40px;
-    width: 60%;
+    width: 50%;
     height: 900px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;

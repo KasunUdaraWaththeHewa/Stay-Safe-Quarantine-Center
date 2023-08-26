@@ -44,6 +44,7 @@ function DoctorForm() {
       setGender("Male")
       setRelationship("Married")
       setSkills(null)
+      window.location.reload();
     }).catch((err) => {
       alert(err)
     })
@@ -112,6 +113,7 @@ function DoctorForm() {
         setGender("Male")
         setRelationship("Married")
         setSkills(null)
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -139,6 +141,7 @@ function DoctorForm() {
     axios.put(`http://localhost:8070/doctor/update/${doctorID}`, updatedDoctor)
       .then((response) => {
         alert("Doctor updated successfully");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
