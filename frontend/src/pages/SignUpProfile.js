@@ -5,14 +5,17 @@ import img_p from '../img/admin_p.png';
 import Footer from '../components/Footer';
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
+import { useSignup } from '../hooks/useSignUp';
+
 
 export default function Signup() {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
+  const [signup,error,isLoading]=useSignup()
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    console.log(email,password)
+    await signup(email,password);
   }
 
   return (
@@ -29,7 +32,8 @@ export default function Signup() {
                   <input type="password" name="password" required onChange={(e)=>setPassword(e.target.value)} value={password}></input><br></br>
                   <label>Re-Enter Password</label><br></br>
                   <input type="password" name="password" required onChange={(e)=>setPassword(e.target.value)} value={password}></input><br></br>
-                  <div className='submitBtn'><b><Link to="/adminPanel" className="link">Submit</Link></b></div>
+                  <div className='submitBtn' disabled={isLoading}><b><Link to="/adminPanel" className="link">Sign Up</Link></b></div>
+                  {error && <div className='error'>{error}</div>}
               </form>
           </div>
       </div>
