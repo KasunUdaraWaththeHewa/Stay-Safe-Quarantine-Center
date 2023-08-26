@@ -30,6 +30,7 @@
     box-shadow: 0px 2px 4px #023e8a;
     color: black;
     margin-top: 10px;
+    opacity: 0.8;
 }
 
 .h2Holder h2 {
@@ -46,7 +47,7 @@
 }
 
 .scrollablePanel {
-    max-height: 500px;
+    max-height: 780px;
     overflow-y: auto;
     padding-right: 15px;
 }
