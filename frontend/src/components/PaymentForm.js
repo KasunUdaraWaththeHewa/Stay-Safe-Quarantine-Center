@@ -38,6 +38,7 @@ function PaymentForm(){
             setReceiptNumber("");
             setDateofPayment(""); 
             setTime("");
+            window.location.reload();
         }).catch((err)=>{
             console.log(err);
         })
@@ -95,6 +96,7 @@ function PaymentForm(){
                 setReceiptNumber("");
                 setDateofPayment("");
                 setTime("");
+                window.location.reload();
               })
                 .catch((error) => {
                     console.error(error);
@@ -116,7 +118,7 @@ function PaymentForm(){
             axios.put(`http://localhost:8070/payment/update/${receiptNumber}`, updatedPayment)
             .then((response) => {
                 alert("Payment updated successfully");
-               
+                window.location.reload();               
             })
             .catch((error) => {
                 console.error(error);

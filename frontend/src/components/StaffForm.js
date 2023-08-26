@@ -41,6 +41,7 @@ function StaffForm() {
       setGender("Male")
       setRelationship("Married")
       setSkills("")
+      window.location.reload();
     }).catch((err) => {
       alert(err)
     })
@@ -120,6 +121,7 @@ function StaffForm() {
         setGender("Male");
         setRelationship("Married");
         setSkills("");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -147,6 +149,7 @@ function handleUpdate() {
   axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff)
     .then((response) => {
       alert("Staff member updated successfully");
+      window.location.reload();
     })
     .catch((error) => {
       console.error(error);

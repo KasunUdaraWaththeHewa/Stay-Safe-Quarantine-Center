@@ -34,6 +34,7 @@ function EquipmentForm() {
       setLocation("")
       setPrice("")
       setCurrentStatus("")
+      window.location.reload();
     }).catch((err) => {
       alert(err)
     })
@@ -91,6 +92,7 @@ function EquipmentForm() {
         setLocation("")
         setPrice("")
         setCurrentStatus("")
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -114,6 +116,7 @@ function EquipmentForm() {
     axios.put(`http://localhost:8070/equipment/update/${serialNumber}`, updatedequipment)
       .then((response) => {
         alert("Equipment updated successfully");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
