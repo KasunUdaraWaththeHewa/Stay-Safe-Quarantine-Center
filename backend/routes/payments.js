@@ -1,23 +1,24 @@
 const router =require("express").Router();
-let payment= require("../models/payment");
+let payment= require("../models/Payment");
 
 router.route("/add").post((req,res)=>{
-    const date=req.body.date;
-    const time=req.body.time;
-    const amount=req.body.amount;
-    const receiptNumber=req.body.receiptNumber;
     const payerInName=req.body.payerInName;
     const payerNIC=req.body.payerNIC;
     const patientNIC=req.body.patientNIC;
+    const amount=req.body.amount;
+    const receiptNumber=req.body.receiptNumber;
+    const dateofpayment=Date(req.body.date);
+    const time=req.body.time;
+    
 
     const newPayment= new payment({
-      date,
+      dateofpayment,
       time,
       amount,
       receiptNumber,
       payerInName,
       payerNIC,
-      patientNIC
+      patientNIC,
     })
 
     newPayment.save().then(()=>{
@@ -29,12 +30,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:receiptNumber").get(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
-  const payment = await payment.findOne({ receiptNumber })
-    .then((payment) => {
-      if (!payment) {
+  const paymentObj = await payment.findOne({ receiptNumber })
+    .then((paymentObj) => {
+      if (!paymentObj) {
         return res.status(404).json({ error: "Payment not found" });
-      }
-      res.status(200).json({ status: "Payment fetched", payment })
+      }  
+      res.status(200).json({ status: "Payment fetched", paymentObj })
     })
     .catch((err) => {
       console.log(err.message);
@@ -46,25 +47,25 @@ router.route("/get/:receiptNumber").get(async (req, res) => {
 router.route("/update/:receiptNumber").put(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
   const {
-    date,
+    dateofpayment,
     time,
     amount,
     payerInName,
     payerNIC,
-    patientNIC
+    patientNIC, 
   } = req.body;
 
   const updatePayment = {
-    date,
+    dateofpayment,
     time,
     amount,
     payerInName,
     payerNIC,
-    patientNIC
+    patientNIC,
   };
 
   try {
-    const updatedPayment = await package.findOneAndUpdate(
+    const updatedPayment = await payment.findOneAndUpdate(
       { receiptNumber: receiptNumber },
       updatePayment,
       { new: true }
@@ -83,12 +84,11 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
 
 
 
-
 router.route("/delete/:receiptNumber").delete(async (req, res) => {
   let receiptNumber = req.params.receiptNumber;
 
   try {
-    const deletedPayment = await staff.findOneAndDelete({ receiptNumber });
+    const deletedPayment = await payment.findOneAndDelete({ receiptNumber });
     if (!deletedPayment) {
       return res.status(404).json({ error: "Payment not found" });
     }

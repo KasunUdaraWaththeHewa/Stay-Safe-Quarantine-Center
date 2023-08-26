@@ -30,6 +30,10 @@ function StaffPanel(){
                                 <Link to="/staff" className="link"><img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" /></Link>
                                 <figcaption><b>Staff</b></figcaption>
                             </div>    
+                            <div className="panelItem">
+                                <Link to="/payment" className="link"><img src="https://cdn-icons-png.flaticon.com/512/1102/1102760.png" alt="" /></Link>
+                                <figcaption><b>Payment</b></figcaption>
+                            </div>   
                         </div>
                     </div>
                     <div className='divAdminPanelRight'>

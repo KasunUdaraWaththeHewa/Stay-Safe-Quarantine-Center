@@ -4,6 +4,10 @@ import '../css file/AdminPanel.css'
 import Footer from '../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
+import Equipment from '../img/equipment.png'
+import Package from '../img/packages.png'
+import Service from '../img/services.png'
+
 
 function AdminPanel(){
     return(
@@ -12,11 +16,11 @@ function AdminPanel(){
             <div>
                 <div className='divAdminPanel'>
                     <div className='divAdminPanelLeft'>
-                        <div className='PanelRow'>
-                            <div className="panelItem">
-                                <Link to="/patient" className="link"><img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" /></Link>
-                                <figcaption><b>Patient</b></figcaption>
-                            </div>
+                        <div className='PanelRow' id='row1'>
+                            <div className="panelItem" id='stafficon'>
+                                <Link to="/staff" className="link"><img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" /></Link>
+                                <figcaption><b>Staff</b></figcaption>
+                            </div> 
                             <div className="panelItem">
                                 <Link to="/doctor" className="link"><img src="https://cdn-icons-png.flaticon.com/512/194/194915.png" alt="" /></Link>
                                 <figcaption><b>Doctor</b></figcaption>
@@ -27,10 +31,24 @@ function AdminPanel(){
                                 <figcaption><b>Nurse</b></figcaption>
                             </div>
                             <div className="panelItem">
-                                <Link to="/staff" className="link"><img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" /></Link>
-                                <figcaption><b>Staff</b></figcaption>
-                            </div> 
+                                <Link to="/patient" className="link"><img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" /></Link>
+                                <figcaption><b>Patient</b></figcaption>
+                            </div>
                             
+                        </div>
+                        <div className='PanelRow'>
+                            <div className="panelItem" id='equipicon'>
+                                <Link to="/equipment" className="link"><img src = {Equipment} alt="" /></Link>
+                                <figcaption id='figequip'><b>Equipment</b></figcaption>
+                            </div>    
+                            <div className="panelItem">
+                                <Link to="/packages" className="link"><img src = {Package} alt="" /></Link>
+                                <figcaption id='figpackage'><b>Packages</b></figcaption>
+                            </div>  
+                            <div className="panelItem">
+                                <Link to="/patient" className="link"><img src = {Service} alt="" /></Link>
+                                <figcaption id='figservice'><b>Services</b></figcaption>
+                            </div>  
                         </div>
 
                     </div>

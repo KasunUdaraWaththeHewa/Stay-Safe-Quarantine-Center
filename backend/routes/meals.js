@@ -1,5 +1,5 @@
 const router =require("express").Router();
-let meal= require("../models/meal");
+let meal= require("../models/Meal");
 
 router.route("/add").post((req,res)=>{
     const mealID=req.body.mealID;
@@ -29,12 +29,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:mealID").get(async (req, res) => {
   let mealID = req.params.mealID;
-  const meal = await meal.findOne({ mealID })
-    .then((meal) => {
-      if (!meal) {
+  const mealObject = await meal.findOne({ mealID })
+    .then((mealObject) => {
+      if (!mealObject) {
         return res.status(404).json({ error: "Meal not found" });
       }
-      res.status(200).json({ status: "Meal fetched", meal })
+      res.status(200).json({ status: "Meal fetched", mealObject })
     })
     .catch((err) => {
       console.log(err.message);
@@ -82,8 +82,6 @@ router.route("/update/:mealID").put(async (req, res) => {
 });
 
 
-
-
 router.route("/delete/:mealID").delete(async (req, res) => {
   let mealID = req.params.mealID;
 
@@ -99,9 +97,8 @@ router.route("/delete/:mealID").delete(async (req, res) => {
   }
 });
 
-
   router.route("/").get((req, res) => {
-    package.find()
+    meal.find()
       .then((meal) => {
         res.json(meal);
       })

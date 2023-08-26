@@ -3,11 +3,11 @@ const Schema =mongoose.Schema;
 const EquipmentsSchema=new Schema({
     name:{
         type:String,
-        required:true
+        required:false
     },
     category:{
         type:String,
-        required:true
+        required:false
     },
     serialNumber:{
         type:String,
@@ -15,27 +15,27 @@ const EquipmentsSchema=new Schema({
     },
     purchaseDate:{
         type:String,
-        required:true
+        required:false
     },
     manufacturer:{
         type:String,
-        required:true
+        required:false
     },
     supplier:{
         type:String,
-        required:true
+        required:false
     },
     location:{
         type:String,
-        required:true
+        required:false
     },
     price:{
         type:String,
-        required:true
+        required:false
     },
     currentStatus:{
         type:String,
-        required:true
+        required:false
     }
 })
 const Equipment=mongoose.model("Equipment",EquipmentsSchema);

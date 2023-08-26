@@ -55,6 +55,7 @@ function PatientForm() {
             setRoomNumber("")
             setDuration("")
             setRequirements("")
+            window.location.reload();
         }).catch((err) => {
             alert(err)
         })
@@ -156,6 +157,7 @@ function PatientForm() {
                 setRoomNumber("")
                 setDuration("")
                 setRequirements("")
+                window.location.reload();
             })
             .catch((error) => {
                 console.error(error);
@@ -189,6 +191,7 @@ function PatientForm() {
         axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient)
             .then((response) => {
                 alert("Patient updated successfully");
+                window.location.reload();
             })
             .catch((error) => {
                 console.error(error);

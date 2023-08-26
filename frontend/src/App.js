@@ -13,12 +13,11 @@ import Packages from './pages/Packages';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Staff from './pages/Staff';
-
 import Nurse from './pages/Nurse';
-
 import Doctor from './pages/Doctor';
-
 import Patient from './pages/Patient';
+import Equipment from './pages/Equipment';
+import Payment from './pages/Payment';
 
 import Sign_in_profile from './pages/Sign_in_profile'
 import Sign_in_doctor from './pages/Sign_in_doctor'
@@ -59,8 +58,14 @@ function App() {
               <Route exact path="/patient">
                   <Patient/>
               </Route>
+              <Route exact path="/equipment">
+                  <Equipment/>
+              </Route>
               <Route exact path = "/packages">
                   <Packages/>
+              </Route>
+              <Route exact path="/payment">
+                  <Payment/>
               </Route>
               <Route exact path="/Sign_in_profile">
                   <Sign_in_profile/>

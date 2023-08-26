@@ -24,6 +24,10 @@
     display: flex;
     padding-left: 40px;
 }
+
+#row1{
+    margin-top: 90px;
+}
 .panelItem{
     width: 200px;
     margin: 25px 0 0 0;
@@ -55,7 +59,24 @@
 figcaption{
     color: #03045e;
     padding-left: 40px;
+    padding-top: 5px;
 }
+#figequip{
+    color: #03045e;
+    padding-left: 23px;
+    padding-top: 5px;
+}
+#figpackage{
+    color: #03045e;
+    padding-left: 30px;
+    padding-top: 5px;
+}
+#figservice{
+    color: #03045e;
+    padding-left: 33px;
+    padding-top: 5px;
+}
+
 h3{
     font-family: 'Roboto Slab', serif;
 }
@@ -66,4 +87,12 @@ h3{
 
 .accordion-header{
     font-family: 'Merriweather', serif;
+}
+
+#stafficon{
+    margin-left: 80px;
+}
+
+#equipicon{
+    margin-left: 175px;
 }
