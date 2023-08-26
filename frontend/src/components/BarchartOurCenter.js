@@ -43,6 +43,7 @@ function BarchartOurCenter() {
                     cursor: "pointer",
                     itemclick: this.toggleDataSeries
                 },
+
                 data: [
                     {
                         type: "stackedColumn",
@@ -100,7 +101,8 @@ function BarchartOurCenter() {
 
             return (
                 <div>
-                    <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
+                   <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
+                   
                 </div>
             );
         }
