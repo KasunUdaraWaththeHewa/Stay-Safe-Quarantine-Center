@@ -20,7 +20,7 @@ function NavBar(){
                 <div id="homeImgContainer" ><Link to="/" className="link"><img className="homeIcon" src="https://vectorified.com/images/home-icon-white-2.png" alt="" /></Link></div>
             </div>
             <div className="navBarRight">
-                    <div>
+                    <div className='navBarItemList'>
                         <div className="navBarItem"><b><Link to="/OurCenter" className="link">Our Center</Link></b></div>
                         <div className="navBarItem"><b><Link to="/packages" className="link">Packages</Link></b></div>
                         <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
