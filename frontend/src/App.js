@@ -29,7 +29,7 @@ import Sign_in_admin from './pages/Sign_in_admin';
 import Meals from './pages/Meals';
 
 import Login from './pages/loginProfile';
-import Signup from './pages/SignupProfile';
+import Signup from './pages/SignUpProfile';
 
 function App() {
   return (
