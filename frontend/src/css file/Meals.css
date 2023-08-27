@@ -2,26 +2,26 @@
     margin: 0;
     padding: 0;
 }
-.PaymentDetailsArea {
+.MealDetailsArea {
     height: 1000px;
     background-color: white;
     width: 100%;
 }
-.formOneContainorPayment {
+.formOneContainorMeal {
     display: flex;
     width: 100%;
 }
 
-.existingPayment {
-    width: 40%;
+.existingMeal {
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px; 
-    padding: 20px; 
-    background-image: url('https://img.freepik.com/free-vector/stack-money-gold-coins-3d-cartoon-style-icon-coins-with-dollar-sign-wad-cash-currency-flat-vector-illustration-wealth-investment-success-savings-economy-profit-concept_74855-26108.jpg');
+    margin: 20px;
+    background-image: url('https://png.pngtree.com/png-clipart/20191121/original/pngtree-color-food-cartoon-doodles-set-png-image_5103942.jpg');
 }
 
-.existingPaymentCard {
+.existingMealCard {
     border: 1px solid #ccc;
     padding: 5px;
     width: 500px;
@@ -36,18 +36,12 @@
     padding: 30px;
 }
 
-.PaymentForm {
-    padding: 40px;
-    width: 55%;
+.MealForm {
+    padding: 50px;
+    width: 50%;
     height: 800px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    margin-left: 40px;
-}
-
-.scrollablePanel {
-    max-height: 500px;
-    overflow-y: auto;
-    padding-right: 15px;
+    margin: 20px;
 }
 

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import '../css file/Payment.css';
+import '../css file/Meals.css';
 import NavBar from "../components/NavBar";
-import PaymentForm from "../components/PaymentForm";
+import MealForm from "../components/Mealform";
 import Footer from '../components/Footer';
 import axios from 'axios';
 
-function Payment() {
-  const [payments, setpayments] = useState([]);
+function Meal() {
+  const [Meals, setMeals] = useState([]);
 
   useEffect(() => {
-    async function fetchpayments() {
+    async function fetchMeals() {
       try {
-        const response = await axios.get('http://localhost:8070/payment/');
-        setpayments(response.data);
+        const response = await axios.get('http://localhost:8070/Meal/');
+        setMeals(response.data);
       } catch (error) {
         console.error(error);
       }
     }
 
-    fetchpayments();
+    fetchMeals();
   }, []);
 
   return (
@@ -26,35 +26,23 @@ function Payment() {
       <div className="navBarContainor">
         <NavBar />
       </div>
-      <div className="PaymentDetailsArea">
+      <div className="MealDetailsArea">
         <div className="h2Holder">
           <h2>
-            <b>Payment Details Form</b>
+            <b>Meal Details Form</b>
           </h2>
         </div>
-        <div className="formOneContainorPayment">
-          <div className="PaymentForm">
-            <PaymentForm />
+        <div className="formOneContainorMeal">
+          <div className="existingMeal">
           </div>
-          <div className="existingPayment">
-            <div className='scrollablePanel'>
-              <ul>
-                {payments.map((payment) => (
-                  <div key={payment.receiptNumber} className="existingPaymentCard">
-                  <p>{payment.payerInName}</p>
-                  <p>{payment.dateofpayment}</p>
-                  <p>{payment.receiptNumber}</p>
-                  </div>
-                ))}
-              </ul>
-            </div>
-
+          <div className="MealForm">
+            <MealForm />
           </div>
         </div>
       </div>
-      <div className="footerContainorPayment">
+      <div className="footerContainorMeal">
         <Footer />
       </div>
     </div>
   );
-}export default Payment;
+}export default Meal;

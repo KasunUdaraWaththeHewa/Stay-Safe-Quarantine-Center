@@ -5,42 +5,31 @@ import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-function StaffForm() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [employeeID, setEmployeeID] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [jobRole, setJobRole] = useState("");
-  const [address, setAddress] = useState("");
-  const [staffID, setStaffID] = useState("");
-  const [emergencyContactNumber, setEmergencyContactNumber] = useState("");
-  const [gender, setGender] = useState("");
-  const [relationship, setRelationship] = useState("");
-  const [skills, setSkills] = useState("");
-
+function MealForm() {
+  const [mealID, setmealID] = useState("");
+  const [mealName, setmealName] = useState("");
+  const [mealDescription, setmealDescription] = useState("");
+  const [nutritionalInformation, setnutritionalInformation] = useState("");
+  const [dietaryRestrictions, setdietaryRestrictions] = useState("");
+  const [mealType, setmealType] = useState("");
+  const [portionSize, setportionSize] = useState("");
   const [searchResult, setSearchResult] = useState(null);
 
-  //add staff member
+  //add Meal
   function sendData(e) {
     e.preventDefault();
-    const newStaff = {
-      firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills
+    const newMeal = {
+      mealID, mealName, mealDescription, nutritionalInformation, mealType, dietaryRestrictions, portionSize
     }
-    axios.post("http://localhost:8070/staff/add", newStaff).then(() => {
-      alert("Staff added");
-      setFirstName("")
-      setLastName("")
-      setEmployeeID("")
-      setPhoneNumber("")
-      setEmail("")
-      setJobRole("")
-      setAddress("")
-      setStaffID("")
-      setEmergencyContactNumber("")
-      setGender("Male")
-      setRelationship("Married")
-      setSkills("")
+    axios.post("http://localhost:8070/Meal/add", newMeal).then(() => {
+      alert("Meal added");
+      setmealID("")
+      setmealName("")
+      setmealDescription("")
+      setnutritionalInformation("")
+      setdietaryRestrictions("")
+      setmealType("")
+      setportionSize("Normal")
       window.location.reload();
     }).catch((err) => {
       alert(err)
@@ -48,32 +37,25 @@ function StaffForm() {
   }
 
 
-  //search staff member
+  //search Meal
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setFirstName(searchResult.user.firstName);
-      setLastName(searchResult.user.lastName);
-      setEmployeeID(searchResult.user.employeeID);
-      setPhoneNumber(searchResult.user.phoneNumber);
-      setEmail(searchResult.user.email);
-      setJobRole(searchResult.user.jobRole);
-      setAddress(searchResult.user.address);
-      setEmergencyContactNumber(searchResult.user.emergencyContactNumber);
-      setGender(searchResult.user.gender);
-      setRelationship(searchResult.user.relationship);
-      setSkills(searchResult.user.skills);
+      setmealID(searchResult.user.mealID);
+      setmealName(searchResult.user.mealName);
+      setmealDescription(searchResult.user.mealDescription);
+      setnutritionalInformation(searchResult.user.nutritionalInformation);
+      setdietaryRestrictions(searchResult.user.dietaryRestrictions);
+      setmealType(searchResult.user.mealType);
+      setportionSize(searchResult.user.portionSize);
 
-      document.getElementById("firstNameInput").value = firstName;
-      document.getElementById("lastNameInput").value = lastName;
-      document.getElementById("employeeIDInput").value = employeeID;
-      document.getElementById("phoneNumberInput").value = phoneNumber;
-      document.getElementById("emailInput").value = email;
-      document.getElementById("jobRoleInput").value = jobRole;
-      document.getElementById("addressInput").value = address;
-      document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
-      document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship
+      document.getElementById("mealIDInput").value = mealID;
+      document.getElementById("mealNameInput").value = mealName;
+      document.getElementById("mealDescriptionInput").value = mealDescription;
+      document.getElementById("nutritionalInformationInput").value = nutritionalInformation;
+      document.getElementById("dietaryRestrictionsInput").value = dietaryRestrictions;
+      document.getElementById("mealTypeInput").value = mealType;
+      document.getElementById("portionSizeInput").value = portionSize;
       
 
       alert("Populated form");
@@ -85,216 +67,130 @@ function StaffForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    axios.get(`http://localhost:8070/staff/get/${staffID}`)
+    axios.get(`http://localhost:8070/Meal/get/${mealID}`)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("Staff member found");
+          alert("Meal found");
           console.log(response.data);
           populateFormWithFetchedData(response.data);
         } else {
-          alert("Staff member not found");
+          alert("Meal not found");
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for staff member");
+        alert("Error searching for Meal");
       });
   }
   
-  //delete staff member
+  //delete Meal
 
   function handleDelete() {
-    axios.delete(`http://localhost:8070/staff/delete/${staffID}`)
+    axios.delete(`http://localhost:8070/Meal/delete/${mealID}`)
       .then((response) => {
-        alert("Staff member deleted successfully");
-        setFirstName("");
-        setLastName("");
-        setEmployeeID("");
-        setPhoneNumber("");
-        setEmail("");
-        setJobRole("");
-        setAddress("");
-        setStaffID("");
-        setEmergencyContactNumber("");
-        setGender("Male");
-        setRelationship("Married");
-        setSkills("");
+        alert("Meal deleted successfully");
+        setmealID("");
+        setmealName("");
+        setmealDescription("");
+        setnutritionalInformation("");
+        setdietaryRestrictions("");
+        setmealType("");
+        setportionSize("Normal");
         window.location.reload();
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting staff member");
+        alert("Error deleting Meal member");
       });
   }
-//update staff member
+//update Meal
 
 function handleUpdate() {
-  const updatedStaff = {
-    firstName,
-    lastName,
-    employeeID,
-    phoneNumber,
-    email,
-    jobRole,
-    address,
-    staffID,
-    emergencyContactNumber,
-    gender,
-    relationship,
-    skills,
+  const updatedMeal = {
+    mealID,
+    mealName,
+    mealDescription,
+    nutritionalInformation,
+    dietaryRestrictions,
+    mealType,
+    portionSize,
   };
 
-  axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff)
+  axios.put(`http://localhost:8070/Meal/update/${mealID}`, updatedMeal)
     .then((response) => {
-      alert("Staff member updated successfully");
+      alert("Meal updated successfully");
       window.location.reload();
     })
     .catch((error) => {
       console.error(error);
-      alert("Error updating staff member");
+      alert("Error updating Meal");
     });
 }
 
 //clear form
 function clearForm() {
-  setFirstName("");
-  setLastName("");
-  setEmployeeID("");
-  setStaffID("");
-  setPhoneNumber("");
-  setEmail("");
-  setJobRole("");
-  setAddress("");
-  setEmergencyContactNumber("");
-  setGender("");
-  setRelationship("");
-  setSkills();
+  setmealID("");
+  setmealName("");
+  setmealDescription("");
+  setnutritionalInformation("");
+  setdietaryRestrictions("");
+  setmealType("");
+  setportionSize("");
   alert("Cleared form");
 }
   return (
     <Form>
-
-      <Row className="mb-3">
         <Col>
-          <Form.Label>First name</Form.Label>
-          <Form.Control id='firstNameInput' onChange={(e) => {
-            setFirstName(e.target.value)
+          <Form.Label>Meal ID</Form.Label>
+          <Form.Control id='mealIDInput' onChange={(e) => {
+            setmealID(e.target.value)
           }}
-          value={firstName} />
+          value={mealID} />
+          <Form.Label>Meal Name</Form.Label>
+          <Form.Control id='mealNameInput'onChange={(e) => {
+            setmealName(e.target.value)
+          }}
+          value={mealName} />
+          <Form.Label>Meal Description</Form.Label>
+          <Form.Control id='mealDescriptionInput' onChange={(e) => {
+            setmealDescription(e.target.value)
+          }}
+          value={mealDescription} />
+          <Form.Label>Nutritional Information</Form.Label>
+          <Form.Control id='nutritionalInformationInput' onChange={(e) => {
+            setnutritionalInformation(e.target.value)
+          }}
+          value={nutritionalInformation} />
         </Col>
-        <Col>
-          <Form.Label>Last name</Form.Label>
-          <Form.Control id='lastNameInput'onChange={(e) => {
-            setLastName(e.target.value)
-          }}
-          value={lastName} />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Col>
-          <Form.Label>Employee ID</Form.Label>
-          <Form.Control id='employeeIDInput' onChange={(e) => {
-            setEmployeeID(e.target.value)
-          }}
-          value={employeeID} />
-        </Col>
-        <Col>
-          <Form.Label>Phone number</Form.Label>
-          <Form.Control id='phoneNumberInput' onChange={(e) => {
-            setPhoneNumber(e.target.value)
-          }}
-          value={phoneNumber} />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" id='emailInput' onChange={(e) => {
-            setEmail(e.target.value)
-          }}
-          value={email} />
-        </Form.Group>
-
-        <Col>
-          <Form.Label>Job Role</Form.Label>
-          <Form.Control id='jobRoleInput' onChange={(e) => {
-            setJobRole(e.target.value)
-          }}
-          value={jobRole} />
-        </Col>
-      </Row>
-
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control id='addressInput' onChange={(e) => {
-          setAddress(e.target.value)
+      <Form.Group className="mb-3" controlId="formGriddietaryRestrictions1">
+        <Form.Label>Dietary Restrictions</Form.Label>
+        <Form.Control id='dietaryRestrictionsInput' onChange={(e) => {
+          setdietaryRestrictions(e.target.value)
         }}
-        value={address} />
+        value={dietaryRestrictions} />
       </Form.Group>
-
-      <Row className="mb-3">
-        <Col>
-          <Form.Label>staff ID</Form.Label>
-          <Form.Control id='staffIDInput' onChange={(e) => {
-            setStaffID(e.target.value)
-          }} 
-          value={staffID}/>
-        </Col>
-        <Col>
-          <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control id='emergencyContactNumberInput'onChange={(e) => {
-            setEmergencyContactNumber(e.target.value)
-          }} 
-          value={emergencyContactNumber}/>
-        </Col>
-      </Row>
-      <Row className="mb-3">
-        <Col >
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Gender</Form.Label>
-            <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </Form.Select>
-          </Form.Group>
+       <Col>
+          <Form.Label>Meal Type</Form.Label>
+          <Form.Control id='mealTypeInput' onChange={(e) => {
+            setmealType(e.target.value)
+          }}
+          value={mealType} />
         </Col>
         <Col >
           <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Relationship</Form.Label>
-            <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
-              <option value="Married">Married</option>
-              <option value="Unmarried">Unmarried</option>
+            <Form.Label>Portion Size</Form.Label>
+            <Form.Select value={portionSize} id='portionSizeInput' onChange={(e) => setportionSize(e.target.value)}>
+              <option value="Normal">Normal</option>
+              <option value="Large">Large</option>
             </Form.Select>
           </Form.Group>
-        </Col>
-
-      </Row>
-
-      <Form.Group controlId="formFile" className="mb-3">
-        <Form.Label>Enter your skills , Training and Certification details in pdf format</Form.Label>
-        <Form.Control type="file"  id='skillsInput' onChange={(e) => {
-          setSkills(e.target.value)
-        }}
-        />
-      </Form.Group>
-      <br />
-      <br />
-      <br />
-      <Row>
-        <Col>
+          <br />
           <Form.Group className="mb-3" id="formGridCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group>
         </Col>
-        <Col>
-
-        </Col>
-      </Row>
-      <br />
       <br />
 
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
@@ -307,4 +203,4 @@ function clearForm() {
   );
 }
 
-export default StaffForm;
+export default MealForm;
