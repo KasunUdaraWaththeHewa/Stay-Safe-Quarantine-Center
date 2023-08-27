@@ -1,0 +1,81 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.signupBack{
+    height: 100vh;    
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signupS{
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    color: white;
+    
+}
+
+.signupS img{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.signupS label,.signupS input[type="email"],.signupS input[type="password"]{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.signupS label{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.signupS input{
+    width: 60%;
+    height: 25px;
+}
+
+.signupS input[type="email"],.signupS input[type="password"]{
+    padding-left: 10px;
+}
+
+.signupS input[type="submit"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #03045e;
+    color: white;
+    margin: auto;
+    width: 100px;
+    height: 30px;
+}
+
+.signupS input[type="submit"]:hover{
+    cursor: pointer;
+}
+.submitBtn{
+    background-color: #03045e;
+    color: white;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 145px;
+    margin-top: -5px;
+}
+.submitBtn:hover{
+    background-color: #0096c7;
+    cursor: pointer;
+}

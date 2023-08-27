@@ -177,13 +177,19 @@ function PaymentForm(){
             <fieldset>
                 <legend><b>Payment Information</b></legend>
                 <Row className="mb-2">
-                    <Col>
-                        <Form.Label>Amount</Form.Label>
-                        <Form.Control
-                            id="AmountInput"
-                            onChange={(e) => setAmount(e.target.value)}
-                            value={amount} />
-                    </Col>
+
+                 <Col>
+                    <Form.Label>Amount</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="amount"
+                        id="AmountInput"
+                        onChange={(e) => setAmount(e.target.value)}
+                        value={amount}
+                        placeholder="LKR"
+                    />
+                 </Col>
+
                 </Row>
                 <Row>    
                     <Col>
@@ -208,12 +214,20 @@ function PaymentForm(){
 
                 </Row>
                 <Row>
+                    
                     <Col>
                         <Form.Label>Time</Form.Label>
-                        <Form.Control
-                            id="timeInput"
-                            onChange={(e) => setTime(e.target.value)}
-                            value={time} />
+                        <div style={{ display: 'flex' }}>
+                            <Form.Control
+                                type="time"
+                                name="time"
+                                id="timeInput"
+                                onChange={(e) => setTime(e.target.value)}
+                                value={time}
+                               
+                            />
+                           
+                        </div>
                     </Col>
                 </Row>    
             </fieldset><hr></hr>
