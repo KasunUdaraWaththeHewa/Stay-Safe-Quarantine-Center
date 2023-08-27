@@ -3,10 +3,13 @@ import logo from './media/logo.png';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
 import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 function NavBar(){
     const {logout} = useLogout();
+    const {user} = useAuthContext();
+
     const handleClick = () => {
         logout();
     } 
@@ -17,11 +20,21 @@ function NavBar(){
                 <div id="homeImgContainer" ><Link to="/" className="link"><img className="homeIcon" src="https://vectorified.com/images/home-icon-white-2.png" alt="" /></Link></div>
             </div>
             <div className="navBarRight">
-                <div className="navBarItem"><b><Link to="/OurCenter" className="link">Our Center</Link></b></div>
-                <div className="navBarItem"><b><Link to="/packages" className="link">Packages</Link></b></div>
-                <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
-                <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
-                <div className="navBarItem" onClick={handleClick}><b>Log-Out</b></div>
+                    <div>
+                        <div className="navBarItem"><b><Link to="/OurCenter" className="link">Our Center</Link></b></div>
+                        <div className="navBarItem"><b><Link to="/packages" className="link">Packages</Link></b></div>
+                        <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
+                        <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
+                    </div>
+                {user &&(
+                    <div>
+                        <span>{user.email}</span>
+                        <div onClick={handleClick}><b>Log-Out</b></div>   
+                    </div>
+                )}
+                
+                
+                    
             </div>
 
         </div>
