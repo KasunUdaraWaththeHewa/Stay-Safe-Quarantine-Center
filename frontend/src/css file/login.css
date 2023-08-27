@@ -1,0 +1,87 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.loginBack{
+    height: 100vh;    
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginS{
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    color: white;
+    
+}
+
+.loginS img{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.loginS label,.loginS input[type="email"],.loginS input[type="password"]{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.loginS label{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.loginS input{
+    width: 60%;
+    height: 25px;
+}
+
+.loginS input[type="email"],.loginS input[type="password"]{
+    padding-left: 10px;
+}
+
+.loginS input[type="submit"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #03045e;
+    color: white;
+    margin: auto;
+    width: 100px;
+    height: 30px;
+}
+
+.loginS input[type="submit"]:hover{
+    cursor: pointer;
+}
+.submitBtn{
+    background-color: #03045e;
+    color: white;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 145px;
+    margin-top: -5px;
+}
+.submitBtn:hover{
+    background-color: #0096c7;
+    cursor: pointer;
+}
+.error{
+    color: red;
+    font-size: 15px;
+    margin-left: 145px;
+    margin-top: -5px;
+}

@@ -2,8 +2,14 @@ import React from 'react'
 import logo from './media/logo.png';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
+import { useLogout } from '../hooks/useLogout';
+
 
 function NavBar(){
+    const {logout} = useLogout();
+    const handleClick = () => {
+        logout();
+    } 
     return(
         <div className="div-nav-bar">
             <div className="navBarLeft">
@@ -15,6 +21,7 @@ function NavBar(){
                 <div className="navBarItem"><b><Link to="/packages" className="link">Packages</Link></b></div>
                 <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>
                 <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
+                <div className="navBarItem" onClick={handleClick}><b>Log-Out</b></div>
             </div>
 
         </div>

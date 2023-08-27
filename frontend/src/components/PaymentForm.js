@@ -8,59 +8,55 @@ import axios from 'axios';
  
 function PaymentForm(){
    
-    
-    const [dateofpayment, setdateofpayment] = useState("");
-    const [amount, setamount] = useState("");
-    const [receiptNumber, setreceiptNumber] = useState("");
-    const [payerInName, setpayerInName] = useState(""); 
-    const [payerNIC, setpayerNIC] = useState("");   
-    const [patientNIC, setpatientNIC] = useState("");   
-    const [time, settime] = useState("");
-
+    const [payerInName, setPayerInName] = useState(""); 
+    const [payerNIC, setPayerNIC] = useState("");
+    const [patientNIC, setPatientNIC] = useState(""); 
+    const [amount, setAmount] = useState("");    
+    const [receiptNumber, setReceiptNumber] = useState("");
+    const [dateofpayment, setDateofPayment] = useState("");
+    const [time, setTime] = useState("");
     const [searchResult, setSearchResult] = useState(null);
-
+    
+    //add payment
     function sendData(e) {
         e.preventDefault();
         const newPayment = {
-            dateofpayment,amount,receiptNumber,payerInName,payerNIC,patientNIC,time
+            dateofpayment,
+            amount,
+            receiptNumber,
+            payerInName,
+            payerNIC,
+            patientNIC,
+            time,
         }
         axios.post("http://localhost:8070/payment/add", newPayment).then(() => {
             alert("Payment added");
-            setdateofpayment("");
-            setamount("");
-            setreceiptNumber("");
-            setpayerInName("");
-            setpayerNIC("");
-            setpatientNIC("");
-            settime("");
-        }).catch((error) => {
-            console.error(error);
-            alert("Error adding Payment");
+            setPayerInName("");
+            setPayerNIC("");
+            setPatientNIC("");
+            setAmount("");
+            setReceiptNumber("");
+            setDateofPayment(""); 
+            setTime("");
+            window.location.reload();
+        }).catch((err)=>{
+            console.log(err);
         })
     }
 
   //search payment
    function populateFormWithFetchedData(){
 
-    console.log(searchResult);
-    //return;
 
     if (searchResult) {
-      setdateofpayment(searchResult.payment.dateofpayment);
-      setamount(searchResult.payment.amount);
-      setreceiptNumber(searchResult.payment.receiptNumber);
-      setpayerInName(searchResult.payment.payerInName);
-      setpayerNIC(searchResult.payment.payerNIC);
-      setpatientNIC(searchResult.payment.patientNIC);
-      settime(searchResult.payment.time);
-
-     document.getElementById("dateofpayment").value=searchResult.payment.dateofpayment;
-     document.getElementById("amount").value=searchResult.payment.amount;
-     document.getElementById("receiptNumber").value=searchResult.payment.receiptNumber;
-     document.getElementById("payerInName").value=searchResult.payment.payerInName;
-     document.getElementById("payerNIC").value=searchResult.payment.payerNIC;
-     document.getElementById("patientNIC").value=searchResult.payment.patientNIC;
-     document.getElementById("time").value=searchResult.payment.time;
+      setPayerInName(searchResult.paymentObj.payerInName);
+      setPayerNIC(searchResult.paymentObj.payerNIC);
+      setPatientNIC(searchResult.paymentObj.patientNIC);
+      setAmount(searchResult.paymentObj.amount);
+      setReceiptNumber(searchResult.paymentObj.receiptNumber);
+      setDateofPayment(searchResult.paymentObj.dateofpayment);
+      setTime(searchResult.paymentObj.time);
+     
      alert("Populated form");
      } 
     }  
@@ -93,13 +89,14 @@ function PaymentForm(){
         axios.delete(`http://localhost:8070/payment/delete/${receiptNumber}`)
             .then((response) => {
                 alert("Payment deleted successfully");
-                setdateofpayment("");
-                setamount("");
-                setreceiptNumber("");
-                setpayerInName("");
-                setpayerNIC("");
-                setpatientNIC("");
-                settime("");
+                setPayerInName("");
+                setPayerNIC("");
+                setPatientNIC("");
+                setAmount("");
+                setReceiptNumber("");
+                setDateofPayment("");
+                setTime("");
+                window.location.reload();
               })
                 .catch((error) => {
                     console.error(error);
@@ -110,12 +107,18 @@ function PaymentForm(){
         //update payment    
         function handleUpdate() {  
             const updatedPayment = {
-                dateofpayment,amount,receiptNumber,payerInName,payerNIC,patientNIC,time
+                dateofpayment,
+                amount,
+                receiptNumber,
+                payerInName,
+                payerNIC,
+                patientNIC,
+                time,
             }
             axios.put(`http://localhost:8070/payment/update/${receiptNumber}`, updatedPayment)
             .then((response) => {
                 alert("Payment updated successfully");
-               
+                window.location.reload();               
             })
             .catch((error) => {
                 console.error(error);
@@ -125,13 +128,13 @@ function PaymentForm(){
         
       //clear data
     function clearForm() {
-        setdateofpayment("");
-        setamount("");
-        setreceiptNumber("");
-        setpayerInName("");
-        setpayerNIC("");
-        setpatientNIC("");
-        settime("");
+        setPayerInName("");
+        setPayerNIC("");
+        setPatientNIC(""); 
+        setAmount("");
+        setReceiptNumber("");
+        setDateofPayment("");
+        setTime("");
 
         alert("Cleared form");
     }
@@ -145,14 +148,14 @@ function PaymentForm(){
                         <Form.Label>Payer Name</Form.Label>
                         <Form.Control
                             id="payerNameInput"
-                            onChange={(e) => setpayerInName(e.target.value)}
+                            onChange={(e) => setPayerInName(e.target.value)}
                             value={payerInName} />
                     </Col>
                     <Col>
                         <Form.Label>Payer NIC</Form.Label>
                         <Form.Control
                             id="payerNICInput"
-                            onChange={(e) => setpayerNIC(e.target.value)}
+                            onChange={(e) => setPayerNIC(e.target.value)}
                             value={payerNIC} />
                     </Col>
                 </Row>
@@ -165,7 +168,7 @@ function PaymentForm(){
                         <Form.Label>Patient NIC</Form.Label>
                         <Form.Control
                             id="patientNICInput"
-                            onChange={(e) => setpatientNIC(e.target.value)}
+                            onChange={(e) => setPatientNIC(e.target.value)}
                             value={patientNIC} />
                     </Col>
                 </Row>    
@@ -174,39 +177,57 @@ function PaymentForm(){
             <fieldset>
                 <legend><b>Payment Information</b></legend>
                 <Row className="mb-2">
-                    <Col>
-                        <Form.Label>Amount</Form.Label>
-                        <Form.Control
-                            id="AmountInput"
-                            onChange={(e) => setamount(e.target.value)}
-                            value={amount} />
-                    </Col>
+
+                 <Col>
+                    <Form.Label>Amount</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="amount"
+                        id="AmountInput"
+                        onChange={(e) => setAmount(e.target.value)}
+                        value={amount}
+                        placeholder="LKR"
+                    />
+                 </Col>
+
                 </Row>
                 <Row>    
                     <Col>
                         <Form.Label>Receipt Number</Form.Label>
                         <Form.Control
                             id="receiptNumberInput"
-                            onChange={(e) => setreceiptNumber(e.target.value)}
+                            onChange={(e) => setReceiptNumber(e.target.value)}
                             value={receiptNumber} />
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Label>Date of Payment</Form.Label>
-                        <Form.Control
-                            id="dateofpaymentInput"
-                            onChange={(e) => setdateofpayment(e.target.value)}
-                            value={dateofpayment} />
-                    </Col> 
+                         <Form.Label> Date of Payment</Form.Label>
+                         <Form.Control
+                            type="date"
+                            name="dateofpayment"
+                            id='dateofpaymentInput'
+                            value={dateofpayment}
+                            onChange={(e) => setDateofPayment(e.target.value)}
+                          />
+                    </Col>
+
                 </Row>
                 <Row>
+                    
                     <Col>
                         <Form.Label>Time</Form.Label>
-                        <Form.Control
-                            id="timeInput"
-                            onChange={(e) => settime(e.target.value)}
-                            value={time} />
+                        <div style={{ display: 'flex' }}>
+                            <Form.Control
+                                type="time"
+                                name="time"
+                                id="timeInput"
+                                onChange={(e) => setTime(e.target.value)}
+                                value={time}
+                               
+                            />
+                           
+                        </div>
                     </Col>
                 </Row>    
             </fieldset><hr></hr>

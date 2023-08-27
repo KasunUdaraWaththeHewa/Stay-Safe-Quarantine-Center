@@ -15,13 +15,10 @@ import Packages from './pages/Packages';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Staff from './pages/Staff';
-
 import Nurse from './pages/Nurse';
-
 import Doctor from './pages/Doctor';
-
 import Patient from './pages/Patient';
-
+import Equipment from './pages/Equipment';
 import Payment from './pages/Payment';
 
 import Sign_in_pharmacy from './pages/Sign_in_pharmacy';
@@ -33,7 +30,10 @@ import Sign_in_patient from './pages/Sign_in_patient'
 import Sign_in_staff from './pages/Sign_in_staff'
 import OurCenter from './pages/OurCenter';
 import Sign_in_admin from './pages/Sign_in_admin';
+import Meals from './pages/Meals';
 
+import Login from './pages/loginProfile';
+import Signup from './pages/SignUpProfile';
 
 function App() {
   return (
@@ -63,6 +63,9 @@ function App() {
               </Route>
               <Route exact path="/patient">
                   <Patient/>
+              </Route>
+              <Route exact path="/equipment">
+                  <Equipment/>
               </Route>
               <Route exact path = "/packages">
                   <Packages/>
@@ -95,13 +98,25 @@ function App() {
               <Route exact path="/sign_in_admin">
                 <Sign_in_admin/>
               </Route>
+
               <Route exact path="/Sign_in_pharmacy">
                 <Sign_in_pharmacy/>
               </Route>
               <Route exact path="/PharmacyPanal">
                 <PharmacyPanal/>
               </Route>
+              <Route exact path="/signup">
+                <Signup/>
+              </Route>
+
+              <Route exact path="/login">
+                <Login/>
+              </Route>
               
+              <Route exact path="/meals">
+                <Meals/>
+              </Route>
+
             </Switch>
       </Router>
       

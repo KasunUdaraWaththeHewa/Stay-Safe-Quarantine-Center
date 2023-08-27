@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.MealDetailsArea {
+    height: 1000px;
+    background-color: white;
+    width: 100%;
+}
+.formOneContainorMeal {
+    display: flex;
+    width: 100%;
+}
+
+.existingMeal {
+    width: 50%;
+    display: flex;
+    gap: 10px; 
+    margin: 20px;
+    padding: 0px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/674/635/non_2x/nutritionist-concept-cartoon-faceless-doctor-with-vegetables-and-fruits-bowl-weight-loss-program-and-diet-plan-nutrition-therapy-with-healthy-food-vector.jpg');
+}
+
+
+.h2Holder h2 {
+    padding: 30px;
+}
+
+.MealForm {
+    padding: 40px;
+    width: 50%;
+    height: 800px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    color: white;
+    margin: 20px;
+}
+

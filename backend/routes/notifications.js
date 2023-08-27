@@ -1,16 +1,16 @@
 const router =require("express").Router();
-let notification= require("../models/notification");
+let notification= require("../models/Notification");
 
 router.route("/add").post((req,res)=>{
-    const notificationID=req.body.notificationID;
-    const title=req.body.title;
-    const notification=req.body.notification;
-    const reciever=req.body.reciever;
+    const notificationID = req.body.notificationID;
+    const title = req.body.title;
+    const notificationBody = req.body.notificationBody;
+    const reciever = req.body.reciever;
 
     const newNotification= new notification({
         notificationID,
         title,
-        notification,
+        notificationBody,
         reciever
     })
 
@@ -23,12 +23,12 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:notificationID").get(async (req, res) => {
   let notificationID = req.params.notificationID;
-  const notification = await notification.findOne({ notificationID })
-    .then((notification) => {
-      if (!notification) {
+  const notificationObject = await notification.findOne({ notificationID })
+    .then((notificationObject) => {
+      if (!notificationObject) {
         return res.status(404).json({ error: "Notification not found" });
       }
-      res.status(200).json({ status: "Notification fetched", notification })
+      res.status(200).json({ status: "Notification fetched", notificationObject })
     })
     .catch((err) => {
       console.log(err.message);
@@ -41,18 +41,18 @@ router.route("/update/:notificationID").put(async (req, res) => {
   let notificationID = req.params.notificationID;
   const {
     title,
-    notification,
+    notificationBody,
     reciever
   } = req.body;
 
   const updateNotification = {
     title,
-    notification,
+    notificationBody,
     reciever
   };
 
   try {
-    const updatedNotification = await meal.findOneAndUpdate(
+    const updatedNotification = await notification.findOneAndUpdate(
         { notificationID: notificationID },      
         updateNotification,
       { new: true }
@@ -68,8 +68,6 @@ router.route("/update/:notificationID").put(async (req, res) => {
     res.status(500).send({ status: "Error with updating data", error: err.message });
   }
 });
-
-
 
 
 router.route("/delete/:notificationID").delete(async (req, res) => {
@@ -89,7 +87,7 @@ router.route("/delete/:notificationID").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
-    package.find()
+    notification.find()
       .then((notification) => {
         res.json(notification);
       })

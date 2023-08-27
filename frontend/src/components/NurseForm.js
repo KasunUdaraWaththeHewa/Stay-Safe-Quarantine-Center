@@ -44,6 +44,7 @@ function NurseForm() {
       setGender("Male")
       setRelationship("Married")
       setSkills(null)
+      window.location.reload();
     }).catch((err) => {
       alert(err)
     })
@@ -129,6 +130,7 @@ function NurseForm() {
         setGender("Male")
         setRelationship("Married")
         setSkills(null)
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -156,6 +158,7 @@ function NurseForm() {
     axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse)
       .then((response) => {
         alert("Nurse updated successfully");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);

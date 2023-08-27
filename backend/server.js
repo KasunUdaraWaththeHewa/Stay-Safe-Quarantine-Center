@@ -20,6 +20,8 @@ connection.once("open",()=>{
     console.log("MongoDB Connection Success!");
 })
 
+
+
 const patientRouter=require("./routes/patients.js");
 app.use("/patient",patientRouter);
 const doctorRouter=require("./routes/doctors.js");
@@ -40,6 +42,10 @@ const paymentRouter=require("./routes/payments.js");
 app.use("/payment",paymentRouter);
 const serviceRouter=require("./routes/services.js");
 app.use("/service",serviceRouter);
+
+const userRoutes=require("./routes/user.js");
+app.use("/user",userRoutes);
+
 
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port: ${PORT}`);

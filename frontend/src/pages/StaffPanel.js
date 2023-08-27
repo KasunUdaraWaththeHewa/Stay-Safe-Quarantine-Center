@@ -31,7 +31,7 @@ function StaffPanel(){
                                 <figcaption><b>Staff</b></figcaption>
                             </div>    
                             <div className="panelItem">
-                                <Link to="/payment" className="link"><img src="https://www.iconbunny.com/icons/media/catalog/product/2/9/2914.9-payment-icon-iconbunny.jpg" alt="" /></Link>
+                                <Link to="/payment" className="link"><img src="https://cdn-icons-png.flaticon.com/512/1102/1102760.png" alt="" /></Link>
                                 <figcaption><b>Payment</b></figcaption>
                             </div>   
                         </div>

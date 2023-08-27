@@ -7,9 +7,9 @@ import img_p2 from '../img/meals.jpg';
 import img_p3 from '../img/amenties.jpg';
 import img_p4 from '../img/entertainment.jpeg';
 import img_p5 from '../img/safetymeasures.jpg';
-import img_p6 from '../img/barchart-1.png';
 import Footer from '../components/Footer';
 import ourcenter from '../img/ourcenter.png';
+import BarchartOurCenter from '../components/BarchartOurCenter';
 
 export default function OurCenter(){
     return ( 
@@ -71,11 +71,12 @@ export default function OurCenter(){
                         </div>
                     </div>
                 </div>
-
-                <div className="barchartcontainer">
-                    <img src={img_p6} alt="stats "></img>
-                    <p className="stats">Our Center Stats</p>
-                </div>
+               
+                 <div className="barchartcontainer">
+                        <BarchartOurCenter/>
+                   </div>
+                   
+                    
             </div>
             <Footer/>
         </div>
