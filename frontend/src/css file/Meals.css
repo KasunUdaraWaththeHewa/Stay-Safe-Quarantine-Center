@@ -15,29 +15,19 @@
 .existingMeal {
     width: 50%;
     display: flex;
-    flex-wrap: wrap;
     gap: 10px; 
     margin: 20px;
-    background-image: url('https://png.pngtree.com/png-clipart/20191121/original/pngtree-color-food-cartoon-doodles-set-png-image_5103942.jpg');
+    padding: 0px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/674/635/non_2x/nutritionist-concept-cartoon-faceless-doctor-with-vegetables-and-fruits-bowl-weight-loss-program-and-diet-plan-nutrition-therapy-with-healthy-food-vector.jpg');
 }
 
-.existingMealCard {
-    border: 1px solid #ccc;
-    padding: 5px;
-    width: 500px;
-    background: linear-gradient(to bottom, white, white);
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px #023e8a;
-    color: black;
-    margin-top: 10px;
-}
 
 .h2Holder h2 {
     padding: 30px;
 }
 
 .MealForm {
-    padding: 50px;
+    padding: 40px;
     width: 50%;
     height: 800px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
