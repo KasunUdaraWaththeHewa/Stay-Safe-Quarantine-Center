@@ -1,232 +1,37 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Karla', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Roboto Slab', serif;
-    font-family: 'Ubuntu', sans-serif;
-
 }
-.h2-ContactUs{
-    color: black;
-}
-.navBarContainor{
-    height: 65px;
-}
-.divH1ContactUs{
-    background: linear-gradient(to bottom, #0096c7, #023e8a);
+.MealDetailsArea {
+    height: 1000px;
+    background-color: white;
     width: 100%;
-    height: 400px;
-    color: white;
-    position:relative;
-    padding-top: 50px;
-    padding-bottom: 50px;
 }
-.h1-ContactUs{
+.formOneContainorMeal {
+    display: flex;
+    width: 100%;
+}
+
+.existingMeal {
+    width: 50%;
+    display: flex;
+    gap: 10px; 
+    margin: 20px;
+    padding: 0px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/674/635/non_2x/nutritionist-concept-cartoon-faceless-doctor-with-vegetables-and-fruits-bowl-weight-loss-program-and-diet-plan-nutrition-therapy-with-healthy-food-vector.jpg');
+}
+
+
+.h2Holder h2 {
     padding: 30px;
-    text-align: center;
-}
-.divSuggestions{
-    width: 100%;
-    height: 700px;
-    color: black;
-    background-color: white;
-    padding-top: 100px;
-}
-.mapSection{
-    display: flex;
-}
-.leftMapSection{
-    width: 40%;
-    height:450px;
-}
-.rightMapSection{
-    width: 60%;
-    height:450px;
-}
-.contactDetails{
-    width: 100%;
-    height: 300px;
-    font-family: 'Karla', sans-serif;
-    font-family: 'Mukta', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Roboto Slab', serif;
-    font-family: 'Ubuntu', sans-serif;
-}
-.h2ContactNumber{
-    margin: 20px 360px 0 0;
-}
-.h2Address{
-    margin: 20px 150px 0 0;
-}
-.h2Detail{
-    margin-top: 23px;
-    color: white;
-}
-.h2Email{
-    margin: 20px 320px 0 0;
-}
-.contactDetails p{
-    margin: 18px 0 0 0;
-    text-align: right;
-    color: white;
-}
-.contactItem{
-    display: flex;
 }
 
-.socialSection{
-    width: 300px;
-    height: 100px;
-    margin: 35px 0 0 190px;
-    display: flex;
-}
-.socialIcon{
-    width: 60px;
-    height: 60px;
-    margin: 0 20px 0 50px;
-}
-
-.facebookLogo{
-    width: 50px;
-    height: 40px;
-    cursor: pointer;
-}
-.socialIcon img:hover{
-    opacity: 0.7;
-}
-.TwitterLogo{
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-}
-.InstagramLogo{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-.TwitterDiv{
-    margin: 0 8px 0 10px;
-}
-.instaDiv{
-    margin: 0 40px 0 10px;
-}
-.h1Suggestions{
-    padding-top: 100px;
-    color: white;
-}
-
-.textRow{
-    margin-top: 30px;
-}
-.label{
-    margin-right: 100px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-input{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.legendSuggestions{
+.MealForm {
+    padding: 40px;
     width: 50%;
-    height: 1000px;
-    background: linear-gradient(to bottom, #0096c7, #023e8a);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-left: 390px;
-    justify-content: center;
-    align-items: center;
-}
-
-.M_page_Container{
-    display: flex;
-    padding-left: 100px;
-}
-
-.M_image{
-    justify-content: right;
-    color: white;
-    align-items: right;
-    justify-content: right;
-    height: auto;
-    width: 50%;
-}
-
-#textMessage{
-    height: 75px;
-    font-size: 15px;
-    padding-left: 5px;
-}
-.btnSubmit{
-    width: 120px;
-    height: 55px;
-    margin-top: 25px;
-    background-color: #03045e;
-    color: white;
-    font-size: 14px;
-}
-.btnSubmit:hover{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-}
-.textField{
-    height: 35px;
-    width: 450px;
-    font-size: 15px;
-    padding-left: 5px;
-    font-family: 'Karla', sans-serif;
-    font-family: 'Mukta', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Roboto Slab', serif;
-    font-family: 'Ubuntu', sans-serif;
-}
-.label{
-    margin: 0 0 0 0;
-}
-.map{
-    width: 270px;
-    height: 270px;
-    margin: 25px 0 0 130px;
-}
-.mapImg{
-    width: 250px;
-    height: 250px;
-}
-.imgContactUs{
-    width: 100%;
-    height: 500px;
-    position: relative;
-    
-}
-.ContactUsImg{
-    height: 1000px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    opacity: 0.8;
-    
-}
-.txtContactUsAboveImage{
-    margin: 400px 0 0 0;
-    font-size: 120px;
-    color: white;
-    text-align: center;
-}
-
-.form_C{
-    justify-content: center;
+    height: 800px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    padding: 50px;
-    margin-left: 400px;
+    margin: 20px;
 }
+
