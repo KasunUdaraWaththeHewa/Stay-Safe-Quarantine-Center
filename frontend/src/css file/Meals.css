@@ -1,232 +1,53 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Karla', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Roboto Slab', serif;
-    font-family: 'Ubuntu', sans-serif;
-
 }
-.h2-ContactUs{
-    color: black;
-}
-.navBarContainor{
-    height: 65px;
-}
-.divH1ContactUs{
-    background: linear-gradient(to bottom, #0096c7, #023e8a);
-    width: 100%;
-    height: 400px;
-    color: white;
-    position:relative;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-.h1-ContactUs{
-    padding: 30px;
-    text-align: center;
-}
-.divSuggestions{
-    width: 100%;
-    height: 700px;
-    color: black;
+.PaymentDetailsArea {
+    height: 1000px;
     background-color: white;
-    padding-top: 100px;
+    width: 100%;
 }
-.mapSection{
+.formOneContainorPayment {
     display: flex;
+    width: 100%;
 }
-.leftMapSection{
+
+.existingPayment {
     width: 40%;
-    height:450px;
-}
-.rightMapSection{
-    width: 60%;
-    height:450px;
-}
-.contactDetails{
-    width: 100%;
-    height: 300px;
-    font-family: 'Karla', sans-serif;
-    font-family: 'Mukta', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Roboto Slab', serif;
-    font-family: 'Ubuntu', sans-serif;
-}
-.h2ContactNumber{
-    margin: 20px 360px 0 0;
-}
-.h2Address{
-    margin: 20px 150px 0 0;
-}
-.h2Detail{
-    margin-top: 23px;
-    color: white;
-}
-.h2Email{
-    margin: 20px 320px 0 0;
-}
-.contactDetails p{
-    margin: 18px 0 0 0;
-    text-align: right;
-    color: white;
-}
-.contactItem{
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    padding: 20px; 
+    background-image: url('https://img.freepik.com/free-vector/stack-money-gold-coins-3d-cartoon-style-icon-coins-with-dollar-sign-wad-cash-currency-flat-vector-illustration-wealth-investment-success-savings-economy-profit-concept_74855-26108.jpg');
 }
 
-.socialSection{
-    width: 300px;
-    height: 100px;
-    margin: 35px 0 0 190px;
-    display: flex;
-}
-.socialIcon{
-    width: 60px;
-    height: 60px;
-    margin: 0 20px 0 50px;
-}
-
-.facebookLogo{
-    width: 50px;
-    height: 40px;
-    cursor: pointer;
-}
-.socialIcon img:hover{
-    opacity: 0.7;
-}
-.TwitterLogo{
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-}
-.InstagramLogo{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-.TwitterDiv{
-    margin: 0 8px 0 10px;
-}
-.instaDiv{
-    margin: 0 40px 0 10px;
-}
-.h1Suggestions{
-    padding-top: 100px;
-    color: white;
-}
-
-.textRow{
-    margin-top: 30px;
-}
-.label{
-    margin-right: 100px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-input{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.legendSuggestions{
-    width: 50%;
-    height: 1000px;
-    background: linear-gradient(to bottom, #0096c7, #023e8a);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-left: 390px;
-    justify-content: center;
-    align-items: center;
-}
-
-.M_page_Container{
-    display: flex;
-    padding-left: 100px;
-}
-
-.M_image{
-    justify-content: right;
-    color: white;
-    align-items: right;
-    justify-content: right;
-    height: auto;
-    width: 50%;
-}
-
-#textMessage{
-    height: 75px;
-    font-size: 15px;
-    padding-left: 5px;
-}
-.btnSubmit{
-    width: 120px;
-    height: 55px;
-    margin-top: 25px;
-    background-color: #03045e;
-    color: white;
-    font-size: 14px;
-}
-.btnSubmit:hover{
-    cursor: pointer;
-    background-color: white;
+.existingPaymentCard {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 500px;
+    background: linear-gradient(to bottom, white, white);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px #023e8a;
     color: black;
-}
-.textField{
-    height: 35px;
-    width: 450px;
-    font-size: 15px;
-    padding-left: 5px;
-    font-family: 'Karla', sans-serif;
-    font-family: 'Mukta', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Roboto Slab', serif;
-    font-family: 'Ubuntu', sans-serif;
-}
-.label{
-    margin: 0 0 0 0;
-}
-.map{
-    width: 270px;
-    height: 270px;
-    margin: 25px 0 0 130px;
-}
-.mapImg{
-    width: 250px;
-    height: 250px;
-}
-.imgContactUs{
-    width: 100%;
-    height: 500px;
-    position: relative;
-    
-}
-.ContactUsImg{
-    height: 1000px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    opacity: 0.8;
-    
-}
-.txtContactUsAboveImage{
-    margin: 400px 0 0 0;
-    font-size: 120px;
-    color: white;
-    text-align: center;
+    margin-top: 10px;
 }
 
-.form_C{
-    justify-content: center;
+.h2Holder h2 {
+    padding: 30px;
+}
+
+.PaymentForm {
+    padding: 40px;
+    width: 55%;
+    height: 800px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    padding: 50px;
-    margin-left: 400px;
+    margin-left: 40px;
 }
+
+.scrollablePanel {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
