@@ -1,4 +1,4 @@
-const { JsonWebTokenError } = require('jsonwebtoken');
+//const { JsonWebTokenError } = require('jsonwebtoken');
 const User = require('../models/UserModel');
 const jwt= require('jsonwebtoken');
 
@@ -22,7 +22,7 @@ const signupUser = async (req, res) => {
     try{
         const user = await User.signup(email, password);
         const token=createToken(user._id)
-        res.status(200).json(email, token);
+        res.status(200).json({email, token});
     }catch(err){
         res.status(400).json({mssg: err.message});
     }
