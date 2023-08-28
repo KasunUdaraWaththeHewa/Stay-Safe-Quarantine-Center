@@ -4,6 +4,8 @@ import NavBar from "../components/NavBar";
 import MealForm from "../components/Mealform";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useHistory } from 'react-router-dom';
 
 function Meal() {
   const [Meals, setMeals] = useState([]);

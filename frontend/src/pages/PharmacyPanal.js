@@ -4,9 +4,20 @@ import '../css file/PharmacyPanal.css'
 
 import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useHistory } from 'react-router-dom';
 
 
 function PharmacyPanal() {
+    const { user } = useAuthContext();
+    const history = useHistory();
+  
+    const isAdmin = user && user.role === 'admin';
+
+    if (!isAdmin) {
+        history.push('/unauthorized');
+        return null;
+    }
     return (
         <div>
             <div><NavBar /></div>

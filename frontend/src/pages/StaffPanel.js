@@ -4,9 +4,21 @@ import '../css file/AdminPanel.css'
 import Footer from '../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useHistory } from 'react-router-dom';
 
 
 function StaffPanel(){
+    const { user } = useAuthContext();
+    const history = useHistory();
+  
+    const isAdmin = user && user.role === 'admin';
+
+    if (!isAdmin) {
+        history.push('/unauthorized');
+        return null;
+    }
+    
     return(
         <div>
             <NavBar />

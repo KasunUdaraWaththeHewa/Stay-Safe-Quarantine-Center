@@ -12,7 +12,17 @@ export default function Signup() {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
   const {signup,error,isLoading}=useSignup()
+  
+  const { user } = useAuthContext();
+  const history = useHistory();
+  
+    const isAdmin = user && user.role === 'admin';
 
+    if (!isAdmin) {
+        history.push('/unauthorized');
+        return null;
+    }
+    
   const handleSubmit = async(e)=>{
     e.preventDefault()
     await signup(email,password);

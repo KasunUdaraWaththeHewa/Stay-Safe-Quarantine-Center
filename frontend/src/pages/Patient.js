@@ -4,9 +4,21 @@ import NavBar from "../components/NavBar";
 import PatientForm from "../components/PatientForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useHistory } from 'react-router-dom';
 
 function Patient() {
     const [patients, setPatient] = useState([]);
+
+    const { user } = useAuthContext();
+    const history = useHistory();
+  
+    const isAdmin = user && user.role === 'admin';
+
+    if (!isAdmin) {
+        history.push('/unauthorized');
+        return null;
+    }
   
     useEffect(() => {
       async function fetchPatients() {

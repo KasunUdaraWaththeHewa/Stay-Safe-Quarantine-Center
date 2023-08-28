@@ -4,9 +4,22 @@ import NavBar from "../components/NavBar";
 import EquipmentForm from "../components/EquipmentForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useHistory } from 'react-router-dom';
 
 function Equipment() {
   const [equipments, setequipments] = useState([]);
+  
+  const { user } = useAuthContext();
+    const history = useHistory();
+    const isAdmin = user && user.role === 'admin';
+
+    if (!isAdmin) {
+        history.push('/unauthorized');
+        return null;
+    }
+
+
 
   useEffect(() => {
     async function fetchequipments() {
