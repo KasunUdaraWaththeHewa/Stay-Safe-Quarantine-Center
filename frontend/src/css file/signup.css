@@ -38,7 +38,7 @@
 
 .signupS label{
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .signupS input{
@@ -84,4 +84,9 @@
     font-size: 15px;
     margin-left: 145px;
     margin-top: -5px;
+}
+h3{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

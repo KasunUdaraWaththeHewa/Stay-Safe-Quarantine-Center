@@ -21,17 +21,26 @@ export default function Signup() {
   return (
     <div>
       <NavBar/>
-      
       <div className="signupBack">
           <div className="signupS">
               <img src={img_p} alt="signupProfile"></img>
               <form className='signup' onSubmit={handleSubmit}>
-                  <label>Email</label><br></br>
-                  <input type="email" name="email" required onChange={(e)=>setEmail(e.target.value)} value={email}></input> <br></br>
-                  <label>Password</label><br></br>
-                  <input type="password" name="password" required onChange={(e)=>setPassword(e.target.value)} value={password}></input><br></br>
-                  {/* <input type="submit" className='submitBtn' disabled={isLoading}><b>  Sign Up</b></input> */}
-                  <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>  Sign Up</b></button>
+                  <h3>Sign Up</h3>
+                  <label>Email</label>
+                  <input
+                  type="email"
+                  required 
+                  onChange={(e)=>setEmail(e.target.value)}
+                  value={email}
+                  />
+                  <label>Password</label>
+                  <input
+                  type="password"
+                  required 
+                  onChange={(e)=>setPassword(e.target.value)}
+                  value={password}
+                  />
+                  <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>Sign Up</b></button>
                   {error && <div className='error'>{error}</div>}
               </form>
           </div>
