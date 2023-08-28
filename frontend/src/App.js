@@ -31,6 +31,7 @@ import Sign_in_staff from './pages/Sign_in_staff'
 import OurCenter from './pages/OurCenter';
 import Sign_in_admin from './pages/Sign_in_admin';
 import Meals from './pages/Meals';
+import Kitchen from './pages/Kitchen_staff';
 
 import Login from './pages/loginProfile';
 import Signup from './pages/SignupProfile';
@@ -115,6 +116,10 @@ function App() {
               
               <Route exact path="/meals">
                 <Meals/>
+              </Route>
+
+              <Route exact path="/kitchen">
+                <Kitchen/>
               </Route>
 
             </Switch>
