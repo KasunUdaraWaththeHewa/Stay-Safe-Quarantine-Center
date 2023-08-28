@@ -8,6 +8,16 @@ const PORT=process.env.PORT || 8070;
 app.use(cors());
 app.use(bodyParser.json());
 
+
+// const corsOptions = {
+//     origin: "http://localhost:3000",
+  
+//   };
+  
+//   app.use(cors(corsOptions));
+  
+
+
 const URL=process.env.MONGODB_URL;
 mongoose.connect(URL,{
     //useCreateIndex:true,

@@ -30,7 +30,8 @@ export default function Signup() {
                   <input type="email" name="email" required onChange={(e)=>setEmail(e.target.value)} value={email}></input> <br></br>
                   <label>Password</label><br></br>
                   <input type="password" name="password" required onChange={(e)=>setPassword(e.target.value)} value={password}></input><br></br>
-                  <div className='submitBtn' disabled={isLoading}><b><Link to="/adminPanel" className="link">Sign Up</Link></b></div>
+                  {/* <input type="submit" className='submitBtn' disabled={isLoading}><b>  Sign Up</b></input> */}
+                  <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>  Sign Up</b></button>
                   {error && <div className='error'>{error}</div>}
               </form>
           </div>
