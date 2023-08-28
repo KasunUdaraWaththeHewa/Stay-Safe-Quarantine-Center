@@ -9,15 +9,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-// const corsOptions = {
-//     origin: "http://localhost:3000",
-  
-//   };
-  
-//   app.use(cors(corsOptions));
-  
-
-
 const URL=process.env.MONGODB_URL;
 mongoose.connect(URL,{
     //useCreateIndex:true,
@@ -34,7 +25,7 @@ connection.once("open",()=>{
 
 const patientRouter=require("./routes/patients.js");
 app.use("/patient",patientRouter);
-const doctorRouter=require("./routes/doctors.js");
+const doctorRouter=require("./routes/doctorRoute.js");
 app.use("/doctor",doctorRouter);
 const nurseRouter=require("./routes/nurses.js");
 app.use("/nurse",nurseRouter);

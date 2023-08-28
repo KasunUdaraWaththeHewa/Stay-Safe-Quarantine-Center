@@ -1,5 +1,8 @@
 const router =require("express").Router();
 let equipment= require("../models/Equipment");
+const requireAuth = require("../middleware/requireAuth");
+
+router.use(requireAuth);
 
 router.route("/add").post((req,res)=>{
     const name=req.body.name;

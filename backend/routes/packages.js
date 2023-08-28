@@ -1,6 +1,8 @@
 const router =require("express").Router();
 let package= require("../models/package");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
     const packageName=req.body.packageName;
     const details=req.body.details;

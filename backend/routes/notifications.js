@@ -1,6 +1,8 @@
 const router =require("express").Router();
 let notification= require("../models/Notification");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
     const notificationID = req.body.notificationID;
     const title = req.body.title;

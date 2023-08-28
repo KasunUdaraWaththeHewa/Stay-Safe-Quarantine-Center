@@ -1,6 +1,8 @@
 const router =require("express").Router();
 let doctor= require("../models/Doctor");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
     const firstName=req.body.firstName;
     const lastName=req.body.lastName;

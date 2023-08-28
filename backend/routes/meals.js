@@ -1,5 +1,8 @@
 const router =require("express").Router();
 let meal= require("../models/Meal");
+const requireAuth = require("../middleware/requireAuth");
+router.use(requireAuth);
+
 
 router.route("/add").post((req,res)=>{
     const mealID=req.body.mealID;

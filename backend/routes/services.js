@@ -1,6 +1,8 @@
 const router =require("express").Router();
 let service= require("../models/service");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
     const serviceID=req.body.serviceID;
     const serviceName=req.body.serviceName;

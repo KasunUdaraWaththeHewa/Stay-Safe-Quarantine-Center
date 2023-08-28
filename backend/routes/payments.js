@@ -1,6 +1,8 @@
 const router =require("express").Router();
 let payment= require("../models/Payment");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
     const payerInName=req.body.payerInName;
     const payerNIC=req.body.payerNIC;
