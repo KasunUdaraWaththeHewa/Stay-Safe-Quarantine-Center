@@ -23,10 +23,10 @@
     margin: 0;
 }
 .navBarLeft{
-    width: 65%;
+    width: 55%;
 }
 .navBarRight{
-    width: 35%;
+    width: 45%;
     display: flex;
 }
 .navBarItem{
