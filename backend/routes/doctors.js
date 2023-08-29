@@ -5,7 +5,7 @@ const requireAuth = require("../middleware/requireAuth");
 router.use(requireAuth);
 router.route("/add").post((req,res)=>{
 
-  if((req.user.role !== 'admin')|(req.user.role !== 'staff')) return res.status(403).send("You are not allowed to make these changes");
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
 
     const firstName=req.body.firstName;
     const lastName=req.body.lastName;
@@ -48,7 +48,7 @@ router.route("/add").post((req,res)=>{
 
 router.route("/get/:doctorID").get(async (req, res) => {
   
-  if((req.user.role !== 'admin')|(req.user.role !== 'staff')) return res.status(403).send("You are not allowed to make these changes");
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
 
   let doctorID = req.params.doctorID;
   const user = await doctor.findOne({ doctorID })
@@ -68,7 +68,7 @@ router.route("/get/:doctorID").get(async (req, res) => {
 
 router.route("/update/:doctorID").put(async (req, res) => {
   
-  if((req.user.role !== 'admin')|(req.user.role !== 'staff')) return res.status(403).send("You are not allowed to make these changes");
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
 
   let doctorID = req.params.doctorID;
   const {
@@ -124,7 +124,7 @@ router.route("/update/:doctorID").put(async (req, res) => {
 
 router.route("/delete/:doctorID").delete(async (req, res) => {
   
-  if((req.user.role !== 'admin')|(req.user.role !== 'staff')) return res.status(403).send("You are not allowed to make these changes");
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
 
   let doctorID = req.params.doctorID;
 
@@ -142,7 +142,7 @@ router.route("/delete/:doctorID").delete(async (req, res) => {
 
 router.route("/").get((req, res) => {
   
-  if((req.user.role !== 'admin')|(req.user.role !== 'staff')) return res.status(403).send("You are not allowed to make these changes");
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
 
   doctor.find()
     .then((doctor) => {
