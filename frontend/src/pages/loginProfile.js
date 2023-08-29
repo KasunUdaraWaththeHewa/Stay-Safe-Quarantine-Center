@@ -43,7 +43,7 @@ export default function Login() {
                   />
 
                   <label>Role</label>
-                  <div>
+                  <div className='roleDiv'>
                       <input
                         type="radio"
                         required

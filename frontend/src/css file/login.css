@@ -13,10 +13,10 @@
 
 .loginS{
     width: 400px;
-    height: 500px;
+    height: 550px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
-    
+    padding: 10px;    
 }
 
 .loginS img{
@@ -92,4 +92,5 @@ h3{
 }
 .roleDiv{
     display: flex;
+    margin-bottom: 30px;
 }
