@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import '../css file/Payment.css';
 import NavBar from "../components/NavBar";
 import PaymentForm from "../components/PaymentForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Payment() {
   const [payments, setpayments] = useState([]);

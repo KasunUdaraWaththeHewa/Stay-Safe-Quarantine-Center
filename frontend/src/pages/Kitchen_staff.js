@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import '../css file/Kitchenstaff.css';
 import NavBar from "../components/NavBar";
 import KitchenStaffForm from "../components/KitchenStaffForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import React, { useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Kitchenkitchen() {
     const [kitchens, setkitchens] = useState([]);

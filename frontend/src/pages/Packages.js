@@ -1,4 +1,3 @@
-import React from "react";
 import NavBar from "../components/NavBar.js";
 import "../components/NavBar.css";
 import Footer from '../components/Footer.js';
@@ -15,8 +14,6 @@ import EnhancedPackage from '../img/EnhancedPackage.png'
 import FamilyPackage from '../img/FamilyPackage.png'
 import VIPPackage from '../img/VIPPackage.png'
 import LongTermPackage from '../img/LongTermPackage.png'
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useHistory } from 'react-router-dom';
 
 const Packages = () => {
     const [activeCard, setActiveCard] = useState(null);

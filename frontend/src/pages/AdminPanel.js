@@ -1,4 +1,3 @@
-import React from 'react';
 import NavBar from '../components/NavBar';
 import '../css file/AdminPanel.css'
 import Footer from '../components/Footer';
@@ -9,8 +8,16 @@ import Package from '../img/packages.png'
 import Service from '../img/services.png'
 import profile from '../img/Profile.png'
 import notification from '../img/notification.png'
+import React, { useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function AdminPanel(){
+
+    const { user } = useContext(AuthContext);
+    if (!user || user.role !== 'admin') {
+      return <Redirect to="/unauthorized" />;
+    }
         return(
         <div>
             <NavBar />

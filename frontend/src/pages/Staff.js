@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import '../css file/Staff.css';
 import NavBar from "../components/NavBar";
 import StaffForm from "../components/StaffForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import React, { useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Staff() {
     const [staffs, setStaffs] = useState([]);

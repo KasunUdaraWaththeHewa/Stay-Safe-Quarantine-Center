@@ -1,10 +1,11 @@
-import React from 'react';
 import NavBar from '../components/NavBar';
 import '../css file/PharmacyPanal.css'
 
 import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
-
+import React, { useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function PharmacyPanal() {
     

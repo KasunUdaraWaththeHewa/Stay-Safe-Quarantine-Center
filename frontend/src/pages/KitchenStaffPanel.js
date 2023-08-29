@@ -8,7 +8,10 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function StaffPanel(){
-        
+    const { user } = useContext(AuthContext);
+    if (!user || user.role !== 'kitchen') {
+      return <Redirect to="/unauthorized" />;
+    }
     return(
         <div>
             <NavBar />
@@ -17,31 +20,15 @@ function StaffPanel(){
                     <div className='divAdminPanelLeft'>
                         <div className='PanelRow'>
                             <div className="panelItem">
-                                <Link to="/nurse" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
-                                <figcaption><b>Nurse</b></figcaption>
-                            </div>
-                            <div className="panelItem">
-                            <Link to="/patient" className="link"><img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" /></Link>
-                                <figcaption><b>Patient</b></figcaption>
-                            </div>
-                            <div className="panelItem">
-                                <Link to="/doctor" className="link"><img src="https://cdn-icons-png.flaticon.com/512/194/194915.png" alt="" /></Link>
-                                <figcaption><b>Doctor</b></figcaption>
-                            </div>
-                            <div className="panelItem">
-                                <Link to="/staff" className="link"><img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" /></Link>
-                                <figcaption><b>Staff</b></figcaption>
-                            </div>    
-                            <div className="panelItem">
-                                <Link to="/payment" className="link"><img src="https://cdn-icons-png.flaticon.com/512/1102/1102760.png" alt="" /></Link>
-                                <figcaption><b>Payment</b></figcaption>
-                            </div>   
+                                <Link to="/meal" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
+                                <figcaption><b>Kitchen Staff</b></figcaption>
+                            </div> 
                         </div>
                     </div>
                     <div className='divAdminPanelRight'>
                         <div className="PanelRightPart">
                                 
-                                <h3>Staff Instructions</h3>
+                                <h3>Kitchen Staff Instructions</h3>
                                 <div className='divAccordianContainor'>
                                     <Accordion defaultActiveKey="0">
                                         <Accordion.Item eventKey="0">

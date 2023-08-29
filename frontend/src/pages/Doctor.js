@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import '../css file/Doctor.css';
 import NavBar from "../components/NavBar";
 import DoctorForm from "../components/DoctorForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
-
+import React, { useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Doctor() {
   const [doctors, setDoctors] = useState([]);
@@ -21,7 +22,10 @@ function Doctor() {
 
     fetchDoctors();
   }, []);
-
+  const { user } = useContext(AuthContext);
+  if (!user || user.role !== 'admin') {
+    return <Redirect to="/unauthorized" />;
+  }
   return (
     <div>
       <div className="navBarContainor">
