@@ -4,6 +4,7 @@ const requireAuth = require("../middleware/requireAuth");
 
 router.use(requireAuth);
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
     const payerInName=req.body.payerInName;
     const payerNIC=req.body.payerNIC;
     const patientNIC=req.body.patientNIC;
@@ -31,6 +32,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:receiptNumber").get(async (req, res) => {
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
   let receiptNumber = req.params.receiptNumber;
   const paymentObj = await payment.findOne({ receiptNumber })
     .then((paymentObj) => {
@@ -47,6 +49,7 @@ router.route("/get/:receiptNumber").get(async (req, res) => {
 
   
 router.route("/update/:receiptNumber").put(async (req, res) => {
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
   let receiptNumber = req.params.receiptNumber;
   const {
     dateofpayment,
@@ -87,6 +90,7 @@ router.route("/update/:receiptNumber").put(async (req, res) => {
 
 
 router.route("/delete/:receiptNumber").delete(async (req, res) => {
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
   let receiptNumber = req.params.receiptNumber;
 
   try {
@@ -103,6 +107,7 @@ router.route("/delete/:receiptNumber").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
+    if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
     payment.find()
       .then((payment) => {
         res.json(payment);

@@ -7,22 +7,9 @@ import {Link} from 'react-router-dom';
 import Equipment from '../img/equipment.png'
 import Package from '../img/packages.png'
 import Service from '../img/services.png'
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useHistory } from 'react-router-dom';
-
-
 
 function AdminPanel(){
-    const { user } = useAuthContext();
-    const history = useHistory();
-    const isAdmin = user && user.role === 'admin';
-
-    if (!isAdmin) {
-        history.push('/unauthorized');
-        return null;
-    }
-
-    return(
+        return(
         <div>
             <NavBar />
             <div>

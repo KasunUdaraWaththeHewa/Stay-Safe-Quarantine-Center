@@ -4,6 +4,7 @@ const requireAuth = require("../middleware/requireAuth");
 
 router.use(requireAuth);
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     const notificationID = req.body.notificationID;
     const title = req.body.title;
     const notificationBody = req.body.notificationBody;
@@ -24,6 +25,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:notificationID").get(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let notificationID = req.params.notificationID;
   const notificationObject = await notification.findOne({ notificationID })
     .then((notificationObject) => {
@@ -40,6 +42,7 @@ router.route("/get/:notificationID").get(async (req, res) => {
 
   
 router.route("/update/:notificationID").put(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let notificationID = req.params.notificationID;
   const {
     title,
@@ -73,6 +76,7 @@ router.route("/update/:notificationID").put(async (req, res) => {
 
 
 router.route("/delete/:notificationID").delete(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let notificationID = req.params.notificationID;
 
   try {
@@ -89,6 +93,7 @@ router.route("/delete/:notificationID").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
+    if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     notification.find()
       .then((notification) => {
         res.json(notification);

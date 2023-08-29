@@ -5,6 +5,7 @@ router.use(requireAuth);
 
 
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
     const mealID=req.body.mealID;
     const mealName=req.body.mealName;
     const mealDescription=req.body.mealDescription;
@@ -31,6 +32,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:mealID").get(async (req, res) => {
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
   let mealID = req.params.mealID;
   const mealObject = await meal.findOne({ mealID })
     .then((mealObject) => {
@@ -47,6 +49,7 @@ router.route("/get/:mealID").get(async (req, res) => {
 
   
 router.route("/update/:mealID").put(async (req, res) => {
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
   let mealID = req.params.mealID;
   const {
         mealName,
@@ -86,6 +89,7 @@ router.route("/update/:mealID").put(async (req, res) => {
 
 
 router.route("/delete/:mealID").delete(async (req, res) => {
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
   let mealID = req.params.mealID;
 
   try {
@@ -101,6 +105,7 @@ router.route("/delete/:mealID").delete(async (req, res) => {
 });
 
   router.route("/").get((req, res) => {
+    if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
     meal.find()
       .then((meal) => {
         res.json(meal);

@@ -4,6 +4,7 @@ const requireAuth = require("../middleware/requireAuth");
 
 router.use(requireAuth);
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
     const packageName=req.body.packageName;
     const details=req.body.details;
     const detailList=req.body.detailList;
@@ -26,6 +27,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:pacakageID").get(async (req, res) => {
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
   let pacakageID = req.params.pacakageID;
   const package = await package.findOne({ pacakageID })
     .then((package) => {
@@ -42,6 +44,7 @@ router.route("/get/:pacakageID").get(async (req, res) => {
 
   
 router.route("/update/:pacakageID").put(async (req, res) => {
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
   let pacakageID = req.params.pacakageID;
   const {
         packageName,
@@ -79,6 +82,7 @@ router.route("/update/:pacakageID").put(async (req, res) => {
 
 
 router.route("/delete/:pacakageID").delete(async (req, res) => {
+  if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
   let pacakageID = req.params.pacakageID;
 
   try {
@@ -95,6 +99,7 @@ router.route("/delete/:pacakageID").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
+    if(req.user.role !== 'kitchen') return res.status(403).send("You are not allowed to make these changes");
     package.find()
       .then((package) => {
         res.json(package);

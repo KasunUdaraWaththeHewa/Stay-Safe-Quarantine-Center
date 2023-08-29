@@ -1,9 +1,12 @@
 const router =require("express").Router();
 let staff= require("../models/staff");
 const requireAuth = require("../middleware/requireAuth");
-
 router.use(requireAuth);
+
 router.route("/add").post((req,res)=>{
+  
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+
     const firstName=req.body.firstName;
     const lastName=req.body.lastName;
     const employeeID=req.body.employeeID;
@@ -40,6 +43,9 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:staffID").get(async (req, res) => {
+  
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+
   let staffID = req.params.staffID;
   const user = await staff.findOne({ staffID })
     .then((user) => {
@@ -56,6 +62,9 @@ router.route("/get/:staffID").get(async (req, res) => {
 
   
 router.route("/update/:staffID").put(async (req, res) => {
+  
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+
   const staffID = req.params.staffID;
   const {
     firstName,
@@ -107,6 +116,8 @@ router.route("/update/:staffID").put(async (req, res) => {
 
 
 router.route("/delete/:staffID").delete(async (req, res) => {
+  
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let staffID = req.params.staffID;
 
   try {
@@ -123,6 +134,9 @@ router.route("/delete/:staffID").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
+    
+    if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+
     staff.find()
       .then((staff) => {
         res.json(staff);
