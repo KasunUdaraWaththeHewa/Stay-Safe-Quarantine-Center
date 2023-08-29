@@ -2,9 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
-
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
  
 function PaymentForm(){
    
@@ -16,7 +17,7 @@ function PaymentForm(){
     const [dateofpayment, setDateofPayment] = useState("");
     const [time, setTime] = useState("");
     const [searchResult, setSearchResult] = useState(null);
-    
+    const { user } = useContext(AuthContext);
     //add payment
     function sendData(e) {
         e.preventDefault();
@@ -29,7 +30,12 @@ function PaymentForm(){
             patientNIC,
             time,
         }
-        axios.post("http://localhost:8070/payment/add", newPayment).then(() => {
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
+        axios.post("http://localhost:8070/payment/add", newPayment,config).then(() => {
             alert("Payment added");
             setPayerInName("");
             setPayerNIC("");
@@ -66,7 +72,12 @@ function PaymentForm(){
     }, [searchResult]);
 
     function handleSearch() {
-        axios.get(`http://localhost:8070/payment/get/${receiptNumber}`)
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
+        axios.get(`http://localhost:8070/payment/get/${receiptNumber}`,config)
 
           .then((response) => {
             setSearchResult(response.data);
@@ -86,7 +97,12 @@ function PaymentForm(){
       }
       //delete payment
       function handleDelete() {
-        axios.delete(`http://localhost:8070/payment/delete/${receiptNumber}`)
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
+        axios.delete(`http://localhost:8070/payment/delete/${receiptNumber}`,config)
             .then((response) => {
                 alert("Payment deleted successfully");
                 setPayerInName("");
@@ -106,6 +122,11 @@ function PaymentForm(){
        
         //update payment    
         function handleUpdate() {  
+            const config = {
+                headers: {
+                  Authorization: `Bearer ${user.token}`
+                }
+              };
             const updatedPayment = {
                 dateofpayment,
                 amount,
@@ -115,7 +136,7 @@ function PaymentForm(){
                 patientNIC,
                 time,
             }
-            axios.put(`http://localhost:8070/payment/update/${receiptNumber}`, updatedPayment)
+            axios.put(`http://localhost:8070/payment/update/${receiptNumber}`, updatedPayment,config)
             .then((response) => {
                 alert("Payment updated successfully");
                 window.location.reload();               

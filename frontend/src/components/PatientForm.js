@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function PatientForm() {
 
@@ -28,13 +30,19 @@ function PatientForm() {
     const [anySpecificRequirements, setRequirements] = useState("");
 
     const [searchResult, setSearchResult] = useState(null);
+    const { user } = useContext(AuthContext);
     // add patient
     function sendData(e) {
         e.preventDefault();
         const newPatient = {
             fullName, gender, dateOfBirth, nationality, nicNumber, email, results, allergies, medicalsBeingTaken, existingMedicalCondition, symptoms, dateOfArrival, contryOfDeparture, anyTransitPoint, flightOrTransportDetails, dateOfCheckIn, assignedRoomNo, durationOfStay, anySpecificRequirements
         }
-        axios.post("http://localhost:8070/patient/add", newPatient).then(() => {
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
+        axios.post("http://localhost:8070/patient/add", newPatient,config).then(() => {
             alert("Patient added");
             setfullName("")
             setGender("Male")
@@ -114,7 +122,12 @@ function PatientForm() {
     }, [searchResult]);
 
     function handleSearch() {
-        axios.get(`http://localhost:8070/patient/get/${nicNumber}`)
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
+        axios.get(`http://localhost:8070/patient/get/${nicNumber}`,config)
           .then((response) => {
             setSearchResult(response.data);
             if (response.data) {
@@ -135,7 +148,12 @@ function PatientForm() {
     //delete staff member
 
     function handleDelete() {
-        axios.delete(`http://localhost:8070/patient/delete/${nicNumber}`)
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
+        axios.delete(`http://localhost:8070/patient/delete/${nicNumber}`,config)
             .then((response) => {
                 alert("pateint deleted successfully");
                 setfullName("")
@@ -166,6 +184,11 @@ function PatientForm() {
     }
     //update patient
     function handleUpdate() {
+        const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`
+            }
+          };
         const updatedPatient = {
             fullName,
             gender,
@@ -188,7 +211,7 @@ function PatientForm() {
             anySpecificRequirements,
         };
 
-        axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient)
+        axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient,config)
             .then((response) => {
                 alert("Patient updated successfully");
                 window.location.reload();

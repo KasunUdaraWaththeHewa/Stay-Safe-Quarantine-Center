@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function KichenkichenForm() {
   const [firstName, setFirstName] = useState("");
@@ -19,14 +21,19 @@ function KichenkichenForm() {
   const [skills, setSkills] = useState("");
 
   const [searchResult, setSearchResult] = useState(null);
-
+  const { user } = useContext(AuthContext);
   //add member
   function sendData(e) {
     e.preventDefault();
     const newkichen = {
       firstName, lastName, employeeID, phoneNumber, email, jobRole, address, emergencyContactNumber, gender, relationship, skills
     }
-    axios.post("http://localhost:8070/kichen/add", newkichen).then(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.post("http://localhost:8070/kichen/add", newkichen,config).then(() => {
       alert("kichen added");
       setFirstName("")
       setLastName("")
@@ -83,7 +90,12 @@ function KichenkichenForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    axios.get(`http://localhost:8070/kichen/get/${employeeID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.get(`http://localhost:8070/kichen/get/${employeeID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -104,7 +116,12 @@ function KichenkichenForm() {
   //delete kichen member
 
   function handleDelete() {
-    axios.delete(`http://localhost:8070/kichen/delete/${employeeID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.delete(`http://localhost:8070/kichen/delete/${employeeID}`,config)
       .then((response) => {
         alert("member deleted successfully");
         setFirstName("");
@@ -128,6 +145,11 @@ function KichenkichenForm() {
 //update kichen member
 
 function handleUpdate() {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const updatedkichen = {
     firstName,
     lastName,
@@ -142,7 +164,7 @@ function handleUpdate() {
     skills,
   };
 
-  axios.put(`http://localhost:8070/kichen/update/${employeeID}`, updatedkichen)
+  axios.put(`http://localhost:8070/kichen/update/${employeeID}`, updatedkichen,config)
     .then((response) => {
       alert("kichen member updated successfully");
       window.location.reload();

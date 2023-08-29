@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function StaffForm() {
   const [firstName, setFirstName] = useState("");
@@ -20,14 +22,19 @@ function StaffForm() {
   const [skills, setSkills] = useState("");
 
   const [searchResult, setSearchResult] = useState(null);
-
+  const { user } = useContext(AuthContext);
   //add staff member
   function sendData(e) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
     e.preventDefault();
     const newStaff = {
       firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills
     }
-    axios.post("http://localhost:8070/staff/add", newStaff).then(() => {
+    axios.post("http://localhost:8070/staff/add", newStaff,config).then(() => {
       alert("Staff added");
       setFirstName("")
       setLastName("")
@@ -85,7 +92,12 @@ function StaffForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    axios.get(`http://localhost:8070/staff/get/${staffID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.get(`http://localhost:8070/staff/get/${staffID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -106,7 +118,12 @@ function StaffForm() {
   //delete staff member
 
   function handleDelete() {
-    axios.delete(`http://localhost:8070/staff/delete/${staffID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.delete(`http://localhost:8070/staff/delete/${staffID}`,config)
       .then((response) => {
         alert("Staff member deleted successfully");
         setFirstName("");
@@ -145,8 +162,12 @@ function handleUpdate() {
     relationship,
     skills,
   };
-
-  axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
+  axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff,config)
     .then((response) => {
       alert("Staff member updated successfully");
       window.location.reload();

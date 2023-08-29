@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function NurseForm() {
   const [firstName, setFirstName] = useState("");
@@ -22,13 +24,18 @@ function NurseForm() {
   const [skillsAndTraining, setSkills] = useState("");
 
   const [searchResult, setSearchResult] = useState(null);
-
+  const { user } = useContext(AuthContext);
   function sendData(e) {
     e.preventDefault();
     const newNurse = {
       firstName, lastName, nurseID, phoneNumber, email, nursingLicenseNo, specialization, professionalExperience, address, avalibleDays, emergencyContactNumbers, gender, relationship, skillsAndTraining
     }
-    axios.post("http://localhost:8070/nurse/add", newNurse).then(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.post("http://localhost:8070/nurse/add", newNurse,config).then(() => {
       alert("Nurse added");
       setFirstName("")
       setLastName("")
@@ -93,7 +100,12 @@ function NurseForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    axios.get(`http://localhost:8070/nurse/get/${nurseID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.get(`http://localhost:8070/nurse/get/${nurseID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -113,7 +125,12 @@ function NurseForm() {
   //delete staff member
 
   function handleDelete() {
-    axios.delete(`http://localhost:8070/nurse/delete/${nurseID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.delete(`http://localhost:8070/nurse/delete/${nurseID}`,config)
       .then((response) => {
         alert("Nurse deleted successfully");
         setFirstName("")
@@ -139,6 +156,11 @@ function NurseForm() {
   }
   //update nurse
   function handleUpdate() {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
     const updatedNurse = {
       firstName,
       lastName,
@@ -155,7 +177,7 @@ function NurseForm() {
       skillsAndTraining,
     };
 
-    axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse)
+    axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse,config)
       .then((response) => {
         alert("Nurse updated successfully");
         window.location.reload();

@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function EquipmentForm() {
   const [name, setName] = useState("");
@@ -17,13 +19,19 @@ function EquipmentForm() {
   const [currentStatus, setCurrentStatus] = useState("");
 
   const [searchResult, setSearchResult] = useState(null);
+  const { user } = useContext(AuthContext);
   //add Equipment
   function sendData(e) {
     e.preventDefault();
     const newEquipment = {
       name, category, serialNumber, purchaseDate, manufacturer, supplier, location, price, currentStatus
     }
-    axios.post("http://localhost:8070/equipment/add", newEquipment).then(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.post("http://localhost:8070/equipment/add", newEquipment,config).then(() => {
       alert("Equipment added");
       setName("")
       setCategory("")
@@ -61,7 +69,12 @@ function EquipmentForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    axios.get(`http://localhost:8070/equipment/get/${serialNumber}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.get(`http://localhost:8070/equipment/get/${serialNumber}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -80,7 +93,12 @@ function EquipmentForm() {
   }
   // delete equipment
   function handleDelete() {
-    axios.delete(`http://localhost:8070/equipment/delete/${serialNumber}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.delete(`http://localhost:8070/equipment/delete/${serialNumber}`,config)
       .then((response) => {
         alert("Equipment deleted successfully");
         setName("")
@@ -101,6 +119,11 @@ function EquipmentForm() {
   }
   //update equipment details
   function handleUpdate() {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
     const updatedequipment = {
       name,
       category,
@@ -113,7 +136,7 @@ function EquipmentForm() {
       currentStatus,
     };
 
-    axios.put(`http://localhost:8070/equipment/update/${serialNumber}`, updatedequipment)
+    axios.put(`http://localhost:8070/equipment/update/${serialNumber}`, updatedequipment,config)
       .then((response) => {
         alert("Equipment updated successfully");
         window.location.reload();

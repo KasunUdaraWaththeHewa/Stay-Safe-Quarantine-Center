@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function MealForm() {
   const [mealID, setmealID] = useState("");
@@ -14,14 +16,19 @@ function MealForm() {
   const [mealType, setmealType] = useState("");
   const [portionSize, setportionSize] = useState("");
   const [searchResult, setSearchResult] = useState(null);
-
+  const { user } = useContext(AuthContext);
   //add Meal
   function sendData(e) {
     e.preventDefault();
     const newMeal = {
       mealID, mealName, mealDescription, nutritionalInformation, mealType, dietaryRestrictions, portionSize
     }
-    axios.post("http://localhost:8070/Meal/add", newMeal).then(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.post("http://localhost:8070/Meal/add", newMeal,config).then(() => {
       alert("Meal added");
       setmealID("")
       setmealName("")
@@ -67,7 +74,12 @@ function MealForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    axios.get(`http://localhost:8070/Meal/get/${mealID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.get(`http://localhost:8070/Meal/get/${mealID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -88,7 +100,12 @@ function MealForm() {
   //delete Meal
 
   function handleDelete() {
-    axios.delete(`http://localhost:8070/Meal/delete/${mealID}`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    axios.delete(`http://localhost:8070/Meal/delete/${mealID}`,config)
       .then((response) => {
         alert("Meal deleted successfully");
         setmealID("");
@@ -108,6 +125,11 @@ function MealForm() {
 //update Meal
 
 function handleUpdate() {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const updatedMeal = {
     mealID,
     mealName,
@@ -118,7 +140,7 @@ function handleUpdate() {
     portionSize,
   };
 
-  axios.put(`http://localhost:8070/Meal/update/${mealID}`, updatedMeal)
+  axios.put(`http://localhost:8070/Meal/update/${mealID}`, updatedMeal,config)
     .then((response) => {
       alert("Meal updated successfully");
       window.location.reload();
