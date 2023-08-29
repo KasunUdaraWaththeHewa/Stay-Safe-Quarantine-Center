@@ -34,7 +34,7 @@ import Meals from './pages/Meals';
 import Kitchen from './pages/Kitchen_staff';
 
 import Login from './pages/loginProfile';
-import Signup from './pages/SignUpProfile';
+import Signup from './pages/SignupProfile';
 
 function App() {
   return (
