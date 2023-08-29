@@ -23,6 +23,10 @@ function Equipment() {
     fetchequipments();
   }, []);
 
+  const { user } = useContext(AuthContext);
+    if (!user || !(user.role === 'admin')) {
+      return <Redirect to="/unauthorized" />;
+    }
   return (
     <div>
       <div className="navBarContainor">

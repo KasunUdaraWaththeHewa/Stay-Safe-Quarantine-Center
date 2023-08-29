@@ -8,7 +8,10 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function PharmacyPanal() {
-    
+    const { user } = useContext(AuthContext);
+  if (!user || !((user.role === 'pharmacy'))) {
+    return <Redirect to="/unauthorized" />;
+  }
     return (
         <div>
             <div><NavBar /></div>

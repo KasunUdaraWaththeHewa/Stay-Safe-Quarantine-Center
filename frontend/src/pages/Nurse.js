@@ -22,7 +22,7 @@ function Nurse() {
     fetchNurses();
   }, []);
   const { user } = useContext(AuthContext);
-  if (!user || user.role !== 'admin') {
+  if (!user || !((user.role === 'admin')||(user.role === 'staff'))) {
     return <Redirect to="/unauthorized" />;
   }
   return (

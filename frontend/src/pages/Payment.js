@@ -22,7 +22,10 @@ function Payment() {
 
     fetchpayments();
   }, []);
-
+  const { user } = useContext(AuthContext);
+  if (!user || !((user.role === 'staff'))) {
+    return <Redirect to="/unauthorized" />;
+  }
   return (
     <div>
       <div className="navBarContainor">
