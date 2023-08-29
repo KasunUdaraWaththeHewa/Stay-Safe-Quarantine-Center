@@ -11,21 +11,12 @@ import { useSignup } from '../hooks/useSignup';
 export default function Signup() {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
+  const [role,setRole]=useState('')
   const {signup,error,isLoading}=useSignup()
-  
-  const { user } = useAuthContext();
-  const history = useHistory();
-  
-    const isAdmin = user && user.role === 'admin';
-
-    if (!isAdmin) {
-        history.push('/unauthorized');
-        return null;
-    }
-    
+      
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    await signup(email,password);
+    await signup(email,password,role);
   }
 
   return (
@@ -50,6 +41,44 @@ export default function Signup() {
                   onChange={(e)=>setPassword(e.target.value)}
                   value={password}
                   />
+                  <label>Role</label>
+                  <div className='roleDiv'>
+                      <input
+                        type="radio"
+                        required
+                        onChange={(e) => setRole(e.target.value)}
+                        value="staff"
+                        checked={role === "staff"}
+                      />
+                      <span>Staff</span>
+
+                      <input
+                        type="radio"
+                        required
+                        onChange={(e) => setRole(e.target.value)}
+                        value="admin"
+                        checked={role === "admin"}
+                      />
+                      <span>Admin</span>
+
+                      <input
+                        type="radio"
+                        required
+                        onChange={(e) => setRole(e.target.value)}
+                        value="kitchen"
+                        checked={role === "kitchen"}
+                      />
+                      <span>Kitchen</span>
+
+                      <input
+                        type="radio"
+                        required
+                        onChange={(e) => setRole(e.target.value)}
+                        value="Pharmacy"
+                        checked={role === "Pharmacy"}
+                      />
+                      <span>Pharmacy</span>
+                  </div>
                   <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>Sign Up</b></button>
                   {error && <div className='error'>{error}</div>}
               </form>

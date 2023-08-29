@@ -13,7 +13,7 @@
 
 .signupS{
     width: 400px;
-    height: 500px;
+    height: 550px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
     
@@ -89,4 +89,9 @@ h3{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.roleDiv{
+    display: flex;
+    margin-bottom: 30px;
 }

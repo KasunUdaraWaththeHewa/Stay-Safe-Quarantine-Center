@@ -12,11 +12,16 @@ const userSchema = new Schema({
     password:{
         type:String,
         required:true,
+    },
+    role:{
+        type:String,
+        required:true,
+        enum: ['admin', 'staff', 'kitchen', 'pharmacy'],
     }
 });    
 
-userSchema.statics.signup = async function(email, password){
-    if(!email ||!password){
+userSchema.statics.signup = async function(email, password,role){
+    if(!email ||!password||!role){
         throw Error("All fields must be filled.");
     }
     if(!validator.isEmail(email)){
@@ -37,8 +42,8 @@ userSchema.statics.signup = async function(email, password){
 };
 
 
-userSchema.statics.login = async function(email, password){
-    if(!email ||!password){
+userSchema.statics.login = async function(email, password,role){
+    if(!email ||!password||!role){
         throw Error("All fields must be filled.");
     }
     const user=await this.findOne({email});
