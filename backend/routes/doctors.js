@@ -37,7 +37,7 @@ router.route("/add").post((req,res)=>{
     })
 
     newDoctor.save().then(()=>{
-        res.json("Nurse Added")
+        res.json("Doctor Added")
     }).catch((err)=>{
         console.log(err);
     })

@@ -81,6 +81,7 @@ export default function Login() {
                       <span>Pharmacist</span>
                   </div>
 
+            
                   <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>Log in</b></button>
                   {error && <div className='error'>{error}</div>}
               </form>

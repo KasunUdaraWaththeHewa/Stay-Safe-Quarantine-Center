@@ -1,34 +1,35 @@
 //const { JsonWebTokenError } = require('jsonwebtoken');
 const User = require('../models/UserModel');
-const jwt= require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-const createToken=(_id)=>{
-    return jwt.sign({_id},process.env.SECRET,{expiresIn:'3d'})
-}
+const createToken = (_id, role) => {
+    return jwt.sign({ _id, role }, process.env.SECRET, { expiresIn: '3d' });
+};
 
 const loginUser = async (req, res) => {
-    const {email, password}=req.body;
-    
-    try{
-        const user = await User.login(email, password);
-        const token=createToken(user._id)
+    const { email, password, role } = req.body;
 
-        res.status(200).json({email, token});
-    }catch(err){
-        res.status(400).json({error: err.message});
+    try {
+        const user = await User.login(email, password);
+        const token = createToken(user._id, user.role); // Include the user's role in the token
+
+        res.status(200).json({ email, token, role: user.role });
+    } catch (err) {
+        res.status(400).json({ error: err.message });
     }
-}
+};
 
 const signupUser = async (req, res) => {
-    const {email, password} = req.body;
-    
-    try{
-        const user = await User.signup(email, password);
-        const token=createToken(user._id)
-        res.status(200).json({email, token});
-    }catch(err){
-        res.status(400).json({mssg: err.message});
-    }
-}
+    const { email, password, role } = req.body;
 
-module.exports = {signupUser, loginUser};
+    try {
+        const user = await User.signup(email, password, role);
+        const token = createToken(user._id, user.role); // Include the user's role in the token
+
+        res.status(200).json({ email, token, role: user.role });
+    } catch (err) {
+        res.status(400).json({ mssg: err.message });
+    }
+};
+
+module.exports = { signupUser, loginUser };
