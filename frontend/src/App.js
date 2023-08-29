@@ -1,5 +1,7 @@
 import React from 'react'
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Switch,Navigate} from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
+
 import ContactUs from './pages/ContactUs';
 
 import Home_page from './pages/Home_page';
@@ -37,6 +39,7 @@ import Login from './pages/loginProfile';
 import Signup from './pages/SignupProfile';
 
 function App() {
+  const {user} = useAuthContext();
   return (
     <div className="App">
       <Router>

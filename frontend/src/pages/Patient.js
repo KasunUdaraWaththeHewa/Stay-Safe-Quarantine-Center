@@ -25,7 +25,7 @@ function Patient() {
   
     const { user } = useContext(AuthContext);
   if (!user || !((user.role === 'admin')||(user.role === 'staff'))) {
-    return <Redirect to="/unauthorized" />;
+    return <Redirect to="/login" />;
   }
     return (
       <div>

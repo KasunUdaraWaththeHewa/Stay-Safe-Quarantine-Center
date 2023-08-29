@@ -10,7 +10,7 @@ import { AuthContext } from '../context/AuthContext';
 function PharmacyPanal() {
     const { user } = useContext(AuthContext);
   if (!user || !((user.role === 'pharmacy'))) {
-    return <Redirect to="/unauthorized" />;
+    return <Redirect to="/login" />;
   }
     return (
         <div>

@@ -24,7 +24,7 @@ function Payment() {
   }, []);
   const { user } = useContext(AuthContext);
   if (!user || !((user.role === 'staff'))) {
-    return <Redirect to="/unauthorized" />;
+    return <Redirect to="/login" />;
   }
   return (
     <div>

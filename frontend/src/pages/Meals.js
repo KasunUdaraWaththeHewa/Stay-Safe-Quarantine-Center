@@ -25,7 +25,7 @@ function Meal() {
 
   const { user } = useContext(AuthContext);
   if (!user || user.role !== 'kitchen') {
-    return <Redirect to="/unauthorized" />;
+    return <Redirect to="/login" />;
   }
   
   return (
