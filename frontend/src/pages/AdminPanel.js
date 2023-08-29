@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom';
 import Equipment from '../img/equipment.png'
 import Package from '../img/packages.png'
 import Service from '../img/services.png'
+import profile from '../img/profile.png'
+import notification from '../img/notification.png'
 
 function AdminPanel(){
         return(
@@ -48,6 +50,16 @@ function AdminPanel(){
                                 <Link to="/patient" className="link"><img src = {Service} alt="" /></Link>
                                 <figcaption id='figservice'><b>Services</b></figcaption>
                             </div>  
+                        </div>
+                        <div className='PanelRow'>
+                            <div className="panelItem" id='equipicon'>
+                                <Link to="/signup" className="link"><img src = {profile} alt="" /></Link>
+                                <figcaption id='figequip'><b>Account Creation</b></figcaption>
+                            </div>    
+                            <div className="panelItem">
+                                <Link to="/notification" className="link"><img src = {notification} alt="" /></Link>
+                                <figcaption id='figpackage'><b>Notification</b></figcaption>
+                            </div>   
                         </div>
 
                     </div>

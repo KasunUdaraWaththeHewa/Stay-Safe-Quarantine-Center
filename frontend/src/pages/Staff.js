@@ -10,16 +10,6 @@ import { useHistory } from 'react-router-dom';
 function Staff() {
     const [staffs, setStaffs] = useState([]);
   
-    const { user } = useAuthContext();
-    const history = useHistory();
-  
-    const isAdmin = user && user.role === 'admin';
-
-    if (!isAdmin) {
-        history.push('/unauthorized');
-        return null;
-    }
-
     useEffect(() => {
       async function fetchStaffs() {
         try {

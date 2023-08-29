@@ -4,8 +4,6 @@ import NavBar from '../components/NavBar';
 import NurseForm from '../components/NurseForm';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useHistory } from 'react-router-dom';
 
 function Nurse() {
   const [nurses, setNurses] = useState([]);

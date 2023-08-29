@@ -4,8 +4,6 @@ import NavBar from "../components/NavBar";
 import KitchenStaffForm from "../components/KitchenStaffForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useHistory } from 'react-router-dom';
 
 function Kitchenkitchen() {
     const [kitchens, setkitchens] = useState([]);

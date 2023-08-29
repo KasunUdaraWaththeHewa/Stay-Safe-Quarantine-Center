@@ -9,16 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 
 function StaffPanel(){
-    const { user } = useAuthContext();
-    const history = useHistory();
-  
-    const isAdmin = user && user.role === 'admin';
-
-    if (!isAdmin) {
-        history.push('/unauthorized');
-        return null;
-    }
-    
+        
     return(
         <div>
             <NavBar />
