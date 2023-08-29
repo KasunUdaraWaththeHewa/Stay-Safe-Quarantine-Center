@@ -22,7 +22,7 @@ connection.once("open",()=>{
 
 
 const patientRouter=require("./routes/patients.js");
-app.use("/patient.",patientRouter);
+app.use("/patient",patientRouter);
 const doctorRouter=require("./routes/doctors.js");
 app.use("/doctor",doctorRouter);
 const nurseRouter=require("./routes/nurses.js");
