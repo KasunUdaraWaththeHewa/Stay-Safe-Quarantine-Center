@@ -15,6 +15,7 @@ export default function Signup() {
   const {signup,error,isLoading}=useSignup()
       
   const handleSubmit = async(e)=>{
+    console.log("submit done");
     e.preventDefault()
     await signup(email,password,role);
   }

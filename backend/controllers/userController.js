@@ -10,7 +10,7 @@ const loginUser = async (req, res) => {
     const { email, password, role } = req.body;
 
     try {
-        const user = await User.login(email, password);
+        const user = await User.login(email, password,role);
         const token = createToken(user._id, user.role); // Include the user's role in the token
 
         res.status(200).json({ email, token, role: user.role });
