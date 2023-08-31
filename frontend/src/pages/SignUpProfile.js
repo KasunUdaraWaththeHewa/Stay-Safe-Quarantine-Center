@@ -16,7 +16,6 @@ export default function Signup() {
       
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    console.log(`Calling handlesubmit method : email:${email},password:${password},role:${role}`);
     await signup({email,password,role});
   }
 

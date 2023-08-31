@@ -16,7 +16,7 @@ export default function Login() {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    await login(email,password,role)
+    await login({email,password,role})
   }
 
   return (

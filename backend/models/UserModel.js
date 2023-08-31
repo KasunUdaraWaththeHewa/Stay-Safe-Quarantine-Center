@@ -44,7 +44,9 @@ userSchema.statics.signup = async function({email, password,role}){
 };
 
 
-userSchema.statics.login = async function(email, password,role){
+userSchema.statics.login = async function({email, password,role}){
+    console.log(email, password, role)
+    console.log("Calling loginSchema")
     if(!email ||!password||!role){
         throw Error("All fields must be filled.");
     }
@@ -56,6 +58,7 @@ userSchema.statics.login = async function(email, password,role){
     if(!match){
         throw Error("Incorrect Password");
     }
+    console.log(user)
     return user;
 };
 

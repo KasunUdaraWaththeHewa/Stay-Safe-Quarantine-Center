@@ -7,18 +7,15 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const login = async (email, password, role) => {
-    console.log("Calling login method in useLogin.js");
+  const login = async ({email, password, role}) => {
     setIsLoading(true);
     setError(null);
-
     try {
-      const response = await axios.post('/user/login', {
+      const response = await axios.post('http://localhost:8070/user/login', {
         email,
         password,
         role
       });
-
       if (response.status === 200) {
         localStorage.setItem('user', JSON.stringify(response.data));
         dispatch({ type: 'LOGIN', payload: response.data });
