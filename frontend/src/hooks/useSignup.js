@@ -10,6 +10,7 @@ export const useSignup=()=>{
     const signup = async ({email, password, role}) => {
         setIsLoading(true);
         setError(null);
+        console.log(email, password, role);
         try {
           const response = await axios.post('http://localhost:8070/user/signup', {
             email,
