@@ -15,9 +15,9 @@ export default function Signup() {
   const {signup,error,isLoading}=useSignup()
       
   const handleSubmit = async(e)=>{
-    console.log("submit done");
     e.preventDefault()
-    await signup(email,password,role);
+    console.log(`Calling handlesubmit method : email:${email},password:${password},role:${role}`);
+    await signup({email,password,role});
   }
 
   return (
@@ -80,7 +80,7 @@ export default function Signup() {
                       />
                       <span>Pharmacy</span>
                   </div>
-                  <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>Sign Up</b></button>
+                  <button type="submit" onClick={handleSubmit} className='submitBtn' disabled={isLoading}><b>Sign Up</b></button>
                   {error && <div className='error'>{error}</div>}
               </form>
           </div>

@@ -20,17 +20,19 @@ const userSchema = new Schema({
     }
 });    
 
-userSchema.statics.signup = async function(email, password,role){
-    if(!email ||!password||!role){
-        throw Error("All fields must be filled.");
+userSchema.statics.signup = async function({email, password,role}){
+    if(!email ||!password||!role){      
+        throw Error("All fields must be filled.");     
     }
-    if(!validator.isEmail(email)){
+    
+    if(!validator.isEmail(email)){    
         throw Error("Email is not valid");
     }
-    if(!validator.isStrongPassword(password)){
-        throw Error("Password is not Strong Enough");
-    }
+    // if(!validator.isStrongPassword(password)){
+    //     throw Error("Password is not Strong Enough");
+    // }
     //const User = this;
+    
     const exists=await this.findOne({email});
     if(exists){
         throw new Error("Email already exists");

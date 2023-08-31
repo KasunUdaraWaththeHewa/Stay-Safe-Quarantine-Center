@@ -5,7 +5,12 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const PORT=process.env.PORT || 8070;
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true, //access-control-allow-credentials:true
+  };
+  
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const URL=process.env.MONGODB_URL;

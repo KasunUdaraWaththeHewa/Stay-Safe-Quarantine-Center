@@ -1,30 +1,39 @@
 import {useState} from 'react';
 import { useAuthContext } from './useAuthContext';
+import axios from 'axios';
 
 export const useSignup=()=>{
     const [error,setError]=useState(null);
     const [isLoading,setIsLoading]=useState(null);
     const {dispatch}= useAuthContext()
 
-    const signup =async(email,password,role)=>{
+    const signup = async ({email, password, role}) => {
         setIsLoading(true);
         setError(null);
-
-        const response =await fetch('/user/signup',{
-            method :'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({email,password,role})
-        });
-        const json= await response.json();
-        if(!response.ok){
-            setIsLoading(false);
-            setError(json.error);
+        console.log(`Calling signup method in useSignup.js : email:${email},password:${password},role:${role}`);
+        try {
+        console.log(45654)
+          const response = await axios.post('http://localhost:8070/user/signup', {
+            email,
+            password,
+            role
+          });
+          console.log(`Calling signup method in try useSignup.js : email:${email},password:${password},role:${role}`);
+          if (response.status === 200) {
+            console.log(`Calling signup method in if part of try useSignup.js : email:${email},password:${password},role:${role}`);
+            localStorage.setItem('user', JSON.stringify(response.data));
+            dispatch({ type: 'LOGIN', payload: response.data });
+          } else {
+            setError(response.data.error);
+            console.log(`Calling signup method in else part of try useSignup.js : email:${email},password:${password},role:${role}`);
+          }
+        } catch (error) {
+          setError('An error occurred during signup.');
+          console.log(`Calling signup method in catch useSignup.js : email:${email},password:${password},role:${role}`);
+        } finally {
+          setIsLoading(false);
         }
-        if(response.ok){
-            localStorage.setItem('user',JSON.stringify(json));
-            dispatch({type:'LOGIN',payload :json})
-        }
-
-    }
-    return {signup,isLoading,error}
+      };
+    
+      return { signup, isLoading, error };
 }
