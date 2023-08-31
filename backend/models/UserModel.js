@@ -47,6 +47,7 @@ userSchema.statics.signup = async function({email, password,role}){
 userSchema.statics.login = async function({ email, password, role }) {
     if (!email || !password || !role) {
       throw new Error("All fields must be filled.");
+      
     }
   
     const user = await this.findOne({ email, role }); // Include 'role' in the query

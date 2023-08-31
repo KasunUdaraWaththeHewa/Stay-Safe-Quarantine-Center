@@ -21,14 +21,15 @@ export const useLogin = () => {
         localStorage.setItem('user', JSON.stringify(response.data));
         dispatch({ type: 'LOGIN', payload: response.data });
         if (role === 'admin') {
-          return <Redirect to="http://localhost:8070/adminpanel" />;
+          return <Redirect to="http://localhost:3000/adminpanel" />;
         } else if (role === 'staff') {
-          return <Redirect to="http://localhost:8070/staffPanel" />;
+          return <Redirect to="http://localhost:3000/staffPanel" />;
         } else if (role === 'kitchen') {
+          //methanatath enwa redirect wenne nathi eka thamai case eka
           console.log("kitchen");
-          return <Redirect to="http://localhost:8070/meals" />;
+          return <Redirect to="http://localhost:3000/meals" />;
         } else if (role === 'pharmacy') {
-          return <Redirect to="http://localhost:8070/PharmacyPanel" />;
+          return <Redirect to="http://localhost:3000/PharmacyPanel" />;
         }
       } else {
         setError(response.data.error);

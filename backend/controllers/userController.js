@@ -24,7 +24,7 @@ const signupUser = async (req, res) => {
         const token = createToken(user._id, user.role); // Include the user's role in the token
         res.status(200).json({ email, token, role: user.role });
     } catch (err) {
-        res.status(400).json({ mssg: err.message });
+        res.status(400).json({ error: err.message });
     }
 };
 
