@@ -39,7 +39,6 @@ import Login from './pages/loginProfile';
 import Signup from './pages/SignupProfile';
 
 function App() {
-  const {user} = useAuthContext();
   return (
     <div className="App">
       <Router>
