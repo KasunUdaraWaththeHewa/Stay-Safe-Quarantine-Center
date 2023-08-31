@@ -74,6 +74,7 @@
     border-radius: 5px;
     margin-left: 145px;
     margin-top: -5px;
+    margin-bottom: 40px;
 }
 .submitBtn:hover{
     background-color: #0096c7;
@@ -82,7 +83,7 @@
 .error{
     color: red;
     font-size: 15px;
-    margin-left: 145px;
+    margin-left: 80px;
     margin-top: -5px;
 }
 h3{
@@ -92,5 +93,8 @@ h3{
 }
 .roleDiv{
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 17px;
+    margin-left: 77px;
+    width: 60%;
+    height: 80px;
 }
