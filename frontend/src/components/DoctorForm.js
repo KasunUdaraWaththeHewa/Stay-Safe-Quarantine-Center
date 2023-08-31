@@ -6,6 +6,8 @@ import axios from 'axios';
 import React, { useState, useEffect, useContext} from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 function DoctorForm() {
   
@@ -109,6 +111,13 @@ function DoctorForm() {
       });
   }
   // delete doctor
+  Swal.fire({
+    title: 'Error!',
+    text: 'Do you want to continue',
+    icon: 'error',
+    confirmButtonText: 'Cool'
+  })
+
   function handleDelete() {
     const config = {
       headers: {
@@ -117,7 +126,7 @@ function DoctorForm() {
     };
     axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`,config)
       .then((response) => {
-        alert("Doctor deleted successfully");
+        alert("Doctor deleted succe ssfully");
         setFirstName("")
         setLastName("")
         setDoctorID("")

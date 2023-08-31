@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@canvasjs/react-charts": "^1.0.0"
+    "@canvasjs/react-charts": "^1.0.0",
+    "sweetalert2": "^11.7.27"
   }
 }
