@@ -15,7 +15,7 @@ export const useChangePassword = () => {
             if (response.status === 200) {
                 // Handle successful reset, if needed
                 localStorage.setItem('user', JSON.stringify(response.data));
-                dispatch({ type: 'CHANGE', payload: response.data });
+                return response.data;
             } else {
                 setError(response.data.error);
             }

@@ -37,6 +37,7 @@ import Kitchen from './pages/Kitchen_staff';
 
 import Login from './pages/loginProfile';
 import Signup from './pages/SignUpProfile';
+import ChangePassword from './pages/changePassword';
 
 function App() {
   return (
@@ -122,6 +123,10 @@ function App() {
 
               <Route exact path="/kitchen">
                 <Kitchen/>
+              </Route>
+              
+              <Route exact path="/changePassword">
+                <ChangePassword/>
               </Route>
 
             </Switch>
