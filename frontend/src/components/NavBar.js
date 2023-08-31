@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import './NavBar.css';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
+import Form from 'react-bootstrap/Form';
 
 
 function NavBar(){
@@ -26,6 +27,7 @@ function NavBar(){
                         <div className="navBarItem"><b><Link to="/contactus" className="link">Contact Us</Link></b></div>    
                         <div className="navBarItem"><b><Link to="/login" className="link">Login</Link></b></div>
                         <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
+                        <div className="navBarItem"><b><Link to="/signup" className="link">Sign-Up</Link></b></div>
                         {user &&(
                             <div className='navBarItem'>
                                 <span>{user.email}</span>

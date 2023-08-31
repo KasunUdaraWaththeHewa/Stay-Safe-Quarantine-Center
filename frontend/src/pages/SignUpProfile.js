@@ -6,7 +6,10 @@ import Footer from '../components/Footer';
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
 import { useSignup } from '../hooks/useSignup';
-
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 export default function Signup() {
   const [email,setEmail]=useState('')
@@ -41,43 +44,16 @@ export default function Signup() {
                   onChange={(e)=>setPassword(e.target.value)}
                   value={password}
                   />
-                  <label>Role</label>
-                  <div className='roleDiv'>
-                      <input
-                        type="radio"
-                        required
-                        onChange={(e) => setRole(e.target.value)}
-                        value="staff"
-                        checked={role === "staff"}
-                      />
-                      <span>Staff</span>
-
-                      <input
-                        type="radio"
-                        required
-                        onChange={(e) => setRole(e.target.value)}
-                        value="admin"
-                        checked={role === "admin"}
-                      />
-                      <span>Admin</span>
-
-                      <input
-                        type="radio"
-                        required
-                        onChange={(e) => setRole(e.target.value)}
-                        value="kitchen"
-                        checked={role === "kitchen"}
-                      />
-                      <span>Kitchen</span>
-
-                      <input
-                        type="radio"
-                        required
-                        onChange={(e) => setRole(e.target.value)}
-                        value="Pharmacy"
-                        checked={role === "Pharmacy"}
-                      />
-                      <span>Pharmacy</span>
+                  <div className="roleDiv">
+                      <Form.Group as={Col} controlId="formGridState">
+                            <Form.Label>Role</Form.Label>
+                            <Form.Select value={role}id='roleInput' onChange={(e) => setRole(e.target.value)}>
+                              <option value="staff">staff</option>
+                              <option value="admin">admin</option>
+                              <option value="kitchen">kitchen Staff</option>
+                              <option value="pharmacy">pharmacy</option>
+                            </Form.Select>
+                      </Form.Group>
                   </div>
                   <button type="submit" onClick={handleSubmit} className='submitBtn' disabled={isLoading}><b>Sign Up</b></button>
                   {error && <div className='error'>{error}</div>}
