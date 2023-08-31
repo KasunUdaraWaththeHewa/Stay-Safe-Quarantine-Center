@@ -27,5 +27,15 @@ const signupUser = async (req, res) => {
         res.status(400).json({ error: err.message });
     }
 };
-
-module.exports = { signupUser, loginUser };
+const changePassword = async (req, res) => {
+    const { email, role, currentPassword, newPassword, confirmNewPassword } = req.body;
+    try {
+      const user = await User.changePassword({ email, role, currentPassword, newPassword, confirmNewPassword });
+      const token = createToken(user._id, user.role); // Include the user's role in the token
+      res.status(200).json({ email, token, role: user.role });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  };
+  
+  module.exports = { signupUser, loginUser, changePassword };

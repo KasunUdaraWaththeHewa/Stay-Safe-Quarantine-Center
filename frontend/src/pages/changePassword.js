@@ -5,7 +5,7 @@ import img_p from '../img/admin_p.png';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useChnagePassword } from '../hooks/useChnagePassword';
+import { useChangePassword } from '../hooks/useChangePassword';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -17,7 +17,7 @@ export default function ChnagePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
-  const { changepassword, error, isLoading } = useChnagePassword();
+  const { changepassword, error, isLoading } = useChangePassword();
 
   const handlePasswordChange = async (e) => {
     e.preventDefault()

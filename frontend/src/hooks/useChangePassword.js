@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export const useResetPassword = () => {
+export const useChangePassword = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const resetPassword = async ({ email }) => {
+    const changePassword = async ({ email, role,currentPassword, newPassword, confirmNewPassword }) => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await axios.post('http://localhost:8070/user/resetpassword', {
-                email,
+            const response = await axios.post('http://localhost:8070/user/changepassword', {
+                email, role,currentPassword, newPassword, confirmNewPassword
             });
             if (response.status === 200) {
                 // Handle successful reset, if needed
+                localStorage.setItem('user', JSON.stringify(response.data));
+                dispatch({ type: 'CHANGE', payload: response.data });
             } else {
                 setError(response.data.error);
             }
@@ -24,5 +26,5 @@ export const useResetPassword = () => {
         }
     };
 
-    return { resetPassword, isLoading, error };
+    return { changePassword, isLoading, error };
 };

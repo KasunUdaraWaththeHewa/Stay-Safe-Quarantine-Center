@@ -62,4 +62,36 @@ userSchema.statics.login = async function({ email, password, role }) {
     return user;
   };
 
+  userSchema.statics.changePassword = async function({ email, role, currentPassword, newPassword, confirmNewPassword }) {
+    if (!email || !role || !currentPassword || !newPassword || !confirmNewPassword) {
+      throw new Error("All fields must be filled.");
+    }
+  
+    const user = await this.findOne({ email, role });
+    if (!user) {
+      throw new Error("User not found.");
+    }
+  
+    const match = await bcrypt.compare(currentPassword, user.password);
+    if (!match) {
+      throw new Error("Incorrect current password.");
+    }
+  
+    if (currentPassword === newPassword) {
+      throw new Error("New password should be different from the current password.");
+    }
+  
+    if (newPassword !== confirmNewPassword) {
+      throw new Error("New passwords don't match.");
+    }
+  
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+  
+    user.password = hash;
+    await user.save();
+  
+    return user;
+  };
+  
 module.exports = mongoose.model("User",userSchema);
