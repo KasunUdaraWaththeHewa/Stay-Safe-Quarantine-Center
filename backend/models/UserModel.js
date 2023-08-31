@@ -44,20 +44,23 @@ userSchema.statics.signup = async function({email, password,role}){
 };
 
 
-userSchema.statics.login = async function({email, password,role}){
-    if(!email ||!password||!role){
-        throw Error("All fields must be filled.");
+userSchema.statics.login = async function({ email, password, role }) {
+    if (!email || !password || !role) {
+      throw new Error("All fields must be filled.");
     }
-    const user=await this.findOne({email});
-    if(!user){
-        throw new Error("Incorrect Email");
+  
+    const user = await this.findOne({ email, role }); // Include 'role' in the query
+    if (!user) {
+      throw new Error("Incorrect Email");
     }
-    const match=await bcrypt.compare(password, user.password);
-    if(!match){
-        throw Error("Incorrect Password");
+  
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      throw new Error("Incorrect Password");
     }
-    console.log(user)
+  
+    console.log(user);
     return user;
-};
+  };
 
 module.exports = mongoose.model("User",userSchema);

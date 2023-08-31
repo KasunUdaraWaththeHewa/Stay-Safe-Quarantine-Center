@@ -1,10 +1,12 @@
-*{
+/* NavBar.css */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-.div-nav-bar{
+  }
+  
+  .div-nav-bar {
     height: 65px;
     width: 100%;
     color: white;
@@ -13,74 +15,105 @@
     z-index: 10;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     display: flex;
-}
-.navBarItemList{
+  }
+  
+  .navBarItemList {
     list-style: none;
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     margin: 0;
-}
-.navBarLeft{
-    width: 50%;
-}
-.navBarRight{
-    width: 50%;
-    display: flex;
-}
-.navBarItem{
-    padding: 20px 0 0 0;
+  }
+  
+  .navBarLeft {
     width: 35%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navBarRight {
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .navBarItem {
+    padding: 20px 0;
+    width: 15%;
     font-size: 17px;
     font-weight: 600;
-}
-
-.navBarItem:hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .navBarItem:hover {
     color: #03045e;
     font-size: 18px;
-    cursor: pointer;
-    
-}
-.img-logo{
+    text-decoration: underline;
+  }
+  
+  .img-logo {
     height: 65px;
     width: 150px;
     cursor: pointer;
     display: block;
-    margin: 0;
-}
-.navBarLeft{
-    display: flex;
-}
-.homeIcon{
-    margin-top: 0;
+  }
+  
+  .homeIcon {
     width: 40px;
     height: 30px;
     padding-left: 10px;
     cursor: pointer;
-}
-#homeImgContainer{
+  }
+  
+  #homeImgContainer {
     padding-top: 15px;
     width: 7%;
-}
-.homeIcon:hover{
-    width: 41px;
-    height: 31px;
-}
-
-.link{
+  }
+  
+  .link {
     text-decoration: none;
     color: inherit;
-}
-.logoutAndEmail{
+  }
+  
+  .logoutAndEmail {
     display: flex;
-}
-.loggedemail{
-    padding-top: 20px;
+    align-items: center;
+  }
+  
+  .loggedemail {
     padding-right: 10px;
     font-size: 15px;
     font-weight: 600;
-}
-.loginSignupContainor{
+    color: black;
+    margin-right: 20px;
+  }
+  
+  .loginSignupContainor {
     display: flex;
-}
+    width: 60%;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .div-nav-bar {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .navBarLeft {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .navBarRight {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
