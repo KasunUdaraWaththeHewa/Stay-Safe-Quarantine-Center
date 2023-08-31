@@ -59,7 +59,9 @@ function NavBar() {
             <div className="logoutAndEmail">
               <span className="loggedemail">{user.email}</span>
               <li className="navBarItem" onClick={handleClick}>
-                <b>LogOut</b>
+                <Link to="/" className="link">
+                  <b>LogOut</b>
+                </Link>
               </li>
             </div>
           )}

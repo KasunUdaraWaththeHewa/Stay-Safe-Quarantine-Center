@@ -10,21 +10,6 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { Redirect } from 'react-router-dom';
-
-const determineRedirectPath = (role) => {
-  if (role === 'admin') {
-    return '/AdminPanel'; 
-  }else if(role === 'staff'){
-    return '/StaffPanel';
-  }else if(role === 'kitchen'){
-    return '/KitchenPanel';
-  }else if(role === 'pharmacy'){
-    return '/PharmacyPanel';
-  }
-  return '/';
-};
-
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -35,9 +20,6 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await login({ email, password, role })
-    const redirectPath = determineRedirectPath(role);
-    console.log(redirectPath);
-    return <Redirect to={redirectPath} />;
   }
 
   return (
