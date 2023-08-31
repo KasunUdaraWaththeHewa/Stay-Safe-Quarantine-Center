@@ -27,7 +27,7 @@ function NavBar(){
                         <div className="navBarItem"><b><Link to="/login" className="link">Login</Link></b></div>
                         <div className="navBarItem"><b><Link to="/Sign_in_profile" className="link">Sign-In</Link></b></div>
                         {user &&(
-                            <div>
+                            <div className='navBarItem'>
                                 <span>{user.email}</span>
                                 <div onClick={handleClick}><b>Log-Out</b></div>   
                             </div>
