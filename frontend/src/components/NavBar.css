@@ -23,10 +23,10 @@
     margin: 0;
 }
 .navBarLeft{
-    width: 55%;
+    width: 50%;
 }
 .navBarRight{
-    width: 45%;
+    width: 50%;
     display: flex;
 }
 .navBarItem{
@@ -71,4 +71,16 @@
 .link{
     text-decoration: none;
     color: inherit;
+}
+.logoutAndEmail{
+    display: flex;
+}
+.loggedemail{
+    padding-top: 20px;
+    padding-right: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.loginSignupContainor{
+    display: flex;
 }
