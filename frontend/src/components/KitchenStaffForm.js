@@ -6,6 +6,7 @@ import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import Swal from 'sweetalert2';
 
 function KichenkichenForm() {
   const [firstName, setFirstName] = useState("");
@@ -23,6 +24,57 @@ function KichenkichenForm() {
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
   //add member
+  const successfullyAdded = () => {
+    Swal.fire({
+      title: 'You successfully Added a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  };
+  const successfullyUpdated = () => {
+    Swal.fire({
+      title: 'Are you sure to update doctor?',
+      text: "Confirm if you want to update!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Updated!',
+          'Your doctor has been updated.',
+          'success'
+        )
+      }
+    })
+  };
+  const successfullyDeleted = () => {
+    Swal.fire({
+      title: 'Are you sure to delete doctor?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+  };
+
   function sendData(e) {
     e.preventDefault();
     const newkichen = {
@@ -34,7 +86,7 @@ function KichenkichenForm() {
       }
     };
     axios.post("http://localhost:8070/kichen/add", newkichen,config).then(() => {
-      alert("kichen added");
+      successfullyAdded();
       setFirstName("")
       setLastName("")
       setEmployeeID("")
@@ -121,6 +173,7 @@ function KichenkichenForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
+    successfullyDeleted();
     axios.delete(`http://localhost:8070/kichen/delete/${employeeID}`,config)
       .then((response) => {
         alert("member deleted successfully");
@@ -163,7 +216,7 @@ function handleUpdate() {
     relationship,
     skills,
   };
-
+  successfullyUpdated();
   axios.put(`http://localhost:8070/kichen/update/${employeeID}`, updatedkichen,config)
     .then((response) => {
       alert("kichen member updated successfully");

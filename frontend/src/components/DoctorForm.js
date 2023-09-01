@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useContext} from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import Swal from 'sweetalert2';
 
 function DoctorForm() {
   
@@ -26,6 +27,58 @@ function DoctorForm() {
 
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
+
+  const successfullyAdded = () => {
+    Swal.fire({
+      title: 'You successfully Added a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  };
+  const successfullyUpdated = () => {
+    Swal.fire({
+      title: 'Are you sure to update doctor?',
+      text: "Confirm if you want to update!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Updated!',
+          'Your doctor has been updated.',
+          'success'
+        )
+      }
+    })
+  };
+  const successfullyDeleted = () => {
+    Swal.fire({
+      title: 'Are you sure to delete doctor?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+  };
+
   //add Doctor
   function sendData(e) {
     e.preventDefault();
@@ -38,7 +91,7 @@ function DoctorForm() {
       }
     };
     axios.post("http://localhost:8070/doctor/add", newDoctor,config).then(() => {
-      alert("Doctor added");
+      successfullyAdded();
       setFirstName("")
       setLastName("")
       setDoctorID("")
@@ -116,9 +169,9 @@ function DoctorForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
+    successfullyDeleted();
     axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`,config)
       .then((response) => {
-        alert("Doctor deleted succe ssfully");
         setFirstName("")
         setLastName("")
         setDoctorID("")
@@ -162,10 +215,9 @@ function DoctorForm() {
       relationship,
       skillsAndTraining,
     };
-
+    successfullyUpdated();
     axios.put(`http://localhost:8070/doctor/update/${doctorID}`, updatedDoctor,config)
       .then((response) => {
-        alert("Doctor updated successfully");
         window.location.reload();
       })
       .catch((error) => {
