@@ -22,19 +22,9 @@ import Doctor from './pages/Doctor';
 import Patient from './pages/Patient';
 import Equipment from './pages/Equipment';
 import Payment from './pages/Payment';
-
-import Sign_in_pharmacy from './pages/Sign_in_pharmacy';
-
-import Sign_in_profile from './pages/Sign_in_profile'
-import Sign_in_doctor from './pages/Sign_in_doctor'
-import Sign_in_nurse from './pages/Sign_in_nurse'
-import Sign_in_patient from './pages/Sign_in_patient'
-import Sign_in_staff from './pages/Sign_in_staff'
 import OurCenter from './pages/OurCenter';
-import Sign_in_admin from './pages/Sign_in_admin';
 import Meals from './pages/Meals';
 import Kitchen from './pages/Kitchen_staff';
-
 import Login from './pages/loginProfile';
 import Signup from './pages/SignUpProfile';
 import ChangePassword from './pages/changePassword';
@@ -77,35 +67,12 @@ function App() {
               <Route exact path="/payment">
                   <Payment/>
               </Route>
-              <Route exact path="/Sign_in_profile">
-                  <Sign_in_profile/>
-              </Route>
-              <Route exact path="/Sign_in_doctor">
-                <Sign_in_doctor/>
-              </Route>
-
-              <Route exact path="/Sign_in_staff">
-                <Sign_in_staff/>
-              </Route>
-
-              <Route exact path="/Sign_in_nurse">
-                <Sign_in_nurse/>
-              </Route>
-
-              <Route exact path="/Sign_in_patient">
-                <Sign_in_patient/>
-              </Route>
+              
 
               <Route exact path="/OurCenter">
                 <OurCenter/>
               </Route>
-              <Route exact path="/sign_in_admin">
-                <Sign_in_admin/>
-              </Route>
-
-              <Route exact path="/Sign_in_pharmacy">
-                <Sign_in_pharmacy/>
-              </Route>
+              
               <Route exact path="/PharmacyPanal">
                 <PharmacyPanal/>
               </Route>
