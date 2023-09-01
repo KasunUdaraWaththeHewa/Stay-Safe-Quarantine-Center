@@ -20,7 +20,11 @@ export const useChangePassword = () => {
                 setError(response.data.error);
             }
         } catch (error) {
-            setError('An error occurred while resetting the password.');
+            if (error.response) {
+                setError(error.response.data.error);
+            } else {
+                setError('An error occurred while changing the password.');
+            }
         } finally {
             setIsLoading(false);
         }

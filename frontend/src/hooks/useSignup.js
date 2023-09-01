@@ -10,7 +10,6 @@ export const useSignup = () => {
   const signup = async ({ email, password, role }) => {
     setIsLoading(true);
     setError(null);
-    console.log(email, password, role);
     try {
       const response = await axios.post('http://localhost:8070/user/signup', {
         email,
@@ -21,10 +20,17 @@ export const useSignup = () => {
         localStorage.setItem('user', JSON.stringify(response.data));
         dispatch({ type: 'SIGNUP', payload: response.data }); // Use SIGNUP type
       } else {
+        console.log(response.data.error);
         setError(response.data.error);
       }
     } catch (error) {
-      setError('An error occurred during signup.');
+      setError(()=>{
+        if (error.response) {
+          return error.response.data.error;
+        } else {
+          return 'An error occurred while signing up.';
+        }
+      });
     } finally {
       setIsLoading(false);
     }

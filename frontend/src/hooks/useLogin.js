@@ -36,7 +36,13 @@ export const useLogin = () => {
         setError(response.data.error);
       }
     } catch (error) {
-      setError('An error occurred during login.');
+      setError(()=>{
+        if (error.response) {
+          return error.response.data.error;
+        } else {
+          return 'An error occurred while signing up.';
+        }
+      });
     } finally {
       setIsLoading(false);
     }
