@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import '../css file/login.css';
 import NavBar from '../components/NavBar';
 import img_p from '../img/admin_p.png';
@@ -12,14 +12,21 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [role, setRole] = useState('')
-  const { login, error, isLoading } = useLogin()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+  const { login, error, isLoading } = useLogin();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    await login({ email, password, role })
+    e.preventDefault();
+    await login({ email, password, role });
+    clearForm();
+  };
+
+  function clearForm() {
+    setEmail('');
+    setRole('');
+    setPassword('');
   }
 
   return (
@@ -48,7 +55,11 @@ export default function Login() {
             <div className="roleDiv">
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>Role</Form.Label>
-                <Form.Select value={role} id='roleInput' onChange={(e) => setRole(e.target.value)}>
+                <Form.Select
+                  value={role}
+                  id='roleInput'
+                  onChange={(e) => setRole(e.target.value)}
+                >
                   <option value="staff">staff</option>
                   <option value="admin">admin</option>
                   <option value="kitchen">kitchen Staff</option>
@@ -56,14 +67,21 @@ export default function Login() {
                 </Form.Select>
               </Form.Group>
             </div>
-
-
-            <button type="submit" className='submitBtn' disabled={isLoading} onClick={handleSubmit}><b>Log in</b></button>
+            <button
+              type="submit"
+              className='submitBtn'
+              disabled={isLoading}
+            >
+              <b>Log in</b>
+            </button>
+            <div className="change-password-link">
+                <Link to="/changePassword">Change Password</Link>
+            </div>
             {error && <div className='error'>{error}</div>}
           </form>
         </div>
       </div>
       <Footer />
     </div>
-  )
+  );
 }

@@ -22,6 +22,15 @@ export default function ChnagePassword() {
   const handlePasswordChange = async (e) => {
     e.preventDefault()
     await changePassword({ email, role,currentPassword, newPassword, confirmNewPassword });
+    clearForm();
+  }
+
+  function clearForm() {
+    setEmail("");
+    setRole("");
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmNewPassword("");
   }
 
   return (
@@ -71,6 +80,9 @@ export default function ChnagePassword() {
               onChange={(e) => setConfirmNewPassword(e.target.value)}
               value={confirmNewPassword}
             />
+            <div className="sign-in">
+                <Link to="/login">Sign In</Link>
+            </div>
             <button type="submit" onClick={handlePasswordChange} className='submitBtn' disabled={isLoading}><b>Change</b></button>
             {error && <div className='error'>{error}</div>}
           </form>

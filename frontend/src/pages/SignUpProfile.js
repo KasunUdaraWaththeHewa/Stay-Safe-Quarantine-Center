@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -21,8 +22,13 @@ export default function Signup() {
     e.preventDefault()
     console.log(email, password, role);
     await signup({ email, password, role });
+    clearForm();
   }
-
+  function clearForm() {
+    setEmail("");
+    setRole("");
+    setPassword("");
+  }
   return (
     <div>
       <NavBar />

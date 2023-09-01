@@ -1,9 +1,20 @@
 import { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const useChangePassword = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+
+    const popupSuccessfull = () => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'You successfully craeted the account!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      };
 
     const changePassword = async ({ email, role,currentPassword, newPassword, confirmNewPassword }) => {
         setIsLoading(true);
@@ -15,6 +26,7 @@ export const useChangePassword = () => {
             if (response.status === 200) {
                 // Handle successful reset, if needed
                 localStorage.setItem('user', JSON.stringify(response.data));
+                popupSuccessfull();
                 return response.data;
             } else {
                 setError(response.data.error);
