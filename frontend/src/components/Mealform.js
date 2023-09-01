@@ -33,20 +33,13 @@ function MealForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'Are you sure to update doctor?',
-      text: "Confirm if you want to update!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, update it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Updated!',
-          'Your doctor has been updated.',
-          'success'
-        )
+      title: 'You successfully Updated a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
       }
     })
   };
@@ -61,11 +54,7 @@ function MealForm() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        handleDelete();
       }
     })
   };
@@ -91,7 +80,11 @@ function MealForm() {
       setportionSize("Normal")
       window.location.reload();
     }).catch((err) => {
-      alert(err)
+      Swal.fire(
+        'Error!',
+        'Error Adding Meal.',
+        'error'
+      )
     })
   }
 
@@ -116,8 +109,6 @@ function MealForm() {
       document.getElementById("mealTypeInput").value = mealType;
       document.getElementById("portionSizeInput").value = portionSize;
       
-
-      alert("Populated form");
     }
   }
 
@@ -135,17 +126,34 @@ function MealForm() {
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("Meal found");
+          Swal.fire({
+            title: 'You successfully found the Meal!',
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           console.log(response.data);
           populateFormWithFetchedData(response.data);
         } else {
-          alert("Meal not found");
+          Swal.fire(
+            'Error!',
+            'Meal not found.',
+            'error'
+          )
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for Meal");
+        Swal.fire(
+          'Error!',
+          'Error Searching Meal.',
+          'error'
+        )
       });
   }
   
@@ -160,7 +168,16 @@ function MealForm() {
     successfullyDeleted();
     axios.delete(`http://localhost:8070/Meal/delete/${mealID}`,config)
       .then((response) => {
-        alert("Meal deleted successfully");
+        Swal.fire({
+          title: 'You successfully Deleted the Meal!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         setmealID("");
         setmealName("");
         setmealDescription("");
@@ -172,7 +189,11 @@ function MealForm() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting Meal member");
+        Swal.fire(
+          'Deleted!',
+          'Error Deleting Meal.',
+          'success'
+        )
       });
   }
 //update Meal
@@ -195,12 +216,16 @@ function handleUpdate() {
 
   axios.put(`http://localhost:8070/Meal/update/${mealID}`, updatedMeal,config)
     .then((response) => {
-      alert("Meal updated successfully");
+      successfullyUpdated();
       window.location.reload();
     })
     .catch((error) => {
       console.error(error);
-      alert("Error updating Meal");
+      Swal.fire(
+        'Did not Update!',
+        'Error updating meal.',
+        'success'
+      )
     });
 }
 
@@ -213,7 +238,6 @@ function clearForm() {
   setdietaryRestrictions("");
   setmealType("");
   setportionSize("");
-  alert("Cleared form");
 }
   return (
     <Form>
@@ -271,7 +295,7 @@ function clearForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+      <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>

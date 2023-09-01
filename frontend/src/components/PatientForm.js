@@ -47,20 +47,13 @@ function PatientForm() {
       };
       const successfullyUpdated = () => {
         Swal.fire({
-          title: 'Are you sure to update doctor?',
-          text: "Confirm if you want to update!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, update it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire(
-              'Updated!',
-              'Your doctor has been updated.',
-              'success'
-            )
+          title: 'You successfully Updated a Doctor!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
           }
         })
       };
@@ -75,11 +68,7 @@ function PatientForm() {
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
+            handleDelete();
           }
         })
       };
@@ -95,7 +84,7 @@ function PatientForm() {
             }
           };
         axios.post("http://localhost:8070/patient/add", newPatient,config).then(() => {
-            alert("Patient added");
+            successfullyAdded();
             setfullName("")
             setGender("Male")
             setDateOfBirth("")
@@ -117,7 +106,11 @@ function PatientForm() {
             setRequirements("")
             window.location.reload();
         }).catch((err) => {
-            alert(err)
+            Swal.fire(
+                'Error!',
+                'Error Adding Patient.',
+                'error'
+              )
         })
     }
     //serach patient
@@ -165,7 +158,6 @@ function PatientForm() {
             document.getElementById("assignedRoomNoInput").value = assignedRoomNo;
             document.getElementById("durationOfStayInput").value = durationOfStay;
             document.getElementById("anySpecificRequirementsInput").value = anySpecificRequirements;
-            alert("Populated form");
         }
     }
 
@@ -183,17 +175,34 @@ function PatientForm() {
           .then((response) => {
             setSearchResult(response.data);
             if (response.data) {
-              alert("Patient found");
+                Swal.fire({
+                    title: 'You successfully found the Patient!',
+                    icon: 'success',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
               console.log(response.data);
               populateFormWithFetchedData()
             } else {
-              alert("Patient not found");
+                Swal.fire(
+                    'Error!',
+                    'Patient not found.',
+                    'error'
+                  )
             }
           })
           .catch((error) => {
             console.error(error);
             setSearchResult(null);
-            alert("Error searching for Patient");
+            Swal.fire(
+                'Error!',
+                'Error Searching Patient.',
+                'error'
+              )
           });
       }
 
@@ -207,7 +216,16 @@ function PatientForm() {
           };
         axios.delete(`http://localhost:8070/patient/delete/${nicNumber}`,config)
             .then((response) => {
-                alert("pateint deleted successfully");
+                Swal.fire({
+                    title: 'You successfully Deleted the Patient!',
+                    icon: 'success',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
                 setfullName("")
                 setGender("Male")
                 setDateOfBirth("")
@@ -231,7 +249,11 @@ function PatientForm() {
             })
             .catch((error) => {
                 console.error(error);
-                alert("Error deleting patient");
+                Swal.fire(
+                    'Deleted!',
+                    'Error Deleting Patient.',
+                    'success'
+                  )
             });
     }
     //update patient
@@ -265,12 +287,16 @@ function PatientForm() {
 
         axios.put(`http://localhost:8070/patient/update/${nicNumber}`, updatedPatient,config)
             .then((response) => {
-                alert("Patient updated successfully");
+                successfullyUpdated();
                 window.location.reload();
             })
             .catch((error) => {
                 console.error(error);
-                alert("Error updating patient");
+                Swal.fire(
+                    'Did not Update!',
+                    'Error updating Patient.',
+                    'success'
+                  )
             });
     }
 
@@ -295,8 +321,6 @@ function PatientForm() {
         setRoomNumber("");
         setDuration("");
         setRequirements("");
-
-        alert("Cleared form");
     }
     return (
         <Form>
@@ -515,7 +539,7 @@ function PatientForm() {
             <Button variant="success" onClick={sendData}>Enter</Button>{' '}
             <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
             <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-            <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+            <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
             <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
         </Form>

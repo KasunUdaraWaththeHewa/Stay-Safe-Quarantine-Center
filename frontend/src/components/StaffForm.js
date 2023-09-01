@@ -39,20 +39,13 @@ function StaffForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'Are you sure to update doctor?',
-      text: "Confirm if you want to update!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, update it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Updated!',
-          'Your doctor has been updated.',
-          'success'
-        )
+      title: 'You successfully Updated a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
       }
     })
   };
@@ -67,11 +60,7 @@ function StaffForm() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        handleDelete();
       }
     })
   };
@@ -87,7 +76,7 @@ function StaffForm() {
       firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills
     }
     axios.post("http://localhost:8070/staff/add", newStaff,config).then(() => {
-      alert("Staff added");
+      successfullyAdded();
       setFirstName("")
       setLastName("")
       setEmployeeID("")
@@ -102,7 +91,11 @@ function StaffForm() {
       setSkills("")
       window.location.reload();
     }).catch((err) => {
-      alert(err)
+      Swal.fire(
+        'Error!',
+        'Error Adding Staff.',
+        'error'
+      )
     })
   }
 
@@ -132,10 +125,7 @@ function StaffForm() {
       document.getElementById("addressInput").value = address;
       document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
       document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship
-      
-
-      alert("Populated form");
+      document.getElementById("relationshipInput").value = relationship;
     }
   }
 
@@ -153,17 +143,34 @@ function StaffForm() {
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("Staff member found");
+          Swal.fire({
+            title: 'You successfully found the Staff!',
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           console.log(response.data);
           populateFormWithFetchedData(response.data);
         } else {
-          alert("Staff member not found");
+          Swal.fire(
+            'Error!',
+            'Staff not found.',
+            'error'
+          )
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for staff member");
+        Swal.fire(
+          'Error!',
+          'Error Searching Staff.',
+          'error'
+        )
       });
   }
   
@@ -177,7 +184,16 @@ function StaffForm() {
     };
     axios.delete(`http://localhost:8070/staff/delete/${staffID}`,config)
       .then((response) => {
-        alert("Staff member deleted successfully");
+        Swal.fire({
+          title: 'You successfully Deleted the Staff!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         setFirstName("");
         setLastName("");
         setEmployeeID("");
@@ -194,7 +210,11 @@ function StaffForm() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting staff member");
+        Swal.fire(
+          'Deleted!',
+          'Error Deleting Staff Member.',
+          'success'
+        )
       });
   }
 //update staff member
@@ -221,12 +241,16 @@ function handleUpdate() {
   };
   axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff,config)
     .then((response) => {
-      alert("Staff member updated successfully");
+      successfullyUpdated();
       window.location.reload();
     })
     .catch((error) => {
       console.error(error);
-      alert("Error updating staff member");
+      Swal.fire(
+        'Did not Update!',
+        'Error updating Staff.',
+        'success'
+      )
     });
 }
 
@@ -244,7 +268,6 @@ function clearForm() {
   setGender("");
   setRelationship("");
   setSkills();
-  alert("Cleared form");
 }
   return (
     <Form>
@@ -373,7 +396,7 @@ function clearForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+      <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>

@@ -24,7 +24,7 @@ function EquipmentForm() {
 
   const successfullyAdded = () => {
     Swal.fire({
-      title: 'You successfully Added a Doctor!',
+      title: 'You successfully Added an Equipment!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -36,26 +36,19 @@ function EquipmentForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'Are you sure to update doctor?',
-      text: "Confirm if you want to update!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, update it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Updated!',
-          'Your doctor has been updated.',
-          'success'
-        )
+      title: 'You successfully Updated an Equipment!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
       }
     })
   };
   const successfullyDeleted = () => {
     Swal.fire({
-      title: 'Are you sure to delete doctor?',
+      title: 'Are you sure to delete Equipment?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -64,11 +57,7 @@ function EquipmentForm() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        handleDelete();
       }
     })
   };
@@ -96,7 +85,11 @@ function EquipmentForm() {
       setCurrentStatus("")
       window.location.reload();
     }).catch((err) => {
-      alert(err)
+      Swal.fire(
+        'Error!',
+        'Error Adding Equipment.',
+        'error'
+      )
     })
   }
 
@@ -112,7 +105,6 @@ function EquipmentForm() {
         setLocation(searchResult.equip.location);
         setPrice(searchResult.equip.price);
         setCurrentStatus(searchResult.equip.currentStatus);
-      alert("Populated form");
     }
   }
 
@@ -130,17 +122,33 @@ function EquipmentForm() {
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("Equipment found");
-          console.log(response.data);
+          Swal.fire({
+            title: 'You successfully found the Equipment!',
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           populateFormWithFetchedData();
         } else {
-          alert("Equipment not found");
+          Swal.fire(
+            'Error!',
+            'Equipment not found.',
+            'error'
+          )
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for Equipment");
+        Swal.fire(
+          'Error!',
+          'Error Searching Equipment.',
+          'error'
+        )
       });
   }
   // delete equipment
@@ -153,6 +161,16 @@ function EquipmentForm() {
     successfullyDeleted();
     axios.delete(`http://localhost:8070/equipment/delete/${serialNumber}`,config)
       .then((response) => {
+        Swal.fire({
+          title: 'You successfully Deleted the Equipment!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         setName("")
         setCategory("")
         setSerialNumber("")
@@ -166,7 +184,11 @@ function EquipmentForm() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting equipment");
+        Swal.fire(
+          'Deleted!',
+          'Error Deleting Equipment.',
+          'success'
+        )
       });
   }
   //update equipment details
@@ -187,14 +209,19 @@ function EquipmentForm() {
       price,
       currentStatus,
     };
-    successfullyUpdated();
+    
     axios.put(`http://localhost:8070/equipment/update/${serialNumber}`, updatedequipment,config)
       .then((response) => {
+        successfullyUpdated();
         window.location.reload();
       })
       .catch((error) => {
         console.error(error);
-        alert("Error updating equipment");
+        Swal.fire(
+          'Did not Update!',
+          'Error updating Equipment.',
+          'success'
+        )
       });
   }
 
@@ -209,8 +236,6 @@ function EquipmentForm() {
     setLocation("");
     setPrice("");
     setCurrentStatus("");
-
-    alert("Cleared form");
   }
 
   return (
@@ -295,7 +320,7 @@ function EquipmentForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+      <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>

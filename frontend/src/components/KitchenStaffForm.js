@@ -38,20 +38,13 @@ function KichenkichenForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'Are you sure to update doctor?',
-      text: "Confirm if you want to update!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, update it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Updated!',
-          'Your doctor has been updated.',
-          'success'
-        )
+      title: 'You successfully Updated a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
       }
     })
   };
@@ -66,11 +59,7 @@ function KichenkichenForm() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        handleDelete();
       }
     })
   };
@@ -100,7 +89,11 @@ function KichenkichenForm() {
       setSkills("")
       window.location.reload();
     }).catch((err) => {
-      alert(err)
+      Swal.fire(
+        'Error!',
+        'Error Adding KitchenStaff.',
+        'error'
+      )
     })
   }
 
@@ -130,10 +123,7 @@ function KichenkichenForm() {
       document.getElementById("addressInput").value = address;
       document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
       document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship
-      
-
-      alert("Populated form");
+      document.getElementById("relationshipInput").value = relationship;
     }
   }
 
@@ -151,17 +141,34 @@ function KichenkichenForm() {
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("member found");
+          Swal.fire({
+            title: 'You successfully found the Kitchen Staff!',
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           console.log(response.data);
           populateFormWithFetchedData(response.data);
         } else {
-          alert("member not found");
+          Swal.fire(
+            'Error!',
+            'Kitchen Staff not found.',
+            'error'
+          )
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for member");
+        Swal.fire(
+          'Error!',
+          'Error Searching Kitchen Staff.',
+          'error'
+        )
       });
   }
   
@@ -176,7 +183,16 @@ function KichenkichenForm() {
     successfullyDeleted();
     axios.delete(`http://localhost:8070/kichen/delete/${employeeID}`,config)
       .then((response) => {
-        alert("member deleted successfully");
+        Swal.fire({
+          title: 'You successfully Deleted the Kitchen Staff!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         setFirstName("");
         setLastName("");
         setEmployeeID("");
@@ -192,7 +208,11 @@ function KichenkichenForm() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting member");
+        Swal.fire(
+          'Deleted!',
+          'Error Deleting Kitchen Staff.',
+          'success'
+        )
       });
   }
 //update kichen member
@@ -216,15 +236,18 @@ function handleUpdate() {
     relationship,
     skills,
   };
-  successfullyUpdated();
   axios.put(`http://localhost:8070/kichen/update/${employeeID}`, updatedkichen,config)
     .then((response) => {
-      alert("kichen member updated successfully");
+      successfullyUpdated();
       window.location.reload();
     })
     .catch((error) => {
       console.error(error);
-      alert("Error updating kichen member");
+      Swal.fire(
+        'Did not Update!',
+        'Error updating Kitchen Staff.',
+        'success'
+      )
     });
 }
 
@@ -241,7 +264,6 @@ function clearForm() {
   setGender("");
   setRelationship("");
   setSkills();
-  alert("Cleared form");
 }
   return (
     <Form>
@@ -363,7 +385,7 @@ function clearForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+      <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>

@@ -42,20 +42,13 @@ function DoctorForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'Are you sure to update doctor?',
-      text: "Confirm if you want to update!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, update it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Updated!',
-          'Your doctor has been updated.',
-          'success'
-        )
+      title: 'You successfully Updated a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
       }
     })
   };
@@ -70,11 +63,7 @@ function DoctorForm() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        handleDelete();
       }
     })
   };
@@ -108,7 +97,11 @@ function DoctorForm() {
       setSkills(null)
       window.location.reload();
     }).catch((err) => {
-      alert(err)
+      Swal.fire(
+        'Error!',
+        'Error Adding Doctor.',
+        'error'
+      )
     })
   }
 
@@ -129,8 +122,6 @@ function DoctorForm() {
       setGender(searchResult.user.gender);
       setRelationship(searchResult.user.relationship);
       setSkills(searchResult.user.skills);
-
-      alert("Populated form");
     }
   }
 
@@ -148,17 +139,34 @@ function DoctorForm() {
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("Doctor found");
+          Swal.fire({
+            title: 'You successfully found the Doctor!',
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           console.log(response.data);
           populateFormWithFetchedData();
         } else {
-          alert("Doctor not found");
+          Swal.fire(
+            'Error!',
+            'Doctor not found.',
+            'error'
+          )
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for Doctor");
+        Swal.fire(
+          'Error!',
+          'Error Searching Doctor.',
+          'error'
+        )
       });
   }
   // delete doctor
@@ -169,9 +177,18 @@ function DoctorForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
-    successfullyDeleted();
     axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`,config)
       .then((response) => {
+        Swal.fire({
+          title: 'You successfully Deleted the Doctor!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         setFirstName("")
         setLastName("")
         setDoctorID("")
@@ -189,8 +206,12 @@ function DoctorForm() {
         window.location.reload();
       })
       .catch((error) => {
+        Swal.fire(
+          'Deleted!',
+          'Error Deleting Doctor.',
+          'success'
+        )
         console.error(error);
-        alert("Error deleting doctor");
       });
   }
   //update doctor details
@@ -215,14 +236,18 @@ function DoctorForm() {
       relationship,
       skillsAndTraining,
     };
-    successfullyUpdated();
     axios.put(`http://localhost:8070/doctor/update/${doctorID}`, updatedDoctor,config)
       .then((response) => {
+        successfullyUpdated();
         window.location.reload();
       })
       .catch((error) => {
         console.error(error);
-        alert("Error updating doctor");
+        Swal.fire(
+          'Did not Update!',
+          'Error updating Dcctor.',
+          'success'
+        )
       });
   }
 
@@ -243,8 +268,6 @@ function DoctorForm() {
     setGender("");
     setRelationship("");
     setSkills(null);
-
-    alert("Cleared form");
   }
 
   return (
@@ -352,7 +375,7 @@ function DoctorForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+      <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>
