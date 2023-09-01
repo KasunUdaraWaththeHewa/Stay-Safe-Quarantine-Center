@@ -17,11 +17,11 @@ export default function ChnagePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
-  const { changepassword, error, isLoading } = useChangePassword();
+  const { changePassword, error, isLoading } = useChangePassword();
 
   const handlePasswordChange = async (e) => {
     e.preventDefault()
-    await changepassword({ email, role,currentPassword, newPassword, confirmNewPassword });
+    await changePassword({ email, role,currentPassword, newPassword, confirmNewPassword });
   }
 
   return (
