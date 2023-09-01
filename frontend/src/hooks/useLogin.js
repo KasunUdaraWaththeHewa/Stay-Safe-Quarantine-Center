@@ -18,6 +18,7 @@ export const useLogin = () => {
         role
       });
       if (response.status === 200) {
+        console.log("EMAIl ",email," Logged in as ",role);
         localStorage.setItem('user', JSON.stringify(response.data));
         dispatch({ type: 'LOGIN', payload: response.data });
         if (role === 'admin') {
