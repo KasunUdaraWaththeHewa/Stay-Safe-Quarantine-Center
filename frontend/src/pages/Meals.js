@@ -4,7 +4,7 @@ import MealForm from "../components/Mealform";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Meal() {
@@ -24,9 +24,12 @@ function Meal() {
   }, []);
 
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   if (!user || user.role !== 'kitchen') {
-    return <Redirect to="/login" />;
-  }
+      navigate('/login');
+      return null;
+    }
+  
   
   return (
     <div>

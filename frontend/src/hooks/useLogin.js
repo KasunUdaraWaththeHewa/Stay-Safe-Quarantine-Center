@@ -1,42 +1,41 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // Initialize isLoading with false
   const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
-  const login = async ({email, password, role}) => {
+  const login = async ({ email, password, role }) => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await axios.post('http://localhost:8070/user/login', {
         email,
         password,
-        role
+        role,
       });
       if (response.status === 200) {
-        console.log("EMAIl ",email," Logged in as ",role);
+        console.log('EMAIl ', email, ' Logged in as ', role);
         localStorage.setItem('user', JSON.stringify(response.data));
         dispatch({ type: 'LOGIN', payload: response.data });
         if (role === 'admin') {
-          return <Redirect to="http://localhost:3000/adminpanel" />;
+          navigate('/adminpanel');
         } else if (role === 'staff') {
-          return <Redirect to="http://localhost:3000/staffPanel" />;
+          navigate('/staffpanel');
         } else if (role === 'kitchen') {
-          //methanatath enwa redirect wenne nathi eka thamai case eka
-          console.log("kitchen");
-          return <Redirect to="http://localhost:3000/meals" />;
+          navigate('/meals');
         } else if (role === 'pharmacy') {
-          return <Redirect to="http://localhost:3000/PharmacyPanel" />;
+          navigate('/PharmacyPanal');
         }
       } else {
         setError(response.data.error);
       }
     } catch (error) {
-      setError(()=>{
+      setError(() => {
         if (error.response) {
           return error.response.data.error;
         } else {

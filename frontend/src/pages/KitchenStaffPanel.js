@@ -4,14 +4,17 @@ import Footer from '../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
 import React, { useState, useEffect, useContext} from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function StaffPanel(){
     const { user } = useContext(AuthContext);
-    if (!user || user.role !== 'kitchen') {
-      return <Redirect to="/login" />;
-    }
+    const navigate = useNavigate();
+    if (!user || user.role !== 'admin') {
+        navigate('/login');
+        return null;
+      }
+    
     return(
         <div>
             <NavBar />

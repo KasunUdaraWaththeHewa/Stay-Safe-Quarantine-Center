@@ -4,7 +4,7 @@ import DoctorForm from "../components/DoctorForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useState, useEffect, useContext} from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Doctor() {
@@ -23,9 +23,12 @@ function Doctor() {
     fetchDoctors();
   }, []);
   const { user } = useContext(AuthContext);
-  if (!user || !((user.role === 'admin')||(user.role === 'staff'))) {
-    return <Redirect to="/login" />;
-  }
+  const navigate = useNavigate();
+    if (!user || ((user.role !== 'admin')&&(user.role !== 'staff'))) {
+        navigate('/login');
+        return null;
+      }
+  
   return (
     <div>
       <div className="navBarContainor">

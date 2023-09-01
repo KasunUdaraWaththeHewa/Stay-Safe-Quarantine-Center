@@ -1,6 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router,Route,Switch,Navigate} from 'react-router-dom';
-import { useAuthContext } from './hooks/useAuthContext';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import ContactUs from './pages/ContactUs';
 
@@ -33,72 +32,29 @@ function App() {
   return (
     <div className="App">
       <Router>
-            <Switch>
-              <Route exact path="/">
-                  <Home_page/>
-              </Route>
-              <Route exact path="/contactus">
-                  <ContactUs/>
-              </Route>
-              <Route exact path="/adminpanel">
-                  <AdminPanel/>
-              </Route>
-              <Route exact path="/staffpanel">
-                  <StaffPanel/>
-              </Route>
-              <Route exact path="/doctor">
-                  <Doctor/>
-              </Route>
-              <Route exact path="/staff">
-                  <Staff/>
-              </Route>
-              <Route exact path="/nurse">
-                  <Nurse/>
-              </Route>
-              <Route exact path="/patient">
-                  <Patient/>
-              </Route>
-              <Route exact path="/equipment">
-                  <Equipment/>
-              </Route>
-              <Route exact path = "/packages">
-                  <Packages/>
-              </Route>
-              <Route exact path="/payment">
-                  <Payment/>
-              </Route>
-              
+        <Routes>
+          <Route path="/" element={<Home_page />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/adminpanel" element={<AdminPanel />} />
+          <Route path="/staffpanel" element={<StaffPanel />} />
+          <Route path="/doctor" element={<Doctor />} />
+          <Route path="/staff" element={<Staff />} />
+          <Route path="/nurse" element={<Nurse />} />
+          <Route path="/patient" element={<Patient />} />
+          <Route path="/equipment" element={<Equipment />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/OurCenter" element={<OurCenter />} />
+          <Route path="/PharmacyPanal" element={<PharmacyPanal />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/meals" element={<Meals />} />
+          <Route path="/kitchen" element={<Kitchen />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
+        </Routes>
 
-              <Route exact path="/OurCenter">
-                <OurCenter/>
-              </Route>
-              
-              <Route exact path="/PharmacyPanal">
-                <PharmacyPanal/>
-              </Route>
-              <Route exact path="/signup">
-                <Signup/>
-              </Route>
-
-              <Route exact path="/login">
-                <Login/>
-              </Route>
-              
-              <Route exact path="/meals">
-                <Meals/>
-              </Route>
-
-              <Route exact path="/kitchen">
-                <Kitchen/>
-              </Route>
-              
-              <Route exact path="/changePassword">
-                <ChangePassword/>
-              </Route>
-
-            </Switch>
       </Router>
-      
+
     </div>
   );
 }
