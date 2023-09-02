@@ -26,7 +26,7 @@ function Doctor() {
   }, []);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  if (!user || ((user.role !== 'admin') && (user.role !== 'staff'))) {
+  if (!user || !((user.role === 'admin') || (user.role === 'staff'))) {
     navigate('/login');
     return null;
   }
