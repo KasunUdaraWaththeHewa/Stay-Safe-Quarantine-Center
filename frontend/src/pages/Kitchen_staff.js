@@ -13,7 +13,7 @@ function Kitchenkitchen() {
   useEffect(() => {
     async function fetchkitchens() {
       try {
-        const response = await axios.get('http://localhost:8070/kitchen/');
+        const response = await axios.get('http://localhost:8070/kitchen');
         setkitchens(response.data);
       } catch (error) {
         console.error(error);

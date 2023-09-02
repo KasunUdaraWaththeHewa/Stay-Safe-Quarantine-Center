@@ -13,7 +13,7 @@ function Equipment() {
   useEffect(() => {
     async function fetchequipments() {
       try {
-        const response = await axios.get('http://localhost:8070/equipment/');
+        const response = await axios.get('http://localhost:8070/equipment');
         setequipments(response.data);
       } catch (error) {
         console.error(error);

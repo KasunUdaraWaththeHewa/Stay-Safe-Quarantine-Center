@@ -13,7 +13,7 @@ function Meal() {
   useEffect(() => {
     async function fetchMeals() {
       try {
-        const response = await axios.get('http://localhost:8070/Meal/');
+        const response = await axios.get('http://localhost:8070/Meal');
         setMeals(response.data);
       } catch (error) {
         console.error(error);

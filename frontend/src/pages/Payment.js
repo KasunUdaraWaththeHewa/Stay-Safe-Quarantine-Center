@@ -13,7 +13,7 @@ function Payment() {
   useEffect(() => {
     async function fetchpayments() {
       try {
-        const response = await axios.get('http://localhost:8070/payment/');
+        const response = await axios.get('http://localhost:8070/payment');
         setpayments(response.data);
       } catch (error) {
         console.error(error);

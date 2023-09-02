@@ -13,7 +13,7 @@ function Doctor() {
   useEffect(() => {
     async function fetchDoctors() {
       try {
-        const response = await axios.get('http://localhost:8070/doctor/');
+        const response = await axios.get('http://localhost:8070/doctor');
         console.log(1)
         setDoctors(response.data);
       } catch (error) {
@@ -27,7 +27,7 @@ function Doctor() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   if (!user || !((user.role === 'admin') || (user.role === 'staff'))) {
-    navigate('/login');
+    navigate('/login')
     return null;
   }
 

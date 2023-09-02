@@ -12,7 +12,7 @@ function Nurse() {
   useEffect(() => {
     async function fetchNurses() {
       try {
-        const response = await axios.get('http://localhost:8070/nurse/');
+        const response = await axios.get('http://localhost:8070/nurse');
         setNurses(response.data);
       } catch (error) {
         console.error(error);

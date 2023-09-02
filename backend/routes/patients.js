@@ -171,7 +171,7 @@ router.route("/").get((req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error" })
     });
 });
 module.exports = router;

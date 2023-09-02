@@ -9,7 +9,6 @@ import { AuthContext } from '../context/AuthContext';
 
 function Patient() {
   const [patients, setPatient] = useState([]);
-
   useEffect(() => {
     async function fetchPatients() {
       try {

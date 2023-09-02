@@ -137,10 +137,12 @@ router.route("/delete/:doctorID").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
+  console.log("Entered to the backend route")
   if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
 
   doctor.find()
     .then((doctor) => {
+      console.log(doctor);
       res.json(doctor);
     })
     .catch((err) => {
