@@ -6,7 +6,8 @@ import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
- 
+import Swal from 'sweetalert2';
+
 function PaymentForm(){
    
     const [payerInName, setPayerInName] = useState(""); 
@@ -18,6 +19,46 @@ function PaymentForm(){
     const [time, setTime] = useState("");
     const [searchResult, setSearchResult] = useState(null);
     const { user } = useContext(AuthContext);
+
+    const successfullyAdded = () => {
+      Swal.fire({
+        title: 'You successfully Added a Doctor!',
+        icon: 'success',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+    };
+    const successfullyUpdated = () => {
+      Swal.fire({
+        title: 'You successfully Updated a Doctor!',
+        icon: 'success',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+    };
+    const successfullyDeleted = () => {
+      Swal.fire({
+        title: 'Are you sure to delete doctor?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handleDelete();
+        }
+      })
+    };
     //add payment
     function sendData(e) {
         e.preventDefault();
@@ -36,7 +77,7 @@ function PaymentForm(){
             }
           };
         axios.post("http://localhost:8070/payment/add", newPayment,config).then(() => {
-            alert("Payment added");
+            successfullyAdded();
             setPayerInName("");
             setPayerNIC("");
             setPatientNIC("");
@@ -46,7 +87,11 @@ function PaymentForm(){
             setTime("");
             window.location.reload();
         }).catch((err)=>{
-            console.log(err);
+          Swal.fire(
+            'Error!',
+            'Error Adding Payment.',
+            'error'
+          )
         })
     }
 
@@ -62,8 +107,6 @@ function PaymentForm(){
       setReceiptNumber(searchResult.paymentObj.receiptNumber);
       setDateofPayment(searchResult.paymentObj.dateofpayment);
       setTime(searchResult.paymentObj.time);
-     
-     alert("Populated form");
      } 
     }  
 
@@ -82,17 +125,34 @@ function PaymentForm(){
           .then((response) => {
             setSearchResult(response.data);
             if (response.data) {
-              alert("Payment found");
+              Swal.fire({
+                title: 'You successfully found the Payment!',
+                icon: 'success',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
               console.log(response.data);
               populateFormWithFetchedData()
             } else {
-              alert("Payment not found");
+              Swal.fire(
+                'Error!',
+                'Payment not found.',
+                'error'
+              )
             }
           })
           .catch((error) => {
             console.error(error);
             setSearchResult(null);
-            alert("Error searching for Payment");
+            Swal.fire(
+              'Error!',
+              'Error Searching Payment.',
+              'error'
+            )
           });
       }
       //delete payment
@@ -104,7 +164,16 @@ function PaymentForm(){
           };
         axios.delete(`http://localhost:8070/payment/delete/${receiptNumber}`,config)
             .then((response) => {
-                alert("Payment deleted successfully");
+              Swal.fire({
+                title: 'You successfully Deleted the Payment!',
+                icon: 'success',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
                 setPayerInName("");
                 setPayerNIC("");
                 setPatientNIC("");
@@ -116,7 +185,11 @@ function PaymentForm(){
               })
                 .catch((error) => {
                     console.error(error);
-                    alert("Error deleting Payment");
+                    Swal.fire(
+                      'Deleted!',
+                      'Error Deleting Payment.',
+                      'success'
+                    )
                 });
             }
        
@@ -138,12 +211,16 @@ function PaymentForm(){
             }
             axios.put(`http://localhost:8070/payment/update/${receiptNumber}`, updatedPayment,config)
             .then((response) => {
-                alert("Payment updated successfully");
+                successfullyUpdated();
                 window.location.reload();               
             })
             .catch((error) => {
                 console.error(error);
-                alert("Error Updating Payment")
+                Swal.fire(
+                  'Did not Update!',
+                  'Error updating Payment.',
+                  'success'
+                )
             })
         } 
         
@@ -156,8 +233,6 @@ function PaymentForm(){
         setReceiptNumber("");
         setDateofPayment("");
         setTime("");
-
-        alert("Cleared form");
     }
 
     return (
@@ -255,7 +330,7 @@ function PaymentForm(){
              <Button variant="success" onClick={sendData}>Enter</Button>{' '}
              <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
              <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-             <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+             <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
              <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
         </Form>

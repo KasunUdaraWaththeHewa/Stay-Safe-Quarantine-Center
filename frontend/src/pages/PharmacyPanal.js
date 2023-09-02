@@ -4,14 +4,17 @@ import '../css file/PharmacyPanal.css'
 import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useContext} from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function PharmacyPanal() {
     const { user } = useContext(AuthContext);
-  if (!user || !((user.role === 'pharmacy'))) {
-    return <Redirect to="/login" />;
-  }
+    const navigate = useNavigate();
+    if (!user || user.role !== 'pharmacy') {
+        navigate('/login');
+        return null;
+      }
+ 
     return (
         <div>
             <div><NavBar /></div>
@@ -19,7 +22,7 @@ function PharmacyPanal() {
                 <button>Add medicine</button>
                 <button>Delete medicin</button>
                 <button>Update medicin</button>
-                <button>Viwe medicin</button>
+                <button>View medicin</button>
                 <hr />
                 <div>
                     <form className="popup">

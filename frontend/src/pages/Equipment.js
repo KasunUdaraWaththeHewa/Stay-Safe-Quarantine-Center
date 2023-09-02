@@ -3,13 +3,13 @@ import NavBar from "../components/NavBar";
 import EquipmentForm from "../components/EquipmentForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
-import React, { useState, useEffect, useContext} from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Equipment() {
   const [equipments, setequipments] = useState([]);
-  
+
   useEffect(() => {
     async function fetchequipments() {
       try {
@@ -24,9 +24,12 @@ function Equipment() {
   }, []);
 
   const { user } = useContext(AuthContext);
-    if (!user || !(user.role === 'admin')) {
-      return <Redirect to="/login" />;
-    }
+  const navigate = useNavigate();
+  if (!user || user.role !== 'admin') {
+    navigate('/login');
+    return null;
+  }
+
   return (
     <div>
       <div className="navBarContainor">
@@ -47,8 +50,8 @@ function Equipment() {
               <ul>
                 {equipments.map((equipment) => (
                   <div key={equipment.serialNumber} className="existingEquipmentCard">
-                  <p>{equipment.name}</p>
-                  <p>{equipment.serialNumber}</p>
+                    <p>{equipment.name}</p>
+                    <p>{equipment.serialNumber}</p>
                   </div>
                 ))}
               </ul>
@@ -62,4 +65,4 @@ function Equipment() {
       </div>
     </div>
   );
-}export default Equipment;
+} export default Equipment;

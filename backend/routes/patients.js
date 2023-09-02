@@ -161,10 +161,10 @@ router.route("/delete/:nicNumber").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
-  
-  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
-
-
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))){
+    console.log(3);
+    return res.status(403).send("You are not allowed to make these changes");
+  } 
   patient.find()
     .then((patient) => {
       res.json(patient);

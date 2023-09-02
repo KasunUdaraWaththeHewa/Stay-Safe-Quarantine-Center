@@ -9,15 +9,17 @@ import Service from '../img/services.png'
 import profile from '../img/Profile.png'
 import notification from '../img/notification.png'
 import React, { useState, useEffect, useContext} from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function AdminPanel(){
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     if (!user || user.role !== 'admin') {
-      return <Redirect to="/login" />;
-    }
+        navigate('/login');
+        return null;
+      }
         return(
         <div>
             <NavBar />

@@ -6,6 +6,7 @@ import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import Swal from 'sweetalert2';
 
 function NurseForm() {
   const [firstName, setFirstName] = useState("");
@@ -25,6 +26,46 @@ function NurseForm() {
 
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
+
+  const successfullyAdded = () => {
+    Swal.fire({
+      title: 'You successfully Added a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  };
+  const successfullyUpdated = () => {
+    Swal.fire({
+      title: 'You successfully Updated a Doctor!',
+      icon: 'success',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  };
+  const successfullyDeleted = () => {
+    Swal.fire({
+      title: 'Are you sure to delete doctor?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleDelete();
+      }
+    })
+  };
   function sendData(e) {
     e.preventDefault();
     const newNurse = {
@@ -36,7 +77,7 @@ function NurseForm() {
       }
     };
     axios.post("http://localhost:8070/nurse/add", newNurse,config).then(() => {
-      alert("Nurse added");
+      successfullyAdded();
       setFirstName("")
       setLastName("")
       setNurseID("")
@@ -53,7 +94,11 @@ function NurseForm() {
       setSkills(null)
       window.location.reload();
     }).catch((err) => {
-      alert(err)
+      Swal.fire(
+        'Error!',
+        'Error Adding Nurse.',
+        'error'
+      )
     })
   }
 
@@ -89,9 +134,6 @@ function NurseForm() {
       document.getElementById("emergencyContactNumbersInput").value = emergencyContactNumbers;
       document.getElementById("genderInput").value = gender;
       document.getElementById("relationshipInput").value = relationship;
-      
-     
-      alert("Populated form");
     }
   }
 
@@ -109,17 +151,34 @@ function NurseForm() {
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
-          alert("Nurse found");
+          Swal.fire({
+            title: 'You successfully found the Nurse!',
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           console.log(response.data);
           populateFormWithFetchedData(response.data);
         } else {
-          alert("Nurse not found");
+          Swal.fire(
+            'Error!',
+            'Nurse not found.',
+            'error'
+          )
         }
       })
       .catch((error) => {
         console.error(error);
         setSearchResult(null);
-        alert("Error searching for Nurse");
+        Swal.fire(
+          'Error!',
+          'Error Searching Nurse.',
+          'error'
+        )
       });
   }
   //delete staff member
@@ -132,7 +191,16 @@ function NurseForm() {
     };
     axios.delete(`http://localhost:8070/nurse/delete/${nurseID}`,config)
       .then((response) => {
-        alert("Nurse deleted successfully");
+        Swal.fire({
+          title: 'You successfully Deleted the Nurse!',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         setFirstName("")
         setLastName("")
         setNurseID("")
@@ -151,7 +219,11 @@ function NurseForm() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting nurse");
+        Swal.fire(
+          'Deleted!',
+          'Error Deleting Nurse.',
+          'success'
+        )
       });
   }
   //update nurse
@@ -179,12 +251,16 @@ function NurseForm() {
 
     axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse,config)
       .then((response) => {
-        alert("Nurse updated successfully");
+        successfullyUpdated();
         window.location.reload();
       })
       .catch((error) => {
         console.error(error);
-        alert("Error updating nurse");
+        Swal.fire(
+          'Did not Update!',
+          'Error updating Nurse.',
+          'success'
+        )
       });
   }
   //clear data
@@ -204,8 +280,6 @@ function NurseForm() {
     setGender("");
     setRelationship("");
     setSkills(null);
-
-    alert("Cleared form");
   }
   return (
     <Form>
@@ -313,7 +387,7 @@ function NurseForm() {
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
       <Button variant="secondary" onClick={handleSearch}>Search</Button>{' '}
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>{' '}
+      <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
     </Form>

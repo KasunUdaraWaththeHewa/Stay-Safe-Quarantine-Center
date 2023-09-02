@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../css file/Payment.css';
 import NavBar from "../components/NavBar";
 import PaymentForm from "../components/PaymentForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Payment() {
@@ -23,9 +23,12 @@ function Payment() {
     fetchpayments();
   }, []);
   const { user } = useContext(AuthContext);
-  if (!user || !((user.role === 'staff'))) {
-    return <Redirect to="/login" />;
+  const navigate = useNavigate();
+  if (!user || ((user.role !== 'staff'))) {
+    navigate('/login');
+    return null;
   }
+
   return (
     <div>
       <div className="navBarContainor">
@@ -46,9 +49,9 @@ function Payment() {
               <ul>
                 {payments.map((payment) => (
                   <div key={payment.receiptNumber} className="existingPaymentCard">
-                  <p>{payment.payerInName}</p>
-                  <p>{payment.dateofpayment}</p>
-                  <p>{payment.receiptNumber}</p>
+                    <p>{payment.payerInName}</p>
+                    <p>{payment.dateofpayment}</p>
+                    <p>{payment.receiptNumber}</p>
                   </div>
                 ))}
               </ul>
@@ -62,4 +65,4 @@ function Payment() {
       </div>
     </div>
   );
-}export default Payment;
+} export default Payment;

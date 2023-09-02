@@ -4,7 +4,7 @@
 }
 
 .loginBack{
-    height: 100vh;    
+    height: 120vh;    
     background-color: white;
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@
 
 .loginS{
     width: 400px;
-    height: 550px;
+    height: 600px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
     padding: 10px;    
@@ -74,7 +74,7 @@
     border-radius: 5px;
     margin-left: 145px;
     margin-top: -5px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .submitBtn:hover{
     background-color: #0096c7;
@@ -97,4 +97,12 @@ h3{
     margin-left: 77px;
     width: 60%;
     height: 80px;
+}
+.change-password-link a{
+    text-decoration: none;
+    color: white;
+    margin-top: -20px;
+}
+.change-password-link a:hover{
+    color: #0096c7;
 }
