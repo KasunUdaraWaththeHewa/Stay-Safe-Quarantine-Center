@@ -138,26 +138,6 @@ function PatientForm() {
             setRoomNumber(searchResult.user.assignedRoomNo);
             setDuration(searchResult.user.durationOfStay);
             setRequirements(searchResult.user.anySpecificRequirements);
-
-            document.getElementById("fullNameInput").value = fullName;
-            document.getElementById("genderInput").value = gender;
-            document.getElementById("dateOfBirthInput").value = dateOfBirth;
-            document.getElementById("nationalityInput").value = nationality;
-            document.getElementById("nicNumberInput").value = nicNumber;
-            document.getElementById("emailInput").value = email;
-            document.getElementById("resultsInput").value = results;
-            document.getElementById("allergiesInput").value = allergies;
-            document.getElementById("medicalsBeingTakenInput").value = medicalsBeingTaken;
-            document.getElementById("existingMedicalConditionInput").value = existingMedicalCondition;
-            document.getElementById("symptomsInput").value = symptoms;
-            document.getElementById("dateOfArrivalInput").value = dateOfArrival;
-            document.getElementById("contryOfDepartureInput").value = contryOfDeparture;
-            document.getElementById("anyTransitPointInput").value = anyTransitPoint;
-            document.getElementById("flightOrTransportDetailsInput").value = flightOrTransportDetails;
-            document.getElementById("dateOfCheckInInput").value = dateOfCheckIn;
-            document.getElementById("assignedRoomNoInput").value = assignedRoomNo;
-            document.getElementById("durationOfStayInput").value = durationOfStay;
-            document.getElementById("anySpecificRequirementsInput").value = anySpecificRequirements;
         }
     }
 
