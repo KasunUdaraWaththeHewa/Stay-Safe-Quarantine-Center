@@ -7,13 +7,22 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
+
 function Doctor() {
+  const { user } = useContext(AuthContext);
+  console.log("User is ",user);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
+  
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
     async function fetchDoctors() {
       try {
-        const response = await axios.get('http://localhost:8070/doctor');
+        const response = await axios.get('http://localhost:8070/doctor',config);
         console.log(1)
         setDoctors(response.data);
       } catch (error) {
@@ -24,7 +33,6 @@ function Doctor() {
 
     fetchDoctors();
   }, []);
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   if (!user || !((user.role === 'admin') || (user.role === 'staff'))) {
     navigate('/login')
@@ -50,10 +58,10 @@ function Doctor() {
             <div className='scrollablePanel'>
               <ul>
                 {doctors.map((doctor) => (
-                  <div key={doctor.doctorID} className="existingDoctorCard">
+                  <li key={doctor.doctorID} className="existingDoctorCard">
                     <p><b>{doctor.firstName} {doctor.lastName}</b></p>
                     <p><b>{doctor.doctorID}</b></p>
-                  </div>
+                  </li>
                 ))}
               </ul>
             </div>
