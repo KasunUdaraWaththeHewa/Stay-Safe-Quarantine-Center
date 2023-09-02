@@ -7,10 +7,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
-
 function Doctor() {
   const { user } = useContext(AuthContext);
   console.log("User is ",user);
+  
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`
