@@ -59,18 +59,15 @@ function AdminPanel(){
                                 <Link to="/patient" className="link"><img src = {Service} alt="" /></Link>
                                 <figcaption id='figservice'><b>Services</b></figcaption>
                             </div>  
-                        </div>
-                        <div className='PanelRow'>
-                            <div className="panelItem" id='equipicon'>
+                            <div className="panelItem">
                                 <Link to="/signup" className="link"><img src = {profile} alt="" /></Link>
-                                <figcaption id='figequip'><b>Account Creation</b></figcaption>
+                                <figcaption id='figprofile'><b>Account Creation</b></figcaption>
                             </div>    
                             <div className="panelItem">
                                 <Link to="/notification" className="link"><img src = {notification} alt="" /></Link>
-                                <figcaption id='figpackage'><b>Notification</b></figcaption>
+                                <figcaption id='fignotify'><b>Notification</b></figcaption>
                             </div>   
                         </div>
-
                     </div>
                     <div className='divAdminPanelRight'>
                         <div className="PanelRightPart">                               
