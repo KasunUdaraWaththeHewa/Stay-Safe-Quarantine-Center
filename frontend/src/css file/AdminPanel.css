@@ -10,7 +10,12 @@
 }
 .divAdminPanelLeft{
     width: 65%;
-    padding-top: 65px;
+    padding-top: 15px;
+    background-color: white;
+}
+#divStaffPanelleft{
+    width: 65%;
+    padding-top: 100px;
     background-color: white;
 }
 .divAdminPanelRight{
@@ -76,7 +81,21 @@ figcaption{
     padding-left: 33px;
     padding-top: 5px;
 }
-
+#figprofile{
+    color: #03045e;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+#fignotify{
+    color: #03045e;
+    padding-left: 23px;
+    padding-top: 5px;
+}
+#staffPanelNurse{
+    width: 200px;
+    margin: 25px 0 0 75px;
+    cursor: pointer;
+}
 h3{
     font-family: 'Roboto Slab', serif;
 }
@@ -91,8 +110,4 @@ h3{
 
 #stafficon{
     margin-left: 80px;
-}
-
-#equipicon{
-    margin-left: 175px;
 }
