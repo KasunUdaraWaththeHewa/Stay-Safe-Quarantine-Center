@@ -87,12 +87,13 @@
     background-color: #03045e;
     color: white;
     width: 100px;
-    height: 25px;
+    height: 35px;
     text-align: center;
     border-radius: 5px;
     margin-left: 145px;
     margin-bottom: 20px;
     margin-top: 20px;
+    padding: 5px;
 }
 .submitBtnLogin:hover{
     background-color: #0096c7;
@@ -123,7 +124,7 @@ h3{
     text-decoration: none;
     color: white;
     margin-top: -20px;
-    padding-left: 130px;
+    padding-left: 128px;
 }
 .change-password-link a:hover{
     color: black;
