@@ -8,12 +8,19 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Staff() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const [staffs, setStaffs] = useState([]);
 
   useEffect(() => {
     async function fetchStaffs() {
       try {
-        const response = await axios.get('http://localhost:8070/staff');
+        const response = await axios.get('http://localhost:8070/staff',config);
         setStaffs(response.data);
       } catch (error) {
         console.error(error);
@@ -22,7 +29,7 @@ function Staff() {
 
     fetchStaffs();
   }, []);
-  const { user } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
   if (!user || ((user.role !== 'admin'))) {
     navigate('/login');

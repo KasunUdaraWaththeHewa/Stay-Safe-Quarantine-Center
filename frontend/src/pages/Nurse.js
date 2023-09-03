@@ -7,12 +7,19 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 function Nurse() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const [nurses, setNurses] = useState([]);
 
   useEffect(() => {
     async function fetchNurses() {
       try {
-        const response = await axios.get('http://localhost:8070/nurse');
+        const response = await axios.get('http://localhost:8070/nurse',config);
         setNurses(response.data);
       } catch (error) {
         console.error(error);
@@ -21,7 +28,7 @@ function Nurse() {
 
     fetchNurses();
   }, []);
-  const { user } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
     if (!user || ((user.role !== 'admin')&&(user.role !== 'staff'))) {
         navigate('/login');

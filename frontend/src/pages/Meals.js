@@ -8,12 +8,19 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Meal() {
+  const { user } = useContext(AuthContext);
+  console.log(user)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const [Meals, setMeals] = useState([]);
  
   useEffect(() => {
     async function fetchMeals() {
       try {
-        const response = await axios.get('http://localhost:8070/Meal');
+        const response = await axios.get('http://localhost:8070/Meal',config);
         setMeals(response.data);
       } catch (error) {
         console.error(error);
@@ -23,7 +30,7 @@ function Meal() {
     fetchMeals();
   }, []);
 
-  const { user } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
   if (!user || user.role !== 'kitchen') {
       navigate('/login');

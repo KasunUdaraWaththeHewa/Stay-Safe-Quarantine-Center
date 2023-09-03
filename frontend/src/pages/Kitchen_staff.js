@@ -8,12 +8,19 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function Kitchenkitchen() {
+  const { user } = useContext(AuthContext);
+  console.log(user)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const [kitchens, setkitchens] = useState([]);
 
   useEffect(() => {
     async function fetchkitchens() {
       try {
-        const response = await axios.get('http://localhost:8070/kitchen');
+        const response = await axios.get('http://localhost:8070/kitchen',config);
         setkitchens(response.data);
       } catch (error) {
         console.error(error);
@@ -23,7 +30,7 @@ function Kitchenkitchen() {
     fetchkitchens();
   }, []);
 
-  const { user } = useContext(AuthContext);
+  console.log(user)
   const navigate = useNavigate();
   if (!user || user.role !== 'admin') {
     navigate('/login');
