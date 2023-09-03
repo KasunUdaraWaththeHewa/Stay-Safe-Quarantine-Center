@@ -72,10 +72,10 @@ function PaymentForm(){
             time,
         }
         const config = {
-            headers: {
-              Authorization: `Bearer ${user.token}`
-            }
-          };
+          headers: {
+            Authorization: `Bearer ${user.token}`
+          }
+        };
         axios.post("http://localhost:8070/payment/add", newPayment,config).then(() => {
             successfullyAdded();
             setPayerInName("");
