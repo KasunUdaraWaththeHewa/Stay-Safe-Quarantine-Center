@@ -20,9 +20,9 @@ function StaffPanel(){
             <NavBar />
             <div>
                 <div className='divAdminPanel'>
-                    <div className='divAdminPanelLeft'>
+                    <div className='divAdminPanelLeft' id='divStaffPanelleft'>
                         <div className='PanelRow'>
-                            <div className="panelItem">
+                            <div className="panelItem" id='staffPanelNurse'>
                                 <Link to="/nurse" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
                                 <figcaption><b>Nurse</b></figcaption>
                             </div>
