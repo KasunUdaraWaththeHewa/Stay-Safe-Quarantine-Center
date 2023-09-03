@@ -10,7 +10,7 @@ export const useChangePassword = () => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'You successfully craeted the account!',
+          title: 'You successfully changed your password!',
           showConfirmButton: false,
           timer: 1500
         })
