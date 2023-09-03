@@ -19,9 +19,9 @@ export const useLogin = () => {
         role,
       });
       if (response.status === 200) {
-        console.log('EMAIl ', email, ' Logged in as ', role);
         localStorage.setItem('user', JSON.stringify(response.data));
         dispatch({ type: 'LOGIN', payload: response.data });
+        setIsLoading(false);
         if (role === 'admin') {
           navigate('/adminpanel');
         } else if (role === 'staff') {
@@ -32,6 +32,7 @@ export const useLogin = () => {
           navigate('/PharmacyPanal');
         }
       } else {
+        setIsLoading(false);
         setError(response.data.error);
       }
     } catch (error) {

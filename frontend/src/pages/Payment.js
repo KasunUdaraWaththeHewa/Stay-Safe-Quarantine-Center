@@ -10,17 +10,13 @@ import { AuthContext } from '../context/AuthContext';
 function Payment() {
   const { user } = useContext(AuthContext);
   console.log(user)
-  const config = {
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
-  };
   const [payments, setpayments] = useState([]);
+
 
   useEffect(() => {
     async function fetchpayments() {
       try {
-        const response = await axios.get('http://localhost:8070/payment',config);
+        const response = await axios.get('http://localhost:8070/payment', config);
         setpayments(response.data);
       } catch (error) {
         console.error(error);
@@ -30,6 +26,12 @@ function Payment() {
     fetchpayments();
   }, []);
   console.log(user);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const navigate = useNavigate();
   if (!user || ((user.role !== 'staff'))) {
     navigate('/login');
