@@ -82,7 +82,7 @@ export default function Login() {
                   </button>
                 </div>
                 <div className="change-password-link">
-                    <Link to="/changePassword">Change Password</Link>
+                    <Link to="/changePassword">Change Password ?</Link>
                 </div>
                 {error && <div className='errorLogin'>{error}</div>}
               </form>
