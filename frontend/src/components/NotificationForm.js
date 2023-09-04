@@ -9,8 +9,8 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 import { set } from 'mongoose';
 
-function NotificationForm() {
 
+function NotificationForm() {
 
       const [notificationID, setNotificationID] = useState("");
       const [title, setTitle] = useState("");
