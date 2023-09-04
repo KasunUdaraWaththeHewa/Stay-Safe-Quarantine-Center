@@ -27,7 +27,7 @@ function NavBar() {
       </div>
       <div className="navBarRight">
         <ul className="navBarItemList">
-          <li className="navBarItem">
+          <li className="navBarItem" id='ourcenteritem'>
             <Link to="/OurCenter" className="link">
               Our Center
             </Link>
@@ -43,7 +43,7 @@ function NavBar() {
             </Link>
           </li>
           {!user ? (
-            <div className="loginSignupContainor">
+            <>
               <li className="navBarItem">
                 <Link to="/login" className="link">
                   Login
@@ -54,7 +54,7 @@ function NavBar() {
                   Sign-Up
                 </Link>
               </li>
-            </div>
+            </>
           ) : (
             <div className="logoutAndEmail">
               {user.email && <span className="loggedemail">{user.email}</span>}
