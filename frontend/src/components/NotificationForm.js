@@ -16,7 +16,7 @@ function NotificationForm() {
      const [Message, setMessage] = useState("");
      const [Date, setDate] = useState("");
      const [Time, setTime] = useState("");
-   //  const [Status, setStatus] = useState("");
+   
 
 
 
@@ -66,7 +66,7 @@ function NotificationForm() {
     e.preventDefault();
   
     const newNotification = {
-        ReceiverRole, ReceiverID, Message, Date, Time, //Status,
+        ReceiverRole, ReceiverID, Message, Date, Time,
     }
 
     const config = {
@@ -82,7 +82,7 @@ function NotificationForm() {
         setMessage("")
         setDate("")
         setTime("")
-        //setStatus("")
+        
         window.location.reload();
 
     }).catch((err) => {
@@ -102,14 +102,14 @@ function NotificationForm() {
             setMessage(searchResult.Message);
             setDate(searchResult.Date);
             setTime(searchResult.Time);
-          //  setStatus(searchResult.Status);
+          
 
            document.getElementById("ReceiverRoleInput").value = ReceiverRole;
            document.getElementById("ReceiverIDInput").value = ReceiverID;
            document.getElementById("MessageInput").value = Message;
            document.getElementById("DateInput").value = Date;
            document.getElementById("TimeInput").value = Time;
-          // document.getElementById("StatusInput").value = Status; 
+          
     }
   }
 
@@ -186,7 +186,6 @@ function NotificationForm() {
             setMessage("")
             setDate("")
             setTime("")
-           // setStatus("")
             window.location.reload();
       })
       .catch((error) => {
@@ -211,7 +210,7 @@ function NotificationForm() {
           Message, 
           Date, 
           Time,
-          //Status,
+          
     };
 
     axios.put(`http://localhost:8070/notification/update/${ReceiverRole}`, updatedNotification,config)
@@ -236,7 +235,7 @@ function NotificationForm() {
     setMessage("");
     setDate("");
     setTime("");
-  //  setStatus("");
+  
 
   }
   return (
@@ -270,103 +269,7 @@ function NotificationForm() {
         </Col>
       </Row>
       
-      <Row className="mb-3">
-      <Col>
-          <Form.Label>Status</Form.Label>
-          <Form.Control onChange={(e) => setDate(e.target.value)} id='DateInput' value={Date} />
-        </Col>
-
-      </Row>
-      
-
-      {/* <Row className="mb-3">
-        <Col>
-          <Form.Label>Nurse ID</Form.Label>
-          <Form.Control  onChange={(e) => setNurseID(e.target.value)}id='nurseIDInput' value={nurseID}  />
-        </Col>
-        <Col>
-          <Form.Label>Phone number</Form.Label>
-          <Form.Control  onChange={(e) => setPhoneNumber(e.target.value)}id='phoneNumberInput' value={phoneNumber} />
-        </Col>
-      </Row> */}
-
-      {/* <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" onChange={(e) => setEmail(e.target.value)}id='emailInput' value={email} />
-        </Form.Group>
-
-        <Col>
-          <Form.Label>Nursing license Number</Form.Label>
-          <Form.Control  onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
-        </Col>
-      </Row> */}
-
-      {/* <Row className="mb-3">
-        <Col>
-          <Form.Label>Specialization</Form.Label>
-          <Form.Control onChange={(e) => setSpecilization(e.target.value)}id='specializationInput' value={specialization} />
-        </Col>
-        <Col>
-          <Form.Label>Professional Experience</Form.Label>
-          <Form.Control  onChange={(e) => setExperience(e.target.value)}id='professionalExperienceInput' value={professionalExperience}  />
-        </Col>
-      </Row> */}
-
-      {/* <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control  id='addressInput' onChange={(e) => setAddress(e.target.value)}value={address}  />
-      </Form.Group>
-
-      <Row className="mb-3">
-        <Col>
-          <Form.Label>Available Days</Form.Label>
-          <Form.Control  id='avalibleDaysInput' onChange={(e) => setAvalibleDays(e.target.value)} value={avalibleDays} />
-        </Col>
-        <Col>
-          <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control  id='emergencyContactNumbersInput' onChange={(e) => setEmergencycontactNumber(e.target.value)}value={emergencyContactNumbers}  />
-        </Col>
-      </Row> */}
-      {/* <Row className="mb-3">
-        <Col >
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Gender</Form.Label>
-            <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </Form.Select>
-          </Form.Group>
-        </Col>
-        <Col >
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Relationship</Form.Label>
-
-            <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
-              <option value="Married">Married</option>
-              <option value="Unmarried">Unmarried</option>
-            </Form.Select>
-          </Form.Group>
-        </Col>
-
-
-      </Row> */}
-
-      {/* <Form.Group controlId="formFile" className="mb-3">
-        <Form.Label>Enter skills, Training, and Certification details in pdf format</Form.Label>
-        <Form.Control type="file" id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} />
-      </Form.Group>
-      <br />
-      <Row>
-        <Col>
-          <Form.Group className="mb-3" id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-        </Col>
-        <Col>
-
-        </Col>
-      </Row> */}
+     
       <br />
       <br />
       <Button variant="success" onClick={sendData}>Enter</Button>{' '}
