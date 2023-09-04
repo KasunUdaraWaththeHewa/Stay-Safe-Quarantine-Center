@@ -158,7 +158,6 @@ function EquipmentForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
-    successfullyDeleted();
     axios.delete(`http://localhost:8070/equipment/delete/${serialNumber}`,config)
       .then((response) => {
         Swal.fire({
@@ -185,9 +184,9 @@ function EquipmentForm() {
       .catch((error) => {
         console.error(error);
         Swal.fire(
-          'Deleted!',
+          'Not Deleted!',
           'Error Deleting Equipment.',
-          'success'
+          'error'
         )
       });
   }
@@ -220,7 +219,7 @@ function EquipmentForm() {
         Swal.fire(
           'Did not Update!',
           'Error updating Equipment.',
-          'success'
+          'error'
         )
       });
   }
