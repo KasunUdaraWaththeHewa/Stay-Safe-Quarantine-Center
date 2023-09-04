@@ -2,9 +2,34 @@
     padding: 0px;
     margin: 0px;
 }
+.signUpPage{
+    display: flex;
+    height: 750px;
+    padding-top: 35px;
+}
+.signUpPageLeft{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 80px;
+}
+.signUpPageRight{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.loginProfileImage{
+    border-radius: 100px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 
-.signupBack{
-    height: 100vh;    
+.signupBack{ 
     background-color: white;
     display: flex;
     align-items: center;
@@ -13,19 +38,11 @@
 
 .signupS{
     width: 400px;
-    height: 550px;
-    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    height: 600px;
+    background: linear-gradient(to bottom, #0096c7, #5479F7);
     color: white;
     padding: 10px;    
-}
-
-.signupS img{
-    width: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    border-radius: 40px;
 }
 
 .signupS label,.signupS input[type="email"],.signupS input[type="password"]{
@@ -65,26 +82,27 @@
 .signupS input[type="submit"]:hover{
     cursor: pointer;
 }
-.submitBtn{
+.submitBtnSignup{
     background-color: #03045e;
     color: white;
     width: 100px;
-    height: 25px;
+    height: 35px;
     text-align: center;
     border-radius: 5px;
     margin-left: 145px;
-    margin-top: -5px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    padding: 5px;
 }
-.submitBtn:hover{
+.submitBtnSignup:hover{
     background-color: #0096c7;
+    color: white;
     cursor: pointer;
 }
-.error{
-    color: red;
-    font-size: 15px;
-    margin-left: 80px;
-    margin-top: -5px;
+.errorSignup{
+    color: #0D1282;
+    font-size: 18px;
+    margin-left: 100px;
+    margin-top: 10px;
 
 }
 h3{
