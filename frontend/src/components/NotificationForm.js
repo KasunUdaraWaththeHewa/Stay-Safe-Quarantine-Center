@@ -11,15 +11,13 @@ import { set } from 'mongoose';
 
 function NotificationForm() {
 
-     const [ReceiverRole, setReceiverRole] = useState("");
-     const [ReceiverID, setReceiverID] = useState("");
-     const [Message, setMessage] = useState("");
-     const [Date, setDate] = useState("");
-     const [Time, setTime] = useState("");
+
+      const [NotificationID, setNotificationID] = useState("");
+      const [Title, setTitle] = useState("");
+      const [NotificationBody, setNotificationBody] = useState("");
+      const [Reciever, setReciever] = useState("");
+
    
-
-
-
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
 
@@ -66,7 +64,10 @@ function NotificationForm() {
     e.preventDefault();
   
     const newNotification = {
-        ReceiverRole, ReceiverID, Message, Date, Time,
+      NotificationID,
+      Title,
+      NotificationBody,
+      Reciever,
     }
 
     const config = {
@@ -77,11 +78,11 @@ function NotificationForm() {
    
         axios.post("http://localhost:8070/notification/add", newNotification,config).then(() => {
         successfullyAdded();
-        setReceiverRole("")
-        setReceiverID("")
-        setMessage("")
-        setDate("")
-        setTime("")
+        setNotificationID("");
+        setTitle("");
+        setNotificationBody("");
+        setReciever("");
+
         
         window.location.reload();
 
@@ -97,19 +98,16 @@ function NotificationForm() {
   function populateFormWithFetchedData() {
     if (searchResult) {
         
-            setReceiverRole(searchResult.ReceiverRole);
-            setReceiverID(searchResult.ReceiverID);
-            setMessage(searchResult.Message);
-            setDate(searchResult.Date);
-            setTime(searchResult.Time);
-          
+            setNotificationID(searchResult.NotificationID);
+            setTitle(searchResult.Title);
+            setNotificationBody(searchResult.NotificationBody);
+            setReciever(searchResult.Reciever);
 
-           document.getElementById("ReceiverRoleInput").value = ReceiverRole;
-           document.getElementById("ReceiverIDInput").value = ReceiverID;
-           document.getElementById("MessageInput").value = Message;
-           document.getElementById("DateInput").value = Date;
-           document.getElementById("TimeInput").value = Time;
-          
+            document.getElementById('NotificationIDInput').value = searchResult.NotificationID;
+            document.getElementById('TitleInput').value = searchResult.Title;
+            document.getElementById('NotificationBodyInput').value = searchResult.NotificationBody;
+            document.getElementById('RecieverInput').value = searchResult.Reciever;
+            
     }
   }
 
@@ -124,7 +122,8 @@ function NotificationForm() {
       }
     };
 
-      axios.get(`http://localhost:8070/notification/get/${ReceiverRole}`,config)
+    
+         axios.get(`http://localhost:8070/notification/get/${NotificationID}`,config)
 
       .then((response) => {
         setSearchResult(response.data);
@@ -168,7 +167,7 @@ function NotificationForm() {
       }
     };
    
-    axios.delete(`http://localhost:8070/notification/delete/${ReceiverRole}`,config)
+    axios.delete(`http://localhost:8070/notification/delete/${NotificationID}`,config)
       .then((response) => {
         Swal.fire({
           title: 'You successfully Deleted the Notification!',
@@ -181,11 +180,12 @@ function NotificationForm() {
           }
         })
     
-            setReceiverRole("")
-            setReceiverID("")
-            setMessage("")
-            setDate("")
-            setTime("")
+         
+            setNotificationID("");
+            setTitle("");
+            setNotificationBody("");
+            setReciever("");
+
             window.location.reload();
       })
       .catch((error) => {
@@ -205,15 +205,15 @@ function NotificationForm() {
       }
     };
     const updatedNotification = {
-          ReceiverRole,
-          ReceiverID,
-          Message, 
-          Date, 
-          Time,
+      NotificationID,
+      Title,
+      NotificationBody,
+      Reciever,
+
           
     };
 
-    axios.put(`http://localhost:8070/notification/update/${ReceiverRole}`, updatedNotification,config)
+    axios.put(`http://localhost:8070/notification/update/${NotificationID}`, updatedNotification,config)
       .then((response) => {
         successfullyUpdated();
         window.location.reload();
@@ -230,43 +230,37 @@ function NotificationForm() {
   //clear data
   function clearForm() {
      
-    setReceiverRole("");
-    setReceiverID("");
-    setMessage("");
-    setDate("");
-    setTime("");
-  
+    setNotificationID("");
+    setTitle("");
+    setNotificationBody("");
+    setReciever("");
 
   }
   return (
     <Form>
       <Row className="mb-3">
         <Col>
-          <Form.Label>Receiver Role</Form.Label>
-          <Form.Control onChange={(e) => setReceiverRole(e.target.value)} id='ReceiverRoleInput' value={ReceiverRole} />
+          <Form.Label>Notification ID</Form.Label>
+          <Form.Control onChange={(e) => setNotificationID(e.target.value)} id='NotificationIDInput' value={NotificationID} />
         </Col>
         <Col>
-          <Form.Label>Receiver ID</Form.Label>
-          <Form.Control onChange={(e) => setReceiverID(e.target.value)} id='ReceiverIDInput' value={ReceiverID} />
+          <Form.Label>Title</Form.Label>
+          <Form.Control onChange={(e) => setTitle(e.target.value)} id='TitleInput' value={Title} />
         </Col>
       </Row>
       <Row className="mb-3">
         <Col>
-          <Form.Label>Message</Form.Label>
-          <Form.Control onChange={(e) => setMessage(e.target.value)} id='MessageInput' value={Message} />
+          <Form.Label>Notification</Form.Label>
+          <Form.Control onChange={(e) => setNotificationBody(e.target.value)} id='NotificationBodyInput' value={NotificationBody} />
         </Col>
       </Row>
 
       <Row className="mb-3">
       <Col>
-          <Form.Label>Date</Form.Label>
-          <Form.Control onChange={(e) => setDate(e.target.value)} id='DateInput' value={Date} />
+          <Form.Label>Receiver</Form.Label>
+          <Form.Control onChange={(e) => setReciever(e.target.value)} id='ReceiverInput' value={Reciever} />
         </Col>
 
-        <Col>
-          <Form.Label>Time</Form.Label>
-          <Form.Control onChange={(e) => setTime(e.target.value)} id='TimeInput' value={Time} />
-        </Col>
       </Row>
       
      
