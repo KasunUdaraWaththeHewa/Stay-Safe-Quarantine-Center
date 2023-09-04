@@ -14,7 +14,7 @@
     width: 100%;
 }
 
-.existingNotification {
+/* .existingNotification {
     width: 50%;
     display: flex;
     flex-wrap: wrap;
@@ -24,7 +24,7 @@
     background-position: center;
     background-size:auto;
     background-repeat: no-repeat;
-}
+} */
 
 .existingNotificationCard {
     border: 1px solid #ccc;
