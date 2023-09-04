@@ -12,10 +12,10 @@ import { set } from 'mongoose';
 function NotificationForm() {
 
 
-      const [NotificationID, setNotificationID] = useState("");
-      const [Title, setTitle] = useState("");
-      const [NotificationBody, setNotificationBody] = useState("");
-      const [Reciever, setReciever] = useState("");
+      const [notificationID, setNotificationID] = useState("");
+      const [title, setTitle] = useState("");
+      const [notificationBody, setNotificationBody] = useState("");
+      const [reciever, setReciever] = useState("");
 
    
   const [searchResult, setSearchResult] = useState(null);
@@ -64,10 +64,10 @@ function NotificationForm() {
     e.preventDefault();
   
     const newNotification = {
-      NotificationID,
-      Title,
-      NotificationBody,
-      Reciever,
+      notificationID,
+      title,
+      notificationBody,
+      reciever,
     }
 
     const config = {
@@ -98,15 +98,15 @@ function NotificationForm() {
   function populateFormWithFetchedData() {
     if (searchResult) {
         
-            setNotificationID(searchResult.NotificationID);
-            setTitle(searchResult.Title);
-            setNotificationBody(searchResult.NotificationBody);
-            setReciever(searchResult.Reciever);
+            setNotificationID(searchResult.notificationID);
+            setTitle(searchResult.title);
+            setNotificationBody(searchResult.notificationBody);
+            setReciever(searchResult.reciever);
 
-            document.getElementById('NotificationIDInput').value = searchResult.NotificationID;
-            document.getElementById('TitleInput').value = searchResult.Title;
-            document.getElementById('NotificationBodyInput').value = searchResult.NotificationBody;
-            document.getElementById('RecieverInput').value = searchResult.Reciever;
+            document.getElementById('NotificationIDInput').value = searchResult.notificationID;
+            document.getElementById('TitleInput').value = searchResult.title;
+            document.getElementById('NotificationBodyInput').value = searchResult.notificationBody;
+            document.getElementById('RecieverInput').value = searchResult.reciever;
             
     }
   }
@@ -123,7 +123,7 @@ function NotificationForm() {
     };
 
     
-         axios.get(`http://localhost:8070/notification/get/${NotificationID}`,config)
+         axios.get(`http://localhost:8070/notification/get/${notificationID}`,config)
 
       .then((response) => {
         setSearchResult(response.data);
@@ -167,7 +167,7 @@ function NotificationForm() {
       }
     };
    
-    axios.delete(`http://localhost:8070/notification/delete/${NotificationID}`,config)
+    axios.delete(`http://localhost:8070/notification/delete/${notificationID}`,config)
       .then((response) => {
         Swal.fire({
           title: 'You successfully Deleted the Notification!',
@@ -205,15 +205,15 @@ function NotificationForm() {
       }
     };
     const updatedNotification = {
-      NotificationID,
-      Title,
-      NotificationBody,
-      Reciever,
+      notificationID,
+      title,
+      notificationBody,
+      reciever,
 
           
     };
 
-    axios.put(`http://localhost:8070/notification/update/${NotificationID}`, updatedNotification,config)
+    axios.put(`http://localhost:8070/notification/update/${notificationID}`, updatedNotification,config)
       .then((response) => {
         successfullyUpdated();
         window.location.reload();
@@ -241,24 +241,24 @@ function NotificationForm() {
       <Row className="mb-3">
         <Col>
           <Form.Label>Notification ID</Form.Label>
-          <Form.Control onChange={(e) => setNotificationID(e.target.value)} id='NotificationIDInput' value={NotificationID} />
+          <Form.Control onChange={(e) => setNotificationID(e.target.value)} id='NotificationIDInput' value={notificationID} />
         </Col>
         <Col>
           <Form.Label>Title</Form.Label>
-          <Form.Control onChange={(e) => setTitle(e.target.value)} id='TitleInput' value={Title} />
+          <Form.Control onChange={(e) => setTitle(e.target.value)} id='TitleInput' value={title} />
         </Col>
       </Row>
       <Row className="mb-3">
         <Col>
           <Form.Label>Notification</Form.Label>
-          <Form.Control onChange={(e) => setNotificationBody(e.target.value)} id='NotificationBodyInput' value={NotificationBody} />
+          <Form.Control onChange={(e) => setNotificationBody(e.target.value)} id='NotificationBodyInput' value={notificationBody} />
         </Col>
       </Row>
 
       <Row className="mb-3">
       <Col>
           <Form.Label>Receiver</Form.Label>
-          <Form.Control onChange={(e) => setReciever(e.target.value)} id='ReceiverInput' value={Reciever} />
+          <Form.Control onChange={(e) => setReciever(e.target.value)} id='ReceiverInput' value={reciever} />
         </Col>
 
       </Row>
