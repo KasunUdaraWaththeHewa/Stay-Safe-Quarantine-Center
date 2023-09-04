@@ -16,6 +16,7 @@ function NotificationForm() {
       const [title, setTitle] = useState("");
       const [notificationBody, setNotificationBody] = useState("");
       const [reciever, setReciever] = useState("");
+      const [selectedRoles, setSelectedRoles] = useState([]);
 
    
   const [searchResult, setSearchResult] = useState(null);
@@ -67,7 +68,7 @@ function NotificationForm() {
       notificationID,
       title,
       notificationBody,
-      reciever,
+      reciever:selectedRoles,
     }
 
     const config = {
@@ -278,6 +279,7 @@ function NotificationForm() {
       <Button variant="primary" onClick={handleUpdate}>Update</Button>{' '}
       <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
+
 
     </Form>
   );
