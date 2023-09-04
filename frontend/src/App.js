@@ -27,7 +27,7 @@ import Kitchen from './pages/Kitchen_staff';
 import Login from './pages/loginProfile';
 import Signup from './pages/SignUpProfile';
 import ChangePassword from './pages/changePassword';
-import AddPackages from './components/PackageForm'
+import AddPackages from './pages/PackageAdd'
 import Notification from './pages/Notification';
 
 function App() {
