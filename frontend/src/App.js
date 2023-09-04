@@ -27,6 +27,7 @@ import Kitchen from './pages/Kitchen_staff';
 import Login from './pages/loginProfile';
 import Signup from './pages/SignUpProfile';
 import ChangePassword from './pages/changePassword';
+import AddPackages from './components/PackageForm'
 
 function App() {
   return (
@@ -51,6 +52,8 @@ function App() {
           <Route path="/meals" element={<Meals />} />
           <Route path="/kitchen" element={<Kitchen />} />
           <Route path="/changePassword" element={<ChangePassword />} />
+          <Route path="/addPackages" element={<AddPackages />} />
+
         </Routes>
 
       </Router>
