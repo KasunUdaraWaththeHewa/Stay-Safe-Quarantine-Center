@@ -122,7 +122,6 @@ function NotificationForm() {
       }
     };
 
-    
          axios.get(`http://localhost:8070/notification/get/${notificationID}`,config)
 
       .then((response) => {
@@ -180,7 +179,6 @@ function NotificationForm() {
           }
         })
     
-         
             setNotificationID("");
             setTitle("");
             setNotificationBody("");
