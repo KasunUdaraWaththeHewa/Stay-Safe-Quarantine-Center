@@ -53,18 +53,18 @@ function Notification() {
           <div className="notificationForm">
             <NotificationForm />
           </div>
-          <div className="existingNotification">
+          {/* <div className="existingNotification">
             <div className='scrollablePanel'>
               <ul>
                 {notifications.map((notification) => (
-                  <div key={notification.NotificationID} className="existingNotificationCard">
+                  <div key={notification.  NotificationID} className="existingNotificationCard">
                   <p>{notification.receiver}</p>
                   <p>{notification.notificationID}</p>
                   </div>
                 ))}
               </ul>
              </div> 
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="footerContainorNotification">
