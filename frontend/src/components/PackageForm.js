@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
-function EquipmentForm() {
+function PackageForm() {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [serialNumber, setSerialNumber] = useState("");
@@ -327,4 +327,4 @@ function EquipmentForm() {
   );
 }
 
-export default EquipmentForm;
+export default PackageForm;

@@ -52,7 +52,7 @@ function AdminPanel(){
                                 <figcaption id='figequip'><b>Equipment</b></figcaption>
                             </div>    
                             <div className="panelItem">
-                                <Link to="/packages" className="link"><img src = {Package} alt="" /></Link>
+                                <Link to="/addpackages" className="link"><img src = {Package} alt="" /></Link>
                                 <figcaption id='figpackage'><b>Packages</b></figcaption>
                             </div>  
                             <div className="panelItem">

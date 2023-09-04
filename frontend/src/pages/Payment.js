@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-
 function Payment() {
   const { user } = useContext(AuthContext);
   console.log(user)
