@@ -165,7 +165,6 @@ function PatientForm() {
                       popup: 'animate__animated animate__fadeOutUp'
                     }
                   })
-              console.log(response.data);
               populateFormWithFetchedData()
             } else {
                 Swal.fire(
@@ -193,7 +192,8 @@ function PatientForm() {
             headers: {
               Authorization: `Bearer ${user.token}`
             }
-          };
+        };
+
         axios.delete(`http://localhost:8070/patient/delete/${nicNumber}`,config)
             .then((response) => {
                 Swal.fire({
@@ -230,9 +230,9 @@ function PatientForm() {
             .catch((error) => {
                 console.error(error);
                 Swal.fire(
-                    'Deleted!',
+                    'Not Deleted!',
                     'Error Deleting Patient.',
-                    'success'
+                    'error'
                   )
             });
     }
@@ -275,7 +275,7 @@ function PatientForm() {
                 Swal.fire(
                     'Did not Update!',
                     'Error updating Patient.',
-                    'success'
+                    'error'
                   )
             });
     }
