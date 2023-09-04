@@ -171,7 +171,7 @@ function PackageForm() {
         Swal.fire(
           'Deleted!',
           'Error Deleting Package.',
-          'success'
+          'error'
         )
       });
   }
@@ -200,7 +200,7 @@ function PackageForm() {
         Swal.fire(
           'Did not Update!',
           'Error updating Package.',
-          'success'
+          'error'
         )
       });
   }

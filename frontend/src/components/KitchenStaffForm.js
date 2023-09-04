@@ -26,7 +26,7 @@ function KichenkichenForm() {
   //add member
   const successfullyAdded = () => {
     Swal.fire({
-      title: 'You successfully Added a Doctor!',
+      title: 'You successfully Added a Kitchen Staff Member!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -38,7 +38,7 @@ function KichenkichenForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'You successfully Updated a Doctor!',
+      title: 'You successfully Updated a Kitchen Staff Member!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -50,7 +50,7 @@ function KichenkichenForm() {
   };
   const successfullyDeleted = () => {
     Swal.fire({
-      title: 'Are you sure to delete doctor?',
+      title: 'Are you sure to delete Kitchen Staff Member?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -91,7 +91,7 @@ function KichenkichenForm() {
     }).catch((err) => {
       Swal.fire(
         'Error!',
-        'Error Adding KitchenStaff.',
+        'Error Adding Kitchen Staff Member.',
         'error'
       )
     })
@@ -142,7 +142,7 @@ function KichenkichenForm() {
         setSearchResult(response.data);
         if (response.data) {
           Swal.fire({
-            title: 'You successfully found the Kitchen Staff!',
+            title: 'You successfully found the Kitchen Staff Member!',
             icon: 'success',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
@@ -156,7 +156,7 @@ function KichenkichenForm() {
         } else {
           Swal.fire(
             'Error!',
-            'Kitchen Staff not found.',
+            'Kitchen Staff Member not found.',
             'error'
           )
         }
@@ -166,7 +166,7 @@ function KichenkichenForm() {
         setSearchResult(null);
         Swal.fire(
           'Error!',
-          'Error Searching Kitchen Staff.',
+          'Error Searching Kitchen Staff Member.',
           'error'
         )
       });
@@ -184,7 +184,7 @@ function KichenkichenForm() {
     axios.delete(`http://localhost:8070/kichen/delete/${employeeID}`,config)
       .then((response) => {
         Swal.fire({
-          title: 'You successfully Deleted the Kitchen Staff!',
+          title: 'You successfully Deleted the Kitchen Staff Member!',
           icon: 'success',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -210,8 +210,8 @@ function KichenkichenForm() {
         console.error(error);
         Swal.fire(
           'Deleted!',
-          'Error Deleting Kitchen Staff.',
-          'success'
+          'Error Deleting Kitchen Staff Member.',
+          'error'
         )
       });
   }
@@ -246,7 +246,7 @@ function handleUpdate() {
       Swal.fire(
         'Did not Update!',
         'Error updating Kitchen Staff.',
-        'success'
+        'error'
       )
     });
 }
