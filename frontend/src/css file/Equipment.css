@@ -41,7 +41,7 @@
     padding: 30px;
 }
 
-.equipmentForm {
+.equipmentForm , .packageForm{
     padding: 40px;
     width: 50%;
     height: 800px;
