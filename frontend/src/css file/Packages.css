@@ -52,6 +52,10 @@
     padding-top: 460px;
 }
 
+h1{
+    text-shadow: 5px 5px 5px #023e8a;
+}
+
 .hidden {
     opacity: 0.5;
   }

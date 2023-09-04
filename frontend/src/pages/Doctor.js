@@ -58,10 +58,10 @@ function Doctor() {
             <div className='scrollablePanel'>
               <ul>
                 {doctors.map((doctor) => (
-                  <li key={doctor.doctorID} className="existingDoctorCard">
+                  <div key={doctor.doctorID} className="existingDoctorCard">
                     <p><b>{doctor.firstName} {doctor.lastName}</b></p>
                     <p><b>{doctor.doctorID}</b></p>
-                  </li>
+                  </div>
                 ))}
               </ul>
             </div>

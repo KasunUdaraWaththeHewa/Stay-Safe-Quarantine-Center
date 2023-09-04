@@ -83,8 +83,8 @@
     cursor: pointer;
 }
 .submitBtnSignup{
-    background-color: #03045e;
-    color: white;
+    background-color: white;
+    color: black;
     width: 100px;
     height: 35px;
     text-align: center;
@@ -92,9 +92,10 @@
     margin-left: 145px;
     margin-top: 20px;
     padding: 5px;
+    border: none;
 }
 .submitBtnSignup:hover{
-    background-color: #0096c7;
+    background-color: #0D1282;
     color: white;
     cursor: pointer;
 }

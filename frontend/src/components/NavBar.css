@@ -49,11 +49,14 @@
     justify-content: center;
     cursor: pointer;
   }
+
+  #ourcenteritem{
+    margin-left: 150px;
+  }
   
   .navBarItem:hover {
     color: #03045e;
     font-size: 18px;
-    text-decoration: underline;
   }
   
   .img-logo {
@@ -71,7 +74,7 @@
   }
   
   #homeImgContainer {
-    padding-top: 15px;
+    padding-top: 5px;
     width: 7%;
   }
   
@@ -86,16 +89,20 @@
   }
   
   .loggedemail {
-    padding-right: 10px;
+    padding-right: 20px;
     font-size: 15px;
     font-weight: 600;
     color: white;
     margin-right: 20px;
+    margin-left: -50px;
   }
   
   .loginSignupContainor {
+    /* display: flex; */
+    /* position: relative; */
     display: flex;
-    width: 60%;
+    align-items: end;
+    width: 80%;
   }
   
   /* Media query for mobile responsiveness */
