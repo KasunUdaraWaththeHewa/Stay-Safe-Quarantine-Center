@@ -279,6 +279,7 @@ function NotificationForm() {
       <Button variant="danger" onClick={successfullyDeleted}>Delete</Button>{' '}
       <Button variant="success" onClick={clearForm}>Clear</Button>{' '}
 
+
     </Form>
   );
 }
