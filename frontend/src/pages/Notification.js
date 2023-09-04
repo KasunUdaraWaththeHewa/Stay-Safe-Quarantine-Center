@@ -1,12 +1,12 @@
 import '../css file/Notification.css';
 import NavBar from '../components/NavBar';
-import NurseForm from '../components/NotificationForm';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import NotificationForm from '../components/NotificationForm';
+
 
 function Notification() {
   const { user } = useContext(AuthContext);
@@ -16,7 +16,7 @@ function Notification() {
       Authorization: `Bearer ${user.token}`
     }
   };
-  const [nurses, setNotification] = useState([]);
+  const [notifications, setNotification] = useState([]);
 
   useEffect(() => {
     async function fetchNotification() {

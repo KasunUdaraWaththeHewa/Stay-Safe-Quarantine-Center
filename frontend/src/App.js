@@ -28,6 +28,7 @@ import Login from './pages/loginProfile';
 import Signup from './pages/SignUpProfile';
 import ChangePassword from './pages/changePassword';
 import AddPackages from './components/PackageForm'
+import Notification from './pages/Notification';
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
           <Route path="/kitchen" element={<Kitchen />} />
           <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/addPackages" element={<AddPackages />} />
-
+          <Route path="/notification" element={<Notification />} />
         </Routes>
 
       </Router>
