@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@canvasjs/react-charts": "^1.0.0",
-    "react-query": "^3.39.3",
-    "react-scripts": "^5.0.1",
-    "socket.io": "^4.7.2",
-    "sweetalert2": "^11.7.27"
-  }
-}
