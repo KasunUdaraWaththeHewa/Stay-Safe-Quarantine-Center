@@ -27,7 +27,7 @@ function StaffForm() {
 
   const successfullyAdded = () => {
     Swal.fire({
-      title: 'You successfully Added a Doctor!',
+      title: 'You successfully Added a Staff Member!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -39,7 +39,7 @@ function StaffForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'You successfully Updated a Doctor!',
+      title: 'You successfully Updated a Staff Member!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -51,7 +51,7 @@ function StaffForm() {
   };
   const successfullyDeleted = () => {
     Swal.fire({
-      title: 'Are you sure to delete doctor?',
+      title: 'Are you sure to delete Staff Member?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -93,7 +93,7 @@ function StaffForm() {
     }).catch((err) => {
       Swal.fire(
         'Error!',
-        'Error Adding Staff.',
+        'Error Adding Staff Member.',
         'error'
       )
     })
@@ -144,7 +144,7 @@ function StaffForm() {
         setSearchResult(response.data);
         if (response.data) {
           Swal.fire({
-            title: 'You successfully found the Staff!',
+            title: 'You successfully found the Staff Member!',
             icon: 'success',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
@@ -158,7 +158,7 @@ function StaffForm() {
         } else {
           Swal.fire(
             'Error!',
-            'Staff not found.',
+            'Staff Member not found.',
             'error'
           )
         }
@@ -168,7 +168,7 @@ function StaffForm() {
         setSearchResult(null);
         Swal.fire(
           'Error!',
-          'Error Searching Staff.',
+          'Error Searching Staff Member.',
           'error'
         )
       });
@@ -185,7 +185,7 @@ function StaffForm() {
     axios.delete(`http://localhost:8070/staff/delete/${staffID}`,config)
       .then((response) => {
         Swal.fire({
-          title: 'You successfully Deleted the Staff!',
+          title: 'You successfully Deleted the Staff Member!',
           icon: 'success',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -213,7 +213,7 @@ function StaffForm() {
         Swal.fire(
           'Deleted!',
           'Error Deleting Staff Member.',
-          'success'
+          'error'
         )
       });
   }
@@ -248,8 +248,8 @@ function handleUpdate() {
       console.error(error);
       Swal.fire(
         'Did not Update!',
-        'Error updating Staff.',
-        'success'
+        'Error updating Staff Member.',
+        'error'
       )
     });
 }

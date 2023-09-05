@@ -15,7 +15,7 @@ const PackageSchema=new Schema({
     },
     detailList:{
         type:String,
-        required:true
+        required:false
     },
     price:{
         type:String,

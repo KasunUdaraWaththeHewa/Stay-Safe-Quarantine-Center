@@ -191,7 +191,7 @@ function NotificationForm() {
         Swal.fire(
           'Deleted!',
           'Error Deleting Notification.',
-          'success'
+          'error'
         )
       });
   }
@@ -221,7 +221,7 @@ function NotificationForm() {
         Swal.fire(
           'Did not Update!',
           'Error updating Notification.',
-          'success'
+          'error'
         )
       });
   }

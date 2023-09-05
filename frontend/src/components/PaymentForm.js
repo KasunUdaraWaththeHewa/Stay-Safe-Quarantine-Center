@@ -22,7 +22,7 @@ function PaymentForm(){
 
     const successfullyAdded = () => {
       Swal.fire({
-        title: 'You successfully Added a Doctor!',
+        title: 'You successfully Added a Payment!',
         icon: 'success',
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
@@ -34,7 +34,7 @@ function PaymentForm(){
     };
     const successfullyUpdated = () => {
       Swal.fire({
-        title: 'You successfully Updated a Doctor!',
+        title: 'You successfully Updated a Payment!',
         icon: 'success',
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
@@ -46,7 +46,7 @@ function PaymentForm(){
     };
     const successfullyDeleted = () => {
       Swal.fire({
-        title: 'Are you sure to delete doctor?',
+        title: 'Are you sure to delete Payment?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
@@ -188,7 +188,7 @@ function PaymentForm(){
                     Swal.fire(
                       'Deleted!',
                       'Error Deleting Payment.',
-                      'success'
+                      'error'
                     )
                 });
             }
@@ -219,7 +219,7 @@ function PaymentForm(){
                 Swal.fire(
                   'Did not Update!',
                   'Error updating Payment.',
-                  'success'
+                  'error'
                 )
             })
         } 

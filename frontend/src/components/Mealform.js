@@ -21,7 +21,7 @@ function MealForm() {
 
   const successfullyAdded = () => {
     Swal.fire({
-      title: 'You successfully Added a Doctor!',
+      title: 'You successfully Added a Meal!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -33,7 +33,7 @@ function MealForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'You successfully Updated a Doctor!',
+      title: 'You successfully Updated a Meal!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -45,7 +45,7 @@ function MealForm() {
   };
   const successfullyDeleted = () => {
     Swal.fire({
-      title: 'Are you sure to delete doctor?',
+      title: 'Are you sure to delete Meal?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -192,7 +192,7 @@ function MealForm() {
         Swal.fire(
           'Deleted!',
           'Error Deleting Meal.',
-          'success'
+          'error'
         )
       });
   }
@@ -224,7 +224,7 @@ function handleUpdate() {
       Swal.fire(
         'Did not Update!',
         'Error updating meal.',
-        'success'
+        'error'
       )
     });
 }

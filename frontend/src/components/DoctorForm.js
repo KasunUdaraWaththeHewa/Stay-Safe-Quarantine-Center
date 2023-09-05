@@ -209,7 +209,7 @@ function DoctorForm() {
         Swal.fire(
           'Deleted!',
           'Error Deleting Doctor.',
-          'success'
+          'error'
         )
         console.error(error);
       });
@@ -246,7 +246,7 @@ function DoctorForm() {
         Swal.fire(
           'Did not Update!',
           'Error updating Dcctor.',
-          'success'
+          'error'
         )
       });
   }
