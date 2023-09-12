@@ -46,7 +46,7 @@ function Notification() {
       <div className="NotificationDetailArea">
         <div className="h2Holder">
           <h2>
-            <b>Notification Form</b>
+            <b>Notification Creating Area for Members</b>
           </h2>
         </div>
         <div className="formOneContainorNotification">
@@ -54,16 +54,17 @@ function Notification() {
             <NotificationForm />
           </div>
           <div className="existingNotification">
-            {/* <div className='scrollablePanel'>
+              <div className='scrollablePanel'>
               <ul>
                 {notifications.map((notification) => (
-                  <div key={notification.  NotificationID} className="existingNotificationCard">
-                  <p>{notification.receiver}</p>
+                  <div key={notification.notificationID} className="existingNotificationCard">
+                  <p>{notification.reciever}</p>
                   <p>{notification.notificationID}</p>
+                  <p>{notification.title}</p>
                   </div>
                 ))}
               </ul>
-             </div>  */}
+             </div>
           </div> 
         </div>
       </div>

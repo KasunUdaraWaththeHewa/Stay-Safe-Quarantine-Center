@@ -6,7 +6,7 @@
 .NotificationDetailArea {
     background-color: white;
     width: 100%;
-    height: 1050px;
+    height: 650px;
 }
 
 .formOneContainorNotification {
@@ -47,13 +47,13 @@
     margin-left: 50px;
     padding: 40px;
     width: 50%;
-    height: 900px;
+    height: 450px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
 }
 
 .scrollablePanel {
-    max-height: 500px;
+    max-height: 450px;
     overflow-y: auto;
     padding-right: 15px;
 }
