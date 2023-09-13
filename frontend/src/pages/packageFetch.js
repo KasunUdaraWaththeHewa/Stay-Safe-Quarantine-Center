@@ -52,7 +52,7 @@ function PackageFetch() {
                     {packages.map((packages) => (
                         <Col lg={4} className="pkgcol" key={packages.packageID}>
                             <Card style={{ width: '25rem' }} id={packages.packageID} className={`card ${isOtherCardHidden(`card${packages.packageID}`) ? 'hidden' : ''} `} border="light">
-                                <Card.Img variant="top" src={packages.imageURL} />
+                                <Card.Img variant="top" src={packages.packageImage} />
                                 <Card.Body>
                                     <Card.Title className="basictitlecard" ><b>{packages.packageName}</b></Card.Title>
                                     <Card.Text>
