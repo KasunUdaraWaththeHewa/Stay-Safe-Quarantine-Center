@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import imgContactUs from '../img/contactUs.jpeg';
 import axios from 'axios';
-function ContactUs(){
+function ContactUs() {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -17,27 +17,34 @@ function ContactUs(){
         email: '',
         age: '',
         message: '',
-      });
-      const handleSubmit = (e) => {
+    });
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+    const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/send-email', formData)
-          .then((response) => {
-            console.log('Email sent successfully:', response.data);
-          })
-          .catch((error) => {
-            console.error('Error sending email:', error);
-          });
-      };
-    return(
+            .then((response) => {
+                console.log('Email sent successfully:', response.data);
+            })
+            .catch((error) => {
+                console.error('Error sending email:', error);
+            });
+    };
+    return (
         <div>
-            <div className="navBarContainor" ><NavBar /></div> 
+            <div className="navBarContainor" ><NavBar /></div>
             <div className="imgContactUs">
                 <h1 className="txtContactUsAboveImage">Contact Us</h1>
-                <img src="https://img.freepik.com/premium-photo/business-people-with-headsets-smiling-camera_13339-300111.jpg?w=996" alt="Contact Us" className="ContactUsImg" />    
-            </div>           
+                <img src="https://img.freepik.com/premium-photo/business-people-with-headsets-smiling-camera_13339-300111.jpg?w=996" alt="Contact Us" className="ContactUsImg" />
+            </div>
             <div className="divH1ContactUs">
                 <div className="contactUsContainer">
-                        
+
                 </div>
                 <div className="mapSection">
                     <div className="leftMapSection">
@@ -78,54 +85,102 @@ function ContactUs(){
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>First name</Form.Label>
-                                <Form.Control placeholder="First name" />
+                                    <Form.Control
+                                        type="text"
+                                        name="firstName"
+                                        placeholder="First name"
+                                        value={formData.firstName}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
                                 </Col>
                                 <Col>
                                     <Form.Label>Last name</Form.Label>
-                                <Form.Control placeholder="Last name" />
+                                    <Form.Control
+                                        type="text"
+                                        name="lastName"
+                                        placeholder="Last name"
+                                        value={formData.lastName}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
                                 </Col>
                             </Row>
 
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>Nationality</Form.Label>
-                                <Form.Control placeholder="Nationality" />
+                                    <Form.Control
+                                        type="text"
+                                        name="nationality"
+                                        placeholder="Nationality"
+                                        value={formData.nationality}
+                                        onChange={handleInputChange}
+                                    />
                                 </Col>
                                 <Col>
                                     <Form.Label>Phone number</Form.Label>
-                                <Form.Control placeholder="Phone number" />
+                                    <Form.Control
+                                        type="text"
+                                        name="phoneNumber"
+                                        placeholder="Phone number"
+                                        value={formData.phoneNumber}
+                                        onChange={handleInputChange}
+                                    />
                                 </Col>
                             </Row>
 
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Email" />
-                                </Form.Group>
-
+                                <Col>
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </Col>
                                 <Col>
                                     <Form.Label>Age</Form.Label>
-                                <Form.Control placeholder="Age" />
+                                    <Form.Control
+                                        type="text"
+                                        name="age"
+                                        placeholder="Age"
+                                        value={formData.age}
+                                        onChange={handleInputChange}
+                                    />
                                 </Col>
                             </Row>
-                            
+
                             <br />
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Message</Form.Label>
-                                <Form.Control as="textarea" rows={3}  placeholder="Message" />
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3}
+                                    name="message"
+                                    placeholder="Message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    required
+                                />
                             </Form.Group>
                             <br />
                             <br />
-                            <Button variant="primary">Submit</Button>{' '}
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
                         </Form>
                     </div>
-                </div>       
+                </div>
             </div>
             <div className="whitespace">
-                
+
             </div>
             <div><Footer /></div>
-            
+
         </div>
     );
 
