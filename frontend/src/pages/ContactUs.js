@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import imgContactUs from '../img/contactUs.jpeg';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 function ContactUs(){
     const form = useRef();
@@ -19,7 +20,13 @@ function ContactUs(){
         .then((result) => {
             console.log(result.text);
             console.log("Message Sent")
-            alert("Message Sent")
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Contact Details Sent Successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
 
         }, (error) => {
             console.log(error.text);
@@ -76,11 +83,11 @@ function ContactUs(){
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>First name</Form.Label>
-                                <Form.Control placeholder="First name"  name="first-name" />
+                                <Form.Control placeholder="First name"  name="firstname" />
                                 </Col>
                                 <Col>
                                     <Form.Label>Last name</Form.Label>
-                                <Form.Control placeholder="Last name"  name="last-name"/>
+                                <Form.Control placeholder="Last name"  name="lastname"/>
                                 </Col>
                             </Row>
 
@@ -114,7 +121,8 @@ function ContactUs(){
                             </Form.Group>
                             <br />
                             <br />
-                            <Button variant="primary"  value="Send" >Submit</Button>{' '}
+                            <input className="submitButton" type="submit" value="Send" />
+
                         </Form>
                     </div>
                 </div>       
