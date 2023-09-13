@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 
 function PharmacyPanal() {
-  const [medicine, setmedicines] = useState([]);
+  const [medicines, setmedicines] = useState([]);
 
   useEffect(() => {
     async function fetchmedicine() {

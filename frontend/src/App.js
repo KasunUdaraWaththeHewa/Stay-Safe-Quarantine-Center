@@ -8,7 +8,7 @@ import AdminPanel from './pages/AdminPanel';
 
 import StaffPanel from './pages/StaffPanel';
 
-import PharmacyPanal from './pages/PharmacyPanal';
+import PharmacyPanel from './pages/PharmacyPanel';
 
 import Packages from './pages/Packages';
 
@@ -104,8 +104,8 @@ function App() {
           <Route exact path="/Sign_in_pharmacy">
             <Sign_in_pharmacy />
           </Route>
-          <Route exact path="/PharmacyPanal">
-            <PharmacyPanal />
+          <Route exact path="/PharmacyPanel">
+            <PharmacyPanel />
           </Route>
           <Route exact path="/signup">
             <Signup />
