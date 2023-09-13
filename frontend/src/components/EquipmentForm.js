@@ -295,6 +295,7 @@ function EquipmentForm() {
             <Form.Label>Current Status</Form.Label>
 
             <Form.Select value={currentStatus}id='currentStatusInput' onChange={(e) => setCurrentStatus(e.target.value)}>
+              <option value="" disabled>Select status</option>
               <option value="New">New</option>
               <option value="Old">Old</option>
               <option value="Renewed">Renewed</option>

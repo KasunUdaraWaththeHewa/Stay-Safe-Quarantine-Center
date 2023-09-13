@@ -1,0 +1,75 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* .container{
+    background-color: white;
+    padding-top: 100px;
+} */
+
+.pkgDetails {
+    background-color: white;
+    height: auto;
+    padding-top: 100px;
+}
+
+.card:hover{
+    cursor: pointer;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.card{
+    border-radius: 10px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-text, .card-title{
+    text-align: center;
+}
+
+.imagepackagecontainer{
+    width : 100%;
+    height: 800px;
+}
+
+.pkgimgbig{
+    width : 100%;
+    height: 900px;
+    position: fixed;
+    z-index: -5;
+    opacity: 0.8;
+}
+
+.txtpkgAboveImage{
+    text-align: center;
+    font-size: 120px;
+    color: white;
+    background-color: none;
+    padding-top: 460px;
+}
+
+h1{
+    text-shadow: 5px 5px 5px #023e8a;
+}
+
+.hidden {
+    opacity: 0.5;
+  }
+
+.collapsetext{
+    color: #2684FF;
+}
+
+.pricetag{
+    color: red;
+}
+
+.pkgcol{
+    margin-bottom: 50px;
+}
+
+.pkgrow{
+    margin-left: 50px;
+}

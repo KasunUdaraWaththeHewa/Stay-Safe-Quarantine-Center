@@ -1,5 +1,4 @@
 import NavBar from "../components/NavBar";
-import React from 'react';
 import '../css file/ContactUs.css';
 import Footer from '../components/Footer';
 import Button from 'react-bootstrap/Button';
@@ -7,7 +6,23 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import imgContactUs from '../img/contactUs.jpeg';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 function ContactUs(){
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
+
     return(
         <div>
             <div className="navBarContainor" ><NavBar /></div> 
@@ -54,49 +69,49 @@ function ContactUs(){
             <div className="divSuggestions">
                 <div className="suggestionsContainer" >
                     <div className="formContainor">
-                        <Form>
+                        <Form  ref={form} onSubmit={sendEmail}>
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>First name</Form.Label>
-                                <Form.Control placeholder="First name" />
+                                <Form.Control placeholder="First name"  name="first-name" />
                                 </Col>
                                 <Col>
                                     <Form.Label>Last name</Form.Label>
-                                <Form.Control placeholder="Last name" />
+                                <Form.Control placeholder="Last name"  name="last-name"/>
                                 </Col>
                             </Row>
 
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>Nationality</Form.Label>
-                                <Form.Control placeholder="Nationality" />
+                                <Form.Control placeholder="Nationality" name="nationality" />
                                 </Col>
                                 <Col>
                                     <Form.Label>Phone number</Form.Label>
-                                <Form.Control placeholder="Phone number" />
+                                <Form.Control placeholder="Phone number" name="phonenumber" />
                                 </Col>
                             </Row>
 
                             <Row className="mb-3">
                                 <Form.Group as={Col} controlId="formGridEmail">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Email" />
+                                <Form.Control type="email" placeholder="Email" name="Email"/>
                                 </Form.Group>
 
                                 <Col>
                                     <Form.Label>Age</Form.Label>
-                                <Form.Control placeholder="Age" />
+                                <Form.Control placeholder="Age" name="Age"/>
                                 </Col>
                             </Row>
                             
                             <br />
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Message</Form.Label>
-                                <Form.Control as="textarea" rows={3}  placeholder="Message" />
+                                <Form.Control as="textarea" rows={3}  placeholder="Message" name="message" />
                             </Form.Group>
                             <br />
                             <br />
-                            <Button variant="primary">Submit</Button>{' '}
+                            <Button variant="primary"  value="Send" >Submit</Button>{' '}
                         </Form>
                     </div>
                 </div>       

@@ -342,6 +342,7 @@ function clearForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Gender</Form.Label>
             <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
+              <option value="" disabled>Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </Form.Select>
@@ -351,6 +352,7 @@ function clearForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
             <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
+              <option value="" disabled>Select relationshiptype</option>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>

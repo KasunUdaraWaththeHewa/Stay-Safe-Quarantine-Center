@@ -20,7 +20,7 @@ function Staff() {
   useEffect(() => {
     async function fetchStaffs() {
       try {
-        const response = await axios.get('http://localhost:8070/staff',config);
+        const response = await axios.get('http://localhost:8070/staff', config);
         setStaffs(response.data);
       } catch (error) {
         console.error(error);

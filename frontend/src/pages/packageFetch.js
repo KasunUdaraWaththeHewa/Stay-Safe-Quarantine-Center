@@ -9,7 +9,8 @@ import Col from 'react-bootstrap/Col';
 import NavBar from "../components/NavBar.js";
 import "../components/NavBar.css";
 import Footer from '../components/Footer.js';
-import '../css file/Packages.css'
+import '../css file/PackageFetch.css'
+import BasicPackage from '../img/BasicPackage.png'
 
 function PackageFetch() {
     const [packages, setPackages] = useState([]);
@@ -31,6 +32,7 @@ function PackageFetch() {
         axios.get('http://localhost:8070/package') // Replace with your server's API endpoint
             .then((response) => {
                 setPackages(response.data);
+            
             })
             .catch((error) => {
                 console.error('Error fetching packages:', error);
@@ -52,7 +54,7 @@ function PackageFetch() {
                     {packages.map((packages) => (
                         <Col lg={4} className="pkgcol" key={packages.packageID}>
                             <Card style={{ width: '25rem' }} id={packages.packageID} className={`card ${isOtherCardHidden(`card${packages.packageID}`) ? 'hidden' : ''} `} border="light">
-                                <Card.Img variant="top" src={packages.imageURL} />
+                                <Card.Img variant="top" src={packages.packageImage} />
                                 <Card.Body>
                                     <Card.Title className="basictitlecard" ><b>{packages.packageName}</b></Card.Title>
                                     <Card.Text>
@@ -66,7 +68,10 @@ function PackageFetch() {
                                     </Button>
                                     <Collapse in={isCardActive(`card${packages.packageID}`)}>
                                         <div id={`example-collapse-text-card${packages.packageID}`} className="collapsetext">
-                                            {/* Display package details here */}
+                                            <br/>
+                                            {packages.detailList.split('.').map((sentence, index) => (
+                                                <h6 key={index}>{sentence}</h6>
+                                            ))}
                                             <div className="pricetag">Price : LKR {packages.price} per day</div>
                                         </div>
                                     </Collapse>
