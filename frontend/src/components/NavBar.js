@@ -35,7 +35,7 @@ function NavBar() {
             </Link>
           </li>
           <li className="navBarItem">
-            <Link to="/packages" className="link">
+            <Link to="/packageFetch" className="link">
               Packages
             </Link>
           </li>

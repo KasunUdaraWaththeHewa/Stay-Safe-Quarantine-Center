@@ -70,7 +70,7 @@ function PharmacyPanelForm(){
             Authorization: `Bearer ${user.token}`
           }
         };
-        axios.post("http://localhost:8070/medicine/add", newMedicine,config).then(() => {
+        axios.post("http://localhost:8070/pharmacy/add", newMedicine,config).then(() => {
             successfullyAdded();
             setmedicine_name("");
             setmedicine_id("");
@@ -80,7 +80,7 @@ function PharmacyPanelForm(){
         }).catch((err)=>{
           Swal.fire(
             'Error!',
-            'Error Adding Payment.',
+            'Error Adding Medicine.',
             'error'
           )
         })
@@ -108,7 +108,7 @@ function PharmacyPanelForm(){
               Authorization: `Bearer ${user.token}`
             }
           };
-        axios.get(`http://localhost:8070/medicine/get/${medicine_id}`,config)
+        axios.get(`http://localhost:8070/pharmacy/get/${medicine_id}`,config)
 
           .then((response) => {
             setSearchResult(response.data);
@@ -150,7 +150,7 @@ function PharmacyPanelForm(){
               Authorization: `Bearer ${user.token}`
             }
           };
-        axios.delete(`http://localhost:8070/medicine/delete/${medicine_id}`,config)
+        axios.delete(`http://localhost:8070/pharmacy/delete/${medicine_id}`,config)
             .then((response) => {
               Swal.fire({
                 title: 'You successfully Deleted the Medicine!',
@@ -193,7 +193,7 @@ function PharmacyPanelForm(){
                 quantity,
 
             }
-            axios.put(`http://localhost:8070/medicine/update/${medicine_id}`, updatedMedicine,config)
+            axios.put(`http://localhost:8070/pharmacy/update/${medicine_id}`, updatedMedicine,config)
             .then((response) => {
                 successfullyUpdated();
                 window.location.reload();               
@@ -244,6 +244,21 @@ function PharmacyPanelForm(){
             </fieldset>
 
             <fieldset>
+
+                <Row>
+                    <Col>
+                        <Form.Label> Date </Form.Label>
+                        <Form.Control
+                            type="date"
+                            name="med_date"
+                            id='dateInput'
+                            value={med_date}
+                            onChange={(e) => setmed_Date(e.target.value)}
+                        />
+                    </Col>
+
+                </Row>
+
                 <Row>
                     <Col>
                         <Form.Label>Quantity</Form.Label>
@@ -252,19 +267,6 @@ function PharmacyPanelForm(){
                             onChange={(e) => setquantity(e.target.value)}
                             value={quantity} />
                     </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Form.Label> Date </Form.Label>
-                        <Form.Control
-                            type="date"
-                            name="date"
-                            id='dateInput'
-                            value={med_date}
-                            onChange={(e) => setmed_Date(e.target.value)}
-                        />
-                    </Col>
-
                 </Row>
                  
             </fieldset><hr></hr>
