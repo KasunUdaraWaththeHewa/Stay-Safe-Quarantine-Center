@@ -21,5 +21,5 @@ const PharmacySchema=new Schema({
 
     
 })
-const Pharmacy=mongoose.model("Phyamacy",PharmacySchema);
+const Pharmacy=mongoose.model("Pharmacy",PharmacySchema);
 module.exports=Pharmacy;

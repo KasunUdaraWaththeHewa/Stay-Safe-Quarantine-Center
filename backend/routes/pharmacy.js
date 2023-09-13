@@ -1,5 +1,5 @@
 const router =require("express").Router();
-let medicine= require("../models/pharmacy");
+let medicine= require("../models/Pharmacy");
 const requireAuth = require("../middleware/requireAuth");
 
 router.use(requireAuth);
@@ -17,7 +17,7 @@ router.route("/add").post((req,res)=>{
       quantity
     })
 
-    newPayment.save().then(()=>{
+    newMedicine.save().then(()=>{
         res.json("Medicine Added")
     }).catch((err)=>{
         console.log(err);
@@ -25,14 +25,14 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:medicine_id").get(async (req, res) => {
-  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
+  if(req.user.role !== 'pharmacy') return res.status(403).send("You are not allowed to make these changes");
   let medicine_id = req.params.medicine_id;
   const medicineObj = await medicine.findOne({ medicine_id })
     .then((medicineObj) => {
       if (!medicineObj) {
         return res.status(404).json({ error: "Medicine not found" });
       }  
-      res.status(200).json({ status: "medicine fetched", paymentObj })
+      res.status(200).json({ status: "medicine fetched", medicineObj })
     })
     .catch((err) => {
       console.log(err.message);
@@ -42,7 +42,7 @@ router.route("/get/:medicine_id").get(async (req, res) => {
 
   
 router.route("/update/:medicine_id").put(async (req, res) => {
-  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
+  if(req.user.role !== 'pharmacy') return res.status(403).send("You are not allowed to make these changes");
   let medicine_id = req.params.medicine_id;
   const {
     medicine_name,
@@ -65,7 +65,7 @@ router.route("/update/:medicine_id").put(async (req, res) => {
     );
 
     if (updatedMedicine) {
-      res.status(200).send({ status: "Medicine updated", data: updatedMedicine });
+      res.status(200).send({ status: "Medicine updated", data: updateMedicine});
     } else {
       res.status(404).send({ status: "Medicine not found" });
     }
@@ -78,7 +78,7 @@ router.route("/update/:medicine_id").put(async (req, res) => {
 
 
 router.route("/delete/:medicine_id").delete(async (req, res) => {
-  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
+  if(req.user.role !== 'pharmacy') return res.status(403).send("You are not allowed to make these changes");
   let medicine_id = req.params.medicine_id;
 
   try {
@@ -86,7 +86,7 @@ router.route("/delete/:medicine_id").delete(async (req, res) => {
     if (!deletedMedicine) {
       return res.status(404).json({ error: "medicine not found" });
     }
-    res.status(200).json({ status: "Medicine data deleted", staff: deletedMedicine });
+    res.status(200).json({ status: "Medicine data deleted", staff: deletedMedicine});
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ status: "Error with deleting Medicine", error: err.message });
@@ -95,7 +95,7 @@ router.route("/delete/:medicine_id").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
-    if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
+    if(req.user.role !== 'pharmacy') return res.status(403).send("You are not allowed to make these changes");
     medicine.find()
       .then((medicine) => {
         res.json(medicine);

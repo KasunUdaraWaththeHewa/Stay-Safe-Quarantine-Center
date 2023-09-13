@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../css file/PharmacyPanel.css';
 import NavBar from "../components/NavBar";
-import PharmacyPanelForm from "../components/PharmacyPanelForm";
+import PharmacyForm from "../components/PharmacyPanelForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
-function PharmacyPanel() {
+function Pharmacy() {
   const { user } = useContext(AuthContext);
   console.log(user)
   const [medicines, setmedicines] = useState([]);
@@ -16,7 +16,7 @@ function PharmacyPanel() {
   useEffect(() => {
     async function fetchmedicines() {
       try {
-        const response = await axios.get('http://localhost:8070/medicine', config);
+        const response = await axios.get('http://localhost:8070/pharmacy', config);
         setmedicines(response.data);
       } catch (error) {
         console.error(error);
@@ -33,7 +33,7 @@ function PharmacyPanel() {
     }
   };
   const navigate = useNavigate();
-  if (!user || ((user.role !== 'staff'))) {
+  if (!user || ((user.role !== 'pharmacy'))) {
     navigate('/login');
     return null;
   }
@@ -51,13 +51,13 @@ function PharmacyPanel() {
         </div>
         <div className="formOneContainorMedicine">
           <div className="medicineForm">
-            <PharmacyPanelForm />
+            <PharmacyForm />
           </div>
           <div className="existingMedicine">
             <div className='scrollablePanel'>
               <ul>
                 {medicines.map((medicine) => (
-                  <div key={medicine.receiptNumber} className="existingMedicineCard">
+                  <div key={medicine.medicine_id} className="existingMedicineCard">
                     <p>{medicine.medicine_name}</p>
                     <p>{medicine.med_date}</p>
                     <p>{medicine.medicine_id}</p>
@@ -74,4 +74,4 @@ function PharmacyPanel() {
       </div>
     </div>
   );
-} export default PharmacyPanel;
+} export default Pharmacy;
