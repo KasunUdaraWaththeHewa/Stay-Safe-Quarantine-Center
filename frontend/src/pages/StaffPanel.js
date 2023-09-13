@@ -82,7 +82,7 @@ function StaffPanel() {
                     </div>
                     <div className='divAdminPanelRight'>
                         <div className='divStaffPanelRightPart'>
-                            <h3>Staff Instructions</h3>
+                            <h3>Notifications for Staff</h3>
                             <div className='divNotificationContainor'>
                                 <div className='scrollablePanel'>
                                     <ul>
