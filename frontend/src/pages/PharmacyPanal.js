@@ -8,21 +8,21 @@ import { Link } from 'react-router-dom';
 
 
 function PharmacyPanal() {
-    const [popupAdd, stepop1] = useState(false);
-    const [popupViwe, stepop2] = useState(false);
-    const [popupUpdate, stepop3] = useState(false);
-    const [popupDel, stepop4] = useState(false);
+    const [popupAdd, setpop1] = useState(false);
+    const [popupViwe, setpop2] = useState(false);
+    const [popupUpdate, setpop3] = useState(false);
+    const [popupDel, setpop4] = useState(false);
     const add = () => {
-        stepop1(!popupAdd);
+        setpop1(!popupAdd);
     };
     const viwe = () => {
-        stepop2(!popupViwe);
+        setpop2(!popupViwe);
     };
     const update = () => {
-        stepop3(!popupUpdate);
+        setpop3(!popupUpdate);
     }
     const del = () => {
-        stepop4(!popupDel);
+        setpop4(!popupDel);
     }
     return (
         <div>
@@ -84,22 +84,30 @@ function PharmacyPanal() {
                         <div className="content">
                             <form className='formEdit'>
                                 <label>
-                                    Search:
+                                    Search by ID:
                                     <input type="search" name="name" />
                                 </label>
                                 <br />
+                                <br />
                                 <div >
-                                    <table className='tbl'>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Id</th>
-                                            <th>Quntity</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Id</td>
-                                            <td>Quntity</td>
-                                        </tr>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+
+                                                <th scope="col">Name</th>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Quntity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div className="lastBtn">
