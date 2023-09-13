@@ -3,21 +3,24 @@
     padding: 0;
 }
 
-.divAdminPanel{
+.divStaffPanel{
     height: 675px;
     width: 100%;
     display: flex;
 }
-.divAdminPanelLeft{
+
+.divStaffPanelleft{
     width: 65%;
-    padding-top: 15px;
-    background-color: white;
-}
-#divStaffPanelleft{
-    width: 55%;
     padding-top: 100px;
     background-color: white;
 }
+
+.divStaffPanelRight{
+    width: 35%;
+    padding-top: 65px;
+    background-color: #0077b6;
+}
+
 .PanelRow{
     height: 198px;
     width: 97%;
@@ -28,87 +31,59 @@
 #row1{
     margin-top: 90px;
 }
+
 .panelItem{
     width: 200px;
     margin: 25px 0 0 0;
     cursor: pointer;
 }
+
 .panelItem img{
     width: 125px;
     height: 125px;
     box-shadow: 0px 2px 4px rgba(14, 1, 1, 0.2);
     border-radius: 75px;
 }
+
 .panelItem img:hover{
     width: 127px;
     height: 127px;
     opacity: 0.7;
 }
-.PanelRightPart h3{
+
+.divStaffPanelRight h3{
     margin-top: 15px;
     margin-bottom: 15px;
     text-align: center;
     color: white;
+    font-family: 'Roboto Slab', serif;
 }
+
 figcaption{
     color: #03045e;
     padding-left: 40px;
     padding-top: 5px;
 }
-#figequip{
-    color: #03045e;
-    padding-left: 23px;
-    padding-top: 5px;
-}
-#figpackage{
-    color: #03045e;
-    padding-left: 30px;
-    padding-top: 5px;
-}
-#figservice{
-    color: #03045e;
-    padding-left: 33px;
-    padding-top: 5px;
-}
-#figprofile{
-    color: #03045e;
-    padding-left: 5px;
-    padding-top: 5px;
-}
-#fignotify{
-    color: #03045e;
-    padding-left: 23px;
-    padding-top: 5px;
-}
+
 #staffPanelNurse{
     width: 200px;
     margin: 25px 0 0 75px;
     cursor: pointer;
 }
-h3{
-    font-family: 'Roboto Slab', serif;
-}
 
 #stafficon{
     margin-left: 80px;
 }
-.existingNotificationCard{
-    background-color: white;
-    opacity: 0.6;
-    margin-bottom: 5px;
+
+.accordion-body{
+    font-family: 'Open Sans', sans-serif;
 }
-.divNotificationContainor{
-    height: 550px;
+
+.accordion-header{
+    font-family: 'Merriweather', serif;
 }
-.divAdminPanelRight{
-    width: 45%;
-    padding-top: 65px;
-    background-color: #0077b6;
-    justify-content: center;
-    align-items: center;
+
+.accordion-item{
+    margin: 5px;
 }
-.scrollablePanel {
-    max-height: 500px;
-    overflow-y: auto;
-    padding-right: 15px;
-}
+
