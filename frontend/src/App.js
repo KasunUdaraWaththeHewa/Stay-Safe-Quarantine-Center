@@ -29,6 +29,7 @@ import Signup from './pages/SignUpProfile';
 import ChangePassword from './pages/changePassword';
 import AddPackages from './pages/PackageAdd'
 import Notification from './pages/Notification';
+import PackageFetch from './pages/packageFetch';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/addPackages" element={<AddPackages />} />
           <Route path="/notification" element={<Notification />} />
+          <Route path="/packageFetch" element={<PackageFetch />} />
         </Routes>
 
       </Router>

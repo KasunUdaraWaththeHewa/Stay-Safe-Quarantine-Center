@@ -1,8 +1,7 @@
 const router =require("express").Router();
 let package= require("../models/package");
-const requireAuth = require("../middleware/requireAuth");
-
-router.use(requireAuth);
+// const requireAuth = require("../middleware/requireAuth");
+// router.use(requireAuth);
 router.route("/add").post((req,res)=>{
   if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     const packageID=req.body.packageID;
@@ -99,9 +98,9 @@ router.route("/delete/:packageID").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
-    if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     package.find()
       .then((package) => {
+        console.log("Came Inside to package route")
         res.json(package);
       })
       .catch((err) => {
