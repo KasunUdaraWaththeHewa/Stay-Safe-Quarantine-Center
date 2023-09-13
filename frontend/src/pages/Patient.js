@@ -19,7 +19,7 @@ function Patient() {
   useEffect(() => {
     async function fetchPatients() {
       try {
-        const response = await axios.get('http://localhost:8070/patient/',config);
+        const response = await axios.get('http://localhost:8070/patient/', config);
         setPatient(response.data);
       } catch (error) {
         console.error(error);
@@ -48,7 +48,10 @@ function Patient() {
           </h2>
         </div>
         <div className="formOneContainorPatient">
-          
+          <div className="patientForm">
+            <PatientForm />
+          </div>
+
           <div className="existingPatients">
             <div className='scrollablePanel'>
               <ul>
@@ -61,9 +64,7 @@ function Patient() {
               </ul>
             </div>
           </div>
-          <div className="patientForm">
-            <PatientForm />
-          </div>
+
         </div>
       </div>
       <div className="footerContainorPatient">

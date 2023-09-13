@@ -9,20 +9,20 @@ import { AuthContext } from '../context/AuthContext';
 
 function Doctor() {
   const { user } = useContext(AuthContext);
-  console.log("User is ",user);
-  
+  console.log("User is ", user);
+
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`
     }
   };
-  
+
   const [doctors, setDoctors] = useState([])
 
   useEffect(() => {
     async function fetchDoctors() {
       try {
-        const response = await axios.get('http://localhost:8070/doctor',config);
+        const response = await axios.get('http://localhost:8070/doctor', config);
         setDoctors(response.data);
       } catch (error) {
         console.error(error);
@@ -49,7 +49,9 @@ function Doctor() {
           </h2>
         </div>
         <div className="formOneContainorDoctor">
-          
+          <div className="doctorForm">
+            <DoctorForm />
+          </div>
           <div className="existingDoctor">
             <div className='scrollablePanel'>
               <ul>
@@ -62,9 +64,7 @@ function Doctor() {
               </ul>
             </div>
           </div>
-          <div className="doctorForm">
-            <DoctorForm />
-          </div>
+
         </div>
       </div>
       <div className="footerContainorDoctor">
