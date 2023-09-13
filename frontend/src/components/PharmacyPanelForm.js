@@ -60,7 +60,7 @@ function PharmacyForm(){
     //add medicine
     function sendData(e) {
         e.preventDefault();
-        const newPharmacy = {
+        const newMedicine = {
             medicine_name,
             medicine_id,
             med_date,
@@ -71,7 +71,7 @@ function PharmacyForm(){
             Authorization: `Bearer ${user.token}`
           }
         };
-        axios.post("http://localhost:8070/pharmacy/add", newPharmacy,config).then(() => {
+        axios.post("http://localhost:8070/pharmacy/add", newMedicine,config).then(() => {
             successfullyAdded();
             setmedicine_name("");
             setmedicine_id("");
@@ -187,14 +187,14 @@ function PharmacyForm(){
                   Authorization: `Bearer ${user.token}`
                 }
               };
-            const updatedPharmacy = {
+            const updatedMedicine = {
                 medicine_name,
                 medicine_id,
                 med_date,
                 quantity,
 
             }
-            axios.put(`http://localhost:8070/pharmacy/update/${medicine_id}`, updatedPharmacy,config)
+            axios.put(`http://localhost:8070/pharmacy/update/${medicine_id}`, updatedMedicine,config)
             .then((response) => {
                 successfullyUpdated();
                 window.location.reload();               
