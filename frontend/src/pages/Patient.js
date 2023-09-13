@@ -48,9 +48,7 @@ function Patient() {
           </h2>
         </div>
         <div className="formOneContainorPatient">
-          <div className="patientForm">
-            <PatientForm />
-          </div>
+          
           <div className="existingPatients">
             <div className='scrollablePanel'>
               <ul>
@@ -62,6 +60,9 @@ function Patient() {
                 ))}
               </ul>
             </div>
+          </div>
+          <div className="patientForm">
+            <PatientForm />
           </div>
         </div>
       </div>

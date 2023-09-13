@@ -49,9 +49,7 @@ function PackageAdd() {
           </h2>
         </div>
         <div className="formOneContainorEquipment">
-          <div className="packageForm">
-            <PackageForm />
-          </div>
+          
           <div className="existingEquipment">
             <div className='scrollablePanel'>
               <ul>
@@ -64,6 +62,9 @@ function PackageAdd() {
               </ul>
             </div>
 
+          </div>
+          <div className="packageForm">
+            <PackageForm />
           </div>
         </div>
       </div>
