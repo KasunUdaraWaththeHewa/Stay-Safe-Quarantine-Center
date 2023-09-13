@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../css file/PharmacyPanel.css';
+import '../css file/Pharmacy.css';
 import NavBar from "../components/NavBar";
 import PharmacyForm from "../components/PharmacyPanelForm";
 import Footer from '../components/Footer';
