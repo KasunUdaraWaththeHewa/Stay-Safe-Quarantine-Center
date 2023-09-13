@@ -12,13 +12,14 @@
     width: 100%;
 }
 
+
 .existingEquipment {
     width: 50%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px; 
     padding: 20px; 
-    background-image: url('../img/equipments-image.png');
+    background-image: url('../img/packagepage.png');
     background-position: center;
     background-size:auto;
     background-repeat: no-repeat;
@@ -48,6 +49,10 @@
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
     margin-left: 40px;
+}
+
+.packageForm{
+    height: 500px;
 }
 
 .scrollablePanel {
