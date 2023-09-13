@@ -1,15 +1,17 @@
 const router =require("express").Router();
 let package= require("../models/package");
-
+// const requireAuth = require("../middleware/requireAuth");
+// router.use(requireAuth);
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+    const packageID=req.body.packageID;
     const packageName=req.body.packageName;
     const details=req.body.details;
     const detailList=req.body.detailList;
     const price=req.body.price;
-    const pacakageID=req.body.pacakageID;
-
+    
     const newPackage= new package({
-        pacakageID,
+        packageID,
         packageName,
         details,
         detailList,
@@ -23,14 +25,15 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/get/:pacakageID").get(async (req, res) => {
-  let pacakageID = req.params.pacakageID;
-  const package = await package.findOne({ pacakageID })
-    .then((package) => {
-      if (!package) {
+router.route("/get/:packageID").get(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  let packageID = req.params.packageID;
+  const pkg = await package.findOne({ packageID })
+    .then((pkg) => {
+      if (!pkg) {
         return res.status(404).json({ error: "Package not found" });
       }
-      res.status(200).json({ status: "Package fetched", package })
+      res.status(200).json({ status: "Package fetched", pkg })
     })
     .catch((err) => {
       console.log(err.message);
@@ -39,8 +42,9 @@ router.route("/get/:pacakageID").get(async (req, res) => {
 });
 
   
-router.route("/update/:pacakageID").put(async (req, res) => {
-  let pacakageID = req.params.pacakageID;
+router.route("/update/:packageID").put(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  let packageID = req.params.packageID;
   const {
         packageName,
         details,
@@ -57,7 +61,7 @@ router.route("/update/:pacakageID").put(async (req, res) => {
 
   try {
     const updatedPackage = await package.findOneAndUpdate(
-      { pacakageID: pacakageID },
+      { packageID: packageID },
       updatePackage,
       { new: true }
     );
@@ -76,18 +80,19 @@ router.route("/update/:pacakageID").put(async (req, res) => {
 
 
 
-router.route("/delete/:pacakageID").delete(async (req, res) => {
-  let pacakageID = req.params.pacakageID;
+router.route("/delete/:packageID").delete(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  let packageID = req.params.packageID;
 
   try {
-    const deletedPackage = await staff.findOneAndDelete({ pacakageID });
+    const deletedPackage = await package.findOneAndDelete({ packageID });
     if (!deletedPackage) {
       return res.status(404).json({ error: "Package not found" });
     }
     res.status(200).json({ status: "Package's data deleted", staff: deletedPackage });
   } catch (err) {
     console.log(err.message);
-    res.status(500).json({ status: "Error with deleting staff member", error: err.message });
+    res.status(500).json({ status: "Error with deleting Package", error: err.message });
   }
 });
 
@@ -95,6 +100,7 @@ router.route("/delete/:pacakageID").delete(async (req, res) => {
   router.route("/").get((req, res) => {
     package.find()
       .then((package) => {
+        console.log("Came Inside to package route")
         res.json(package);
       })
       .catch((err) => {

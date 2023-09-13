@@ -1,7 +1,12 @@
 const router = require("express").Router();
 let patient = require("../models/Patient");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req, res) => {
+
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   const fullName = req.body.fullName;
   const gender = req.body.gender;
   const dateOfBirth = Date(req.body.dateOfBirth);
@@ -53,21 +58,28 @@ router.route("/add").post((req, res) => {
 })
 
 router.route("/get/:nicNumber").get(async (req, res) => {
+
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
+
   const nicNumber = req.params.nicNumber;
   const user = await patient.findOne({ nicNumber })
-  .then((user) => {
-    if (!user) {
-      return res.status(404).json({ error: "Patient not found" })
-    }
-    res.status(200).json({ status: "Patient fetched", user });
-  })
-  .catch((err) => {
-    console.log(err.message);
-    res.status(500).json({ status: "Error with fetching patient", error: err.message });
-  });
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ error: "Patient not found" })
+      }
+      res.status(200).json({ status: "Patient fetched", user })
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res.status(500).json({ status: "Error with fetching patient", error: err.message });
+    });
 });
 
 router.route("/update/:nicNumber").put(async (req, res) => {
+  
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   const nicNumber = req.params.nicNumber;
   const {
     fullName,
@@ -123,7 +135,7 @@ router.route("/update/:nicNumber").put(async (req, res) => {
     if (updatedPatient) {
       res.status(200).send({ status: "Patient updated", data: updatedPatient });
     } else {
-      res.status(404).send({ status: "Patient not found"});
+      res.status(404).send({ status: "Patient not found" });
     }
   } catch (err) {
     console.log(err);
@@ -132,6 +144,9 @@ router.route("/update/:nicNumber").put(async (req, res) => {
 });
 
 router.route("/delete/:nicNumber").delete(async (req, res) => {
+  
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   const nicNumber = req.params.nicNumber;
   try {
     const patient = await patient.findOneAndDelete({ nicNumber });
@@ -146,15 +161,17 @@ router.route("/delete/:nicNumber").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))){
+    console.log(3);
+    return res.status(403).send("You are not allowed to make these changes");
+  } 
   patient.find()
     .then((patient) => {
       res.json(patient);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Internal server error" })
     });
 });
-
-
 module.exports = router;

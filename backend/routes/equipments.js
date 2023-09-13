@@ -1,7 +1,10 @@
 const router =require("express").Router();
 let equipment= require("../models/Equipment");
+const requireAuth = require("../middleware/requireAuth");
+router.use(requireAuth);
 
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     const name=req.body.name;
     const category=req.body.category;
     const serialNumber=req.body.serialNumber;
@@ -32,6 +35,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:serialNumber").get(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let serialNumber = req.params.serialNumber;
   const equip = await equipment.findOne({ serialNumber })
     .then((equip) => {
@@ -47,6 +51,7 @@ router.route("/get/:serialNumber").get(async (req, res) => {
 });
 
 router.route("/update/:serialNumber").put(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let serialNumber = req.params.serialNumber;
   const {
       name,
@@ -90,6 +95,7 @@ router.route("/update/:serialNumber").put(async (req, res) => {
 
 
 router.route("/delete/:serialNumber").delete(async (req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let serialNumber = req.params.serialNumber;
   try {
     const deletedEquipment = await equipment.findOneAndDelete({ serialNumber });
@@ -104,6 +110,7 @@ router.route("/delete/:serialNumber").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
+  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   equipment.find()
     .then((equipment) => {
       res.json(equipment);

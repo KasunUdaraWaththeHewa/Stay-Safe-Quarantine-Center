@@ -1,4 +1,3 @@
-import React from 'react';
 import NavBar from '../components/NavBar';
 import '../css file/AdminPanel.css'
 import Footer from '../components/Footer';
@@ -7,10 +6,21 @@ import {Link} from 'react-router-dom';
 import Equipment from '../img/equipment.png'
 import Package from '../img/packages.png'
 import Service from '../img/services.png'
-
+import profile from '../img/Profile.png'
+import notification from '../img/notification.png'
+import React, { useState, useEffect, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function AdminPanel(){
-    return(
+
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    if (!user || user.role !== 'admin') {
+        navigate('/login');
+        return null;
+      }
+        return(
         <div>
             <NavBar />
             <div>
@@ -42,15 +52,22 @@ function AdminPanel(){
                                 <figcaption id='figequip'><b>Equipment</b></figcaption>
                             </div>    
                             <div className="panelItem">
-                                <Link to="/packages" className="link"><img src = {Package} alt="" /></Link>
+                                <Link to="/addpackages" className="link"><img src = {Package} alt="" /></Link>
                                 <figcaption id='figpackage'><b>Packages</b></figcaption>
                             </div>  
                             <div className="panelItem">
                                 <Link to="/patient" className="link"><img src = {Service} alt="" /></Link>
                                 <figcaption id='figservice'><b>Services</b></figcaption>
                             </div>  
+                            <div className="panelItem">
+                                <Link to="/signup" className="link"><img src = {profile} alt="" /></Link>
+                                <figcaption id='figprofile'><b>Account Creation</b></figcaption>
+                            </div>    
+                            <div className="panelItem">
+                                <Link to="/notification" className="link"><img src = {notification} alt="" /></Link>
+                                <figcaption id='fignotify'><b>Notification</b></figcaption>
+                            </div>   
                         </div>
-
                     </div>
                     <div className='divAdminPanelRight'>
                         <div className="PanelRightPart">                               
@@ -60,7 +77,7 @@ function AdminPanel(){
                                         <Accordion.Item eventKey="0">
                                             <Accordion.Header>Create Staff Accounts by yourself</Accordion.Header>
                                             <Accordion.Body>
-                                            For enhanced security, it is advisable for the admin to handle the creation of staff accounts personally. 
+                                            For enhanced security, it is advisable for the admin to handle the creation of accounts personally. 
                                             </Accordion.Body>
                                         </Accordion.Item>
                                         <Accordion.Item eventKey="1">

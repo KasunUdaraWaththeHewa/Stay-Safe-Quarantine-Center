@@ -1,7 +1,10 @@
 const router =require("express").Router();
 let service= require("../models/service");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
     const serviceID=req.body.serviceID;
     const serviceName=req.body.serviceName;
     const details=req.body.details;
@@ -20,6 +23,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:serviceID").get(async (req, res) => {
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
   let serviceID = req.params.serviceID;
   const service = await service.findOne({ serviceID })
     .then((service) => {
@@ -36,6 +40,7 @@ router.route("/get/:serviceID").get(async (req, res) => {
 
   
 router.route("/update/:serviceID").put(async (req, res) => {
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
   let serviceID = req.params.serviceID;
   const {
     serviceName,
@@ -69,6 +74,7 @@ router.route("/update/:serviceID").put(async (req, res) => {
 
 
 router.route("/delete/:serviceID").delete(async (req, res) => {
+  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
   let serviceID = req.params.serviceID;
 
   try {
@@ -85,6 +91,7 @@ router.route("/delete/:serviceID").delete(async (req, res) => {
 
 
   router.route("/").get((req, res) => {
+    if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
     service.find()
       .then((service) => {
         res.json(service);

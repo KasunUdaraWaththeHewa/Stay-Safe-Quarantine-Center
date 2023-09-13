@@ -1,4 +1,3 @@
-import React from "react";
 import NavBar from "../components/NavBar.js";
 import "../components/NavBar.css";
 import Footer from '../components/Footer.js';

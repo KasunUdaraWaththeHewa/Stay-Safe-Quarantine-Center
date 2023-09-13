@@ -57,4 +57,5 @@ function PharmacyPanal() {
       </div>
     </div>
   );
-}export default PharmacyPanal;
+}export default PharmacyPanel;
+

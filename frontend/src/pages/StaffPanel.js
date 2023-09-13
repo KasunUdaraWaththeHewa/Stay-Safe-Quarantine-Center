@@ -1,77 +1,109 @@
-import React from 'react';
 import NavBar from '../components/NavBar';
-import '../css file/AdminPanel.css'
+import '../css file/StaffPanel.css';
 import Footer from '../components/Footer';
-import Accordion from 'react-bootstrap/Accordion';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import axios from 'axios';
+
+function StaffPanel() {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [notifications, setNotifications] = useState([]);
+    const config = {
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        }
+    };
+    useEffect(() => {
+        async function fetchNotification() {
+            try {
+                const response = await axios.get('http://localhost:8070/notification', config);
+                // Filter notifications based on the recipient being staff
+                const filteredNotifications = response.data.filter(notification => notification.reciever === 'staff');
+                setNotifications(filteredNotifications);
+                console.log(filteredNotifications);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Fetch notifications when the component mounts
+        fetchNotification();
+    }, []);
+
+    if (!user || !((user.role === 'admin') || (user.role === 'staff'))) {
+        navigate('/login')
+        return null;
+    }
 
 
-function StaffPanel(){
-    return(
+    return (
         <div>
             <NavBar />
             <div>
                 <div className='divAdminPanel'>
-                    <div className='divAdminPanelLeft'>
+                    <div className='divAdminPanelLeft' id='divStaffPanelleft'>
                         <div className='PanelRow'>
-                            <div className="panelItem">
-                                <Link to="/nurse" className="link"><img src="https://cdn-icons-png.flaticon.com/512/204/204245.png" alt="" /></Link>
-                                <figcaption><b>Nurse</b></figcaption>
+                            <div className='panelItem' id='staffPanelNurse'>
+                                <Link to='/nurse' className='link'>
+                                    <img src='https://cdn-icons-png.flaticon.com/512/204/204245.png' alt='' />
+                                </Link>
+                                <figcaption>
+                                    <b>Nurse</b>
+                                </figcaption>
                             </div>
-                            <div className="panelItem">
-                            <Link to="/patient" className="link"><img src="https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png" alt="" /></Link>
-                                <figcaption><b>Patient</b></figcaption>
+                            <div className='panelItem'>
+                                <Link to='/patient' className='link'>
+                                    <img src='https://cdn4.iconfinder.com/data/icons/ordinary-people/512/patient-512.png' alt='' />
+                                </Link>
+                                <figcaption>
+                                    <b>Patient</b>
+                                </figcaption>
                             </div>
-                            <div className="panelItem">
-                                <Link to="/doctor" className="link"><img src="https://cdn-icons-png.flaticon.com/512/194/194915.png" alt="" /></Link>
-                                <figcaption><b>Doctor</b></figcaption>
+                            <div className='panelItem'>
+                                <Link to='/doctor' className='link'>
+                                    <img src='https://cdn-icons-png.flaticon.com/512/194/194915.png' alt='' />
+                                </Link>
+                                <figcaption>
+                                    <b>Doctor</b>
+                                </figcaption>
                             </div>
-                            <div className="panelItem">
-                                <Link to="/staff" className="link"><img src="https://cdn3.iconfinder.com/data/icons/team-management/136/8-512.png" alt="" /></Link>
-                                <figcaption><b>Staff</b></figcaption>
-                            </div>    
-                            <div className="panelItem">
-                                <Link to="/payment" className="link"><img src="https://cdn-icons-png.flaticon.com/512/1102/1102760.png" alt="" /></Link>
-                                <figcaption><b>Payment</b></figcaption>
-                            </div>   
+                            <div className='panelItem'>
+                                <Link to='/payment' className='link'>
+                                    <img src='https://cdn-icons-png.flaticon.com/512/1102/1102760.png' alt='' />
+                                </Link>
+                                <figcaption>
+                                    <b>Payment</b>
+                                </figcaption>
+                            </div>
                         </div>
                     </div>
                     <div className='divAdminPanelRight'>
-                        <div className="PanelRightPart">
-                                
-                                <h3>Staff Instructions</h3>
-                                <div className='divAccordianContainor'>
-                                    <Accordion defaultActiveKey="0">
-                                        <Accordion.Item eventKey="0">
-                                            <Accordion.Header>What you do will be tracked</Accordion.Header>
-                                            <Accordion.Body>
-                                            Please note that your actions within the system will be tracked for accountability and quality assurance purposes.Thank you for your cooperation.
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                        <Accordion.Item eventKey="1">
-                                            <Accordion.Header>Ensure Security of the Data</Accordion.Header>
-                                            <Accordion.Body>
-                                            Protecting the privacy of patient, doctor, staff, and nurse details is our top priority. Your confidentiality is of utmost importance to us.
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                        <Accordion.Item eventKey="3">
-                                            <Accordion.Header>Keep user information up to date to ensure accuracy</Accordion.Header>
-                                            <Accordion.Body>
-                                            Regularly updating user details such as contact information, roles, and permissions helps ensure that the admin panel reflects the most current and accurate information about each user.
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                    </Accordion>
+                        <div className='divStaffPanelRightPart'>
+                            <h3>Notifications for Staff</h3>
+                            <div className='divNotificationContainor'>
+                                <div className='scrollablePanel'>
+                                    <ul>
+                                        {notifications.map((notification) => (
+                                            <div key={notification.notificationID} className="existingNotificationCard">
+                                                <p>{notification.title}</p>
+                                                <p>{notification.notificationBody}</p>
+                                            </div>
+                                        ))}
+                                    </ul>
                                 </div>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
             <div>
-                <Footer/>
+                <Footer />
             </div>
-
         </div>
     );
 }
+
 export default StaffPanel;

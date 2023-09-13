@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from 'react';
 import '../css file/Nurse.css';
 import NavBar from '../components/NavBar';
 import NurseForm from '../components/NurseForm';
 import Footer from '../components/Footer';
 import axios from 'axios';
-
+import React, { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 function Nurse() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   const [nurses, setNurses] = useState([]);
 
   useEffect(() => {
     async function fetchNurses() {
       try {
-        const response = await axios.get('http://localhost:8070/nurse/');
+        const response = await axios.get('http://localhost:8070/nurse',config);
         setNurses(response.data);
       } catch (error) {
         console.error(error);
@@ -20,7 +28,13 @@ function Nurse() {
 
     fetchNurses();
   }, []);
-
+  console.log(user);
+  const navigate = useNavigate();
+    if (!user || ((user.role !== 'admin')&&(user.role !== 'staff'))) {
+        navigate('/login');
+        return null;
+      }
+  
   return (
     <div>
       <div className="navBarContainor">

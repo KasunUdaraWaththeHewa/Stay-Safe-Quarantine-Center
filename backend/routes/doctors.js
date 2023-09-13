@@ -1,7 +1,11 @@
 const router =require("express").Router();
 let doctor= require("../models/Doctor");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth);
 router.route("/add").post((req,res)=>{
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
     const firstName=req.body.firstName;
     const lastName=req.body.lastName;
     const doctorID=req.body.doctorID;
@@ -35,20 +39,22 @@ router.route("/add").post((req,res)=>{
     })
 
     newDoctor.save().then(()=>{
-        res.json("Nurse Added")
+        res.json("Doctor Added")
     }).catch((err)=>{
         console.log(err);
     })
 })
 
 router.route("/get/:doctorID").get(async (req, res) => {
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   let doctorID = req.params.doctorID;
   const user = await doctor.findOne({ doctorID })
     .then((user) => {
       if (!user) {
         return res.status(404).json({ error: "Doctor not found" })
       }
-      res.status(200).json({ status: "Doctor fetched", user })
+      res.status(200).json({ status: "Doctor fetched", user });
     })
     .catch((err) => {
       console.log(err.message);
@@ -59,6 +65,8 @@ router.route("/get/:doctorID").get(async (req, res) => {
 
 
 router.route("/update/:doctorID").put(async (req, res) => {
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   let doctorID = req.params.doctorID;
   const {
     firstName,
@@ -112,6 +120,8 @@ router.route("/update/:doctorID").put(async (req, res) => {
 
 
 router.route("/delete/:doctorID").delete(async (req, res) => {
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   let doctorID = req.params.doctorID;
 
   try {
@@ -127,8 +137,12 @@ router.route("/delete/:doctorID").delete(async (req, res) => {
 });
 
 router.route("/").get((req, res) => {
+  console.log("Entered to the backend route")
+  if(!((req.user.role === 'admin')||(req.user.role === 'staff'))) return res.status(403).send("You are not allowed to make these changes");
+
   doctor.find()
     .then((doctor) => {
+      console.log(doctor);
       res.json(doctor);
     })
     .catch((err) => {

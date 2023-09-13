@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from 'react';
 import '../css file/Doctor.css';
 import NavBar from "../components/NavBar";
 import DoctorForm from "../components/DoctorForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Doctor() {
-  const [doctors, setDoctors] = useState([]);
+  const { user } = useContext(AuthContext);
+  console.log("User is ",user);
+  
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
+  
+  const [doctors, setDoctors] = useState([])
 
   useEffect(() => {
     async function fetchDoctors() {
       try {
-        const response = await axios.get('http://localhost:8070/doctor/');
+        const response = await axios.get('http://localhost:8070/doctor',config);
         setDoctors(response.data);
       } catch (error) {
         console.error(error);
@@ -20,6 +31,11 @@ function Doctor() {
 
     fetchDoctors();
   }, []);
+  const navigate = useNavigate();
+  if (!user || !((user.role === 'admin') || (user.role === 'staff'))) {
+    navigate('/login')
+    return null;
+  }
 
   return (
     <div>
@@ -41,8 +57,8 @@ function Doctor() {
               <ul>
                 {doctors.map((doctor) => (
                   <div key={doctor.doctorID} className="existingDoctorCard">
-                  <p><b>{doctor.firstName} {doctor.lastName}</b></p>
-                  <p><b>{doctor.doctorID}</b></p>
+                    <p><b>{doctor.firstName} {doctor.lastName}</b></p>
+                    <p><b>{doctor.doctorID}</b></p>
                   </div>
                 ))}
               </ul>
@@ -55,4 +71,4 @@ function Doctor() {
       </div>
     </div>
   );
-}export default Doctor;
+} export default Doctor;
