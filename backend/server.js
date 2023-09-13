@@ -47,9 +47,6 @@ app.use("/payment",paymentRouter);
 const serviceRouter=require("./routes/services.js");
 app.use("/service",serviceRouter);
 
-const emailRoutes = require('./routes/emailRoutes');
-app.use('/', emailRoutes);
-
 const userRoutes=require("./routes/user.js");
 app.use("/user",userRoutes);
 

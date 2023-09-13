@@ -1,5 +1,4 @@
 import NavBar from "../components/NavBar";
-import React, { useState } from 'react';
 import '../css file/ContactUs.css';
 import Footer from '../components/Footer';
 import Button from 'react-bootstrap/Button';
@@ -7,44 +6,33 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import imgContactUs from '../img/contactUs.jpeg';
-import axios from 'axios';
-function ContactUs() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        nationality: '',
-        phoneNumber: '',
-        email: '',
-        age: '',
-        message: '',
-    });
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
+function ContactUs(){
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
         });
     };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('/send-email', formData)
-            .then((response) => {
-                console.log('Email sent successfully:', response.data);
-            })
-            .catch((error) => {
-                console.error('Error sending email:', error);
-            });
-    };
-    return (
+
+    return(
         <div>
-            <div className="navBarContainor" ><NavBar /></div>
+            <div className="navBarContainor" ><NavBar /></div> 
             <div className="imgContactUs">
                 <h1 className="txtContactUsAboveImage">Contact Us</h1>
-                <img src="https://img.freepik.com/premium-photo/business-people-with-headsets-smiling-camera_13339-300111.jpg?w=996" alt="Contact Us" className="ContactUsImg" />
-            </div>
+                <img src="https://img.freepik.com/premium-photo/business-people-with-headsets-smiling-camera_13339-300111.jpg?w=996" alt="Contact Us" className="ContactUsImg" />    
+            </div>           
             <div className="divH1ContactUs">
                 <div className="contactUsContainer">
-
+                        
                 </div>
                 <div className="mapSection">
                     <div className="leftMapSection">
@@ -81,106 +69,58 @@ function ContactUs() {
             <div className="divSuggestions">
                 <div className="suggestionsContainer" >
                     <div className="formContainor">
-                        <Form onSubmit={handleSubmit}>
+                        <Form  ref={form} onSubmit={sendEmail}>
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>First name</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="firstName"
-                                        placeholder="First name"
-                                        value={formData.firstName}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
+                                <Form.Control placeholder="First name"  name="first-name" />
                                 </Col>
                                 <Col>
                                     <Form.Label>Last name</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="lastName"
-                                        placeholder="Last name"
-                                        value={formData.lastName}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
+                                <Form.Control placeholder="Last name"  name="last-name"/>
                                 </Col>
                             </Row>
 
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>Nationality</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="nationality"
-                                        placeholder="Nationality"
-                                        value={formData.nationality}
-                                        onChange={handleInputChange}
-                                    />
+                                <Form.Control placeholder="Nationality" name="nationality" />
                                 </Col>
                                 <Col>
                                     <Form.Label>Phone number</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="phoneNumber"
-                                        placeholder="Phone number"
-                                        value={formData.phoneNumber}
-                                        onChange={handleInputChange}
-                                    />
+                                <Form.Control placeholder="Phone number" name="phonenumber" />
                                 </Col>
                             </Row>
 
                             <Row className="mb-3">
-                                <Col>
-                                    <Form.Label>Email</Form.Label>
-                                    <Form.Control
-                                        type="email"
-                                        name="email"
-                                        placeholder="Email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </Col>
+                                <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" placeholder="Email" name="Email"/>
+                                </Form.Group>
+
                                 <Col>
                                     <Form.Label>Age</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="age"
-                                        placeholder="Age"
-                                        value={formData.age}
-                                        onChange={handleInputChange}
-                                    />
+                                <Form.Control placeholder="Age" name="Age"/>
                                 </Col>
                             </Row>
-
+                            
                             <br />
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Message</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    rows={3}
-                                    name="message"
-                                    placeholder="Message"
-                                    value={formData.message}
-                                    onChange={handleInputChange}
-                                    required
-                                />
+                                <Form.Control as="textarea" rows={3}  placeholder="Message" name="message" />
                             </Form.Group>
                             <br />
                             <br />
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                            <Button variant="primary"  value="Send" >Submit</Button>{' '}
                         </Form>
                     </div>
-                </div>
+                </div>       
             </div>
             <div className="whitespace">
-
+                
             </div>
             <div><Footer /></div>
-
+            
         </div>
     );
 
