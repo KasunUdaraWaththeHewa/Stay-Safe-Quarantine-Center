@@ -33,7 +33,7 @@ function PharmacyPanel() {
     }
   };
   const navigate = useNavigate();
-  if (!user || ((user.role !== 'staff'))) {
+  if (!user || ((user.role !== 'pharmacy'))) {
     navigate('/login');
     return null;
   }

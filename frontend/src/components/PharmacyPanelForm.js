@@ -81,7 +81,7 @@ function PharmacyForm(){
         }).catch((err)=>{
           Swal.fire(
             'Error!',
-            'Error Adding Payment.',
+            'Error Adding Medicine.',
             'error'
           )
         })
