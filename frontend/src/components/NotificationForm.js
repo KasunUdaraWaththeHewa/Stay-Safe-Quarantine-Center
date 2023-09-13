@@ -4,17 +4,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
-import { set } from 'mongoose';
-
 
 function NotificationForm() {
 
       const [notificationID, setNotificationID] = useState("");
       const [title, setTitle] = useState("");
-      const [notificationBody, setNotificationBody] = useState("");
+      const [notificationBody, setNotificationBody] = useState("")
       const [reciever, setReciever] = useState("");
 
    
@@ -97,17 +95,10 @@ function NotificationForm() {
    
   function populateFormWithFetchedData() {
     if (searchResult) {
-        
-            setNotificationID(searchResult.notificationID);
-            setTitle(searchResult.title);
-            setNotificationBody(searchResult.notificationBody);
-            setReciever(searchResult.reciever);
-
-            document.getElementById('NotificationIDInput').value = searchResult.notificationID;
-            document.getElementById('TitleInput').value = searchResult.title;
-            document.getElementById('NotificationBodyInput').value = searchResult.notificationBody;
-            document.getElementById('RecieverInput').value = searchResult.reciever;
-            
+            setNotificationID(searchResult.notificationObject.notificationID);
+            setTitle(searchResult.notificationObject.title);
+            setNotificationBody(searchResult.notificationObject.notificationBody);
+            setReciever(searchResult.notificationObject.reciever);      
     }
   }
 
@@ -259,11 +250,9 @@ function NotificationForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Receiver</Form.Label>
             <Form.Select value={reciever} id='ReceiverInput' onChange={(e) => setReciever(e.target.value)}>
-              <option value="Nurse">Nurse</option>
-              <option value="Doctor">Doctor</option>
-              <option value="Kitchen Staff">Kitchen Staff</option>
-              <option value="Patient">Patient</option>
-              <option value="Staff">Staff</option>
+              <option value="kitchen">Kitchen Staff</option>
+              <option value="staff">Staff</option>
+              <option value="pharmacy">Pharmacist</option>
             </Form.Select>
           </Form.Group>
         </Col>

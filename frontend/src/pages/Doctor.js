@@ -17,16 +17,14 @@ function Doctor() {
     }
   };
   
-  const [doctors, setDoctors] = useState([]);
+  const [doctors, setDoctors] = useState([])
 
   useEffect(() => {
     async function fetchDoctors() {
       try {
         const response = await axios.get('http://localhost:8070/doctor',config);
-        console.log(1)
         setDoctors(response.data);
       } catch (error) {
-        console.log(2)
         console.error(error);
       }
     }
