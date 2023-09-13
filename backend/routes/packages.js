@@ -104,7 +104,6 @@ router.route("/delete/:packageID").delete(async (req, res) => {
   router.route("/").get((req, res) => {
     package.find()
       .then((package) => {
-        console.log("Came Inside to package route")
         res.json(package);
       })
       .catch((err) => {
