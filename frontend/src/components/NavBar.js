@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
+import BackButton from './BackButton';
 
 function NavBar() {
   const { logout } = useLogout();
@@ -19,6 +20,7 @@ function NavBar() {
         <Link to="/" className="logo-link">
           <img className="img-logo" src={logo} alt="site logo" />
         </Link>
+        <BackButton />
         <div id="homeImgContainer">
           <Link to="/" className="link">
             <img className="homeIcon" src="https://vectorified.com/images/home-icon-white-2.png" alt="" />
