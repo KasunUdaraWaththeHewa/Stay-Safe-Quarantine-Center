@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
 }
@@ -18,4 +18,31 @@
     height:32px;
     opacity: 0.4;
     background-color: black;
+} */
+* {
+    margin: 0;
+    padding: 0;
 }
+
+.roundButton {
+    width: 32px;
+    height: 32px;
+    margin-left: 20px;
+    margin-top: 3px;
+    transition: all 0.3s ease; 
+}
+
+.roundButton img {
+    width: 30px;
+    height: 30px;
+}
+
+.roundButton:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+
+.roundButton:active {
+    transform: scale(1.2); 
+}
+
