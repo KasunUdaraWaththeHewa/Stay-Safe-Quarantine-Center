@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../css file/PharmacyPanel.css';
 import NavBar from "../components/NavBar";
-import PharmacyPanelForm from "../components/PharmacyPanelForm";
+import PharmacyForm from "../components/PharmacyPanelForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -51,13 +51,13 @@ function Pharmacy() {
         </div>
         <div className="formOneContainorMedicine">
           <div className="medicineForm">
-            <PharmacyPanelForm />
+            <PharmacyForm />
           </div>
           <div className="existingMedicine">
             <div className='scrollablePanel'>
               <ul>
                 {medicines.map((medicine) => (
-                  <div key={medicine.receiptNumber} className="existingMedicineCard">
+                  <div key={medicine.medicine_id} className="existingMedicineCard">
                     <p>{medicine.medicine_name}</p>
                     <p>{medicine.med_date}</p>
                     <p>{medicine.medicine_id}</p>

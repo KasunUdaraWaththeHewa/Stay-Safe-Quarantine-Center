@@ -251,7 +251,7 @@ function PharmacyForm(){
                         <Form.Label> Date </Form.Label>
                         <Form.Control
                             type="date"
-                            name="date"
+                            name="med_date"
                             id='dateInput'
                             value={med_date}
                             onChange={(e) => setmed_Date(e.target.value)}
