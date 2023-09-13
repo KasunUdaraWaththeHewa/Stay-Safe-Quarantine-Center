@@ -250,8 +250,8 @@ function PharmacyForm(){
                         <Form.Label>Quantity</Form.Label>
                         <Form.Control
                             id="quantityInput"
-                            onChange={(e) => setquntity(e.target.value)}
-                            value={quntity} />
+                            onChange={(e) => setquantity(e.target.value)}
+                            value={quantity} />
                     </Col>
                 </Row>
                 <Row>
@@ -262,7 +262,7 @@ function PharmacyForm(){
                             name="date"
                             id='dateInput'
                             value={med_date}
-                            onChange={(e) => setDate(e.target.value)}
+                            onChange={(e) => setmed_Date(e.target.value)}
                         />
                     </Col>
 

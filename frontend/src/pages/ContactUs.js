@@ -1,5 +1,5 @@
 import NavBar from "../components/NavBar";
-import React from 'react';
+import React, { useState } from 'react';
 import '../css file/ContactUs.css';
 import Footer from '../components/Footer';
 import Button from 'react-bootstrap/Button';
@@ -7,7 +7,27 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import imgContactUs from '../img/contactUs.jpeg';
+import axios from 'axios';
 function ContactUs(){
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        nationality: '',
+        phoneNumber: '',
+        email: '',
+        age: '',
+        message: '',
+      });
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('/send-email', formData)
+          .then((response) => {
+            console.log('Email sent successfully:', response.data);
+          })
+          .catch((error) => {
+            console.error('Error sending email:', error);
+          });
+      };
     return(
         <div>
             <div className="navBarContainor" ><NavBar /></div> 
@@ -54,7 +74,7 @@ function ContactUs(){
             <div className="divSuggestions">
                 <div className="suggestionsContainer" >
                     <div className="formContainor">
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Label>First name</Form.Label>
