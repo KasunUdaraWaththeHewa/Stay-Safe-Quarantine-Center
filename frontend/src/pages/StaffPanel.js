@@ -1,5 +1,6 @@
 import NavBar from '../components/NavBar';
 import '../css file/StaffPanel.css';
+import Accordion from 'react-bootstrap/Accordion';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
@@ -33,6 +34,8 @@ function StaffPanel() {
         fetchNotification();
     }, []);
 
+    const [activeItem, setActiveItem] = useState(null);
+
     if (!user || !((user.role === 'admin') || (user.role === 'staff'))) {
         navigate('/login')
         return null;
@@ -43,8 +46,8 @@ function StaffPanel() {
         <div>
             <NavBar />
             <div>
-                <div className='divAdminPanel'>
-                    <div className='divAdminPanelLeft' id='divStaffPanelleft'>
+                <div className='divStaffPanel'>
+                    <div className='divStaffPanelleft'>
                         <div className='PanelRow'>
                             <div className='panelItem' id='staffPanelNurse'>
                                 <Link to='/nurse' className='link'>
@@ -80,20 +83,20 @@ function StaffPanel() {
                             </div>
                         </div>
                     </div>
-                    <div className='divAdminPanelRight'>
-                        <div className='divStaffPanelRightPart'>
-                            <h3>Notifications for Staff</h3>
-                            <div className='divNotificationContainor'>
-                                <div className='scrollablePanel'>
-                                    <ul>
-                                        {notifications.map((notification) => (
-                                            <div key={notification.notificationID} className="existingNotificationCard">
-                                                <p>{notification.title}</p>
-                                                <p>{notification.notificationBody}</p>
-                                            </div>
-                                        ))}
-                                    </ul>
-                                </div>
+                    <div className='divStaffPanelRight'>
+                        <h3 className='staffPanelh3'>Notifications for Staff</h3>
+                        <div className='divNotificationContainor'>
+                            <div className='divAccordianContainorStaff'>
+                                {notifications.map((notification, index) => (
+                                    <Accordion defaultActiveKey={activeItem} onSelect={(eventKey) => setActiveItem(eventKey)}>
+                                        <Accordion.Item eventKey={index.toString()} >
+                                            <Accordion.Header>{notification.title}</Accordion.Header>
+                                            <Accordion.Body>
+                                                {notification.notificationBody}
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+                                ))}
                             </div>
                         </div>
                     </div>
