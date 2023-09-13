@@ -1,57 +1,61 @@
-import NavBar from '../components/NavBar';
-import '../css file/PharmacyPanal.css'
-
-import Accordion from 'react-bootstrap/Accordion';
-import { Link } from 'react-router-dom';
-import React, { useState, useEffect, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import React, { useState, useEffect } from 'react';
+import '../css file/PharmacyPanel.css';
+import NavBar from "../components/NavBar";
+import PharmacyPanelForm from "../components/PharmacyPanelForm";
+import Footer from '../components/Footer';
+import axios from 'axios';
 
 function PharmacyPanal() {
-    const { user } = useContext(AuthContext);
-    const navigate = useNavigate();
-    if (!user || user.role !== 'pharmacy') {
-        navigate('/login');
-        return null;
+  const [medicines, setmedicines] = useState([]);
+
+  useEffect(() => {
+    async function fetchmedicine() {
+      try {
+        const response = await axios.get('http://localhost:8070/medicine/');
+        setmedicines(response.data);
+      } catch (error) {
+        console.error(error);
       }
- 
-    return (
-        <div>
-            <div><NavBar /></div>
-            <div className="panalBody">
-                <button>Add medicine</button>
-                <button>Delete medicin</button>
-                <button>Update medicin</button>
-                <button>View medicin</button>
-                <hr />
-                <div>
-                    <form className="popup">
-                        <h1>Adding</h1>
-                        <label htmlFor="name">ID:</label>
-                        <input type="text" name="name" /><br />
-                        <label htmlFor="name">Name:</label>
-                        <input type="text" name="name" /><br />
-                        <label htmlFor="name">Quntity:</label>
-                        <input type="text" name="name" /><br />
+    }
 
-                        
+    fetchmedicine();
+  }, []);
 
-                        <label htmlFor="country">Type:</label>
-                        <select name="country" id="country">                            
-                            <option value="nepal">Tablet</option>
-                            <option value="usa">Liuid</option>
-                            <option value="australia">item</option>
-                        </select><br /><br />
-
-                        <input type="submit" value="Submit" />
-                    </form>
-                </div>
-
-
+  return (
+    <div>
+      <div className="navBarContainor">
+        <NavBar />
+      </div>
+      <div className="MedicineDetailsArea">
+        <div className="h2Holder">
+          <h2>
+            <b>Medicine Details Form</b>
+          </h2>
+        </div>
+        <div className="formOneContainorMedicine">
+          <div className="medicineForm">
+            <PharmacyPanelForm />
+          </div>
+          <div className="existingMedicine">
+            <div className='scrollablePanel'>
+              <ul>
+                {medicines.map((medicine) => (
+                  <div key={medicine.medicine_id} className="existingMedicineCard">
+                  <p>{medicine.medicine_name}</p>
+                  <p>{medicine.date}</p>
+                  <p>{medicine.medicine_id}</p>
+                  </div>
+                ))}
+              </ul>
             </div>
 
-
+          </div>
         </div>
-    );
-}
-export default PharmacyPanal;
+      </div>
+      <div className="footerContainormedicine">
+        <Footer />
+      </div>
+    </div>
+  );
+}export default PharmacyPanel;
+
