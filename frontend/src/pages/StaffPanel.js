@@ -20,8 +20,10 @@ function StaffPanel() {
         async function fetchNotification() {
             try {
                 const response = await axios.get('http://localhost:8070/notification', config);
-                setNotifications(response.data);
-                console.log(response.data)
+                // Filter notifications based on the recipient being staff
+                const filteredNotifications = response.data.filter(notification => notification.reciever === 'staff');
+                setNotifications(filteredNotifications);
+                console.log(filteredNotifications);
             } catch (error) {
                 console.error(error);
             }
