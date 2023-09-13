@@ -79,13 +79,12 @@ function StaffPanel() {
                         </div>
                     </div>
                     <div className='divAdminPanelRight'>
-                        <div className='PanelRightPart'>
+                        <div className='divStaffPanelRightPart'>
                             <h3>Staff Instructions</h3>
-                            <div className='divAccordianContainor'>
+                            <div className='divNotificationContainor'>
                                 <ul>
                                     {notifications.map((notification) => (
                                         <div key={notification.notificationID} className="existingNotificationCard">
-                                            <p>{notification.reciever}</p>
                                             <p>{notification.title}</p>
                                             <p>{notification.notificationBody}</p>
                                         </div>
