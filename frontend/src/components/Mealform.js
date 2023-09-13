@@ -273,6 +273,7 @@ function clearForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Portion Size</Form.Label>
             <Form.Select value={portionSize} id='portionSizeInput' onChange={(e) => setPortionSize(e.target.value)}>
+              <option value="" disabled>Select a potion size</option>
               <option value="Normal">Normal</option>
               <option value="Large">Large</option>
             </Form.Select>
