@@ -15,9 +15,12 @@ function ContactUs(){
     const sendEmail = (e) => {
       e.preventDefault();
   
-      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+      emailjs.sendForm('service_o7yl848', 'template_o0gw9up', form.current, 'cs5MnhTb6KsZCcpPP')
         .then((result) => {
             console.log(result.text);
+            console.log("Message Sent")
+            alert("Message Sent")
+
         }, (error) => {
             console.log(error.text);
         });
