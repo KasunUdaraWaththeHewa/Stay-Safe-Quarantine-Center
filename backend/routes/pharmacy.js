@@ -17,7 +17,7 @@ router.route("/add").post((req,res)=>{
       quantity
     })
 
-    newPayment.save().then(()=>{
+    newMedicine.save().then(()=>{
         res.json("Medicine Added")
     }).catch((err)=>{
         console.log(err);
