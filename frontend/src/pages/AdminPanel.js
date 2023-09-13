@@ -77,7 +77,7 @@ function AdminPanel(){
                                         <Accordion.Item eventKey="0">
                                             <Accordion.Header>Create Staff Accounts by yourself</Accordion.Header>
                                             <Accordion.Body>
-                                            For enhanced security, it is advisable for the admin to handle the creation of staff accounts personally. 
+                                            For enhanced security, it is advisable for the admin to handle the creation of accounts personally. 
                                             </Accordion.Body>
                                         </Accordion.Item>
                                         <Accordion.Item eventKey="1">
