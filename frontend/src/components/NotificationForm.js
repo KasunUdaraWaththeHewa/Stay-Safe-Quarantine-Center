@@ -250,11 +250,9 @@ function NotificationForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Receiver</Form.Label>
             <Form.Select value={reciever} id='ReceiverInput' onChange={(e) => setReciever(e.target.value)}>
-              <option value="Nurse">Nurse</option>
-              <option value="Doctor">Doctor</option>
-              <option value="Kitchen Staff">Kitchen Staff</option>
-              <option value="Patient">Patient</option>
-              <option value="Staff">Staff</option>
+              <option value="kitchen">Kitchen Staff</option>
+              <option value="staff">Staff</option>
+              <option value="pharmacy">Pharmacist</option>
             </Form.Select>
           </Form.Group>
         </Col>
