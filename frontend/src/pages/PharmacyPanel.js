@@ -5,7 +5,7 @@ import PharmacyPanelForm from "../components/PharmacyPanelForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 
-function PharmacyPanal() {
+function PharmacyPanel() {
   const [medicines, setmedicines] = useState([]);
 
   useEffect(() => {
