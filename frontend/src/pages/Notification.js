@@ -59,7 +59,6 @@ function Notification() {
                 {notifications.map((notification) => (
                   <div key={notification.notificationID} className="existingNotificationCard">
                   <p>{notification.reciever}</p>
-                  <p>{notification.notificationID}</p>
                   <p>{notification.title}</p>
                   </div>
                 ))}

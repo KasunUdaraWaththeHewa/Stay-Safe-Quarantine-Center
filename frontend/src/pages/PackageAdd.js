@@ -20,7 +20,7 @@ function PackageAdd() {
   useEffect(() => {
     async function fetchpackages() {
       try {
-        const response = await axios.get('http://localhost:8070/package',config);
+        const response = await axios.get('http://localhost:8070/package', config);
         setpackages(response.data);
       } catch (error) {
         console.error(error);
@@ -49,7 +49,9 @@ function PackageAdd() {
           </h2>
         </div>
         <div className="formOneContainorEquipment">
-          
+          <div className="packageForm">
+            <PackageForm />
+          </div>
           <div className="existingEquipment">
             <div className='scrollablePanel'>
               <ul>
@@ -61,10 +63,6 @@ function PackageAdd() {
                 ))}
               </ul>
             </div>
-
-          </div>
-          <div className="packageForm">
-            <PackageForm />
           </div>
         </div>
       </div>
