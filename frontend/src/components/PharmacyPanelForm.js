@@ -60,7 +60,7 @@ function PharmacyForm(){
     //add medicine
     function sendData(e) {
         e.preventDefault();
-        const newMedicine = {
+        const newPharmacy = {
             medicine_name,
             medicine_id,
             med_date,
@@ -71,7 +71,7 @@ function PharmacyForm(){
             Authorization: `Bearer ${user.token}`
           }
         };
-        axios.post("http://localhost:8070/medicine/add", newMedicine,config).then(() => {
+        axios.post("http://localhost:8070/pharmacy/add", newPharmacy,config).then(() => {
             successfullyAdded();
             setmedicine_name("");
             setmedicine_id("");
@@ -109,7 +109,7 @@ function PharmacyForm(){
               Authorization: `Bearer ${user.token}`
             }
           };
-        axios.get(`http://localhost:8070/medicine/get/${medicine_id}`,config)
+        axios.get(`http://localhost:8070/pharmacy/get/${medicine_id}`,config)
 
           .then((response) => {
             setSearchResult(response.data);
@@ -151,7 +151,7 @@ function PharmacyForm(){
               Authorization: `Bearer ${user.token}`
             }
           };
-        axios.delete(`http://localhost:8070/medicine/delete/${medicine_id}`,config)
+        axios.delete(`http://localhost:8070/pharmacy/delete/${medicine_id}`,config)
             .then((response) => {
               Swal.fire({
                 title: 'You successfully Deleted the Medicine!',
@@ -187,14 +187,14 @@ function PharmacyForm(){
                   Authorization: `Bearer ${user.token}`
                 }
               };
-            const updatedMedicine = {
+            const updatedPharmacy = {
                 medicine_name,
                 medicine_id,
                 med_date,
                 quantity,
 
             }
-            axios.put(`http://localhost:8070/medicine/update/${medicine_id}`, updatedMedicine,config)
+            axios.put(`http://localhost:8070/pharmacy/update/${medicine_id}`, updatedPharmacy,config)
             .then((response) => {
                 successfullyUpdated();
                 window.location.reload();               
@@ -245,15 +245,7 @@ function PharmacyForm(){
             </fieldset>
 
             <fieldset>
-                <Row>
-                    <Col>
-                        <Form.Label>Quantity</Form.Label>
-                        <Form.Control
-                            id="quantityInput"
-                            onChange={(e) => setquantity(e.target.value)}
-                            value={quantity} />
-                    </Col>
-                </Row>
+            
                 <Row>
                     <Col>
                         <Form.Label> Date </Form.Label>
@@ -266,6 +258,16 @@ function PharmacyForm(){
                         />
                     </Col>
 
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Label>Quantity</Form.Label>
+                        <Form.Control
+                            id="quantityInput"
+                            onChange={(e) => setquantity(e.target.value)}
+                            value={quantity} />
+                    </Col>
                 </Row>
                  
             </fieldset><hr></hr>

@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
-function PharmacyPanel() {
+function Pharmacy() {
   const { user } = useContext(AuthContext);
   console.log(user)
   const [medicines, setmedicines] = useState([]);
@@ -16,7 +16,7 @@ function PharmacyPanel() {
   useEffect(() => {
     async function fetchmedicines() {
       try {
-        const response = await axios.get('http://localhost:8070/medicine', config);
+        const response = await axios.get('http://localhost:8070/pharmacy', config);
         setmedicines(response.data);
       } catch (error) {
         console.error(error);
@@ -74,4 +74,4 @@ function PharmacyPanel() {
       </div>
     </div>
   );
-} export default PharmacyPanel;
+} export default Pharmacy;

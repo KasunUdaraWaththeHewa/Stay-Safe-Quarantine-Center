@@ -9,7 +9,7 @@ import AdminPanel from './pages/AdminPanel';
 
 import StaffPanel from './pages/StaffPanel';
 
-import PharmacyPanel from './pages/PharmacyPanel';
+import Pharmacy from './pages/Pharmacy';
 
 import Packages from './pages/Packages';
 
@@ -49,7 +49,7 @@ function App() {
           <Route path="/packages" element={<Packages />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/OurCenter" element={<OurCenter />} />
-          <Route path="/PharmacyPanel" element={<PharmacyPanel />} />
+          <Route path="/pharmacy" element={<Pharmacy />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/meals" element={<Meals />} />
