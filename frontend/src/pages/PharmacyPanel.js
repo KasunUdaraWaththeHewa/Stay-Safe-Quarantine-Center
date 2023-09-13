@@ -1,25 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../css file/PharmacyPanel.css';
 import NavBar from "../components/NavBar";
 import PharmacyPanelForm from "../components/PharmacyPanelForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
-function PharmacyPanal() {
+function PharmacyPanel() {
+  const { user } = useContext(AuthContext);
+  console.log(user)
   const [medicines, setmedicines] = useState([]);
 
+
   useEffect(() => {
-    async function fetchmedicine() {
+    async function fetchmedicines() {
       try {
-        const response = await axios.get('http://localhost:8070/medicine/');
+        const response = await axios.get('http://localhost:8070/medicine', config);
         setmedicines(response.data);
       } catch (error) {
         console.error(error);
       }
     }
 
-    fetchmedicine();
+    fetchmedicines();
   }, []);
+  console.log(user);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
+  const navigate = useNavigate();
+  if (!user || ((user.role !== 'staff'))) {
+    navigate('/login');
+    return null;
+  }
 
   return (
     <div>
@@ -29,7 +46,7 @@ function PharmacyPanal() {
       <div className="MedicineDetailsArea">
         <div className="h2Holder">
           <h2>
-            <b>Medicine Details Form</b>
+            <b>Pharmacy Details Form</b>
           </h2>
         </div>
         <div className="formOneContainorMedicine">
@@ -40,10 +57,10 @@ function PharmacyPanal() {
             <div className='scrollablePanel'>
               <ul>
                 {medicines.map((medicine) => (
-                  <div key={medicine.medicine_id} className="existingMedicineCard">
-                  <p>{medicine.medicine_name}</p>
-                  <p>{medicine.date}</p>
-                  <p>{medicine.medicine_id}</p>
+                  <div key={medicine.receiptNumber} className="existingMedicineCard">
+                    <p>{medicine.medicine_name}</p>
+                    <p>{medicine.med_date}</p>
+                    <p>{medicine.medicine_id}</p>
                   </div>
                 ))}
               </ul>
@@ -57,5 +74,4 @@ function PharmacyPanal() {
       </div>
     </div>
   );
-}export default PharmacyPanel;
-
+} export default PharmacyPanel;
