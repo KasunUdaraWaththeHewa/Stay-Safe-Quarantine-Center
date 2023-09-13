@@ -115,17 +115,6 @@ function StaffForm() {
       setGender(searchResult.user.gender);
       setRelationship(searchResult.user.relationship);
       setSkills(searchResult.user.skills);
-
-      document.getElementById("firstNameInput").value = firstName;
-      document.getElementById("lastNameInput").value = lastName;
-      document.getElementById("employeeIDInput").value = employeeID;
-      document.getElementById("phoneNumberInput").value = phoneNumber;
-      document.getElementById("emailInput").value = email;
-      document.getElementById("jobRoleInput").value = jobRole;
-      document.getElementById("addressInput").value = address;
-      document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
-      document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship;
     }
   }
 
