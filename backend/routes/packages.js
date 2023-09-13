@@ -6,6 +6,7 @@ router.route("/add").post((req,res)=>{
   if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     const packageID=req.body.packageID;
     const packageName=req.body.packageName;
+    const packageImage = req.body.packageImage;
     const details=req.body.details;
     const detailList=req.body.detailList;
     const price=req.body.price;
@@ -13,6 +14,7 @@ router.route("/add").post((req,res)=>{
     const newPackage= new package({
         packageID,
         packageName,
+        packageImage,
         details,
         detailList,
         price
@@ -47,6 +49,7 @@ router.route("/update/:packageID").put(async (req, res) => {
   let packageID = req.params.packageID;
   const {
         packageName,
+        packageImage,
         details,
         detailList,
         price
@@ -54,6 +57,7 @@ router.route("/update/:packageID").put(async (req, res) => {
 
   const updatePackage = {
         packageName,
+        packageImage,
         details,
         detailList,
         price
