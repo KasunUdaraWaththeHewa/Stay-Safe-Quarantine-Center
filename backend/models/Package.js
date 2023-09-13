@@ -9,6 +9,10 @@ const PackageSchema=new Schema({
         type:String,
         required:true
     },
+    packageImage:{
+        type:String,
+        required:true
+    },
     details:{
         type:String,
         required:true
