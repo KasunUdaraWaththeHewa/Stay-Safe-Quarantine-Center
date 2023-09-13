@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { set } from 'mongoose';
 
 
 function PharmacyForm() {
@@ -26,7 +25,7 @@ function PharmacyForm() {
             quntity,
         }
         axios.post("http://localhost:8070/medicine/add", newMedicine).then(() => {
-            alert("Medicine added");
+            console.log("Medicine Added in frontend")
             setmedicine_name("");
             setmedicine_id("");
             setDate("");

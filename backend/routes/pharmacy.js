@@ -2,13 +2,14 @@ const router = require("express").Router();
 let medicine= require("../models/Pharmacy");
 
 router.route("/add").post((req,res)=>{
-    const medicine_name=req.body.name;
-    const medicine_id=req.body.id;
-    const med_date=req.body.date;
+  console.log("Add route calling in backend")
+    const medicine_name=req.body.medicine_name;
+    const medicine_id=req.body.medicine_id;
+    const med_date=req.body.med_date;
     const quntity=req.body.quntity;
 
      
-    const newMedicine = new Medicine({
+    const newMedicine = new medicine({
         medicine_name,
         medicine_id,
         med_date,
