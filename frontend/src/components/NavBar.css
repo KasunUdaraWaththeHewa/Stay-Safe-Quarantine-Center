@@ -1,0 +1,126 @@
+/* NavBar.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .div-nav-bar {
+    height: 65px;
+    width: 100%;
+    color: white;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+  }
+  
+  .navBarItemList {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .navBarLeft {
+    width: 35%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navBarRight {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navBarItem {
+    padding: 20px 0;
+    width: 15%;
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  #ourcenteritem{
+    margin-left: 150px;
+  }
+  
+  .navBarItem:hover {
+    color: #03045e;
+    font-size: 18px;
+  }
+  
+  .img-logo {
+    height: 65px;
+    width: 150px;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .homeIcon {
+    width: 40px;
+    height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  
+  #homeImgContainer {
+    padding-top: 5px;
+    width: 7%;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .logoutAndEmail {
+    display: flex;
+    align-items: center;
+  }
+  
+  .loggedemail {
+    padding-right: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-right: 20px;
+    margin-left: -50px;
+  }
+  
+  .loginSignupContainor {
+    /* display: flex; */
+    /* position: relative; */
+    display: flex;
+    align-items: end;
+    width: 80%;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .div-nav-bar {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .navBarLeft {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .navBarRight {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

@@ -1,0 +1,54 @@
+const mongoose= require('mongoose');
+const Schema =mongoose.Schema;
+const StaffSchema=new Schema({
+    firstName:{
+        type:String,
+        required:true
+    },
+    lastName:{
+        type:String,
+        required:true
+    },
+    employeeID:{
+        type:String,
+        required:false
+    },
+    phoneNumber:{
+        type:String,
+        required:false
+    },
+    email:{
+        type:String,
+        required:false
+    },
+    jobRole:{
+        type:String,
+        required:false
+    },
+    address:{
+        type:String,
+        required:false
+    },
+    staffID:{
+        type:String,
+        required:true
+    },
+    emergencyContactNumber:{
+        type:String,
+        required:false
+    },
+    gender:{
+        type:String,
+        required:false
+    },
+    relationship:{
+        type:String,
+        required:false
+    },
+    skills:{
+        type:Object,
+        required:false
+    }
+})
+const Staff=mongoose.model("Staff",StaffSchema);
+module.exports=Staff;

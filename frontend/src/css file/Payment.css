@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.PaymentDetailsArea {
+    height: 1000px;
+    background-color: white;
+    width: 100%;
+}
+.formOneContainorPayment {
+    display: flex;
+    width: 100%;
+}
+
+.existingPayment {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    padding: 20px; 
+    background-image: url('https://img.freepik.com/free-vector/transfer-money-concept-illustration_114360-4165.jpg?w=740&t=st=1693808514~exp=1693809114~hmac=efff76935b537426fb71d6fc38661198b32d29f4a8b07c37f03ac6eab4400a4a');
+    background-position: center;
+    background-size:auto;
+    background-repeat: no-repeat;
+}
+
+.existingPaymentCard {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 500px;
+    background: linear-gradient(to bottom, white, white);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px #023e8a;
+    color: black;
+    margin-top: 10px;
+    opacity: 0.8;
+    margin-left: 50px;
+}
+
+.h2Holder h2 {
+    padding: 30px;
+}
+
+.PaymentForm {
+    padding: 40px;
+    width: 50%;
+    height: 800px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    color: white;
+    margin-left: 40px;
+}
+
+.scrollablePanel {
+    max-height: 780px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
