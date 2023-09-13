@@ -84,14 +84,16 @@ function StaffPanel() {
                         <div className='divStaffPanelRightPart'>
                             <h3>Staff Instructions</h3>
                             <div className='divNotificationContainor'>
-                                <ul>
-                                    {notifications.map((notification) => (
-                                        <div key={notification.notificationID} className="existingNotificationCard">
-                                            <p>{notification.title}</p>
-                                            <p>{notification.notificationBody}</p>
-                                        </div>
-                                    ))}
-                                </ul>
+                                <div className='scrollablePanel'>
+                                    <ul>
+                                        {notifications.map((notification) => (
+                                            <div key={notification.notificationID} className="existingNotificationCard">
+                                                <p>{notification.title}</p>
+                                                <p>{notification.notificationBody}</p>
+                                            </div>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

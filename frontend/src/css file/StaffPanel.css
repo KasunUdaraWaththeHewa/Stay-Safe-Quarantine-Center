@@ -4,7 +4,7 @@
 }
 
 .divAdminPanel{
-    height: 665px;
+    height: 675px;
     width: 100%;
     display: flex;
 }
@@ -14,7 +14,7 @@
     background-color: white;
 }
 #divStaffPanelleft{
-    width: 65%;
+    width: 55%;
     padding-top: 100px;
     background-color: white;
 }
@@ -93,20 +93,17 @@ h3{
     margin-left: 80px;
 }
 .existingNotificationCard{
-    height: 100px;
     background-color: white;
     opacity: 0.6;
     margin-bottom: 5px;
-    margin-left: -100px;
-    border: 1px solid black;
 }
 .divNotificationContainor{
-    border: 1px solid red;
-    padding-left: -50px;
+    height: 550px;
 }
 .divAdminPanelRight{
-    width: 35%;
+    width: 45%;
     padding-top: 65px;
     background-color: #0077b6;
-    border: 1px solid blue;
+    justify-content: center;
+    align-items: center;
 }
