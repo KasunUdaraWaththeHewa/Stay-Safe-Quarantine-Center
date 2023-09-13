@@ -1,98 +1,70 @@
 const router = require("express").Router();
-let nurse= require("../models/Pharmacy");
+let medicine= require("../models/Pharmacy");
 
 router.route("/add").post((req,res)=>{
-    const name=req.body.name;
-    const id=req.body.id;
-    const nurseID=req.body.nurseID;
-    const phoneNumber=req.body.phoneNumber;
-    
+    const medicine_name=req.body.name;
+    const medicine_id=req.body.id;
+    const med_date=req.body.date;
+    const quntity=req.body.quntity;
 
-    const newNurse= new nurse({
-        firstName,
-        lastName,
-        nurseID,
-        phoneNumber,
-        email,
-        nursingLicenseNo,
-        specialization,
-        professionalExperience,
-        address,
-        avalibleDays,
-        emergencyContactNumbers,
-        gender,
-        relationship,
-        skillsAndTraining
+     
+    const newMedicine = new Medicine({
+        medicine_name,
+        medicine_id,
+        med_date,
+        quntity
     })
 
-    newNurse.save().then(()=>{
-        res.json("Nurse Added")
+    newMedicine.save().then(()=>{
+        res.json("Medicine Added")
     }).catch((err)=>{
         console.log(err);
     })
 })
 
-router.route("/get/:nurseID").get(async (req, res) => {
-  let nurseID = req.params.nurseID;
-  const user = await nurse.findOne({ nurseID })
+router.route("/get/:medicine_id").get(async (req, res) => {
+  let medicine_id = req.params.medicine_id;
+  const user = await medicine.findOne({ medicine_id  })
     .then((user) => {
       if (!user) {
-        return res.status(404).json({ error: "Nurse not found" });
+        return res.status(404).json({ error: "Medicine not found" });
       }
-      res.status(200).json({ status: "Nurse fetched", user });
+      res.status(200).json({ status: "Medicine fetched", user });
     })
     .catch((err) => {
       console.log(err.message);
-      res.status(500).json({ status: "Error with fetching nurse", error: err.message });
+      res.status(500).json({ status: "Error with fetching Medicine", error: err.message });
     });
 });
 
 
-router.route("/update/:nurseID").put(async (req, res) => {
-  let nurseID = req.params.nurseID;
+router.route("/update/:medicine_id").put(async (req, res) => {
+  let medicine_id = req.params.medicine_id;
+  
   const {
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    nursingLicenseNo,
-    specialization,
-    professionalExperience,
-    address,
-    avalibleDays,
-    emergencyContactNumbers,
-    gender,
-    relationship,
-    skillsAndTraining
+    medicine_name,
+    med_date,
+    quntity
   } = req.body;
+     
 
-  const updateNurse = {
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    nursingLicenseNo,
-    specialization,
-    professionalExperience,
-    address,
-    avalibleDays,
-    emergencyContactNumbers,
-    gender,
-    relationship,
-    skillsAndTraining
+  const updateMedicine = {
+    medicine_name,
+    med_date,
+    quntity
   };
 
   try {
-    const updatedNurse = await nurse.findOneAndUpdate(
-      { nurseID: nurseID },
-      updateNurse,
+    const updatedMedicine = await medicine.findOneAndUpdate(
+      { medicine_id: medicine_id },
+      updateMedicine,
       { new: true }
     );
 
-    if (updatedNurse) {
-      res.status(200).send({ status: "Nurse updated", data: updatedNurse });
+    if (updatedMedicine) {
+      res.status(200).send({ status: "Medicine updated", data: updatedMedicine });
     } else {
-      res.status(404).send({ status: "Nurse not found"});
+      res.status(404).send({ status: "Medicine not found"});
     }
   } catch (err) {
     console.log(err);
@@ -100,25 +72,25 @@ router.route("/update/:nurseID").put(async (req, res) => {
   }
 });
 
-router.route("/delete/:nurseID").delete(async (req, res) => {
-  let nurseID = req.params.nurseID;
+router.route("/delete/:medicine_id").delete(async (req, res) => {
+  let medicine_id = req.params.medicine_id;
 
   try {
-    const deletedNurse = await nurse.findOneAndDelete({ nurseID });
-    if (!deletedNurse) {
-      return res.status(404).json({ error: "Nurse not found" });
+    const deletedMedicine = await medicine.findOneAndDelete({ medicine_id });
+    if (!deletedMedicine) {
+      return res.status(404).json({ error: "Medicine not found" });
     }
-    res.status(200).json({ status: "Nurse's data deleted", nurse: deletedNurse });
+    res.status(200).json({ status: "Medicine data deleted", medicine: deletedMedicine });
   } catch (err) {
     console.log(err.message);
-    res.status(500).json({ status: "Error with deleting nurse", error: err.message });
+    res.status(500).json({ status: "Error with deleting medicine", error: err.message });
   }
 });
 
 router.route("/").get((req, res) => {
-  nurse.find()
-    .then((nurse) => {
-      res.json(nurse);
+  medicine.find()
+    .then((medicine) => {
+      res.json(medicine);
     })
     .catch((err) => {
       console.log(err);

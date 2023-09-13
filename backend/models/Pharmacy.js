@@ -1,15 +1,16 @@
 const mongoose= require('mongoose');
 const Schema =mongoose.Schema;
 const PharmacySchema=new Schema({
-    name:{
+
+    medicine_name:{
         type:String,
         required:true
     },
-    id:{
+    medicine_id:{
         type:String,
         required:true
     },
-    date:{
+    med_date:{
         type:date,
         required:true
     },

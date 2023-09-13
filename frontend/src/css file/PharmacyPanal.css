@@ -1,4 +1,4 @@
-.panalBody {
+/* .panalBody {
     height: 950px;
     background-color: aliceblue;
 }
@@ -65,5 +65,60 @@
 .table{
     background-color: rgb(21, 15, 15);
     
+}
+ */
+
+ * {
+    margin: 0;
+    padding: 0;
+}
+.MedicineDetailsArea {
+    height: 1000px;
+    background-color: white;
+    width: 100%;
+}
+.formOneContainorMedicine {
+    display: flex;
+    width: 100%;
+}
+
+.existingMedicine {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    padding: 20px; 
+    background-image: url('https://img.freepik.com/free-vector/stack-money-gold-coins-3d-cartoon-style-icon-coins-with-dollar-sign-wad-cash-currency-flat-vector-illustration-wealth-investment-success-savings-economy-profit-concept_74855-26108.jpg');
+}
+
+.existingMedicineCard {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 500px;
+    background: linear-gradient(to bottom, white, white);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px #023e8a;
+    color: black;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.h2Holder h2 {
+    padding: 30px;
+}
+
+.medicineForm {
+    padding: 40px;
+    width: 55%;
+    height: 800px;
+    background: linear-gradient(to bottom, #0096c7, #023e8a);
+    color: white;
+    margin-left: 40px;
+}
+
+.scrollablePanel {
+    max-height: 780px;
+    overflow-y: auto;
+    padding-right: 15px;
 }
 
