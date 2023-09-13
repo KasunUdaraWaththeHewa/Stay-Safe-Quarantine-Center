@@ -3,9 +3,10 @@ let package= require("../models/package");
 // const requireAuth = require("../middleware/requireAuth");
 // router.use(requireAuth);
 router.route("/add").post((req,res)=>{
-  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  //f(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
     const packageID=req.body.packageID;
     const packageName=req.body.packageName;
+    const packageImage = req.body.packageImage;
     const details=req.body.details;
     const detailList=req.body.detailList;
     const price=req.body.price;
@@ -13,6 +14,7 @@ router.route("/add").post((req,res)=>{
     const newPackage= new package({
         packageID,
         packageName,
+        packageImage,
         details,
         detailList,
         price
@@ -26,7 +28,7 @@ router.route("/add").post((req,res)=>{
 })
 
 router.route("/get/:packageID").get(async (req, res) => {
-  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  //if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let packageID = req.params.packageID;
   const pkg = await package.findOne({ packageID })
     .then((pkg) => {
@@ -43,10 +45,11 @@ router.route("/get/:packageID").get(async (req, res) => {
 
   
 router.route("/update/:packageID").put(async (req, res) => {
-  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  //if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let packageID = req.params.packageID;
   const {
         packageName,
+        packageImage,
         details,
         detailList,
         price
@@ -54,6 +57,7 @@ router.route("/update/:packageID").put(async (req, res) => {
 
   const updatePackage = {
         packageName,
+        packageImage,
         details,
         detailList,
         price
@@ -81,7 +85,7 @@ router.route("/update/:packageID").put(async (req, res) => {
 
 
 router.route("/delete/:packageID").delete(async (req, res) => {
-  if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
+  //if(req.user.role !== 'admin') return res.status(403).send("You are not allowed to make these changes");
   let packageID = req.params.packageID;
 
   try {

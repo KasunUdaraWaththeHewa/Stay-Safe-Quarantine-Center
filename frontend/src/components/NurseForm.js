@@ -348,6 +348,7 @@ function NurseForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Gender</Form.Label>
             <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
+              <option value="" disabled>Select gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </Form.Select>
@@ -358,6 +359,7 @@ function NurseForm() {
             <Form.Label>Relationship</Form.Label>
 
             <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
+              <option value="" disabled>Select relationship type</option>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>

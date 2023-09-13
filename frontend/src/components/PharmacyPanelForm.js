@@ -4,12 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
-import { set } from 'mongoose';
 
-function PharmacyForm(){
+
+function PharmacyPanelForm(){
    
     const [medicine_name, setmedicine_name] = useState("");
     const [medicine_id, setmedicine_id] = useState("");
@@ -245,7 +244,7 @@ function PharmacyForm(){
             </fieldset>
 
             <fieldset>
-            
+
                 <Row>
                     <Col>
                         <Form.Label> Date </Form.Label>
@@ -280,4 +279,4 @@ function PharmacyForm(){
         </Form>
       );
 }
-      export default PharmacyForm;
+      export default PharmacyPanelForm;

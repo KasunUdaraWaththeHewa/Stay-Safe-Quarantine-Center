@@ -51,6 +51,14 @@ function Meal() {
         </div>
         <div className="formOneContainorMeal">
           <div className="existingMeal">
+              <ul>
+                {Meals.map((meal) => (
+                  <div key={meal.mealID} className="existingMealCard">
+                    <p>{meal.mealID} {meal.mealName}</p>
+                    <p>{meal.mealType}</p>
+                  </div>
+                ))}
+              </ul>
           </div>
           <div className="MealForm">
             <MealForm />

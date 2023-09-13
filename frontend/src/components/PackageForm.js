@@ -11,12 +11,13 @@ import Swal from 'sweetalert2';
 function PackageForm() {
   const [packageID, setpackageID] = useState("");
   const [packageName, setpackageName] = useState("");
+  const [packageImage, setpackageImage] = useState("");
   const [details, setdetails] = useState("");
   const [detailList, setdetailList] = useState("");
   const [price, setprice] = useState("");
 
   const [searchResult, setSearchResult] = useState(null);
-  const { user } = useContext(AuthContext);
+  //const { user } = useContext(AuthContext);
 
   const successfullyAdded = () => {
     Swal.fire({
@@ -61,17 +62,13 @@ function PackageForm() {
   function sendData(e) {
     e.preventDefault();
     const newPackage = {
-      packageID, packageName, details, detailList, price
+      packageID, packageName, packageImage, details, detailList, price
     }
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
-    };
-    axios.post("http://localhost:8070/package/add", newPackage, config).then(() => {
+    axios.post("http://localhost:8070/package/add", newPackage).then(() => {
       successfullyAdded();
       setpackageID("")
       setpackageName("")
+      setpackageImage("")
       setdetails("")
       setdetailList("")
       setprice("")
@@ -90,6 +87,7 @@ function PackageForm() {
     if (searchResult) {
       setpackageID(searchResult.pkg.packageID);
       setpackageName(searchResult.pkg.packageName);
+      setpackageImage(searchResult.pkg.packageImage);
       setdetails(searchResult.pkg.details);
       setdetailList(searchResult.pkg.detailList);
       setprice(searchResult.pkg.price);
@@ -101,12 +99,7 @@ function PackageForm() {
   }, [searchResult]);
 
   function handleSearch() {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
-    };
-    axios.get(`http://localhost:8070/package/get/${packageID}`, config)
+    axios.get(`http://localhost:8070/package/get/${packageID}`)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -141,13 +134,8 @@ function PackageForm() {
   }
   // delete equipment
   function handleDelete() {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
-    };
     successfullyDeleted();
-    axios.delete(`http://localhost:8070/package/delete/${packageID}`, config)
+    axios.delete(`http://localhost:8070/package/delete/${packageID}`)
       .then((response) => {
         Swal.fire({
           title: 'You successfully Deleted the Package!',
@@ -161,6 +149,7 @@ function PackageForm() {
         })
         setpackageID("")
         setpackageName("")
+        setpackageImage("")
         setdetails("")
         setdetailList("")
         setprice("")
@@ -177,20 +166,16 @@ function PackageForm() {
   }
   //update equipment details
   function handleUpdate() {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
-    };
     const updatedpackage = {
       packageID,
       packageName,
+      packageImage,
       details,
       detailList,
       price
     };
 
-    axios.put(`http://localhost:8070/package/update/${packageID}`, updatedpackage, config)
+    axios.put(`http://localhost:8070/package/update/${packageID}`, updatedpackage)
       .then((response) => {
         successfullyUpdated();
         window.location.reload();
@@ -209,7 +194,8 @@ function PackageForm() {
   function clearForm() {
     setpackageID("");
     setpackageName("");
-    setdetails("")
+    setpackageImage("");
+    setdetails("");
     setdetailList("");
     setprice("");
   }
@@ -229,10 +215,12 @@ function PackageForm() {
 
       <Row className="mb-3">
         <Col>
-          <Form.Label>Package Details</Form.Label>
-          <Form.Control id='detailsInput' onChange={(e) => setdetails(e.target.value)} value={details} />
+          <Form.Label>Package Image URL</Form.Label>
+          <Form.Control id='packageImageInput' onChange={(e) => setpackageImage(e.target.value)} value={packageImage} />
         </Col>
         <Col>
+          <Form.Label>Package Details</Form.Label>
+          <Form.Control id='detailsInput' onChange={(e) => setdetails(e.target.value)} value={details} />
         </Col>
       </Row>
 
