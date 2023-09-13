@@ -4,19 +4,17 @@ const requireAuth = require("../middleware/requireAuth");
 
 router.use(requireAuth);
 router.route("/add").post((req,res)=>{
-  if(req.user.role !== 'staff') return res.status(403).send("You are not allowed to make these changes");
-    
+  if(req.user.role !== 'pharmacy') return res.status(403).send("You are not allowed to make these changes");
     const medicine_name=req.body.medicine_name;
     const medicine_id=req.body.medicine_id;
     const med_date=Date(req.body.med_date);
     const quantity=req.body.quantity;
-
-
+  
     const newMedicine= new medicine({  
       medicine_name,
       medicine_id,
       med_date,
-      quantity,
+      quantity
     })
 
     newPayment.save().then(()=>{

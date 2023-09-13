@@ -4,7 +4,7 @@
 }
 
 .home_background{
-    background-image: url(../img/home_background.jpg);
+    background-image: url("https://wallpapers.com/images/hd/medical-background-cjge7e89adg6ub8x.jpg");
     height: 100vh;
     display: flex;
     padding: auto;
@@ -13,7 +13,7 @@
 }
 
 #intro{
-    color:white;
+    color:#06679f;
 }
 
 .intro strong{

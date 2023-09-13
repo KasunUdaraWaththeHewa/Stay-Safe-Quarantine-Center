@@ -20,7 +20,7 @@ function Meal() {
   useEffect(() => {
     async function fetchMeals() {
       try {
-        const response = await axios.get('http://localhost:8070/Meal',config);
+        const response = await axios.get('http://localhost:8070/meal',config);
         setMeals(response.data);
       } catch (error) {
         console.error(error);
