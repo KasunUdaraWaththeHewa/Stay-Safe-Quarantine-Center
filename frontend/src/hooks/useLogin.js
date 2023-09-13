@@ -29,7 +29,7 @@ export const useLogin = () => {
         } else if (role === 'kitchen') {
           navigate('/meals');
         } else if (role === 'pharmacy') {
-          navigate('/PharmacyPanal');
+          navigate('/PharmacyPanel');
         }
       } else {
         setIsLoading(false);

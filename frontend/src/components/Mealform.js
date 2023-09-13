@@ -9,13 +9,13 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 function MealForm() {
-  const [mealID, setmealID] = useState("");
-  const [mealName, setmealName] = useState("");
-  const [mealDescription, setmealDescription] = useState("");
-  const [nutritionalInformation, setnutritionalInformation] = useState("");
-  const [dietaryRestrictions, setdietaryRestrictions] = useState("");
-  const [mealType, setmealType] = useState("");
-  const [portionSize, setportionSize] = useState("");
+  const [mealID, setMealID] = useState("");
+  const [mealName, setMealName] = useState("");
+  const [mealDescription, setMealDescription] = useState("");
+  const [nutritionalInformation, setNutritionalInformation] = useState("");
+  const [dietaryRestrictions, setDietaryRestrictions] = useState("");
+  const [mealType, setMealType] = useState("");
+  const [portionSize, setPortionSize] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
 
@@ -71,13 +71,13 @@ function MealForm() {
     };
     axios.post("http://localhost:8070/Meal/add", newMeal,config).then(() => {
       successfullyAdded();
-      setmealID("")
-      setmealName("")
-      setmealDescription("")
-      setnutritionalInformation("")
-      setdietaryRestrictions("")
-      setmealType("")
-      setportionSize("Normal")
+      setMealID("")
+      setMealName("")
+      setMealDescription("")
+      setNutritionalInformation("")
+      setDietaryRestrictions("")
+      setMealType("")
+      setPortionSize("Normal")
       window.location.reload();
     }).catch((err) => {
       Swal.fire(
@@ -93,21 +93,13 @@ function MealForm() {
 
   function populateFormWithFetchedData() {
     if (searchResult) {
-      setmealID(searchResult.user.mealID);
-      setmealName(searchResult.user.mealName);
-      setmealDescription(searchResult.user.mealDescription);
-      setnutritionalInformation(searchResult.user.nutritionalInformation);
-      setdietaryRestrictions(searchResult.user.dietaryRestrictions);
-      setmealType(searchResult.user.mealType);
-      setportionSize(searchResult.user.portionSize);
-
-      document.getElementById("mealIDInput").value = mealID;
-      document.getElementById("mealNameInput").value = mealName;
-      document.getElementById("mealDescriptionInput").value = mealDescription;
-      document.getElementById("nutritionalInformationInput").value = nutritionalInformation;
-      document.getElementById("dietaryRestrictionsInput").value = dietaryRestrictions;
-      document.getElementById("mealTypeInput").value = mealType;
-      document.getElementById("portionSizeInput").value = portionSize;
+      setMealID(searchResult.mealObject.mealID);
+      setMealName(searchResult.mealObject.mealName);
+      setMealDescription(searchResult.mealObject.mealDescription);
+      setNutritionalInformation(searchResult.mealObject.nutritionalInformation);
+      setDietaryRestrictions(searchResult.mealObject.dietaryRestrictions);
+      setMealType(searchResult.mealObject.mealType);
+      setPortionSize(searchResult.mealObject.portionSize);
       
     }
   }
@@ -122,7 +114,7 @@ function MealForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
-    axios.get(`http://localhost:8070/Meal/get/${mealID}`,config)
+    axios.get(`http://localhost:8070/meal/get/${mealID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
@@ -166,7 +158,7 @@ function MealForm() {
       }
     };
     successfullyDeleted();
-    axios.delete(`http://localhost:8070/Meal/delete/${mealID}`,config)
+    axios.delete(`http://localhost:8070/meal/delete/${mealID}`,config)
       .then((response) => {
         Swal.fire({
           title: 'You successfully Deleted the Meal!',
@@ -178,13 +170,13 @@ function MealForm() {
             popup: 'animate__animated animate__fadeOutUp'
           }
         })
-        setmealID("");
-        setmealName("");
-        setmealDescription("");
-        setnutritionalInformation("");
-        setdietaryRestrictions("");
-        setmealType("");
-        setportionSize("Normal");
+        setMealID("");
+        setMealName("");
+        setMealDescription("");
+        setNutritionalInformation("");
+        setDietaryRestrictions("");
+        setMealType("");
+        setPortionSize("Normal");
         window.location.reload();
       })
       .catch((error) => {
@@ -214,7 +206,7 @@ function handleUpdate() {
     portionSize,
   };
 
-  axios.put(`http://localhost:8070/Meal/update/${mealID}`, updatedMeal,config)
+  axios.put(`http://localhost:8070/meal/update/${mealID}`, updatedMeal,config)
     .then((response) => {
       successfullyUpdated();
       window.location.reload();
@@ -231,56 +223,56 @@ function handleUpdate() {
 
 //clear form
 function clearForm() {
-  setmealID("");
-  setmealName("");
-  setmealDescription("");
-  setnutritionalInformation("");
-  setdietaryRestrictions("");
-  setmealType("");
-  setportionSize("");
+  setMealID("");
+  setMealName("");
+  setMealDescription("");
+  setNutritionalInformation("");
+  setDietaryRestrictions("");
+  setMealType("");
+  setPortionSize("");
 }
   return (
     <Form>
         <Col>
           <Form.Label>Meal ID</Form.Label>
           <Form.Control id='mealIDInput' onChange={(e) => {
-            setmealID(e.target.value)
+            setMealID(e.target.value)
           }}
           value={mealID} />
           <Form.Label>Meal Name</Form.Label>
           <Form.Control id='mealNameInput'onChange={(e) => {
-            setmealName(e.target.value)
+            setMealName(e.target.value)
           }}
           value={mealName} />
           <Form.Label>Meal Description</Form.Label>
           <Form.Control id='mealDescriptionInput' onChange={(e) => {
-            setmealDescription(e.target.value)
+            setMealDescription(e.target.value)
           }}
           value={mealDescription} />
           <Form.Label>Nutritional Information</Form.Label>
           <Form.Control id='nutritionalInformationInput' onChange={(e) => {
-            setnutritionalInformation(e.target.value)
+            setNutritionalInformation(e.target.value)
           }}
           value={nutritionalInformation} />
         </Col>
       <Form.Group className="mb-3" controlId="formGriddietaryRestrictions1">
         <Form.Label>Dietary Restrictions</Form.Label>
         <Form.Control id='dietaryRestrictionsInput' onChange={(e) => {
-          setdietaryRestrictions(e.target.value)
+          setDietaryRestrictions(e.target.value)
         }}
         value={dietaryRestrictions} />
       </Form.Group>
        <Col>
           <Form.Label>Meal Type</Form.Label>
           <Form.Control id='mealTypeInput' onChange={(e) => {
-            setmealType(e.target.value)
+            setMealType(e.target.value)
           }}
           value={mealType} />
         </Col>
         <Col >
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Portion Size</Form.Label>
-            <Form.Select value={portionSize} id='portionSizeInput' onChange={(e) => setportionSize(e.target.value)}>
+            <Form.Select value={portionSize} id='portionSizeInput' onChange={(e) => setPortionSize(e.target.value)}>
               <option value="Normal">Normal</option>
               <option value="Large">Large</option>
             </Form.Select>
