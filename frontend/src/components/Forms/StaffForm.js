@@ -5,10 +5,10 @@ import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 
-function KichenkichenForm() {
+function StaffForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [employeeID, setEmployeeID] = useState("");
@@ -16,6 +16,7 @@ function KichenkichenForm() {
   const [email, setEmail] = useState("");
   const [jobRole, setJobRole] = useState("");
   const [address, setAddress] = useState("");
+  const [staffID, setStaffID] = useState("");
   const [emergencyContactNumber, setEmergencyContactNumber] = useState("");
   const [gender, setGender] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -23,10 +24,10 @@ function KichenkichenForm() {
 
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
-  //add member
+
   const successfullyAdded = () => {
     Swal.fire({
-      title: 'You successfully Added a Kitchen Staff Member!',
+      title: 'You successfully Added a Staff Member!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -38,7 +39,7 @@ function KichenkichenForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'You successfully Updated a Kitchen Staff Member!',
+      title: 'You successfully Updated a Staff Member!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -50,7 +51,7 @@ function KichenkichenForm() {
   };
   const successfullyDeleted = () => {
     Swal.fire({
-      title: 'Are you sure to delete Kitchen Staff Member?',
+      title: 'Are you sure to delete Staff Member?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -63,18 +64,18 @@ function KichenkichenForm() {
       }
     })
   };
-
+  //add staff member
   function sendData(e) {
-    e.preventDefault();
-    const newkichen = {
-      firstName, lastName, employeeID, phoneNumber, email, jobRole, address, emergencyContactNumber, gender, relationship, skills
-    }
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
     };
-    axios.post("http://localhost:8070/kichen/add", newkichen,config).then(() => {
+    e.preventDefault();
+    const newStaff = {
+      firstName, lastName, employeeID, phoneNumber, email, jobRole, address, staffID, emergencyContactNumber, gender, relationship, skills
+    }
+    axios.post("http://localhost:8070/staff/add", newStaff,config).then(() => {
       successfullyAdded();
       setFirstName("")
       setLastName("")
@@ -83,6 +84,7 @@ function KichenkichenForm() {
       setEmail("")
       setJobRole("")
       setAddress("")
+      setStaffID("")
       setEmergencyContactNumber("")
       setGender("Male")
       setRelationship("Married")
@@ -91,14 +93,14 @@ function KichenkichenForm() {
     }).catch((err) => {
       Swal.fire(
         'Error!',
-        'Error Adding Kitchen Staff Member.',
+        'Error Adding Staff Member.',
         'error'
       )
     })
   }
 
 
-  //search member
+  //search staff member
 
   function populateFormWithFetchedData() {
     if (searchResult) {
@@ -113,17 +115,6 @@ function KichenkichenForm() {
       setGender(searchResult.user.gender);
       setRelationship(searchResult.user.relationship);
       setSkills(searchResult.user.skills);
-
-      document.getElementById("firstNameInput").value = firstName;
-      document.getElementById("lastNameInput").value = lastName;
-      document.getElementById("employeeIDInput").value = employeeID;
-      document.getElementById("phoneNumberInput").value = phoneNumber;
-      document.getElementById("emailInput").value = email;
-      document.getElementById("jobRoleInput").value = jobRole;
-      document.getElementById("addressInput").value = address;
-      document.getElementById("emergencyContactNumberInput").value = emergencyContactNumber;
-      document.getElementById("genderInput").value = gender;
-      document.getElementById("relationshipInput").value = relationship;
     }
   }
 
@@ -137,12 +128,12 @@ function KichenkichenForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
-    axios.get(`http://localhost:8070/kichen/get/${employeeID}`,config)
+    axios.get(`http://localhost:8070/staff/get/${staffID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
           Swal.fire({
-            title: 'You successfully found the Kitchen Staff Member!',
+            title: 'You successfully found the Staff Member!',
             icon: 'success',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
@@ -156,7 +147,7 @@ function KichenkichenForm() {
         } else {
           Swal.fire(
             'Error!',
-            'Kitchen Staff Member not found.',
+            'Staff Member not found.',
             'error'
           )
         }
@@ -166,13 +157,13 @@ function KichenkichenForm() {
         setSearchResult(null);
         Swal.fire(
           'Error!',
-          'Error Searching Kitchen Staff Member.',
+          'Error Searching Staff Member.',
           'error'
         )
       });
   }
   
-  //delete kichen member
+  //delete staff member
 
   function handleDelete() {
     const config = {
@@ -180,11 +171,10 @@ function KichenkichenForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
-    successfullyDeleted();
-    axios.delete(`http://localhost:8070/kichen/delete/${employeeID}`,config)
+    axios.delete(`http://localhost:8070/staff/delete/${staffID}`,config)
       .then((response) => {
         Swal.fire({
-          title: 'You successfully Deleted the Kitchen Staff Member!',
+          title: 'You successfully Deleted the Staff Member!',
           icon: 'success',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -200,6 +190,7 @@ function KichenkichenForm() {
         setEmail("");
         setJobRole("");
         setAddress("");
+        setStaffID("");
         setEmergencyContactNumber("");
         setGender("Male");
         setRelationship("Married");
@@ -210,20 +201,15 @@ function KichenkichenForm() {
         console.error(error);
         Swal.fire(
           'Deleted!',
-          'Error Deleting Kitchen Staff Member.',
+          'Error Deleting Staff Member.',
           'error'
         )
       });
   }
-//update kichen member
+//update staff member
 
 function handleUpdate() {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
-  };
-  const updatedkichen = {
+  const updatedStaff = {
     firstName,
     lastName,
     employeeID,
@@ -231,12 +217,18 @@ function handleUpdate() {
     email,
     jobRole,
     address,
+    staffID,
     emergencyContactNumber,
     gender,
     relationship,
     skills,
   };
-  axios.put(`http://localhost:8070/kichen/update/${employeeID}`, updatedkichen,config)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
+  axios.put(`http://localhost:8070/staff/update/${staffID}`, updatedStaff,config)
     .then((response) => {
       successfullyUpdated();
       window.location.reload();
@@ -245,7 +237,7 @@ function handleUpdate() {
       console.error(error);
       Swal.fire(
         'Did not Update!',
-        'Error updating Kitchen Staff.',
+        'Error updating Staff Member.',
         'error'
       )
     });
@@ -256,6 +248,7 @@ function clearForm() {
   setFirstName("");
   setLastName("");
   setEmployeeID("");
+  setStaffID("");
   setPhoneNumber("");
   setEmail("");
   setJobRole("");
@@ -330,6 +323,13 @@ function clearForm() {
 
       <Row className="mb-3">
         <Col>
+          <Form.Label>staff ID</Form.Label>
+          <Form.Control id='staffIDInput' onChange={(e) => {
+            setStaffID(e.target.value)
+          }} 
+          value={staffID}/>
+        </Col>
+        <Col>
           <Form.Label>Emergency Contact number</Form.Label>
           <Form.Control id='emergencyContactNumberInput'onChange={(e) => {
             setEmergencyContactNumber(e.target.value)
@@ -342,6 +342,7 @@ function clearForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Gender</Form.Label>
             <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
+              <option value="" disabled>Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </Form.Select>
@@ -351,6 +352,7 @@ function clearForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
             <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
+              <option value="" disabled>Select relationshiptype</option>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
             </Form.Select>
@@ -392,4 +394,4 @@ function clearForm() {
   );
 }
 
-export default KichenkichenForm;
+export default StaffForm;

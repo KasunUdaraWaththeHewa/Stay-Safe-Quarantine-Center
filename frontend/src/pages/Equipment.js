@@ -1,6 +1,6 @@
 import '../css file/Equipment.css';
 import NavBar from "../components/NavBar";
-import EquipmentForm from "../components/EquipmentForm";
+import EquipmentForm from "../components/Forms/EquipmentForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';

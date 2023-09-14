@@ -1,6 +1,6 @@
 import '../css file/Equipment.css';
 import NavBar from "../components/NavBar";
-import PackageForm from "../components/ServicesForm";
+import PackageForm from "../components/Forms/ServicesForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';

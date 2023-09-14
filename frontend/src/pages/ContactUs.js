@@ -1,11 +1,9 @@
 import NavBar from "../components/NavBar";
 import '../css file/ContactUs.css';
 import Footer from '../components/Footer';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import imgContactUs from '../img/contactUs.jpeg';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';

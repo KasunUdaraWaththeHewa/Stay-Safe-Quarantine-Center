@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../css file/PharmacyPanel.css';
 import NavBar from "../components/NavBar";
-import PharmacyPanelForm from "../components/PharmacyPanelForm";
+import PharmacyPanelForm from "../components/Forms/PharmacyPanelForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import '../css file/Kitchenstaff.css';
 import NavBar from "../components/NavBar";
-import KitchenStaffForm from "../components/KitchenStaffForm";
+import KitchenStaffForm from "../components/Forms/KitchenStaffForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
