@@ -35,7 +35,7 @@ function PatientForm() {
 
     const successfullyAdded = () => {
         Swal.fire({
-          title: 'You successfully Added a Doctor!',
+          title: 'You successfully Added a Patient!',
           icon: 'success',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -47,7 +47,7 @@ function PatientForm() {
       };
       const successfullyUpdated = () => {
         Swal.fire({
-          title: 'You successfully Updated a Doctor!',
+          title: 'You successfully Updated a Patient!',
           icon: 'success',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -59,7 +59,7 @@ function PatientForm() {
       };
       const successfullyDeleted = () => {
         Swal.fire({
-          title: 'Are you sure to delete doctor?',
+          title: 'Are you sure to delete patient?',
           text: "You won't be able to revert this!",
           icon: 'warning',
           showCancelButton: true,

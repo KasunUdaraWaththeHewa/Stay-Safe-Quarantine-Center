@@ -104,7 +104,7 @@ function PackageForm() {
         setSearchResult(response.data);
         if (response.data) {
           Swal.fire({
-            title: 'You successfully found the Equipment!',
+            title: 'You successfully found the Package!',
             icon: 'success',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
