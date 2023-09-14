@@ -14,6 +14,26 @@ function NavBar() {
     logout();
   };
 
+  let dashboardRoute;
+  if (user) {
+    switch (user.role) {
+      case "admin":
+        dashboardRoute = "/adminpanel";
+        break;
+      case "staff":
+        dashboardRoute = "/staffpanel";
+        break;
+      case "kitchen":
+        dashboardRoute = "/meals";
+        break;
+      case "pharmacy":
+        dashboardRoute = "/PharmacyPanel";
+        break;
+      default:
+        dashboardRoute = "/";
+    }
+  }
+
   return (
     <div className="div-nav-bar">
       <div className="navBarLeft">
@@ -29,6 +49,11 @@ function NavBar() {
       </div>
       <div className="navBarRight">
         <ul className="navBarItemList">
+          {user && user.email && (
+            <li className="navBarItem">
+              <span className="loggedemail">{user.email}</span>
+            </li>
+          )}
           <li className="navBarItem" id='ourcenteritem'>
             <Link to="/OurCenter" className="link">
               Our Center
@@ -42,6 +67,11 @@ function NavBar() {
           <li className="navBarItem">
             <Link to="/contactus" className="link">
               Contact Us
+            </Link>
+          </li>
+          <li className="navBarItem">
+            <Link to={dashboardRoute} className="link">
+              Dashboard
             </Link>
           </li>
           {!user ? (
@@ -59,7 +89,6 @@ function NavBar() {
             </>
           ) : (
             <div className="logoutAndEmail">
-              {user.email && <span className="loggedemail">{user.email}</span>}
               <li className="navBarItem" onClick={handleClick}>
                 <Link to="/" className="link">
                   <b>LogOut</b>

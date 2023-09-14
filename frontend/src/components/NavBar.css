@@ -100,7 +100,7 @@
     padding-right: 20px;
     font-size: 15px;
     font-weight: 600;
-    color: white;
+    color: #caf0f8;
     margin-right: 20px;
     margin-left: -50px;
   }
@@ -113,6 +113,7 @@
     width: 80%;
   }
   
+
   /* Media query for mobile responsiveness */
   @media (max-width: 768px) {
     .div-nav-bar {
