@@ -28,6 +28,7 @@ import Login from './pages/loginProfile';
 import Signup from './pages/SignUpProfile';
 import ChangePassword from './pages/changePassword';
 import AddPackages from './pages/PackageAdd'
+import AddServices from './pages/ServicesAdd'
 import Notification from './pages/Notification';
 import PackageFetch from './pages/packageFetch';
 
@@ -56,6 +57,7 @@ function App() {
           <Route path="/kitchen" element={<Kitchen />} />
           <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/addPackages" element={<AddPackages />} />
+          <Route path="/addServices" element={<AddServices />}/>
           <Route path="/notification" element={<Notification />} />
           <Route path="/packageFetch" element={<PackageFetch />} />
         </Routes>
