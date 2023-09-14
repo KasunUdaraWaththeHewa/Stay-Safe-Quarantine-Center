@@ -31,7 +31,8 @@ const StaffSchema=new Schema({
     },
     staffID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     emergencyContactNumber:{
         type:String,

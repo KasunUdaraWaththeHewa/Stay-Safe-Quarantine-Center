@@ -11,7 +11,8 @@ const EquipmentsSchema=new Schema({
     },
     serialNumber:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     purchaseDate:{
         type:String,

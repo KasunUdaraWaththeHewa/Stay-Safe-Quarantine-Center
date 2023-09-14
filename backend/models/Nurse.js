@@ -11,7 +11,8 @@ const NurseSchema=new Schema({
     },
     nurseID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     phoneNumber:{
         type:String,

@@ -19,7 +19,8 @@ const PatientSchema=new Schema({
     },
     nicNumber:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     email:{
         type:String,

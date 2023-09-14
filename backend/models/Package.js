@@ -3,7 +3,8 @@ const Schema =mongoose.Schema;
 const PackageSchema=new Schema({
     packageID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     packageName:{
         type:String,

@@ -11,7 +11,8 @@ const DoctorSchema=new Schema({
     },
     doctorID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     phoneNumber:{
         type:String,

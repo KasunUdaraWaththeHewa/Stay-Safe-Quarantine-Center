@@ -3,7 +3,8 @@ const Schema =mongoose.Schema;
 const MealSchema=new Schema({
     mealID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     mealName:{
         type:String,

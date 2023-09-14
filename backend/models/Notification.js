@@ -3,7 +3,8 @@ const Schema =mongoose.Schema;
 const NotificationSchema=new Schema({
     notificationID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     title:{
         type:String,

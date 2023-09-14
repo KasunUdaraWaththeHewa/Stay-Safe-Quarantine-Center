@@ -20,7 +20,8 @@ const PaymentSchema=new Schema({
     },
     receiptNumber:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     dateofpayment:{
         type:String,

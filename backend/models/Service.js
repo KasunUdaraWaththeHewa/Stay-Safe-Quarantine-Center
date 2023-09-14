@@ -3,7 +3,8 @@ const Schema =mongoose.Schema;
 const ServicesSchema=new Schema({
     serviceID:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     serviceName:{
         type:String,

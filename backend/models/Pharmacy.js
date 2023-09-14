@@ -8,7 +8,8 @@ const PharmacySchema=new Schema({
     },
     medicine_id:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     med_date:{
         type:Date,
