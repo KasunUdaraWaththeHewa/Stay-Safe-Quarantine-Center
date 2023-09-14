@@ -14,7 +14,7 @@ const PharmacySchema=new Schema({
         type:Date,
         required:true
     },
-    quntity:{
+    quantity:{
         type:String,
         required:true   
     }
