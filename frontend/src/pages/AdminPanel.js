@@ -8,7 +8,7 @@ import Package from '../img/packages.png'
 import Service from '../img/services.png'
 import profile from '../img/Profile.png'
 import notification from '../img/notification.png'
-import React, { useState, useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 

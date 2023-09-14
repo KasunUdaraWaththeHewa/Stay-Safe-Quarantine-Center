@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../css file/Payment.css';
 import NavBar from "../components/NavBar";
-import PaymentForm from "../components/PaymentForm";
+import PaymentForm from "../components/Forms/PaymentForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

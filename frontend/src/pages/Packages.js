@@ -1,5 +1,5 @@
 import NavBar from "../components/NavBar.js";
-import "../components/NavBar.css";
+import "../components/css/NavBar.css";
 import Footer from '../components/Footer.js';
 import '../css file/Packages.css'
 import Row from 'react-bootstrap/Row';

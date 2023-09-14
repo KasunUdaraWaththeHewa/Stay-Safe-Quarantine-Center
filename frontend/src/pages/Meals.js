@@ -1,6 +1,6 @@
 import '../css file/Meals.css';
 import NavBar from "../components/NavBar";
-import MealForm from "../components/Mealform";
+import MealForm from "../components/Forms/Mealform";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react';

@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 
 function MealForm() {

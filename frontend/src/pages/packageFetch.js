@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NavBar from "../components/NavBar.js";
-import "../components/NavBar.css";
+import "../components/css/NavBar.css";
 import Footer from '../components/Footer.js';
 import '../css file/PackageFetch.css'
 

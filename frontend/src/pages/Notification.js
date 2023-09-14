@@ -5,7 +5,7 @@ import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import NotificationForm from '../components/NotificationForm';
+import NotificationForm from '../components/Forms/NotificationForm';
 
 
 function Notification() {

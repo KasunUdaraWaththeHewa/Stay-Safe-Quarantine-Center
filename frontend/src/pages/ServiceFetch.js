@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Collapse from 'react-bootstrap/Collapse';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NavBar from "../components/NavBar.js";
-import "../components/NavBar.css";
+import "../components/css/NavBar.css";
 import Footer from '../components/Footer.js';
 import '../css file/PackageFetch.css'
 import ourcenter from '../img/ourcenter.png';

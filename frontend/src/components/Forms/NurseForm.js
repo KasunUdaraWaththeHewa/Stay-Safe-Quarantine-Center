@@ -2,35 +2,34 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
-import React, { useState, useEffect, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 
-function DoctorForm() {
-  
+function NurseForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [doctorID, setDoctorID] = useState("");
+  const [nurseID, setNurseID] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [medicalLicenseNo, setMedicalLicenseNumber] = useState("");
+  const [nursingLicenseNo, setNursingLicenseNumber] = useState("");
   const [specialization, setSpecilization] = useState("");
   const [professionalExperience, setExperience] = useState("");
   const [address, setAddress] = useState("");
   const [avalibleDays, setAvalibleDays] = useState("");
-  const [emergencycontactNumber, setEmergencycontactNumber] = useState("");
-  const [gender, setGender] = useState('Male');
-  const [relationship, setRelationship] = useState("Married");
-  const [skillsAndTraining, setSkills] = useState(null);
+  const [emergencyContactNumbers, setEmergencycontactNumber] = useState("");
+  const [gender, setGender] = useState("");
+  const [relationship, setRelationship] = useState("");
+  const [skillsAndTraining, setSkills] = useState("");
 
   const [searchResult, setSearchResult] = useState(null);
   const { user } = useContext(AuthContext);
 
   const successfullyAdded = () => {
     Swal.fire({
-      title: 'You successfully Added a Doctor!',
+      title: 'You successfully Added a Nurse!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -42,7 +41,7 @@ function DoctorForm() {
   };
   const successfullyUpdated = () => {
     Swal.fire({
-      title: 'You successfully Updated a Doctor!',
+      title: 'You successfully Updated a Nurse!',
       icon: 'success',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -54,7 +53,7 @@ function DoctorForm() {
   };
   const successfullyDeleted = () => {
     Swal.fire({
-      title: 'Are you sure to delete doctor?',
+      title: 'Are you sure to delete Nurse?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -67,26 +66,24 @@ function DoctorForm() {
       }
     })
   };
-
-  //add Doctor
   function sendData(e) {
     e.preventDefault();
-    const newDoctor = {
-      firstName, lastName, doctorID, phoneNumber, email, medicalLicenseNo, specialization, professionalExperience, address, avalibleDays, emergencycontactNumber, gender, relationship, skillsAndTraining
+    const newNurse = {
+      firstName, lastName, nurseID, phoneNumber, email, nursingLicenseNo, specialization, professionalExperience, address, avalibleDays, emergencyContactNumbers, gender, relationship, skillsAndTraining
     }
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
     };
-    axios.post("http://localhost:8070/doctor/add", newDoctor,config).then(() => {
+    axios.post("http://localhost:8070/nurse/add", newNurse,config).then(() => {
       successfullyAdded();
       setFirstName("")
       setLastName("")
-      setDoctorID("")
+      setNurseID("")
       setPhoneNumber("")
       setEmail("")
-      setMedicalLicenseNumber("")
+      setNursingLicenseNumber("")
       setSpecilization("")
       setExperience("")
       setAddress("")
@@ -99,29 +96,44 @@ function DoctorForm() {
     }).catch((err) => {
       Swal.fire(
         'Error!',
-        'Error Adding Doctor.',
+        'Error Adding Nurse.',
         'error'
       )
     })
   }
 
-  //serach doctor
+
+
   function populateFormWithFetchedData() {
     if (searchResult) {
       setFirstName(searchResult.user.firstName);
       setLastName(searchResult.user.lastName);
-      setDoctorID(searchResult.user.doctorID);
+      setNurseID(searchResult.user.nurseID);
       setPhoneNumber(searchResult.user.phoneNumber);
       setEmail(searchResult.user.email);
-      setMedicalLicenseNumber(searchResult.user.medicalLicenseNo);
+      setNursingLicenseNumber(searchResult.user.nursingLicenseNo);
       setSpecilization(searchResult.user.specialization);
       setExperience(searchResult.user.professionalExperience);
       setAddress(searchResult.user.address);
       setAvalibleDays(searchResult.user.avalibleDays);
-      setEmergencycontactNumber(searchResult.user.emergencycontactNumber);
+      setEmergencycontactNumber(searchResult.user.emergencyContactNumber);
       setGender(searchResult.user.gender);
       setRelationship(searchResult.user.relationship);
-      setSkills(searchResult.user.skills);
+      setSkills(searchResult.user.skillsAndTraining);
+
+      document.getElementById("firstNameInput").value = firstName;
+      document.getElementById("lastNameInput").value = lastName;
+      document.getElementById("nurseIDInput").value = nurseID;
+      document.getElementById("phoneNumberInput").value = phoneNumber;
+      document.getElementById("emailInput").value = email;
+      document.getElementById("nursingLicenseNoInput").value = nursingLicenseNo;
+      document.getElementById("specializationInput").value = specialization;
+      document.getElementById("professionalExperienceInput").value = professionalExperience;
+      document.getElementById("addressInput").value = address;
+      document.getElementById("avalibleDaysInput").value = avalibleDays;
+      document.getElementById("emergencyContactNumbersInput").value = emergencyContactNumbers;
+      document.getElementById("genderInput").value = gender;
+      document.getElementById("relationshipInput").value = relationship;
     }
   }
 
@@ -135,12 +147,12 @@ function DoctorForm() {
         Authorization: `Bearer ${user.token}`
       }
     };
-    axios.get(`http://localhost:8070/doctor/get/${doctorID}`,config)
+    axios.get(`http://localhost:8070/nurse/get/${nurseID}`,config)
       .then((response) => {
         setSearchResult(response.data);
         if (response.data) {
           Swal.fire({
-            title: 'You successfully found the Doctor!',
+            title: 'You successfully found the Nurse!',
             icon: 'success',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
@@ -150,11 +162,11 @@ function DoctorForm() {
             }
           })
           console.log(response.data);
-          populateFormWithFetchedData();
+          populateFormWithFetchedData(response.data);
         } else {
           Swal.fire(
             'Error!',
-            'Doctor not found.',
+            'Nurse not found.',
             'error'
           )
         }
@@ -164,23 +176,23 @@ function DoctorForm() {
         setSearchResult(null);
         Swal.fire(
           'Error!',
-          'Error Searching Doctor.',
+          'Error Searching Nurse.',
           'error'
         )
       });
   }
-  // delete doctor
-  
+  //delete staff member
+
   function handleDelete() {
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
     };
-    axios.delete(`http://localhost:8070/doctor/delete/${doctorID}`,config)
+    axios.delete(`http://localhost:8070/nurse/delete/${nurseID}`,config)
       .then((response) => {
         Swal.fire({
-          title: 'You successfully Deleted the Doctor!',
+          title: 'You successfully Deleted the Nurse!',
           icon: 'success',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -191,10 +203,10 @@ function DoctorForm() {
         })
         setFirstName("")
         setLastName("")
-        setDoctorID("")
+        setNurseID("")
         setPhoneNumber("")
         setEmail("")
-        setMedicalLicenseNumber("")
+        setNursingLicenseNumber("")
         setSpecilization("")
         setExperience("")
         setAddress("")
@@ -206,37 +218,38 @@ function DoctorForm() {
         window.location.reload();
       })
       .catch((error) => {
+        console.error(error);
         Swal.fire(
           'Deleted!',
-          'Error Deleting Doctor.',
+          'Error Deleting Nurse.',
           'error'
         )
-        console.error(error);
       });
   }
-  //update doctor details
+  //update nurse
   function handleUpdate() {
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
     };
-    const updatedDoctor = {
+    const updatedNurse = {
       firstName,
       lastName,
       phoneNumber,
       email,
-      medicalLicenseNo,
+      nursingLicenseNo,
       specialization,
       professionalExperience,
       address,
       avalibleDays,
-      emergencycontactNumber,
+      emergencyContactNumbers,
       gender,
       relationship,
       skillsAndTraining,
     };
-    axios.put(`http://localhost:8070/doctor/update/${doctorID}`, updatedDoctor,config)
+
+    axios.put(`http://localhost:8070/nurse/update/${nurseID}`, updatedNurse,config)
       .then((response) => {
         successfullyUpdated();
         window.location.reload();
@@ -245,21 +258,20 @@ function DoctorForm() {
         console.error(error);
         Swal.fire(
           'Did not Update!',
-          'Error updating Dcctor.',
+          'Error updating Nurse.',
           'error'
         )
       });
   }
-
   //clear data
   function clearForm() {
     setFirstName("");
     setLastName("");
-    setDoctorID("");
+    setNurseID("");
     setPhoneNumber("");
     setEmail("");
-    setDoctorID("");
-    setMedicalLicenseNumber("");
+    setNurseID("");
+    setNursingLicenseNumber("");
     setSpecilization("");
     setExperience("");
     setAddress("");
@@ -269,74 +281,73 @@ function DoctorForm() {
     setRelationship("");
     setSkills(null);
   }
-
   return (
     <Form>
       <Row className="mb-3">
         <Col>
           <Form.Label>First name</Form.Label>
-          <Form.Control id='firstNameInput' onChange={(e) => setFirstName(e.target.value)}  value={firstName} />
+          <Form.Control  onChange={(e) => setFirstName(e.target.value)} id='firstNameInput' value={firstName} />
         </Col>
         <Col>
           <Form.Label>Last name</Form.Label>
-          <Form.Control id='lastNameInput'  onChange={(e) => setLastName(e.target.value)}  value={lastName} />
+          <Form.Control onChange={(e) => setLastName(e.target.value)}id='lastNameInput' value={lastName} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
-          <Form.Label>Doctor ID</Form.Label>
-          <Form.Control id='doctorIDInput' onChange={(e) => setDoctorID(e.target.value)}  value={doctorID} />
+          <Form.Label>Nurse ID</Form.Label>
+          <Form.Control  onChange={(e) => setNurseID(e.target.value)}id='nurseIDInput' value={nurseID}  />
         </Col>
         <Col>
           <Form.Label>Phone number</Form.Label>
-          <Form.Control id='phoneNumberInput' onChange={(e) => setPhoneNumber(e.target.value)} value={phoneNumber}  />
+          <Form.Control  onChange={(e) => setPhoneNumber(e.target.value)}id='phoneNumberInput' value={phoneNumber} />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email"  id='emailInput' onChange={(e) => setEmail(e.target.value)} value={email}  />
+          <Form.Control type="email" onChange={(e) => setEmail(e.target.value)}id='emailInput' value={email} />
         </Form.Group>
 
         <Col>
-          <Form.Label>Medical license Number</Form.Label>
-          <Form.Control id='medicalLicenseNoInput' onChange={(e) => setMedicalLicenseNumber(e.target.value)}  value={medicalLicenseNo} />
+          <Form.Label>Nursing license Number</Form.Label>
+          <Form.Control  onChange={(e) => setNursingLicenseNumber(e.target.value)}id='nursingLicenseNoInput' value={nursingLicenseNo}  />
         </Col>
       </Row>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Specialization</Form.Label>
-          <Form.Control id='specializationInput' onChange={(e) => setSpecilization(e.target.value)} value={specialization}  />
+          <Form.Control onChange={(e) => setSpecilization(e.target.value)}id='specializationInput' value={specialization} />
         </Col>
         <Col>
           <Form.Label>Professional Experience</Form.Label>
-          <Form.Control id='professionalExperienceInput' onChange={(e) => setExperience(e.target.value)} value={professionalExperience}  />
+          <Form.Control  onChange={(e) => setExperience(e.target.value)}id='professionalExperienceInput' value={professionalExperience}  />
         </Col>
       </Row>
 
-      <Form.Group className="mb-3" >
+      <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>
-        <Form.Control id='addressInput' onChange={(e) => setAddress(e.target.value)} value={address}/>
+        <Form.Control  id='addressInput' onChange={(e) => setAddress(e.target.value)}value={address}  />
       </Form.Group>
 
       <Row className="mb-3">
         <Col>
           <Form.Label>Available Days</Form.Label>
-          <Form.Control id='avalibleDaysInput' onChange={(e) => setAvalibleDays(e.target.value)}  value={avalibleDays} />
+          <Form.Control  id='avalibleDaysInput' onChange={(e) => setAvalibleDays(e.target.value)} value={avalibleDays} />
         </Col>
         <Col>
           <Form.Label>Emergency Contact number</Form.Label>
-          <Form.Control onChange={(e) => setEmergencycontactNumber(e.target.value)} value={emergencycontactNumber}  />
+          <Form.Control  id='emergencyContactNumbersInput' onChange={(e) => setEmergencycontactNumber(e.target.value)}value={emergencyContactNumbers}  />
         </Col>
       </Row>
       <Row className="mb-3">
         <Col >
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Gender</Form.Label>
-            <Form.Select value={gender}id='genderInput' onChange={(e) => setGender(e.target.value)}>
+            <Form.Select value={gender} id='genderInput' onChange={(e) => setGender(e.target.value)}>
               <option value="" disabled>Select gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -347,7 +358,7 @@ function DoctorForm() {
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Relationship</Form.Label>
 
-            <Form.Select value={relationship}id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
+            <Form.Select value={relationship} id='relationshipInput' onChange={(e) => setRelationship(e.target.value)}>
               <option value="" disabled>Select relationship type</option>
               <option value="Married">Married</option>
               <option value="Unmarried">Unmarried</option>
@@ -355,11 +366,12 @@ function DoctorForm() {
           </Form.Group>
         </Col>
 
+
       </Row>
 
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Enter skills, Training, and Certification details in pdf format</Form.Label>
-        <Form.Control type="file"id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} />
+        <Form.Control type="file" id='skillsInput' onChange={(e) => setSkills(e.target.files[0])} />
       </Form.Group>
       <br />
       <Row>
@@ -384,4 +396,4 @@ function DoctorForm() {
   );
 }
 
-export default DoctorForm;
+export default NurseForm;

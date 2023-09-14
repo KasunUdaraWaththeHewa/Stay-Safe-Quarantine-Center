@@ -1,6 +1,6 @@
 import '../css file/Patient.css';
 import NavBar from "../components/NavBar";
-import PatientForm from "../components/PatientForm";
+import PatientForm from "../components/Forms/PatientForm";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
