@@ -9,9 +9,13 @@ const ServicesSchema=new Schema({
         type:String,
         required:true
     },
-    details:{
+    serviceImage:{
         type:String,
         required:true
+    },
+    serviceDetails:{
+        type:String,
+        required:false
     }
 })
 const Service=mongoose.model("Service",ServicesSchema);
