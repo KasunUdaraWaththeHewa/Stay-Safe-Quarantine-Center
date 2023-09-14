@@ -13,12 +13,15 @@
 }
 
 .existingMeal {
-    width: 50%;
+    width:50%;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px; 
-    margin: 20px;
-    padding: 0px;
+    padding: 20px;
     background-image: url('https://static.vecteezy.com/system/resources/previews/023/674/635/non_2x/nutritionist-concept-cartoon-faceless-doctor-with-vegetables-and-fruits-bowl-weight-loss-program-and-diet-plan-nutrition-therapy-with-healthy-food-vector.jpg');
+    background-position: center;
+    background-size:auto;
+    background-repeat: no-repeat;
 }
 
 .existingMealCard {
