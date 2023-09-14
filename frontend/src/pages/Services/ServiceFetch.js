@@ -4,11 +4,11 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import NavBar from "../components/NavBar.js";
-import "../components/css/NavBar.css";
-import Footer from '../components/Footer.js';
-import '../css file/PackageFetch.css'
-import ourcenter from '../img/ourcenter.png';
+import NavBar from "../../components/NavBar.js";
+import "../../components/css/NavBar.css";
+import Footer from '../../components/Footer.js';
+import '../../css file/PackageFetch.css'
+import ourcenter from '../../img/ourcenter.png';
 
 function ServiceFetch() {
     const [services, setServices] = useState([]);

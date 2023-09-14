@@ -1,16 +1,16 @@
-import NavBar from '../components/NavBar';
-import '../css file/AdminPanel.css'
-import Footer from '../components/Footer';
+import NavBar from '../../components/NavBar';
+import '../../css file/AdminPanel.css'
+import Footer from '../../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
-import Equipment from '../img/equipment.png'
-import Package from '../img/packages.png'
-import Service from '../img/services.png'
-import profile from '../img/Profile.png'
-import notification from '../img/notification.png'
+import Equipment from '../../img/equipment.png'
+import Package from '../../img/packages.png'
+import Service from '../../img/services.png'
+import profile from '../../img/Profile.png'
+import notification from '../../img/notification.png'
 import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 function AdminPanel(){
 

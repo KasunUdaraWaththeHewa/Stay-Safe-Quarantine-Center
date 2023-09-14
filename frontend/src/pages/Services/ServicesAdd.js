@@ -1,13 +1,13 @@
-import '../css file/Equipment.css';
-import NavBar from "../components/NavBar";
-import PackageForm from "../components/Forms/PackageForm";
-import Footer from '../components/Footer';
+import '../../css file/Equipment.css';
+import NavBar from "../../components/NavBar";
+import PackageForm from "../../components/Forms/ServicesForm";
+import Footer from '../../components/Footer';
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
-function PackageAdd() {
+function ServiceAdd() {
   const { user } = useContext(AuthContext);
   console.log(user)
   const config = {
@@ -15,19 +15,19 @@ function PackageAdd() {
       Authorization: `Bearer ${user.token}`
     }
   };
-  const [packages, setpackages] = useState([]);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
-    async function fetchpackages() {
+    async function fetchServices() {
       try {
-        const response = await axios.get('http://localhost:8070/package', config);
-        setpackages(response.data);
+        const response = await axios.get('http://localhost:8070/service', config);
+        setServices(response.data);
       } catch (error) {
         console.error(error);
       }
     }
 
-    fetchpackages();
+    fetchServices();
   }, []);
 
   console.log(user);
@@ -45,7 +45,7 @@ function PackageAdd() {
       <div className="EquipmentDetailArea">
         <div className="h2Holder">
           <h2>
-            <b>Package Details Collecting Form</b>
+            <b>Service Details Collecting Form</b>
           </h2>
         </div>
         <div className="formOneContainorEquipment">
@@ -55,10 +55,10 @@ function PackageAdd() {
           <div className="existingEquipment">
             <div className='scrollablePanel'>
               <ul>
-                {packages.map((packages) => (
-                  <div key={packages.packageID} className="existingEquipmentCard">
-                    <p>{packages.packageName}</p>
-                    <p>{packages.packageID}</p>
+                {services.map((services) => (
+                  <div key={services.serviceID} className="existingEquipmentCard">
+                    <p>{services.serviceName}</p>
+                    <p>{services.serviceID}</p>
                   </div>
                 ))}
               </ul>
@@ -71,4 +71,4 @@ function PackageAdd() {
       </div>
     </div>
   );
-} export default PackageAdd;
+} export default ServiceAdd;

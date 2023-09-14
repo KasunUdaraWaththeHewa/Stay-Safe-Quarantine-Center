@@ -1,11 +1,11 @@
-import NavBar from '../components/NavBar';
-import '../css file/StaffPanel.css';
+import NavBar from '../../components/NavBar';
+import '../../css file/StaffPanel.css';
 import Accordion from 'react-bootstrap/Accordion';
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 
 function StaffPanel() {
