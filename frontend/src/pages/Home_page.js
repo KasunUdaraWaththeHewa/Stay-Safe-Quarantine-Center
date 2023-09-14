@@ -17,7 +17,7 @@ export default function Home_page() {
             <div className="intro">
                 <p id='intro'><strong>Welcome to our Quarantine Center</strong><br/>A secure haven dedicated to safeguarding public health during contagious disease outbreaks. Our center provides a controlled environment, expert medical care, and essential support services for individuals requiring isolation. We prioritize your health and well-being, ensuring a comfortable stay while actively preventing the spread of infectious diseases.</p>
                 <Button id='buttonHome'>
-                  <Link to="/OurCenter" className='linkHome'>
+                  <Link to="/serviceFetch" className='linkHome'>
                     Explore Us
                   </Link>
                   
