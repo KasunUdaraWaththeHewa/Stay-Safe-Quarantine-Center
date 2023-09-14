@@ -27,7 +27,7 @@ function NavBar() {
         dashboardRoute = "/meals";
         break;
       case "pharmacy":
-        dashboardRoute = "/PharmacyPanel";
+        dashboardRoute = "/pharmacy";
         break;
       default:
         dashboardRoute = "/";

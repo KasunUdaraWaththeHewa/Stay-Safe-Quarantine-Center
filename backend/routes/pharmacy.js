@@ -32,7 +32,7 @@ router.route("/get/:medicine_id").get(async (req, res) => {
       if (!medicineObj) {
         return res.status(404).json({ error: "Medicine not found" });
       }  
-      res.status(200).json({ status: "medicine fetched", medicineObj })
+      res.status(200).json({ status: "medicine fetched", medicineObj });
     })
     .catch((err) => {
       console.log(err.message);
