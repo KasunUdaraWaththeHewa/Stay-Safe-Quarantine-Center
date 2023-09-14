@@ -3,7 +3,7 @@
     padding: 0;
 }
 .EquipmentDetailArea {
-    height: 1000px;
+    height: 850px;
     background-color: white;
     width: 100%;
 }
@@ -45,7 +45,7 @@
 .equipmentForm , .packageForm{
     padding: 40px;
     width: 50%;
-    height: 800px;
+    height: 650px;
     background: linear-gradient(to bottom, #0096c7, #023e8a);
     color: white;
     margin-left: 40px;
@@ -56,7 +56,7 @@
 }
 
 .scrollablePanel {
-    max-height: 800px;
+    max-height: 1000px;
     overflow-y: auto;
     padding-right: 15px;
 }

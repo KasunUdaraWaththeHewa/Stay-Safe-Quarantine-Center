@@ -26,27 +26,27 @@ connection.once("open",()=>{
 })
 
 
-const patientRouter=require("./routes/patients.js");
+const patientRouter=require("./routes/patientRoutes.js");
 app.use("/patient",patientRouter);
-const doctorRouter=require("./routes/doctors.js");
+const doctorRouter=require("./routes/doctorRoutes.js");
 app.use("/doctor",doctorRouter);
-const nurseRouter=require("./routes/nurses.js");
+const nurseRouter=require("./routes/nurseRoutes.js");
 app.use("/nurse",nurseRouter);
-const staffRouter=require("./routes/staffs.js");
+const staffRouter=require("./routes/staffRoutes.js");
 app.use("/staff",staffRouter);
-const equipmentRouter=require("./routes/equipments.js");
+const equipmentRouter=require("./routes/equipmentRoutes.js");
 app.use("/equipment",equipmentRouter);
-const mealRouter=require("./routes/meals.js");
+const mealRouter=require("./routes/mealRoutes.js");
 app.use("/meal",mealRouter);
-const notificationRouter=require("./routes/notifications.js");
+const notificationRouter=require("./routes/notificationRoutes.js");
 app.use("/notification",notificationRouter);
 const packagesRouter=require("./routes/packages.js");
 app.use("/package",packagesRouter);
-const paymentRouter=require("./routes/payments.js");
+const paymentRouter=require("./routes/paymentRoutes.js");
 app.use("/payment",paymentRouter);
 const serviceRouter=require("./routes/services.js");
 app.use("/service",serviceRouter);
-const pharmacyRouter=require("./routes/pharmacys.js");
+const pharmacyRouter=require("./routes/pharmacyRoutes.js");
 app.use("/pharmacy",pharmacyRouter);
 
 const userRoutes=require("./routes/user.js");
