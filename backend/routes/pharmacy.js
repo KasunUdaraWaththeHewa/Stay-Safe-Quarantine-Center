@@ -1,5 +1,5 @@
 const router =require("express").Router();
-let medicine= require("../models/Pharmacy");
+let medicine= require("../models/pharmacy");
 const requireAuth = require("../middleware/requireAuth");
 
 router.use(requireAuth);
