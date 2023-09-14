@@ -81,11 +81,11 @@ function NavBar() {
                   Login
                 </Link>
               </li>
-              <li className="navBarItem">
+              {/* <li className="navBarItem">
                 <Link to="/signup" className="link">
                   Sign-Up
                 </Link>
-              </li>
+              </li> */}
             </>
           ) : (
             <div className="logoutAndEmail">
