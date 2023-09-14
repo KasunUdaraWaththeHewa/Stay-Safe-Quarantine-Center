@@ -61,10 +61,14 @@
     margin: 20px 150px 0 0;
 }
 .h2Detail{
-    margin-top: 26px;
+    margin-top: 27px;
     color: white;
     margin-left: 78px;
-
+}
+.h2Detail2{
+    margin-top: 26px;
+    color: white;
+    margin-left: -50px;
 }
 .h2Email{
     margin: 20px 320px 0 0;

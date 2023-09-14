@@ -52,17 +52,17 @@ function ContactUs(){
                         <div className="contactDetails" >
                             <div className="contactItem" >
                                 <h4 className="h2ContactNumber" >Phone Number</h4>
-                                <h4 className="h2Detail" >011-1234567</h4>
+                                <h4 className="h2Detail" >011-2985674</h4>
                             </div>
                             <div className="contactItem">
                                 <h4 className="h2Email">Email</h4>
-                                <h4 className="h2Detail">Samantha123@gmail.com</h4>
+                                <h4 className="h2Detail2">staysafequarantinecenter@gmail.com</h4>
                             </div>
                             <div className="contactItem">
                                 <h4 className="h2Address" >Address</h4>
-                                <p><b>College House
-                                    94, Cumaratunga Munidasa Mw,
-                                    Colombo 03,
+                                <p><b>Stay Safe Quarantine Center,
+                                    94, Bambalapitiya,
+                                    Colombo 07,
                                     Sri Lanka</b></p>
                             </div>
                             <div className="socialSection">
