@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     gap: 10px; 
     padding: 20px; 
-    background-image: url('https://img.freepik.com/free-vector/many-medical-equipments-medicine-white-background_1308-43331.jpg?w=826&t=st=1694694772~exp=1694695372~hmac=117cbbdeddc1f4686883705be7e68542e080da7936372b634595c2fb3694a504');
+    background-image: url('../img/pharmacypage.png');
     background-position: center;
     background-size:auto;
     background-repeat: no-repeat;
@@ -34,6 +34,7 @@
     color: black;
     margin-top: 10px;
     opacity: 0.9;
+    margin-left: 50px;
 }
 
 .h2Holder h2 {
