@@ -9,22 +9,8 @@ import imgContactUs from '../img/contactUs.jpeg';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
-import { useContext } from 'react';
 
 function ContactUs(){
-    const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
-  if (user.role === 'admin') {
-    navigate('/adminpanel');
-  } else if (user.role === 'staff') {
-    navigate('/staffpanel');
-  } else if (user.role === 'kitchen') {
-    navigate('/meals');
-  } else if (user.role === 'pharmacy') {
-    navigate('/PharmacyPanel');
-  }
     const form = useRef();
 
     const sendEmail = (e) => {
