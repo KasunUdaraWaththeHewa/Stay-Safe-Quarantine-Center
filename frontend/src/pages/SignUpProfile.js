@@ -11,9 +11,22 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 
 export default function Signup() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  if (user.role === 'admin') {
+    navigate('/adminpanel');
+  } else if (user.role === 'staff') {
+    navigate('/staffpanel');
+  } else if (user.role === 'kitchen') {
+    navigate('/meals');
+  } else if (user.role === 'pharmacy') {
+    navigate('/PharmacyPanel');
+  }
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [role, setRole] = useState('')

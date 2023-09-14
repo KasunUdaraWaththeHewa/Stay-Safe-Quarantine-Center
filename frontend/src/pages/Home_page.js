@@ -3,8 +3,23 @@ import Name_logo from '../img/name_logo.png'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import '../css file/Home_page.css'
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 
 export default function Home_page() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const role = user.role;
+  if (role === 'admin') {
+    navigate('/adminpanel');
+  } else if (role === 'staff') {
+    navigate('/staffpanel');
+  } else if (role === 'kitchen') {
+    navigate('/meals');
+  } else if (role === 'pharmacy') {
+    navigate('/PharmacyPanel');
+  }
   return (
     <div>
         <NavBar/>

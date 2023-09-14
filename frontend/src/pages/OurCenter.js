@@ -10,8 +10,22 @@ import img_p5 from '../img/safetymeasures.jpg';
 import Footer from '../components/Footer';
 import ourcenter from '../img/ourcenter.png';
 import BarchartOurCenter from '../components/BarchartOurCenter';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 
 export default function OurCenter(){
+    const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  if (user.role === 'admin') {
+    navigate('/adminpanel');
+  } else if (user.role === 'staff') {
+    navigate('/staffpanel');
+  } else if (user.role === 'kitchen') {
+    navigate('/meals');
+  } else if (user.role === 'pharmacy') {
+    navigate('/PharmacyPanel');
+  }
     return ( 
         <div>
             <div className="navBarContainor" ><NavBar /></div> 
