@@ -46,6 +46,8 @@ const paymentRouter=require("./routes/payments.js");
 app.use("/payment",paymentRouter);
 const serviceRouter=require("./routes/services.js");
 app.use("/service",serviceRouter);
+const pharmacyRouter=require("./routes/pharmacys.js");
+app.use("/pharmacy",pharmacyRouter);
 
 const userRoutes=require("./routes/user.js");
 app.use("/user",userRoutes);
