@@ -50,6 +50,9 @@ function Meal() {
           </h2>
         </div>
         <div className="formOneContainorMeal">
+        <div className="MealForm">
+            <MealForm />
+          </div>
           <div className="existingMeal">
               <ul>
                 {Meals.map((meal) => (
@@ -59,9 +62,6 @@ function Meal() {
                   </div>
                 ))}
               </ul>
-          </div>
-          <div className="MealForm">
-            <MealForm />
           </div>
         </div>
       </div>
