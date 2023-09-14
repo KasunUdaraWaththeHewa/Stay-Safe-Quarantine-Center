@@ -31,6 +31,7 @@ import AddPackages from './pages/PackageAdd'
 import AddServices from './pages/ServicesAdd'
 import Notification from './pages/Notification';
 import PackageFetch from './pages/packageFetch';
+import ServiceFetch from './pages/ServiceFetch';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="/addServices" element={<AddServices />}/>
           <Route path="/notification" element={<Notification />} />
           <Route path="/packageFetch" element={<PackageFetch />} />
+          <Route path="/serviceFetch" element={<ServiceFetch />} />
         </Routes>
 
       </Router>

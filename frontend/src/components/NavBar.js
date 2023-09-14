@@ -55,7 +55,7 @@ function NavBar() {
             </li>
           )}
           <li className="navBarItem" id='ourcenteritem'>
-            <Link to="/OurCenter" className="link">
+            <Link to="/serviceFetch" className="link">
               Our Center
             </Link>
           </li>

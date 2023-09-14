@@ -10,7 +10,6 @@ import NavBar from "../components/NavBar.js";
 import "../components/NavBar.css";
 import Footer from '../components/Footer.js';
 import '../css file/PackageFetch.css'
-import BasicPackage from '../img/BasicPackage.png'
 
 function PackageFetch() {
     const [packages, setPackages] = useState([]);
@@ -48,7 +47,6 @@ function PackageFetch() {
                 <img src="https://img.freepik.com/premium-photo/happy-male-doctor-communicating-with-mature-patient-who-is-wheelchair-hallway-clinic_637285-690.jpg?w=1060" alt="" className="pkgimgbig" />
                 <h1 className="txtpkgAboveImage">Packages</h1>
             </div>
-            {/* ... Existing component code */}
             <Container fluid className="pkgDetails">
                 <Row className="pkgrow">
                     {packages.map((packages) => (
@@ -81,7 +79,6 @@ function PackageFetch() {
                     ))}
                 </Row>
             </Container>
-            {/* ... Rest of your component code */}
             <div className="footer_pkg">
                 <Footer />
             </div>

@@ -121,7 +121,7 @@ function ContactUs(){
                             </Form.Group>
                             <br />
                             <br />
-                            <input className="submitButton" type="submit" value="Send" />
+                            <input className="btnSubmit" type="submit" value="Send" />
 
                         </Form>
                     </div>

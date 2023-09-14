@@ -36,6 +36,12 @@
     height: 800px;
 }
 
+.imageservicecontainer{
+    width : 100%;
+    height: 900px;
+    padding-top: 50px;
+}
+
 .pkgimgbig{
     width : 100%;
     height: 900px;

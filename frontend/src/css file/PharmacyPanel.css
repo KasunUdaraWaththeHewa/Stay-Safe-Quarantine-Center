@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     gap: 10px; 
     padding: 20px; 
-    background-image: url('https://img.freepik.com/free-vector/pharmacist_23-2148185760.jpg?w=740&t=st=1694700275~exp=1694700875~hmac=d9080c5414afbfb20bd1e4f3a3ddcbaef531eed71c4ed4e11d230b2548d7661e');
+    background-image: url('../img/pharmacypage.png');
     background-position: center;
     background-size:auto;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@
     color: black;
     margin-top: 10px;
     opacity: 0.9;
-    margin-left: 75px;
+    margin-left: 50px;
 }
 
 .h2Holder h2 {
