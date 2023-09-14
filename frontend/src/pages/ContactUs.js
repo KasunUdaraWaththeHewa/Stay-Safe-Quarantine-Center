@@ -21,7 +21,7 @@ function ContactUs(){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Contact Details Sent Successfully',
+                title: 'Message Sent Successfully',
                 showConfirmButton: false,
                 timer: 1500
               })
