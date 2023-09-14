@@ -1,11 +1,11 @@
-import NavBar from '../components/NavBar';
+import NavBar from '../../components/NavBar';
 import '../css file/AdminPanel.css'
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 import Accordion from 'react-bootstrap/Accordion';
 import {Link} from 'react-router-dom';
 import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 function StaffPanel(){
     const { user } = useContext(AuthContext);

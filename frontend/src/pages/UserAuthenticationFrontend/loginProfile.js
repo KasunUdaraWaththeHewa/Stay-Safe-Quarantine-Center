@@ -1,14 +1,14 @@
 import React from 'react';
-import '../css file/login.css';
-import NavBar from '../components/NavBar';
-import LoginProfile from '../img/loginprofile.png';
-import Footer from '../components/Footer';
+import '../../css file/login.css';
+import NavBar from '../../components/NavBar';
+import LoginProfile from '../../img/loginprofile.png';
+import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useLogin } from '../hooks/useLogin';
+import { useLogin } from '../../hooks/useLogin';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import loginPage from '../img/loginpage.png'
+import loginPage from '../../img/loginpage.png'
 
 export default function Login() {
   const [email, setEmail] = useState('');

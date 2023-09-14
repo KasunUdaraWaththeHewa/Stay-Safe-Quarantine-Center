@@ -6,10 +6,10 @@ import Collapse from 'react-bootstrap/Collapse';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import NavBar from "../components/NavBar.js";
-import "../components/css/NavBar.css";
-import Footer from '../components/Footer.js';
-import '../css file/PackageFetch.css'
+import NavBar from "../../components/NavBar.js";
+import "../../components/css/NavBar.css";
+import Footer from '../../components/Footer.js';
+import '../../css file/PackageFetch.css'
 
 function PackageFetch() {
     const [packages, setPackages] = useState([]);

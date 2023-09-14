@@ -1,15 +1,15 @@
 import React from 'react';
-import '../css file/OurCenter.css';
-import NavBar from '../components/NavBar';
-import img_p from '../img/accomodation.jpeg';
-import img_p1 from '../img/medicare.jpg';
-import img_p2 from '../img/meals.jpg';
-import img_p3 from '../img/amenties.jpg';
-import img_p4 from '../img/entertainment.jpeg';
-import img_p5 from '../img/safetymeasures.jpg';
-import Footer from '../components/Footer';
-import ourcenter from '../img/ourcenter.png';
-import BarchartOurCenter from '../components/BarchartOurCenter';
+import '../../css file/OurCenter.css';
+import NavBar from '../../components/NavBar';
+import img_p from '../../img/accomodation.jpeg';
+import img_p1 from '../../img/medicare.jpg';
+import img_p2 from '../../img/meals.jpg';
+import img_p3 from '../../img/amenties.jpg';
+import img_p4 from '../../img/entertainment.jpeg';
+import img_p5 from '../../img/safetymeasures.jpg';
+import Footer from '../../components/Footer';
+import ourcenter from '../../img/ourcenter.png';
+import BarchartOurCenter from '../../components/BarchartOurCenter';
 
 
 export default function OurCenter(){

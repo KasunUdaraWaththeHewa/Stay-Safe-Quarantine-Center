@@ -1,12 +1,12 @@
 import React from 'react'
-import '../css file/signup.css';
-import NavBar from '../components/NavBar';
-import LoginProfile from '../img/loginprofile.png';
-import SignUpImage from '../img/signuppage.png'
-import Footer from '../components/Footer';
+import '../../css file/signup.css';
+import NavBar from '../../components/NavBar';
+import LoginProfile from '../../img/loginprofile.png';
+import SignUpImage from '../../img/signuppage.png'
+import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useSignup } from '../hooks/useSignup';
+import { useSignup } from '../../hooks/useSignup';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';

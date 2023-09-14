@@ -1,7 +1,7 @@
-import NavBar from "../components/NavBar.js";
-import "../components/css/NavBar.css";
-import Footer from '../components/Footer.js';
-import '../css file/Packages.css'
+import NavBar from "../../components/NavBar.js";
+import "../../components/css/NavBar.css";
+import Footer from '../../components/Footer.js';
+import '../../css file/Packages.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -9,11 +9,11 @@ import Card from 'react-bootstrap/Card';
 import Collapse from 'react-bootstrap/Collapse';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import BasicPackage from '../img/BasicPackage.png'
-import EnhancedPackage from '../img/EnhancedPackage.png'
-import FamilyPackage from '../img/FamilyPackage.png'
-import VIPPackage from '../img/VIPPackage.png'
-import LongTermPackage from '../img/LongTermPackage.png'
+import BasicPackage from '../../img/BasicPackage.png'
+import EnhancedPackage from '../../img/EnhancedPackage.png'
+import FamilyPackage from '../../img/FamilyPackage.png'
+import VIPPackage from '../../img/VIPPackage.png'
+import LongTermPackage from '../../img/LongTermPackage.png'
 
 const Packages = () => {
     const [activeCard, setActiveCard] = useState(null);
