@@ -53,7 +53,7 @@ function Payment() {
             <PaymentForm />
           </div>
           <div className="existingPayment">
-            <div className='scrollablePanel'>
+            <div className='scrollablePanelPayment'>
               <ul>
                 {payments.map((payment) => (
                   <div key={payment.receiptNumber} className="existingPaymentCard">

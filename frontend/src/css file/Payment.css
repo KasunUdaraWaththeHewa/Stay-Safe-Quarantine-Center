@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     gap: 10px; 
     padding: 20px; 
-    background-image: url('https://img.freepik.com/free-vector/transfer-money-concept-illustration_114360-4165.jpg?w=740&t=st=1693808514~exp=1693809114~hmac=efff76935b537426fb71d6fc38661198b32d29f4a8b07c37f03ac6eab4400a4a');
+    background-image: url('../img/paymentpage.png');
     background-position: center;
     background-size:auto;
     background-repeat: no-repeat;
@@ -50,8 +50,8 @@
     margin-left: 40px;
 }
 
-.scrollablePanel {
-    max-height: 780px;
+.scrollablePanelPayment {
+    max-height: 1000px;
     overflow-y: auto;
     padding-right: 15px;
 }

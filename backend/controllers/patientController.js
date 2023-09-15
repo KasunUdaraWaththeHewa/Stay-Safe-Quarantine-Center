@@ -144,8 +144,8 @@ const deletePatientByNICNumber = async (req, res) => {
 
   const nicNumber = req.params.nicNumber;
   try {
-    const patient = await patient.findOneAndDelete({ nicNumber });
-    if (!patient) {
+    const pat = await patient.findOneAndDelete({ nicNumber });
+    if (!pat) {
       return res.status(404).json({ error: "Patient not found" });
     }
     res.status(200).send({ status: "Patient's data deleted" });
