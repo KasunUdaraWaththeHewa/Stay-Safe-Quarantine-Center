@@ -36,3 +36,5 @@ const PaymentSchema=new Schema({
 })
 const Payment=mongoose.model("Payment",PaymentSchema);
 module.exports=Payment;
+
+//model for payment
