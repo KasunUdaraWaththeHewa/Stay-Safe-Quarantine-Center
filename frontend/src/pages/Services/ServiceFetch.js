@@ -9,6 +9,7 @@ import "../../components/css/NavBar.css";
 import Footer from '../../components/Footer.js';
 import '../../css file/PackageFetch.css'
 import ourcenter from '../../img/ourcenter.png';
+import BarchartOurCenter from '../../components/BarchartOurCenter';
 
 function ServiceFetch() {
     const [services, setServices] = useState([]);
@@ -51,6 +52,9 @@ function ServiceFetch() {
                     ))}
                 </Row>
             </Container>
+            <div className="barchartcontainer">
+                        <BarchartOurCenter/>
+                   </div>
             <div className="footer_pkg">
                 <Footer />
             </div>
