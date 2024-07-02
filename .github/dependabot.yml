@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # Ecosystem for JavaScript/Node.js projects
+    directory: "/" # Location of the package.json file
+    schedule:
+      interval: "weekly" # Update schedule (options: daily, weekly, monthly)
+  - package-ecosystem: "github-actions" # Ecosystem for GitHub Actions
+    directory: "/" # Location of the GitHub Actions workflows
+    schedule:
+      interval: "weekly" # Update schedule
